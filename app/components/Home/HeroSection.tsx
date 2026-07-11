@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Header from './header';
+import Footer from './footer';
 
 const flightCards = [
   {
@@ -726,6 +727,8 @@ export default function HeroSection() {
 
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }
