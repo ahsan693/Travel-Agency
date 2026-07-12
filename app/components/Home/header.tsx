@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: 'Hotels', href: '/hotels' },
   { label: 'Destinations', href: '/destinations' },
   { label: 'About', href: '/about' },
+  { label: 'Travel', href: '/travel' },
 ];
 
 export default function Header() {

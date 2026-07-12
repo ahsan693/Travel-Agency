@@ -16,7 +16,7 @@ const PALE_YELLOW = "#FFED91"; // hotel card 3
 /*  Static content — mirrors the copy in the source PDF exactly       */
 /* ------------------------------------------------------------------ */
 
-const NAV_LINKS = ["Flights", "Hotels", "Destinations", "About"];
+const NAV_LINKS = ["Flights", "Hotels", "Destinations", "About", "Travel"];
 
 const FLIGHT_ROUTES = [
   { flag: "🇬🇧", route: "Dub → LHR London", price: "€24", duration: "1h 20m", airline: "Ryanair" },

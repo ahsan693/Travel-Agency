@@ -16,7 +16,7 @@ const PALE_YELLOW = "#FFED91"; // icon badge circles
 /*  Static content — mirrors the copy in the source PDF exactly       */
 /* ------------------------------------------------------------------ */
 
-const NAV_LINKS = ["Flights", "Hotels", "Destinations", "About"];
+const NAV_LINKS = ["Flights", "Hotels", "Destinations", "About", "Travel"];
 
 const FLIGHT_ROUTES = [
   { flag: "🇬🇧", route: "Dub → LHR London", duration: "1h 20m", airline: "Ryanair" },
