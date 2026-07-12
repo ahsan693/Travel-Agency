@@ -1,9 +1,11 @@
 import HeroSection from "./components/Home/HeroSection";
+import Travel from "./components/Travel";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
+      <Travel />
       {/* Add the rest of your homepage sections below */}
     </main>
   );
