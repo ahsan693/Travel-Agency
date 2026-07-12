@@ -267,9 +267,8 @@ export default function HeroSection() {
               <div className="relative z-20 flex gap-1 pl-2.5">
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('flights')}
                 >
                   <PlaneIcon />
@@ -277,9 +276,8 @@ export default function HeroSection() {
                 </button>
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('hotels')}
                 >
                   <HotelIcon />
@@ -409,7 +407,7 @@ export default function HeroSection() {
 
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-          
+
           <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
             <div className="max-w-[700px] flex flex-col gap-[10px]">
               <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
@@ -419,7 +417,7 @@ export default function HeroSection() {
                 Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
               </p>
             </div>
-            
+
             <a
               href="#routes"
               className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
@@ -533,7 +531,7 @@ export default function HeroSection() {
 
       <section className="w-full bg-[#000000] py-[80px] text-white">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-          
+
           <div className="flex flex-col gap-[10px]">
             <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
               Compare Hotel Deals
@@ -549,11 +547,10 @@ export default function HeroSection() {
                 key={category}
                 type="button"
                 onClick={() => setActiveHotelCategory(category)}
-                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-200 border-0 ${
-                  activeHotelCategory === category
-                    ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                    : 'bg-white text-black hover:bg-neutral-100'
-                }`}
+                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-200 border-0 ${activeHotelCategory === category
+                  ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
+                  : 'bg-white text-black hover:bg-neutral-100'
+                  }`}
               >
                 {category}
               </button>
@@ -574,7 +571,7 @@ export default function HeroSection() {
                       alt={hotel.name}
                       className="w-full h-full object-cover"
                     />
-                    
+
                     <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
                       Popular
                     </span>
@@ -628,7 +625,7 @@ export default function HeroSection() {
 
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
         <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
-          
+
           <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
             <div className="max-w-[700px] flex flex-col gap-[10px]">
               <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
@@ -638,7 +635,7 @@ export default function HeroSection() {
                 Discover popular cities and compare flights and hotels before you book.
               </p>
             </div>
-            
+
             <a
               href="#destinations"
               className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
@@ -675,7 +672,7 @@ export default function HeroSection() {
                     <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
                       {card.city}, {card.country}
                     </h3>
-                    
+
                     <div className="mt-3 flex flex-wrap gap-2">
                       <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
                         Flights from {card.flightPrice}
@@ -745,9 +742,8 @@ function Checkbox({
   return (
     <label className="flex cursor-pointer select-none items-center gap-2 text-[13px] text-[#374151]">
       <span
-        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${
-          checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
-        }`}
+        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
+          }`}
         onClick={onChange}
       >
         {checked && <CheckIcon />}
