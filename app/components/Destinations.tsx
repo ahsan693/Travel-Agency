@@ -14,6 +14,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import Header from "./Home/header";
+import Link from "next/link";
 
 /* =====================================================================
    DATA
@@ -364,13 +365,13 @@ function DestinationsSection() {
                   {d.seasonLabel}
                 </p>
 
-                <a
-                  href="#"
+                <Link
+                  href="/city"
                   className="mt-2 inline-flex items-center gap-1 text-[15px] font-semibold text-black hover:underline"
                 >
                   {d.ctaLabel}
                   <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
