@@ -227,7 +227,7 @@ export default function HeroSection() {
       <section className="relative isolate min-h-screen w-full overflow-hidden bg-black">
         {/* Real photo background (swap the seed/URL for the licensed asset) */}
         <img
-          src="https://picsum.photos/seed/travelmommy-hero-wing/1920/1200"
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80"
           alt="Airplane wing over clouds at sunset"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -305,9 +305,8 @@ export default function HeroSection() {
               <div className="relative z-20 flex gap-1 pl-2.5">
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('flights')}
                 >
                   <PlaneIcon />
@@ -315,9 +314,8 @@ export default function HeroSection() {
                 </button>
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('hotels')}
                 >
                   <HotelIcon />
@@ -561,11 +559,10 @@ export default function HeroSection() {
                 key={category}
                 type="button"
                 onClick={() => setActiveHotelCategory(category)}
-                className={`cursor-pointer rounded-full border-0 px-6 py-2.5 text-[14px] font-semibold transition-all duration-200 ${
-                  activeHotelCategory === category
-                    ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                    : 'bg-white text-black hover:bg-neutral-100'
-                }`}
+                className={`cursor-pointer rounded-full border-0 px-6 py-2.5 text-[14px] font-semibold transition-all duration-200 ${activeHotelCategory === category
+                  ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
+                  : 'bg-white text-black hover:bg-neutral-100'
+                  }`}
               >
                 {category}
               </button>
@@ -729,9 +726,8 @@ function Checkbox({
   return (
     <label className="flex cursor-pointer select-none items-center gap-2 text-[13px] text-[#374151]">
       <span
-        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${
-          checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
-        }`}
+        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
+          }`}
         onClick={onChange}
       >
         {checked && <CheckIcon />}
