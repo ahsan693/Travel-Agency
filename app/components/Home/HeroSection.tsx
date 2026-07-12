@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Header from './header';
 import Footer from './footer';
 
@@ -636,8 +637,8 @@ export default function HeroSection() {
               </p>
             </div>
 
-            <a
-              href="#destinations"
+            <Link
+              href="/destinations"
               className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
             >
               More destinations
@@ -650,7 +651,7 @@ export default function HeroSection() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
