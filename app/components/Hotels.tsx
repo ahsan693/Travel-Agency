@@ -76,144 +76,142 @@ export default function Hotels() {
   return (
     <>
       {/* ─── HERO SECTION ─── */}
-      <section className="relative isolate w-full min-h-screen overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/hotel_hero_bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
+   {/* ─── HERO SECTION ─── */}
+<section className="relative isolate w-full min-h-screen overflow-hidden">
+  {/* Background image */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{
+      backgroundImage: 'url(/hotel_hero_bg.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  />
+  {/* Dark overlay for readability */}
+  <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
 
-        <div className="relative z-10 mx-auto box-border max-w-[1376px] px-6 pb-9 pt-6 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4 flex flex-col min-h-screen">
-          <Header />
+  <div className="relative z-10 mx-auto box-border max-w-[1376px] px-8 pb-9 pt-6 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4 flex flex-col min-h-screen">
+    <Header />
 
-          {/* Hero text - bottom-left positioned */}
-          <div className="flex-1 flex flex-col justify-end pb-[220px] max-[860px]:pb-[260px] max-[640px]:pb-[300px] max-[430px]:pb-[320px]">
-            <div className="max-w-[800px]">
-              <h1 className="mb-[20px] font-sans text-[clamp(3rem,6.5vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:text-[clamp(2.5rem,5.5vw,4rem)] max-[430px]:text-[clamp(2rem,8vw,2.75rem)]">
-                <span className="block">Compare Hotels &</span>
-                <span className="block">Find the Best Deals</span>
-              </h1>
-              <p className="max-w-[580px] text-[15px] leading-[1.55] text-white/85 max-[430px]:text-[14px]">
-                Compare hotel prices from trusted booking websites to find the best accommodation for your next trip. Search
-                thousands of hotels, compare rates and book directly with your preferred travel provider.
-              </p>
+    {/* Content block: H1 + subtext + search bar, 40px gap, near top (matches Figma: Y 52, gap 40) */}
+    <div className="flex flex-col gap-[40px] mt-[52px] max-[860px]:mt-10 max-[640px]:mt-8 max-[430px]:mt-6">
+      <div className="max-w-[800px]">
+        <h1 className="mb-[20px] font-sans text-[clamp(3rem,6.5vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:text-[clamp(2.5rem,5.5vw,4rem)] max-[430px]:text-[clamp(2rem,8vw,2.75rem)]">
+          <span className="block">Compare Hotels &</span>
+          <span className="block">Find the Best Deals</span>
+        </h1>
+        <p className="max-w-[580px] text-[15px] leading-[1.55] text-white/85 max-[430px]:text-[14px]">
+          Compare hotel prices from trusted booking websites to find the best accommodation for your next trip. Search
+          thousands of hotels, compare rates and book directly with your preferred travel provider.
+        </p>
+      </div>
+
+      {/* Search bar - normal flow now, sits inside the hero image, no overlap */}
+      <div className="w-full">
+        {/* Tab */}
+        <div className="relative z-20 flex gap-1 pl-2.5">
+          <button
+            type="button"
+            className="flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold bg-white text-[#111111]"
+          >
+            <HotelIcon />
+            Hotels
+          </button>
+        </div>
+
+        {/* Search form */}
+        <div className="box-border rounded-[24px] border border-white/80 bg-white/95 px-[22px] pb-4 pt-5 shadow-[0_24px_60px_rgba(12,23,40,0.18)] max-[640px]:px-4">
+          <div className="flex items-center gap-3 max-[1024px]:flex-wrap max-[640px]:flex-col max-[640px]:items-stretch">
+            {/* Where are you going? */}
+            <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
+              <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
+                <LocationIcon />
+              </span>
+              <div className="min-w-0">
+                <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Where are you going?</span>
+                <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
+                  Jeddah, Saudi Arabia
+                </span>
+              </div>
             </div>
+
+            {/* Check In date */}
+            <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
+              <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
+                <CalendarIcon />
+              </span>
+              <div className="min-w-0">
+                <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Check In date</span>
+                <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
+                  08 Nov 2025
+                </span>
+              </div>
+            </div>
+
+            {/* Check Out Date */}
+            <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
+              <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
+                <CalendarIcon />
+              </span>
+              <div className="min-w-0">
+                <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Check Out Date</span>
+                <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
+                  08 Jan 2026
+                </span>
+              </div>
+            </div>
+
+            {/* Guests and rooms */}
+            <div className="flex min-w-0 flex-[1.4_1_0%] items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
+              <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
+                <PersonIcon />
+              </span>
+              <div className="min-w-0">
+                <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Guests and rooms</span>
+                <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
+                  01 Adult 01 Child
+                </span>
+              </div>
+            </div>
+
+            {/* Search button */}
+            <button
+              type="button"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-0 bg-[#ffc629] cursor-pointer max-[640px]:w-full max-[640px]:rounded-[12px]"
+              aria-label="Search"
+            >
+              <SearchIcon />
+            </button>
           </div>
 
-          {/* Search bar - overlapping bottom */}
-          <div className="absolute bottom-0 left-1/2 z-20 w-[min(1232px,calc(100%-48px))] -translate-x-1/2 translate-y-1/2 max-[430px]:w-[calc(100%-32px)]">
-            <div className="w-full">
-              {/* Tab */}
-              <div className="relative z-20 flex gap-1 pl-2.5">
-                <button
-                  type="button"
-                  className="flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold bg-white text-[#111111]"
-                >
-                  <HotelIcon />
-                  Hotels
-                </button>
-              </div>
-
-              {/* Search form */}
-              <div className="box-border rounded-[24px] border border-white/80 bg-white/95 px-[22px] pb-4 pt-5 shadow-[0_24px_60px_rgba(12,23,40,0.18)] max-[640px]:px-4">
-                <div className="flex items-center gap-3 max-[1024px]:flex-wrap max-[640px]:flex-col max-[640px]:items-stretch">
-                  {/* Where are you going? */}
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <LocationIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Where are you going?</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        Jeddah, Saudi Arabia
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Check In date */}
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <CalendarIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Check In date</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        08 Nov 2025
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Check Out Date */}
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <CalendarIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Check Out Date</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        08Jan 2026
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Guests and rooms */}
-                  <div className="flex min-w-0 flex-[1.4_1_0%] items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <PersonIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Guests and rooms</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        01 Adult 01 Child
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Search button */}
-                  <button
-                    type="button"
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-0 bg-[#ffc629] cursor-pointer max-[640px]:w-full max-[640px]:rounded-[12px]"
-                    aria-label="Search"
-                  >
-                    <SearchIcon />
-                  </button>
-                </div>
-
-                <div className="mt-4 flex gap-[180px] pl-1 max-[1100px]:gap-8 max-[640px]:flex-col max-[640px]:gap-3">
-                  <div className="flex flex-col gap-2">
-                    <Checkbox
-                      label="Add Nearby Airports"
-                      checked={nearbyLeft}
-                      onChange={() => setNearbyLeft((value) => !value)}
-                    />
-                    <Checkbox
-                      label="Direct Flights"
-                      checked={directFlights}
-                      onChange={() => setDirectFlights((value) => !value)}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Checkbox
-                      label="Add Nearby Airports"
-                      checked={nearbyRight}
-                      onChange={() => setNearbyRight((value) => !value)}
-                    />
-                  </div>
-                </div>
-              </div>
+          <div className="mt-4 flex gap-[180px] pl-1 max-[1100px]:gap-8 max-[640px]:flex-col max-[640px]:gap-3">
+            <div className="flex flex-col gap-2">
+              <Checkbox
+                label="Add Nearby Airports"
+                checked={nearbyLeft}
+                onChange={() => setNearbyLeft((value) => !value)}
+              />
+              <Checkbox
+                label="Direct Flights"
+                checked={directFlights}
+                onChange={() => setDirectFlights((value) => !value)}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Checkbox
+                label="Add Nearby Airports"
+                checked={nearbyRight}
+                onChange={() => setNearbyRight((value) => !value)}
+              />
             </div>
           </div>
         </div>
-      </section>
-
-      {/* ─── POPULAR HOTELS SECTION ─── */}
-      <section className="w-full bg-[#ffffff] pt-[160px] pb-[80px] max-[860px]:pt-[200px] max-[640px]:pt-[220px]">
+      </div>
+    </div>
+  </div>
+</section>
+     {/* ─── POPULAR HOTELS SECTION ─── */}
+      <section className="w-full bg-[#ffffff] pt-[150px] max-[860px]:pt-[190px] max-[640px]:pt-[230px]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[10px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
           {/* Decorative line */}
           <div className="flex justify-center mb-6">
