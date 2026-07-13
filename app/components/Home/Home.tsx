@@ -1,43 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import Header from './header';
-
-/* =====================================================================
-   CHANGES MADE TO MATCH Homepage.pdf PIXEL-FOR-PIXEL
-   ---------------------------------------------------------------------
-   1. Hero background: replaced the abstract CSS radial-gradient stand-in
-      with a real photograph (plane wing / sunset sky) — the PDF shows an
-      actual photo, not a gradient. The two decorative clip-path "cloud"
-      divs are removed since the photo itself provides that atmosphere.
-   2. Container width: the PDF measures a consistent 1216px content width
-      centered with ~112px side margins on every section (hero, flights,
-      hotels, destinations). The previous code mixed max-w-[1376px] and
-      max-w-[1440px]+px-[160px] containers, which don't match. All
-      sections now share one `CONTAINER` class.
-   3. Rating avatars: PDF shows flat solid lavender circles (#DEADEE),
-      not a photo-style gradient.
-   4. Flag icons: PDF renders native emoji flags (🇬🇧 🇪🇸 etc.), larger and
-      without a card/border/shadow — swapped out the flagcdn <img> usage.
-   5. Card backgrounds: the flight-route and destination cards use the
-      brand off-white "#F9F8F5" (same tone as the header pill), not pure
-      white / #fafafa.
-   6. Destination price badges ("Flights from …") are pale yellow
-      #FFED91 in the PDF, not the bright accent yellow #ffc629.
-   7. Hotel deal card fills are the saturated pastel tones measured from
-      the PDF (#FBBDEA / #FFC796 / #FFED91), not the near-white tints
-      used before.
-   8. Removed the pagination controls under the flight-cards and
-      destination-cards grids — the PDF does not show them anywhere.
-===================================================================== */
-
-const CONTAINER = 'mx-auto w-full max-w-[1216px] px-6 min-[1216px]:px-0';
 
 const flightCards = [
   {
     id: '1',
-    flagEmoji: '🇬🇧',
+    countryCode: 'gb',
     fromCode: 'Dub',
     toCode: 'LHR',
     destination: 'London',
@@ -49,7 +18,7 @@ const flightCards = [
   },
   {
     id: '2',
-    flagEmoji: '🇬🇧',
+    countryCode: 'gb',
     fromCode: 'Dub',
     toCode: 'LHR',
     destination: 'London',
@@ -61,7 +30,7 @@ const flightCards = [
   },
   {
     id: '3',
-    flagEmoji: '🇪🇸',
+    countryCode: 'es',
     fromCode: 'Dub',
     toCode: 'BCN',
     destination: 'Barcelona',
@@ -73,7 +42,7 @@ const flightCards = [
   },
   {
     id: '4',
-    flagEmoji: '🇵🇹',
+    countryCode: 'pt',
     fromCode: 'Dub',
     toCode: 'LIS',
     destination: 'Lisbon',
@@ -85,7 +54,7 @@ const flightCards = [
   },
   {
     id: '5',
-    flagEmoji: '🇺🇸',
+    countryCode: 'us',
     fromCode: 'Dub',
     toCode: 'JFK',
     destination: 'NewYork',
@@ -97,7 +66,7 @@ const flightCards = [
   },
   {
     id: '6',
-    flagEmoji: '🇮🇹',
+    countryCode: 'it',
     fromCode: 'Dub',
     toCode: 'FCO',
     destination: 'Rome',
@@ -109,7 +78,7 @@ const flightCards = [
   },
   {
     id: '7',
-    flagEmoji: '🇦🇪',
+    countryCode: 'ae',
     fromCode: 'Dub',
     toCode: 'DXB',
     destination: 'Dubai',
@@ -121,7 +90,7 @@ const flightCards = [
   },
   {
     id: '8',
-    flagEmoji: '🇳🇱',
+    countryCode: 'nl',
     fromCode: 'Dub',
     toCode: 'AMS',
     destination: 'Amsterdam',
@@ -146,8 +115,8 @@ const hotelDeals = [
     categories: ['All', 'Luxury', 'Boutique'],
     theme: {
       border: 'border-[#ff66cc]',
-      bg: 'bg-[#FBBDEA]',
-    },
+      bg: 'bg-[#fdf2f8]',
+    }
   },
   {
     id: '2',
@@ -160,8 +129,8 @@ const hotelDeals = [
     categories: ['All', 'Luxury', 'Business'],
     theme: {
       border: 'border-[#ff9966]',
-      bg: 'bg-[#FFC796]',
-    },
+      bg: 'bg-[#fff7ed]',
+    }
   },
   {
     id: '3',
@@ -174,9 +143,9 @@ const hotelDeals = [
     categories: ['All', 'Luxury', 'Family'],
     theme: {
       border: 'border-[#ffdd55]',
-      bg: 'bg-[#FFED91]',
-    },
-  },
+      bg: 'bg-[#fefce8]',
+    }
+  }
 ];
 
 const destinationCards = [
@@ -223,18 +192,17 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* ================= HERO SECTION ================= */}
-      <section className="relative isolate min-h-screen w-full overflow-hidden bg-black">
-        {/* Real photo background (swap the seed/URL for the licensed asset) */}
-        <img
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80"
-          alt="Airplane wing over clouds at sunset"
-          className="absolute inset-0 h-full w-full object-cover"
+      <section className="relative isolate min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_88%_78%,rgba(255,186,96,0.62)_0,rgba(255,186,96,0.18)_14%,rgba(255,186,96,0)_34%),radial-gradient(circle_at_14%_18%,rgba(255,255,255,0.92)_0,rgba(255,255,255,0.26)_22%,rgba(255,255,255,0)_44%),linear-gradient(180deg,#b7d7ee_0%,#d8ecf7_36%,#f4eadf_100%)]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-auto -bottom-[9%] -left-[8%] -right-[10%] z-0 h-[54%] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0)),linear-gradient(132deg,rgba(255,184,92,0.34)_0%,rgba(250,235,219,0.28)_24%,rgba(225,240,248,0)_58%),linear-gradient(180deg,rgba(86,106,125,0.24)_0%,rgba(36,50,67,0.28)_8%,rgba(255,255,255,0)_18%)] [clip-path:polygon(0_44%,18%_28%,42%_35%,63%_50%,80%_59%,100%_66%,100%_100%,0_100%)]"
         />
-        {/* Soft light wash so the dark heading/nav stay legible on any photo */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/5" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-[-8%] z-0 h-[30%] w-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.36))] [clip-path:polygon(0_18%,18%_0,100%_55%,100%_100%,0_100%)]"
+        />
 
-        <div className={`relative z-10 box-border pb-9 pt-6 max-[430px]:pb-7 max-[430px]:pt-4 ${CONTAINER}`}>
+        <div className="relative z-10 mx-auto box-border max-w-[1376px] px-6 pb-9 pt-6 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
           <Header />
 
           <div className="flex items-start justify-between gap-6 pt-[78px] max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
@@ -253,7 +221,7 @@ export default function HeroSection() {
                 href="#search"
                 className="inline-flex items-center gap-2 rounded-[18px] border-0 bg-white px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.13)] transition-transform transition-shadow duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
               >
-                Search
+                Search 
                 Flights
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path
@@ -269,23 +237,17 @@ export default function HeroSection() {
 
             <div className="flex min-h-[510px] w-[min(520px,44vw)] flex-col items-end justify-between pt-[6px] max-[1300px]:min-h-0 max-[1300px]:w-full max-[1300px]:items-start">
               <div className="mb-7 mt-[44px] flex items-center gap-[14px] max-[1300px]:mt-0 max-[1024px]:mb-[18px] max-[430px]:flex-wrap">
-                {/* Flat lavender avatar circles — matches the PDF exactly (no photo/gradient texture) */}
                 <div className="flex shrink-0">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[#DEADEE] first:ml-0"
-                    />
-                  ))}
+                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
+                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
+                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
+                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
                 </div>
 
                 <div className="text-left">
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-sm tracking-[0.7px] text-[#111111]">★★★★★</span>
-                    <span className="text-sm">
-                      <span className="font-semibold text-[#111111]">4.9</span>
-                      <span className="text-[#777777]">/5</span>
-                    </span>
+                    <span className="text-sm text-[#555555]">4.9/5</span>
                   </div>
                   <p className="mt-0.5 whitespace-nowrap text-sm text-[#333333] max-[430px]:whitespace-normal">
                     Compare prices from trusted travel partners
@@ -305,8 +267,9 @@ export default function HeroSection() {
               <div className="relative z-20 flex gap-1 pl-2.5">
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                    }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
+                    activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                  }`}
                   onClick={() => setActiveTab('flights')}
                 >
                   <PlaneIcon />
@@ -314,8 +277,9 @@ export default function HeroSection() {
                 </button>
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                    }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
+                    activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                  }`}
                   onClick={() => setActiveTab('hotels')}
                 >
                   <HotelIcon />
@@ -431,25 +395,23 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* ================= "COMPARE FLIGHTS & HOTELS WITH TRAVELMOMMY" BAND ================= */}
       <section className="w-full bg-[#000000] py-[80px] text-white">
-        <div className={`flex flex-col gap-[10px] ${CONTAINER}`}>
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[10px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
           <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
             Compare Flights &amp; Hotels with{' '}
             <span className="text-[#ffc629]">TravelMommy</span>
           </h2>
-          <p className="max-w-[1120px] font-sans text-[14px] leading-[1.6] text-white/80 max-[480px]:text-[13px]">
+          <p className="font-sans text-[14px] leading-[1.6] text-white/80 max-w-[1120px] max-[480px]:text-[13px]">
             TravelMommy helps you compare flight and hotel prices from trusted airlines, booking websites and travel providers - all in one place. Search live fares, compare accommodation prices, discover the cheapest travel dates and book directly with your preferred provider. Whether you're planning a weekend city break, a family holiday, a business trip or a long-haul adventure, TravelMommy makes it easier to compare travel prices without searching multiple websites individually.
           </p>
         </div>
       </section>
 
-      {/* ================= CHEAP FLIGHTS FROM DUBLIN ================= */}
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className={`flex flex-col gap-[40px] ${CONTAINER}`}>
-
-          <div className="flex items-start justify-between gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-            <div className="flex max-w-[700px] flex-col gap-[10px]">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+          
+          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+            <div className="max-w-[700px] flex flex-col gap-[10px]">
               <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
                 Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
               </h2>
@@ -457,7 +419,7 @@ export default function HeroSection() {
                 Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
               </p>
             </div>
-
+            
             <a
               href="#routes"
               className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
@@ -479,15 +441,17 @@ export default function HeroSection() {
             {flightCards.map((card) => (
               <div
                 key={card.id}
-                className="flex flex-col justify-between rounded-[24px] border border-neutral-200/60 bg-[#F9F8F5] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
+                className="flex flex-col justify-between rounded-[24px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
               >
                 <div>
                   <div className="mb-4 flex items-center">
-                    <span className="text-[28px] leading-none" role="img" aria-label={`${card.destination} flag`}>
-                      {card.flagEmoji}
-                    </span>
+                    <img
+                      src={`https://flagcdn.com/w80/${card.countryCode}.png`}
+                      alt={`${card.destination} flag`}
+                      className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+                    />
                   </div>
-                  <h3 className="font-sans text-[18px] font-semibold leading-tight text-[#111111]">
+                  <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
                     {card.fromCode} &rarr; {card.toCode} {card.destination}
                   </h3>
                   <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
@@ -503,7 +467,7 @@ export default function HeroSection() {
                   {card.isFeatured ? (
                     <button
                       type="button"
-                      className="flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-[14px] border-0 bg-[#ffc629] py-[11px] text-[13px] font-bold text-[#111111] transition-transform duration-150 hover:-translate-y-px"
+                      className="w-full flex items-center justify-center gap-1.5 rounded-[14px] bg-[#ffc629] py-[11px] text-[13px] font-bold text-[#111111] border-0 cursor-pointer transition-transform duration-150 hover:-translate-y-px"
                     >
                       Compare Prices
                       <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -519,7 +483,7 @@ export default function HeroSection() {
                   ) : (
                     <button
                       type="button"
-                      className="flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-[14px] border border-neutral-200 bg-white py-[11px] text-[13px] font-bold text-[#111111] transition-all duration-150 hover:-translate-y-px hover:bg-neutral-50"
+                      className="w-full flex items-center justify-center gap-1.5 rounded-[14px] bg-white py-[11px] text-[13px] font-bold text-[#111111] border border-neutral-200 cursor-pointer transition-all duration-150 hover:bg-neutral-50 hover:-translate-y-px"
                     >
                       Compare Prices
                       <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -537,18 +501,44 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
+
+          <div className="flex justify-center mt-2">
+            <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
+              <button
+                type="button"
+                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+                aria-label="Previous page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <span className="font-sans text-[14px] font-medium tracking-wider select-none text-white/90">
+                4 / 9
+              </span>
+              <button
+                type="button"
+                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+                aria-label="Next page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* ================= COMPARE HOTEL DEALS ================= */}
       <section className="w-full bg-[#000000] py-[80px] text-white">
-        <div className={`flex flex-col gap-[32px] ${CONTAINER}`}>
-
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+          
           <div className="flex flex-col gap-[10px]">
             <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
               Compare Hotel Deals
             </h2>
-            <p className="max-w-[700px] font-sans text-[14px] leading-[1.6] text-white/60">
+            <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
               Compare hotel prices from trusted booking partners and find great places to stay around the world.
             </p>
           </div>
@@ -559,10 +549,11 @@ export default function HeroSection() {
                 key={category}
                 type="button"
                 onClick={() => setActiveHotelCategory(category)}
-                className={`cursor-pointer rounded-full border-0 px-6 py-2.5 text-[14px] font-semibold transition-all duration-200 ${activeHotelCategory === category
-                  ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                  : 'bg-white text-black hover:bg-neutral-100'
-                  }`}
+                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-200 border-0 ${
+                  activeHotelCategory === category
+                    ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
+                    : 'bg-white text-black hover:bg-neutral-100'
+                }`}
               >
                 {category}
               </button>
@@ -575,20 +566,20 @@ export default function HeroSection() {
               .map((hotel) => (
                 <div
                   key={hotel.id}
-                  className={`flex flex-col overflow-hidden rounded-[28px] border-[3px] ${hotel.theme.border} bg-white shadow-md transition-all duration-300 hover:shadow-lg`}
+                  className={`flex flex-col rounded-[28px] border-[3px] ${hotel.theme.border} bg-white overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg`}
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-900">
                     <img
                       src={hotel.image}
                       alt={hotel.name}
-                      className="h-full w-full object-cover"
+                      className="w-full h-full object-cover"
                     />
-
-                    <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
+                    
+                    <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
                       Popular
                     </span>
 
-                    <span className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+                    <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
                       <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                         <path
                           d="M3 11L11 3M11 3H4M11 3V10"
@@ -601,11 +592,11 @@ export default function HeroSection() {
                     </span>
                   </div>
 
-                  <div className={`flex flex-1 flex-col justify-between gap-4 p-6 text-[#111111] ${hotel.theme.bg}`}>
+                  <div className={`flex flex-col p-6 text-[#111111] flex-1 justify-between gap-4 ${hotel.theme.bg}`}>
                     <div>
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="select-none text-[14px] tracking-[1.5px] text-black">★★★★★</span>
-                        <a href="#compare" className="flex items-center gap-0.5 text-[13px] font-bold text-black hover:underline">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
+                        <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
                           {hotel.buttonText} ↗
                         </a>
                       </div>
@@ -613,20 +604,20 @@ export default function HeroSection() {
                         {hotel.name}
                       </h3>
                       {hotel.location && (
-                        <div className="mt-0.5 text-[13px] text-neutral-700">
+                        <div className="text-[13px] text-neutral-600 mt-0.5">
                           {hotel.location}
                         </div>
                       )}
                     </div>
 
                     <div className="font-sans text-[16px] font-bold text-black">
-                      From {hotel.price} <span className="text-[13px] font-normal text-neutral-700">{hotel.unit}</span>
+                      From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
                     </div>
                   </div>
                 </div>
               ))}
             {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
-              <div className="col-span-full py-16 text-center font-medium text-white/60">
+              <div className="col-span-full py-16 text-center text-white/60 font-medium">
                 No hotel deals available for "{activeHotelCategory}" right now. Check back later!
               </div>
             )}
@@ -635,12 +626,11 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* ================= EXPLORE POPULAR DESTINATIONS ================= */}
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className={`flex flex-col gap-[32px] ${CONTAINER}`}>
-
-          <div className="flex items-start justify-between gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-            <div className="flex max-w-[700px] flex-col gap-[10px]">
+        <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
+          
+          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+            <div className="max-w-[700px] flex flex-col gap-[10px]">
               <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
                 Explore Popular Destinations
               </h2>
@@ -648,9 +638,9 @@ export default function HeroSection() {
                 Discover popular cities and compare flights and hotels before you book.
               </p>
             </div>
-
-            <Link
-              href="/destinations"
+            
+            <a
+              href="#destinations"
               className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
             >
               More destinations
@@ -663,51 +653,78 @@ export default function HeroSection() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </Link>
+            </a>
           </div>
 
-          <div className="grid w-full grid-cols-4 gap-2 max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
             {destinationCards.map((card) => (
               <div
                 key={card.id}
-                className="flex h-[428px] w-full flex-col justify-between overflow-hidden rounded-[24px] border border-neutral-200/60 bg-[#F9F8F5] shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md min-[1216px]:w-[298px]"
+                className="flex flex-col justify-between rounded-[24px] border border-neutral-200/60 bg-[#fafafa] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
               >
-                <div className="relative h-[220px] w-full overflow-hidden bg-neutral-900">
+                <div className="relative w-full h-[220px] overflow-hidden bg-neutral-900">
                   <img
                     src={card.image}
                     alt={`${card.city}, ${card.country}`}
-                    className="h-full w-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
-                <div className="flex flex-grow flex-col justify-between gap-3 p-5">
+                <div className="p-5 flex flex-col justify-between flex-grow gap-3">
                   <div>
                     <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
                       {card.city}, {card.country}
                     </h3>
-
+                    
                     <div className="mt-3 flex flex-wrap gap-2">
-                      <span className="inline-block select-none rounded-full bg-[#FFED91] px-3 py-1 text-[11px] font-bold text-black">
+                      <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
                         Flights from {card.flightPrice}
                       </span>
-                      <span className="inline-block select-none rounded-full bg-[#FFED91] px-3 py-1 text-[11px] font-bold text-black">
+                      <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
                         Hotels from {card.hotelPrice}
                       </span>
                     </div>
                   </div>
 
                   <div className="mt-auto">
-                    <Link
-                      href="/city"
+                    <a
+                      href="#explore"
                       className="inline-flex items-center gap-1 text-[13px] font-bold text-black hover:underline"
                     >
                       Explore ↗
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <div className="flex justify-center mt-2">
+            <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
+              <button
+                type="button"
+                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+                aria-label="Previous page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <span className="font-sans text-[14px] font-medium tracking-wider select-none text-white/90">
+                4 / 9
+              </span>
+              <button
+                type="button"
+                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+                aria-label="Next page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
     </>
@@ -726,8 +743,9 @@ function Checkbox({
   return (
     <label className="flex cursor-pointer select-none items-center gap-2 text-[13px] text-[#374151]">
       <span
-        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
-          }`}
+        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${
+          checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
+        }`}
         onClick={onChange}
       >
         {checked && <CheckIcon />}
@@ -833,5 +851,9 @@ function CheckIcon() {
         strokeLinejoin="round"
       />
     </svg>
+
+
   );
+
+
 }

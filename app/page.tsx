@@ -1,4 +1,4 @@
-import HeroSection from "./components/Home/HeroSection";
+import HeroSection from "./components/Home/Home";
 import Travel from "./components/Travel";
 
 export default function Home() {
