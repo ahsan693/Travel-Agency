@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Header from './header';
+import Footer from './footer';
 
 const flightCards = [
   {
@@ -183,6 +184,80 @@ const destinationCards = [
   },
 ];
 
+// --- Inline Icon Components ---
+function PlaneIcon({ flipped }: { flipped?: boolean }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={flipped ? "rotate-90" : ""}>
+      <path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+      <path d="M3 10h18" />
+      <path d="M12 6v12" />
+    </svg>
+  );
+}
+
+function HotelIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function PersonIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function SwapIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="17 1 21 5 17 9" />
+      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+      <polyline points="7 23 3 19 7 15" />
+      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+function Checkbox({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
+  return (
+    <label className="flex cursor-pointer items-center gap-2 text-[13px] font-medium text-[#555555]">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="h-4 w-4 rounded border-gray-300 text-[#ffc629] focus:ring-[#ffc629]"
+      />
+      {label}
+    </label>
+  );
+}
+
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'flights' | 'hotels'>('flights');
   const [nearbyLeft, setNearbyLeft] = useState(false);
@@ -221,8 +296,7 @@ export default function HeroSection() {
                 href="#search"
                 className="inline-flex items-center gap-2 rounded-[18px] border-0 bg-white px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.13)] transition-transform transition-shadow duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
               >
-                Search 
-                Flights
+                Search Flights
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path
                     d="M3 11L11 3M11 3H4M11 3V10"
@@ -680,180 +754,19 @@ export default function HeroSection() {
                       <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
                         Flights from {card.flightPrice}
                       </span>
-                      <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
+                      <span className="inline-block rounded-full bg-neutral-100 border border-neutral-200/60 px-3 py-1 text-[11px] font-medium text-neutral-600 select-none">
                         Hotels from {card.hotelPrice}
                       </span>
                     </div>
-                  </div>
-
-                  <div className="mt-auto">
-                    <a
-                      href="#explore"
-                      className="inline-flex items-center gap-1 text-[13px] font-bold text-black hover:underline"
-                    >
-                      Explore ↗
-                    </a>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex justify-center mt-2">
-            <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
-              <button
-                type="button"
-                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
-                aria-label="Previous page"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <span className="font-sans text-[14px] font-medium tracking-wider select-none text-white/90">
-                4 / 9
-              </span>
-              <button
-                type="button"
-                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
-                aria-label="Next page"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
         </div>
       </section>
+      <Footer />
     </>
   );
-}
-
-function Checkbox({
-  label,
-  checked,
-  onChange,
-}: {
-  label: string;
-  checked: boolean;
-  onChange: () => void;
-}) {
-  return (
-    <label className="flex cursor-pointer select-none items-center gap-2 text-[13px] text-[#374151]">
-      <span
-        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border-[1.5px] ${
-          checked ? 'border-[#ffc629] bg-[#ffc629]' : 'border-[#d1d5db]'
-        }`}
-        onClick={onChange}
-      >
-        {checked && <CheckIcon />}
-      </span>
-      {label}
-    </label>
-  );
-}
-
-function PlaneIcon({ flipped }: { flipped?: boolean }) {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      style={{ transform: flipped ? 'rotate(90deg)' : 'rotate(-45deg)' }}
-    >
-      <path
-        d="M2 16L22 8L14 22L11 15L2 16Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function HotelIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M3 21V8L12 3L21 8V21M3 21H21M3 21V16H8V21M16 21V16H21V21"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function CalendarIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-      <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M3 10H21M8 3V7M16 3V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M4 20C4 16 7.5 14 12 14C16.5 14 20 16 20 20"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function SwapIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M7 7H17M17 7L13 3M17 7L13 11"
-        stroke="#4b5563"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M17 17H7M7 17L11 13M7 17L11 21"
-        stroke="#4b5563"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle cx="11" cy="11" r="7" stroke="#111111" strokeWidth="2" />
-      <path d="M21 21L16.5 16.5" stroke="#111111" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-      <path
-        d="M2 6L5 9L10 3"
-        stroke="#111111"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-
-
-  );
-
-
 }
