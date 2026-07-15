@@ -486,127 +486,115 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-          
-          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-            <div className="max-w-[700px] flex flex-col gap-[10px]">
-              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
-                Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
-              </h2>
-              <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
-                Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
-              </p>
-            </div>
-            
-            <a
-              href="#routes"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
-            >
-              View All Routes
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M3 11L11 3M11 3H4M11 3V10"
-                  stroke="#111111"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
+    <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
+  <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+    
+    <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+      <div className="max-w-[700px] flex flex-col gap-[10px]">
+        <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+          Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
+        </h2>
+        <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
+          Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
+        </p>
+      </div>
+      
+      <a
+        href="#routes"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+      >
+        View All Routes
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path
+            d="M3 11L11 3M11 3H4M11 3V10"
+            stroke="#111111"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
 
-          <div className="grid grid-cols-4 gap-6 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
-            {flightCards.map((card) => (
-              <div
-                key={card.id}
-                className="flex flex-col justify-between rounded-[24px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-              >
-                <div>
-                  <div className="mb-4 flex items-center">
-                    <img
-                      src={`https://flagcdn.com/w80/${card.countryCode}.png`}
-                      alt={`${card.destination} flag`}
-                      className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
-                    />
-                  </div>
-                  <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
-                    {card.fromCode} &rarr; {card.toCode} {card.destination}
-                  </h3>
-                  <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
-                    From {card.price}
-                  </div>
-                  <div className="mt-3 flex flex-col gap-0.5 text-[13px] text-[#777777]">
-                    <div>{card.type} &bull; {card.duration}</div>
-                    <div>{card.airline}</div>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  {card.isFeatured ? (
-                    <button
-                      type="button"
-                      className="w-full flex items-center justify-center gap-1.5 rounded-[14px] bg-[#ffc629] py-[11px] text-[13px] font-bold text-[#111111] border-0 cursor-pointer transition-transform duration-150 hover:-translate-y-px"
-                    >
-                      Compare Prices
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path
-                          d="M3 11L11 3M11 3H4M11 3V10"
-                          stroke="#111111"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      className="w-full flex items-center justify-center gap-1.5 rounded-[14px] bg-white py-[11px] text-[13px] font-bold text-[#111111] border border-neutral-200 cursor-pointer transition-all duration-150 hover:bg-neutral-50 hover:-translate-y-px"
-                    >
-                      Compare Prices
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path
-                          d="M3 11L11 3M11 3H4M11 3V10"
-                          stroke="#111111"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center mt-2">
-            <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
-              <button
-                type="button"
-                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
-                aria-label="Previous page"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-             
-              <button
-                type="button"
-                className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
-                aria-label="Next page"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
+   <div className="grid grid-cols-4 gap-2 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
+  {flightCards.map((card) => (
+    <div
+      key={card.id}
+      className="flex h-[250px] flex-col justify-between rounded-[20px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
+    >
+      {/* corner radius: 24px -> 20px, per the card frame spec (Image 2) */}
+      <div>
+        <div className="mb-4 flex items-center">
+          <img
+            src={`https://flagcdn.com/w80/${card.countryCode}.png`}
+            alt={`${card.destination} flag`}
+            className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+          />
         </div>
-      </section>
+        <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
+          {card.fromCode} &rarr; {card.toCode} {card.destination}
+        </h3>
+        <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
+          From {card.price}
+        </div>
+        <div className="mt-3 flex flex-col gap-0.5 text-[13px] text-[#777777]">
+          <div>{card.type} &bull; {card.duration}</div>
+          <div>{card.airline}</div>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <button
+          type="button"
+          className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#111111] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]"
+        >
+          {/* height 44px, horizontal padding 18px, gap 6px -> 10px between text
+              and arrow — all from Image 5. Button is now white by default,
+              turns yellow (#ffc629) on hover, darker yellow (#f5b800) on click.
+              isFeatured is no longer used to color this button — every card
+              behaves the same now. */}
+          Compare Prices
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path
+              d="M3 11L11 3M11 3H4M11 3V10"
+              stroke="#111111"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
+    <div className="flex justify-center mt-2">
+      <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
+        <button
+          type="button"
+          className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+          aria-label="Previous page"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+       
+        <button
+          type="button"
+          className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+          aria-label="Next page"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
 
       <section className="w-full bg-[#000000] py-[80px] text-white">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
