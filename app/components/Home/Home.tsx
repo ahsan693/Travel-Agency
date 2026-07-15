@@ -612,7 +612,7 @@ export default function HeroSection() {
           <div
             key={hotel.id}
             className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`}
-            style={{ borderWidth: '1px', borderColor: hotel.theme.strokeColor }}
+            style={{ borderWidth: '1px' }}
           >
             {/* Image: 388 Fill x 280, radius 14 */}
             <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
