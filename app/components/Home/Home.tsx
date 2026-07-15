@@ -267,8 +267,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative isolate min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_88%_78%,rgba(255,186,96,0.62)_0,rgba(255,186,96,0.18)_14%,rgba(255,186,96,0)_34%),radial-gradient(circle_at_14%_18%,rgba(255,255,255,0.92)_0,rgba(255,255,255,0.26)_22%,rgba(255,255,255,0)_44%),linear-gradient(180deg,#b7d7ee_0%,#d8ecf7_36%,#f4eadf_100%)]">
-        <div
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">    <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-auto -bottom-[9%] -left-[8%] -right-[10%] z-0 h-[54%] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0)),linear-gradient(132deg,rgba(255,184,92,0.34)_0%,rgba(250,235,219,0.28)_24%,rgba(225,240,248,0)_58%),linear-gradient(180deg,rgba(86,106,125,0.24)_0%,rgba(36,50,67,0.28)_8%,rgba(255,255,255,0)_18%)] [clip-path:polygon(0_44%,18%_28%,42%_35%,63%_50%,80%_59%,100%_66%,100%_100%,0_100%)]"
         />
@@ -329,10 +328,16 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <h2 className="m-0 text-right font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1300px]:text-left max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
-                <span className="block">from 500+</span>
-                <span className="block">Travel Sites</span>
-              </h2>
+                       <h2
+  className="translate-y-[-48px] text-right font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1300px]:text-left max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]"
+>
+  {/* replaced -mt-12 with translate-y-[-48px]: this uses a transform instead of margin,
+      so it visually shifts the heading up without fighting the parent's justify-between
+      layout. Make the number more negative (e.g. -64px, -80px) to move it further up,
+      or less negative (e.g. -24px) to move it back down */}
+  <span className="block">from 500+</span>
+  <span className="block">Travel Sites</span>
+</h2>
             </div>
           </div>
 
