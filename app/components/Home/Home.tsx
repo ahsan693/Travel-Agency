@@ -366,112 +366,18 @@ export default function HeroSection() {
               </div>
 
               <div className="box-border rounded-[24px] border border-white/80 bg-white/95 px-[22px] pb-4 pt-5 shadow-[0_24px_60px_rgba(12,23,40,0.18)] max-[640px]:px-4">
-                <div className="flex items-center gap-3 max-[1024px]:flex-wrap max-[640px]:flex-col max-[640px]:items-stretch">
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <PlaneIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Departure</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        Dublin (DUB)
-                      </span>
-                    </div>
+                {activeTab === 'flights' ? (
+                  <iframe
+                    src="/flights-widget.html"
+                    className="w-full min-h-[500px] border-none bg-transparent"
+                    title="Flights Search"
+                    scrolling="no"
+                  />
+                ) : (
+                  <div className="flex h-[100px] items-center justify-center text-sm font-medium text-gray-500">
+                    Hotel search is coming soon.
                   </div>
-
-                  <button
-                    type="button"
-                    className="flex h-6 w-6 shrink-0 items-center justify-center border-0 bg-transparent p-0 max-[640px]:self-center max-[640px]:rotate-90"
-                    aria-label="Swap origin and destination"
-                  >
-                    <SwapIcon />
-                  </button>
-
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <PlaneIcon flipped />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">To</span>
-                      <span className="block truncate text-[13px] font-normal leading-[1.3] text-[#9aa0a6]">
-                        Country, City or air...
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <CalendarIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Depart</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        08 Nov 2025
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <CalendarIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">Return</span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        08 Jan 2026
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex min-w-0 flex-[1.4_1_0%] items-center gap-3 rounded-2xl bg-[#f7f7f8] px-4 py-[14px]">
-                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[rgba(255,198,41,0.24)] text-[#9f7108]">
-                      <PersonIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <span className="block whitespace-nowrap text-[11px] leading-[1.3] text-[#9aa0a6]">
-                        Travellers and Cabin Class
-                      </span>
-                      <span className="block truncate text-[13px] font-semibold leading-[1.3] text-[#111111]">
-                        01 Adult 01 Child
-                      </span>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-0 bg-[#ffc629] max-[640px]:w-full max-[640px]:rounded-[12px]"
-                    aria-label="Search"
-                  >
-                    <SearchIcon />
-                  </button>
-                </div>
-
-                <div className="mt-4 flex gap-[180px] pl-1 max-[1100px]:gap-8 max-[640px]:flex-col max-[640px]:gap-3">
-                  <div className="flex flex-col gap-2">
-                    <Checkbox
-                      label="Add Nearby Airports"
-                      checked={nearbyLeft}
-                      onChange={() => setNearbyLeft((value) => !value)}
-                    />
-                    <Checkbox
-                      label="Direct Flights"
-                      checked={directFlights}
-                      onChange={() => setDirectFlights((value) => !value)}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Checkbox
-                      label="Add Nearby Airports"
-                      checked={nearbyRight}
-                      onChange={() => setNearbyRight((value) => !value)}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 grid gap-6">
-                <div id="tpwl-search" />
-                <div id="tpwl-tickets" />
+                )}
               </div>
             </div>
           </div>
