@@ -468,6 +468,11 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
+
+              <div className="mt-6 grid gap-6">
+                <div id="tpwl-search" />
+                <div id="tpwl-tickets" />
+              </div>
             </div>
           </div>
         </div>
