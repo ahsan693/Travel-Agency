@@ -115,8 +115,8 @@ const hotelDeals = [
     image: '/snowy_mountain_resort.png',
     categories: ['All', 'Luxury', 'Boutique'],
     theme: {
-      border: 'border-[#ff66cc]',
-      bg: 'bg-[#fdf2f8]',
+      border: 'border-[#D25ACA]',
+      bg: 'bg-[#D25ACA]/95',
     }
   },
   {
@@ -129,8 +129,8 @@ const hotelDeals = [
     image: '/snowy_mountain_resort.png',
     categories: ['All', 'Luxury', 'Business'],
     theme: {
-      border: 'border-[#ff9966]',
-      bg: 'bg-[#fff7ed]',
+      border: 'border-[#E38E4B]',
+      bg: 'bg-[#E38E4B]/105',
     }
   },
   {
@@ -143,12 +143,11 @@ const hotelDeals = [
     image: '/snowy_mountain_resort.png',
     categories: ['All', 'Luxury', 'Family'],
     theme: {
-      border: 'border-[#ffdd55]',
-      bg: 'bg-[#fefce8]',
+      border: 'border-[#E2BC1B]',
+      bg: 'bg-[#E2BC1B]/105',
     }
   }
 ];
-
 const destinationCards = [
   {
     id: '1',
@@ -570,107 +569,133 @@ export default function HeroSection() {
 </div>
 
     <div className="flex justify-center mt-2">
-      
+      <div className="flex items-center gap-5 rounded-[16px] bg-[#1a1a1a] px-5 py-3.5 text-white shadow-md">
+        <button
+          type="button"
+          className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+          aria-label="Previous page"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+       
+        <button
+          type="button"
+          className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
+          aria-label="Next page"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
 
   </div>
 </section>
 
-      <section className="w-full bg-[#000000] py-[80px] text-white">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-          
-          <div className="flex flex-col gap-[10px]">
-            <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
-              Compare Hotel Deals
-            </h2>
-            <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
-              Compare hotel prices from trusted booking partners and find great places to stay around the world.
-            </p>
-          </div>
+  <section className="w-full bg-[#000000] py-[80px] text-white">
+  <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+    
+    <div className="flex flex-col gap-[10px]">
+      <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
+        Compare Hotel Deals
+      </h2>
+      <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
+        Compare hotel prices from trusted booking partners and find great places to stay around the world.
+      </p>
+    </div>
 
-          <div className="flex flex-wrap gap-3 max-[480px]:gap-2">
-            {['All', 'Luxury', 'Budget', 'Family', 'Beach', 'Business', 'Boutique'].map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveHotelCategory(category)}
-                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-200 border-0 ${
-                  activeHotelCategory === category
-                    ? 'bg-[#ffc629] text-black shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                    : 'bg-white text-black hover:bg-neutral-100'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+    <div className="flex flex-wrap gap-3 max-[480px]:gap-2">
+      {['All', 'Luxury', 'Budget', 'Family', 'Beach', 'Business', 'Boutique'].map((category) => (
+        <button
+          key={category}
+          type="button"
+          onClick={() => setActiveHotelCategory(category)}
+          className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold border-0 transition-all duration-200
+            bg-white text-black
+            hover:bg-[#ffc629] hover:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
+            active:bg-[#ffc629] active:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
+            ${
+              activeHotelCategory === category
+                ? 'bg-[#ffc629] shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
+                : ''
+            }`}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
 
-          <div className="grid grid-cols-3 gap-6 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
-            {hotelDeals
-              .filter((hotel) => hotel.categories.includes(activeHotelCategory))
-              .map((hotel) => (
-                <div
-                  key={hotel.id}
-                  className={`flex flex-col rounded-[28px] border-[3px] ${hotel.theme.border} bg-white overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg`}
-                >
-                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-900">
-                    <img
-                      src={hotel.image}
-                      alt={hotel.name}
-                      className="w-full h-full object-cover"
-                    />
-                    
-                    <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
-                      Popular
-                    </span>
+    <div className="grid grid-cols-3 gap-2 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
+      {hotelDeals
+        .filter((hotel) => hotel.categories.includes(activeHotelCategory))
+        .map((hotel) => (
+          <div
+            key={hotel.id}
+            className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`}
+            style={{ borderWidth: '1px', borderColor: hotel.theme.strokeColor }}
+          >
+            {/* Image: 388 Fill x 280, radius 14 */}
+            <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+                className="w-full h-full object-cover"
+              />
 
-                    <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path
-                          d="M3 11L11 3M11 3H4M11 3V10"
-                          stroke="#111111"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
+              <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
+                Popular
+              </span>
 
-                  <div className={`flex flex-col p-6 text-[#111111] flex-1 justify-between gap-4 ${hotel.theme.bg}`}>
-                    <div>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
-                        <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
-                          {hotel.buttonText} ↗
-                        </a>
-                      </div>
-                      <h3 className="font-sans text-[20px] font-bold leading-snug text-black">
-                        {hotel.name}
-                      </h3>
-                      {hotel.location && (
-                        <div className="text-[13px] text-neutral-600 mt-0.5">
-                          {hotel.location}
-                        </div>
-                      )}
-                    </div>
+              <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 11L11 3M11 3H4M11 3V10"
+                    stroke="#111111"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
 
-                    <div className="font-sans text-[16px] font-bold text-black">
-                      From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
-                    </div>
-                  </div>
+            {/* Text content: 388 Fill x 112 Hug, gap 14, padding t10 r12 b10 l10 */}
+            <div className="flex flex-col gap-[14px] pt-[10px] pr-[12px] pb-[10px] pl-[10px] text-[#111111]">
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
+                  <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
+                    {hotel.buttonText} ↗
+                  </a>
                 </div>
-              ))}
-            {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
-              <div className="col-span-full py-16 text-center text-white/60 font-medium">
-                No hotel deals available for "{activeHotelCategory}" right now. Check back later!
+                <h3 className="font-sans text-[20px] font-bold leading-snug text-black">
+                  {hotel.name}
+                </h3>
+                {hotel.location && (
+                  <div className="text-[13px] text-neutral-600 mt-0.5">
+                    {hotel.location}
+                  </div>
+                )}
               </div>
-            )}
+
+              <div className="font-sans text-[16px] font-bold text-black">
+                From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
+              </div>
+            </div>
           </div>
-
+        ))}
+      {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
+        <div className="col-span-full py-16 text-center text-white/60 font-medium">
+          No hotel deals available for "{activeHotelCategory}" right now. Check back later!
         </div>
-      </section>
+      )}
+    </div>
 
+  </div>
+</section>
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
         <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
           
