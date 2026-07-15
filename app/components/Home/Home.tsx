@@ -592,9 +592,7 @@ export default function HeroSection() {
                   <path d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              <span className="font-sans text-[14px] font-medium tracking-wider select-none text-white/90">
-                4 / 9
-              </span>
+             
               <button
                 type="button"
                 className="flex cursor-pointer items-center justify-center text-white/50 hover:text-white transition-colors duration-150 border-0 bg-transparent p-0"
