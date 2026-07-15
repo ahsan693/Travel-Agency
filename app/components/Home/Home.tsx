@@ -674,71 +674,89 @@ export default function HeroSection() {
   </div>
 </section>
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
-          
-          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-            <div className="max-w-[700px] flex flex-col gap-[10px]">
-              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
-                Explore Popular Destinations
-              </h2>
-              <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
-                Discover popular cities and compare flights and hotels before you book.
-              </p>
+  <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
+    
+    <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+      <div className="max-w-[700px] flex flex-col gap-[10px]">
+        <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+          Explore Popular Destinations
+        </h2>
+        <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
+          Discover popular cities and compare flights and hotels before you book.
+        </p>
+      </div>
+      
+      <a
+        href="#destinations"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+      >
+        More destinations
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path
+            d="M3 11L11 3M11 3H4M11 3V10"
+            stroke="#111111"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
+      {destinationCards.map((card) => (
+        <div
+          key={card.id}
+          className="flex flex-col rounded-[24px] border border-neutral-200/60 bg-[#FAF7EF] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
+        >
+          {/* Image */}
+          <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-neutral-900">
+            <img
+              src={card.image}
+              alt={`${card.city}, ${card.country}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Content: city name, pills, then Explore link pinned to bottom */}
+          <div className="flex flex-col justify-between flex-1 px-5 py-4">
+            <div className="flex flex-col gap-3">
+              <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
+                {card.city}, {card.country}
+              </h3>
+
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
+                  Flights from {card.flightPrice}
+                </span>
+                <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
+                  Hotels from {card.hotelPrice}
+                </span>
+              </div>
             </div>
+                 <a
             
-            <a
-              href="#destinations"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+              href="#explore"
+              className="inline-flex items-center gap-1 text-[15px] font-bold text-[#111111] hover:underline w-fit"
             >
-              More destinations
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              Explore
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 11L11 3M11 3H4M11 3V10"
                   stroke="#111111"
-                  strokeWidth="1.8"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
             </a>
           </div>
-
-          <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
-            {destinationCards.map((card) => (
-              <div
-                key={card.id}
-                className="flex flex-col justify-between rounded-[24px] border border-neutral-200/60 bg-[#fafafa] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-              >
-                <div className="relative w-full h-[220px] overflow-hidden bg-neutral-900">
-                  <img
-                    src={card.image}
-                    alt={`${card.city}, ${card.country}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-5 flex flex-col justify-between flex-grow gap-3">
-                  <div>
-                    <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
-                      {card.city}, {card.country}
-                    </h3>
-                    
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <span className="inline-block rounded-full bg-[#ffc629] px-3 py-1 text-[11px] font-bold text-black select-none">
-                        Flights from {card.flightPrice}
-                      </span>
-                      <span className="inline-block rounded-full bg-neutral-100 border border-neutral-200/60 px-3 py-1 text-[11px] font-medium text-neutral-600 select-none">
-                        Hotels from {card.hotelPrice}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
       <Footer />
     </>
   );
