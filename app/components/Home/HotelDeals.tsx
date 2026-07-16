@@ -8,114 +8,192 @@ const hotels = [
   { 
     name: "The Westin Paris", 
     location: "Paris, France", 
-    rating: "4.9/5", 
+    rating: "4.9",
+    maxRating: "/5",
     price: "€29", 
     unit: "/ person", 
     tags: ["Hotel", "Luxury", "Spa"], 
     checkin: "Apr 21, 2024",
-    image: "https://images.unsplash.com/photo-1460627390041-532a28402358?auto=format&w=800&q=80&fit=crop"
+    checkout: "12:00 PM",
+    image: "https://images.unsplash.com/photo-1460627390041-532a28402358?auto=format&w=800&q=80&fit=crop",
+    tagColor: "#C050A0" // Pink from palette
   },
   { 
     name: "Hilton Barcelona", 
     location: "Barcelona, Spain", 
-    rating: "4.7/5", 
+    rating: "4.7",
+    maxRating: "/5",
     price: "€142", 
     unit: "/ night", 
     tags: ["Hotel", "Business", "Pool"], 
     checkin: "May 10, 2024",
-    image: "https://images.unsplash.com/photo-1612899326681-66508905b4ce?auto=format&w=800&q=80&fit=crop"
+    checkout: "11:00 AM",
+    image: "https://images.unsplash.com/photo-1612899326681-66508905b4ce?auto=format&w=800&q=80&fit=crop",
+    tagColor: "#C06020" // Orange from palette
   },
   { 
     name: "Marriott Dubai", 
     location: "Dubai, UAE", 
-    rating: "4.8/5", 
+    rating: "4.8",
+    maxRating: "/5",
     price: "€98", 
     unit: "/ night", 
     tags: ["Hotel", "Resort", "Beachfront"], 
     checkin: "Jun 15, 2024",
-    image: "https://images.pexels.com/photos/23696832/pexels-photo-23696832.jpeg?auto=compress&cs=tinysrgb&w=800&q=80"
+    checkout: "12:00 PM",
+    image: "https://images.pexels.com/photos/23696832/pexels-photo-23696832.jpeg?auto=compress&cs=tinysrgb&w=800&q=80",
+    tagColor: "#A08010" // Dark Gold/Yellow from palette
   },
 ];
 
 export default function HotelDeals() {
   return (
-    <section className="py-20 lg:py-32 bg-black text-white">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-        <div className="mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6 font-saans tracking-tight text-white">Find Great Hotel Deals</h2>
-          <p className="text-white/60 mb-8 max-w-2xl">
+    <section className="w-full bg-[#000000] py-[80px] text-[#ffffff]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-[32px] max-[430px]:px-4">
+        
+        {/* Header Section */}
+        <div className="mb-[48px] flex flex-col">
+          <h2 className="mb-[16px] font-sans text-[36px] font-bold leading-tight tracking-tight max-[768px]:text-[28px] max-[480px]:text-[24px]">
+            Find Great Hotel Deals
+          </h2>
+          <p className="mb-[32px] max-w-[700px] font-sans text-[14px] leading-[1.6] text-white/60">
             Compare hotel prices from trusted booking partners and find great places to stay around the world.
           </p>
-          <div className="flex flex-wrap gap-2">
+          
+          {/* Filter Pills - White with Black Text and Yellow Hover */}
+          <div className="flex flex-wrap gap-[10px]">
             {["All", "Luxury", "Budget", "Family", "Beach", "Business", "Boutique"].map((tag, i) => (
-              <button key={tag} className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${i === 0 ? 'bg-sunbeam text-ink' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+              <button 
+                key={tag} 
+                className={`rounded-full px-[24px] py-[10px] font-sans text-[14px] font-semibold transition-colors duration-200 
+                  ${i === 0 
+                    ? 'bg-[#FDDB32] text-[#000000]' 
+                    : 'bg-[#ffffff] text-[#000000] hover:bg-[#FDDB32]'
+                  }`}
+              >
                 {tag}
               </button>
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {/* Cards Grid - 3 Columns */}
+        <div className="grid w-full grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid-cols-3">
           {hotels.map((hotel, i) => (
-            <div key={i} className="bg-white text-ink rounded-[32px] overflow-hidden group shadow-xl">
-              <div className="relative h-64">
-                <Image src={hotel.image} alt={hotel.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-xs font-bold text-ink">Popular</div>
-                <div className="absolute top-6 right-6 bg-sunbeam w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
-                  <ArrowUpRight size={20} className="text-ink" />
+            <div 
+              key={i} 
+              // Explicit 527px height with 10px bottom padding applied per Figma spec
+              className="group flex h-[527px] flex-col overflow-hidden rounded-[24px] bg-[#ffffff] pb-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-1"
+            >
+              {/* Image Header - Explicit 200px height per Figma Y:200 start position */}
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-900">
+                <Image 
+                  src={hotel.image} 
+                  alt={hotel.name} 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                
+                {/* Badges */}
+                <div className="absolute left-[16px] top-[16px] rounded-full bg-white px-[12px] py-[6px] font-sans text-[12px] font-bold tracking-wide text-[#000000] shadow-sm">
+                  Popular
+                </div>
+                
+                <div className="absolute right-[16px] top-[16px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-md transition-transform duration-300 group-hover:scale-110">
+                  <ArrowUpRight size={18} strokeWidth={2.5} className="text-[#000000]" />
                 </div>
               </div>
-              <div className="p-8">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center gap-1.5">
-                    <div className="flex text-rating">
-                      {Array.from({ length: 5 }).map((_, j) => <Star key={j} size={12} fill="currentColor" />)}
+
+              {/* Card Body - Exactly 14px padding and 12px gap per Figma spec */}
+              <div className="flex flex-1 flex-col gap-[12px] p-[14px]">
+                
+                {/* Rating & Compare Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-[6px]">
+                    <div className="flex text-[#111111]">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} size={14} fill="currentColor" stroke="none" />
+                      ))}
                     </div>
-                    <span className="text-sm font-bold text-rating">{hotel.rating}</span>
+                    <div className="flex items-baseline font-sans text-[14px]">
+                      <span className="font-bold text-[#E2BC1B]">{hotel.rating}</span>
+                      <span className="font-medium text-[#777777]">{hotel.maxRating}</span>
+                    </div>
                   </div>
-                  <Link href="#" className="text-xs font-bold text-ink-muted uppercase tracking-tight hover:text-ink transition-colors">Compare Prices ↗</Link>
+                  <Link href="#" className="font-sans text-[12px] font-bold text-[#111111] transition-colors hover:text-[#555555]">
+                    Compare Prices ↗
+                  </Link>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-ink">{hotel.name}</h3>
-                <div className="flex items-center gap-2 text-sm text-ink-muted mb-6">
-                  <MapPin size={16} />
+
+                {/* Title */}
+                <h3 className="font-sans text-[22px] font-bold leading-tight text-[#000000]">
+                  {hotel.name}
+                </h3>
+
+                {/* Location */}
+                <div className="flex items-center gap-[6px] font-sans text-[13px] font-medium text-[#777777]">
+                  <MapPin size={15} strokeWidth={2.5} className="text-[#777777]" />
                   {hotel.location}
                 </div>
-                <div className="flex flex-wrap gap-2 mb-8">
+
+                {/* Tags (Using specific hex colors per Figma spec) */}
+                <div className="flex flex-wrap gap-[8px]">
                   {hotel.tags.map(tag => (
-                    <span key={tag} className="bg-tag-hotel/10 text-tag-hotel text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">
+                    <span 
+                      key={tag} 
+                      style={{ 
+                        color: hotel.tagColor, 
+                        borderColor: `${hotel.tagColor}50`, 
+                        backgroundColor: 'transparent'
+                      }}
+                      className="rounded-full border px-[12px] py-[3px] font-sans text-[11px] font-semibold"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="space-y-3 pt-6 border-t border-divider mb-8">
-                  <div className="flex items-center gap-3 text-sm text-gray-500">
-                    <Calendar size={16} />
-                    Check-in: {hotel.checkin}
+
+                {/* Details List */}
+                <div className="flex flex-col gap-[8px] border-t border-[#F3F4F6] pt-[12px]">
+                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                    <Calendar size={16} strokeWidth={2.5} className="text-[#999999]" />
+                    <span>Check-in: {hotel.checkin}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-gray-500">
-                    <MapPin size={16} />
-                    {hotel.location}
+                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                    <MapPin size={16} strokeWidth={2.5} className="text-[#999999]" />
+                    <span>{hotel.location}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-gray-500">
-                    <Clock size={16} />
-                    Check-out: 12:00 PM
+                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                    <Clock size={16} strokeWidth={2.5} className="text-[#999999]" />
+                    <span>Check-out: {hotel.checkout}</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between pt-6 border-t border-divider">
-                  <div>
-                    <p className="text-xs text-ink-muted font-bold uppercase tracking-widest">Start from</p>
-                    <p className="text-3xl font-extrabold text-ink">
-                      {hotel.price}
-                      <span className="text-sm text-ink-muted font-medium ml-1">{hotel.unit}</span>
+
+                {/* Footer (Price & CTA) - Pinned to bottom using mt-auto */}
+                <div className="mt-auto flex items-center justify-between border-t border-[#F3F4F6] pt-[12px]">
+                  <div className="flex flex-col">
+                    <p className="font-sans text-[11px] font-medium text-[#777777]">
+                      Start from
                     </p>
+                    <div className="flex items-baseline gap-[4px]">
+                      <span className="font-sans text-[26px] font-bold text-[#000000] tracking-tight">
+                        {hotel.price}
+                      </span>
+                      <span className="font-sans text-[13px] font-medium text-[#777777]">
+                        {hotel.unit}
+                      </span>
+                    </div>
                   </div>
-                  <button className="bg-sunbeam px-6 py-3 rounded-xl font-bold hover:brightness-110 transition-all text-ink">
+                  <button className="flex h-[42px] items-center justify-center rounded-xl bg-[#FDDB32] px-[22px] font-sans text-[14px] font-bold text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
                     Book Now
                   </button>
                 </div>
+                
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

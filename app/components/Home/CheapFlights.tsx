@@ -30,18 +30,18 @@ export default function CheapFlights() {
             </p>
           </div>
           
-          <button className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] py-[14px] text-[14px] font-semibold text-[#000000] transition-colors hover:bg-[#e5c52c] max-[768px]:self-start">
+          <button className="inline-flex h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] text-[14px] font-semibold text-[#000000] transition-colors hover:bg-[#e5c52c] max-[768px]:self-start">
             Browse All Flight Routes
             <ArrowUpRight size={16} strokeWidth={2} />
           </button>
         </div>
 
-        {/* Flight Cards Grid - 8 Cards perfectly fill 2 rows of 4 */}
+        {/* Flight Cards Grid */}
         <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {cheapFlights.map((flight, i) => (
             <div 
               key={i} 
-              className="group flex flex-col overflow-hidden rounded-[24px] border border-neutral-200/60 bg-[#ffffff] shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden rounded-[24px] border border-neutral-200/60 bg-[#ffffff] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               {/* Image & Flag */}
               <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-100">
@@ -51,39 +51,39 @@ export default function CheapFlights() {
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
-                <div className="absolute left-4 top-4 flex h-[28px] w-[38px] items-center justify-center rounded-[6px] bg-white p-1 shadow-md">
+                <div className="absolute left-[16px] top-[16px] flex h-[26px] w-[36px] items-center justify-center rounded-[6px] bg-white p-[3px] shadow-sm">
                   <img src={flight.flag} alt={`${flight.city} flag`} className="h-full w-full rounded-[3px] object-cover" />
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="flex flex-1 flex-col p-[20px]">
+              {/* Card Content (Using precise 24px padding to match Figma scale) */}
+              <div className="flex flex-1 flex-col p-[24px]">
                 
                 {/* Title & Price Row */}
-                <div className="mb-[16px] flex items-start justify-between">
-                  <div className="flex flex-col">
+                <div className="mb-[20px] flex items-start justify-between">
+                  <div className="flex flex-col pr-2">
                     <h3 className="font-sans text-[20px] font-bold leading-tight text-[#000000]">
                       {flight.city}
                     </h3>
-                    <p className="mt-[4px] font-sans text-[12px] font-bold tracking-widest text-[#777777] uppercase">
+                    <p className="mt-[4px] font-sans text-[12px] font-bold tracking-wider text-[#777777] uppercase">
                       {flight.route}
                     </p>
                   </div>
                   
-                  <div className="flex flex-col items-end">
-                    <p className="font-sans text-[22px] font-extrabold leading-tight text-[#000000]">
+                  <div className="flex flex-col items-end shrink-0">
+                    <p className="font-sans text-[24px] font-extrabold leading-none text-[#000000]">
                       {flight.price}
                     </p>
-                    <div className="mt-[2px] flex items-center gap-[4px]">
-                      <span className="text-[11px] font-medium text-[#777777]">by</span>
+                    <div className="mt-[6px] flex items-center gap-[4px]">
+                      <span className="text-[11px] font-semibold text-[#777777]">by</span>
                       <span className="text-[12px] font-bold text-[#00529C]">Ryanair</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Duration Row */}
-                <div className="mb-[24px] flex items-center gap-[6px] text-[13px] font-medium text-[#777777]">
-                  <Clock size={14} strokeWidth={2} />
+                <div className="mb-[24px] flex items-center gap-[6px] text-[13px] font-semibold text-[#777777]">
+                  <Clock size={14} strokeWidth={2.5} />
                   <span>Direct &bull; 1h 20m</span>
                 </div>
 

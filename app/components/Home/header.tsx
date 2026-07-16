@@ -2,20 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
 
 export default function Header() {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 px-6 lg:px-10 py-6">
-      <div className="mx-auto flex w-full max-w-[1216px] items-center gap-[24px] rounded-[20px] bg-[#f5f5f5] p-[12px]">
+      <div className="mx-auto flex w-full max-w-[1216px] items-center justify-between gap-[24px] rounded-[20px] bg-[#f5f5f5] p-[12px]">
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
           <Image src="/assets/logo.svg" alt="TravelMommy" width={72} height={30} className="h-[30px] w-auto" />
         </Link>
 
-        {/* Nav */}
-        <nav className="flex flex-1 items-center justify-end gap-[4px]">
+        {/* Desktop Nav (Hidden on Mobile) */}
+        <nav className="hidden lg:flex flex-1 items-center justify-end gap-[4px]">
           <Link
             href="#"
             className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
@@ -51,6 +51,15 @@ export default function Header() {
             <span className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_1px_2px_0px_rgba(255,255,255,0.12)]" />
           </button>
         </nav>
+
+        {/* Mobile Menu Button (Hidden on Desktop) */}
+        <button 
+          className="flex lg:hidden h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[12px] bg-[#fddb32] text-black transition-transform hover:brightness-105 active:scale-95"
+          aria-label="Open mobile menu"
+        >
+          <Menu size={22} strokeWidth={2.5} />
+        </button>
+
       </div>
     </header>
   );
