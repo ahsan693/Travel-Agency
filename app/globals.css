@@ -2,21 +2,40 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --sunbeam: #fddb32;
+  --sunbeam-soft: #ffed91;
+  --ink: #000000;
+  --ink-soft: #0a0a0a;
+  --ink-muted: #7d7d7d;
+  --ink-subtle: #6b7280;
+  --canvas: #ffffff;
+  --border: #e6e6e6;
+  --border-alt: #e5e7eb;
+  --divider: #f3f4f6;
+  --rating: #f59e0b;
+  --tag-hotel: #c050a0;
+  --tag-business: #c06020;
+  --tag-beach: #a08010;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-sunbeam: var(--sunbeam);
+  --color-sunbeam-soft: var(--sunbeam-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-canvas: var(--canvas);
+  --color-border: var(--border);
+  --color-border-alt: var(--border-alt);
+  --color-divider: var(--divider);
+  --color-rating: var(--rating);
+  --color-tag-hotel: var(--tag-hotel);
+  --color-tag-business: var(--tag-business);
+  --color-tag-beach: var(--tag-beach);
 }
 
 body {
@@ -24,6 +43,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.font-saans {
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 a {
@@ -48,4 +71,3 @@ select {
   white-space: nowrap;
   border: 0;
 }
-

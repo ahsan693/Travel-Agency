@@ -1,0 +1,16 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0"><defs><clipPath id="clip56_128_3553">
+<rect x="0" y="0" width="32" height="32" rx="16" fill="white"/>
+</clipPath><clipPath id="clip58_128_3553">
+<rect width="12" height="12" fill="white" transform="translate(10, 10)"/>
+</clipPath></defs><g id="Arrow Button" data-figma-bg-blur-radius="6">
+<g clip-path="url(#clip56_128_3553)">
+<rect x="0" y="0" width="32" height="32" rx="16" fill="#FDDB32"/>
+<g id="Component 1_16" clip-path="url(#clip58_128_3553)">
+<g id="276434073_11">
+<path id="KQY0VNx64_11" d="M12.25,19.75l7.5,-7.5M19.75,17.88v-5.63h-5.625" stroke="black" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<rect id="::after_2" x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="white"/>
+</g>
+<rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#FFED91"/>
+</g></svg>

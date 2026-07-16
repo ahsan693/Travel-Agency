@@ -1,9 +1,9 @@
+import HomeContent from "./Home";
 
-import HeroSection from "./Home";
 export default function Home() {
   return (
     <main>
-      <HeroSection />
+      <HomeContent />
     </main>
   );
 }

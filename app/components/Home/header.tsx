@@ -1,66 +1,57 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-
-const NAV_LINKS = [
-  { label: 'Flights', href: '/flights' },
-  { label: 'Hotels', href: '/hotels' },
-  { label: 'Destinations', href: '/destinations' },
-  { label: 'About', href: '/about' },
-  { label: 'Travel', href: '/travel' },
-];
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <header className="relative z-50 mx-auto box-border flex h-[64px] w-full max-w-[1216px] items-center justify-between rounded-[20px] border border-white/55 bg-[#FFFFFF] px-[22px] shadow-[0_18px_50px_rgba(16,24,40,0.08)] backdrop-blur-[18px] max-[1024px]:px-8 max-[430px]:px-4">
-      <Link href="/" className="shrink-0 no-underline" aria-label="Travel Mommy home">
-        <span className="flex flex-col font-serif text-[18px] font-black italic leading-[0.78] tracking-[-0.06em] text-[#000000] max-[430px]:text-[16px]" aria-hidden="true">
-          Travel
-          <span className="ml-[14px]">Mommy</span>
-        </span>
-      </Link>
+    <header className="absolute top-0 left-0 right-0 z-50 px-6 lg:px-10 py-6">
+      <div className="mx-auto flex w-full max-w-[1216px] items-center gap-[24px] rounded-[20px] bg-[#f5f5f5] p-[12px]">
 
-      <div className="ml-auto flex items-center gap-10 max-[1024px]:gap-7">
-        <nav
-          className={`flex items-center gap-10 max-[1024px]:gap-7 max-[860px]:absolute max-[860px]:left-0 max-[860px]:right-0 max-[860px]:top-full max-[860px]:mt-2 max-[860px]:flex-col max-[860px]:items-start max-[860px]:gap-5 max-[860px]:rounded-[20px] max-[860px]:bg-white max-[860px]:px-5 max-[860px]:py-6 max-[860px]:shadow-[0_8px_16px_rgba(0,0,0,0.08)] ${
-            menuOpen ? 'max-[860px]:flex' : 'max-[860px]:hidden'
-          }`}
-        >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="whitespace-nowrap text-[15px] font-medium text-[#000000] no-underline transition-opacity hover:opacity-60"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <Link
-          href="/search-deals"
-          className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#000000] bg-[#FDDB32] px-5 py-2.5 text-sm font-semibold text-[#000000] transition-colors hover:bg-[#e5c52c]"
-        >
-          Search Deals
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+        {/* Logo */}
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image src="/assets/logo.svg" alt="TravelMommy" width={72} height={30} className="h-[30px] w-auto" />
         </Link>
-      </div>
 
-      <button
-        className="ml-6 flex h-8 w-8 flex-col justify-center gap-[5px] border-0 bg-transparent p-0 min-[861px]:hidden"
-        aria-label="Toggle menu"
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen((prev) => !prev)}
-      >
-        <span className="block h-[2px] w-full rounded-full bg-[#000000]" />
-        <span className="block h-[2px] w-full rounded-full bg-[#000000]" />
-        <span className="block h-[2px] w-full rounded-full bg-[#000000]" />
-      </button>
+        {/* Nav */}
+        <nav className="flex flex-1 items-center justify-end gap-[4px]">
+          <Link
+            href="#"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+          >
+            Flights
+          </Link>
+          <Link
+            href="#"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+          >
+            Hotels
+          </Link>
+          <Link
+            href="#"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+          >
+            Destinations
+          </Link>
+          <Link
+            href="#"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+          >
+            About
+          </Link>
+
+          <div className="w-[6px]" />
+
+          <button
+            className="relative flex h-[40px] min-w-[100px] items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black shadow-[0px_16px_8px_0px_rgba(31,31,31,0.01),0px_12px_6px_0px_rgba(31,31,31,0.04),0px_4px_4px_0px_rgba(31,31,31,0.07),0px_1.5px_3px_0px_rgba(31,31,31,0.08),0px_0px_0px_1px_#c29700] transition-all hover:brightness-105"
+          >
+            Search Deals
+            <ArrowUpRight size={14} />
+            <span className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_1px_2px_0px_rgba(255,255,255,0.12)]" />
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }
