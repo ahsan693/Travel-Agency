@@ -267,6 +267,7 @@ export default function HeroSection() {
   return (
     <>
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">
+        {/* Background Gradients */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-auto -bottom-[9%] -left-[8%] -right-[10%] z-0 h-[54%] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0)),linear-gradient(132deg,rgba(255,184,92,0.34)_0%,rgba(250,235,219,0.28)_24%,rgba(225,240,248,0)_58%),linear-gradient(180deg,rgba(86,106,125,0.24)_0%,rgba(36,50,67,0.28)_8%,rgba(255,255,255,0)_18%)] [clip-path:polygon(0_44%,18%_28%,42%_35%,63%_50%,80%_59%,100%_66%,100%_100%,0_100%)]"
@@ -277,20 +278,23 @@ export default function HeroSection() {
         />
 
         {/* --- Inner Hero Section Container --- */}
-        <div className="inner-hero relative z-10 mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-0 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
+        <div className="inner-hero relative z-10 mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
           <Header />
 
-          <div className="flex w-full items-start justify-between gap-6 pt-[78px] max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
+          {/* Two Column Layout Container */}
+          <div className="flex w-full items-start justify-between gap-6 max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
+            
+            {/* Left Column */}
             <div className="max-w-[720px] pt-2">
-             <h1 className="mb-[26px] max-w-[763px] font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
-  <span className="block whitespace-nowrap">Compare Cheap</span>
-  <span className="block whitespace-nowrap">Flights &amp; Hotels</span>
-</h1>
+              <h1 className="mb-[26px] max-w-[763px] font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
+                <span className="block whitespace-nowrap">Compare Cheap</span>
+                <span className="block whitespace-nowrap">Flights &amp; Hotels</span>
+              </h1>
 
-             <p className="mb-[30px] max-w-[360px] font-sans text-[14px] font-medium leading-[100%] text-[#000000] max-[430px]:max-w-full max-[430px]:text-[14px]">
-  Compare live prices from trusted airlines and hotels in one place.
-  Book directly with the provider—zero booking fees from TravelMommy.
-</p>
+              <p className="mb-[30px] max-w-[360px] font-sans text-[14px] font-medium leading-[100%] text-[#000000] max-[430px]:max-w-full max-[430px]:text-[14px]">
+                Compare live prices from trusted airlines and hotels in one place.
+                Book directly with the provider—zero booking fees from TravelMommy.
+              </p>
 
               <a
                 href="#search"
@@ -309,67 +313,66 @@ export default function HeroSection() {
               </a>
             </div>
 
-            <div className="flex min-h-[510px] w-[min(520px,44vw)] flex-col items-end justify-between pt-[6px] max-[1300px]:min-h-0 max-[1300px]:w-full max-[1300px]:items-start">
-              <div className="mb-7 mt-[44px] flex items-center gap-[14px] max-[1300px]:mt-0 max-[1024px]:mb-[18px] max-[430px]:flex-wrap">
-                
+            {/* Right Column */}
+            <div className="flex flex-col items-start justify-start mt-[166px] max-[1024px]:mt-8 max-[1300px]:w-full">
+              
+              {/* Avatars & Reviews Container */}
+              <div className="mb-[24px] flex h-[40px] w-[385px] items-center gap-[12px] max-[430px]:h-auto max-[430px]:w-full max-[430px]:flex-wrap">
+                {/* Avatars Container */}
+                <div className="flex shrink-0">
+                  <img 
+                    src="https://i.pravatar.cc/100?img=11" 
+                    alt="Reviewer 1" 
+                    className="relative z-40 h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+                  />
+                  <img 
+                    src="https://i.pravatar.cc/100?img=12" 
+                    alt="Reviewer 2" 
+                    className="relative z-30 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+                  />
+                  <img 
+                    src="https://i.pravatar.cc/100?img=13" 
+                    alt="Reviewer 3" 
+                    className="relative z-20 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+                  />
+                  <img 
+                    src="https://i.pravatar.cc/100?img=14" 
+                    alt="Reviewer 4" 
+                    className="relative z-10 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+                  />
+                </div>
 
-               <div className="mb-7 mt-[44px] flex h-[40px] w-[385px] items-center gap-[12px] max-[1300px]:mt-0 max-[1024px]:mb-[18px] max-[430px]:h-auto max-[430px]:w-full max-[430px]:flex-wrap">
-  {/* Avatars Container */}
-  <div className="flex shrink-0">
-    <img 
-      src="https://i.pravatar.cc/100?img=11" 
-      alt="Reviewer 1" 
-      className="relative z-40 h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-    />
-    <img 
-      src="https://i.pravatar.cc/100?img=12" 
-      alt="Reviewer 2" 
-      className="relative z-30 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-    />
-    <img 
-      src="https://i.pravatar.cc/100?img=13" 
-      alt="Reviewer 3" 
-      className="relative z-20 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-    />
-    <img 
-      src="https://i.pravatar.cc/100?img=14" 
-      alt="Reviewer 4" 
-      className="relative z-10 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-    />
-  </div>
-
-  {/* Text Content */}
-  <div className="flex flex-col justify-center">
-    <div className="flex items-center gap-[6px]">
-      <span className="text-[14px] leading-none tracking-[-0.5px] text-[#000000]">
-        ★★★★★
-      </span>
-      <div className="flex items-baseline gap-[3px]">
-        <span className="font-sans text-[16px] font-bold leading-none text-[#000000]">
-          4.9
-        </span>
-        <span className="font-sans text-[13px] font-medium leading-none text-[#000000]">
-          / 5
-        </span>
-      </div>
-    </div>
-    
-    <p className="mt-[6px] whitespace-nowrap font-sans text-[14px] font-medium leading-none text-[#000000]">
-      Compare prices from trusted travel partners
-    </p>
-  </div>
-</div>
+                {/* Text Content */}
+                <div className="flex flex-col justify-center text-left">
+                  <div className="flex items-center gap-[6px]">
+                    <span className="text-[14px] leading-none tracking-[-0.5px] text-[#000000]">
+                      ★★★★★
+                    </span>
+                    <div className="flex items-baseline gap-[3px]">
+                      <span className="font-sans text-[16px] font-bold leading-none text-[#000000]">
+                        4.9
+                      </span>
+                      <span className="font-sans text-[13px] font-medium leading-none text-[#000000]">
+                        / 5
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className="mt-[6px] whitespace-nowrap font-sans text-[14px] font-medium leading-none text-[#000000]">
+                    Compare prices from trusted travel partners
+                  </p>
+                </div>
               </div>
 
-              <h2
-                className="translate-y-[-48px] text-right font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1300px]:text-left max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]"
-              >
-                <span className="block">from 500+</span>
-                <span className="block">Travel Sites</span>
+              {/* Heading */}
+              <h2 className="text-left font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-[100%] tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
+                <span className="block whitespace-nowrap">from 500+</span>
+                <span className="block whitespace-nowrap">Travel Sites</span>
               </h2>
             </div>
           </div>
 
+          {/* Search Box */}
           <div id="search" className="mt-auto w-full max-[1300px]:w-full max-[860px]:mt-7">
             <div className="w-full">
               <div className="relative z-20 flex gap-1 pl-2.5">
@@ -411,7 +414,6 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-
       <section className="w-full bg-[#000000] py-[80px] text-white">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[10px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
           <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
