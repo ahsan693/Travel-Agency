@@ -414,8 +414,8 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-      <section className="w-full bg-[#000000] py-[80px] text-white">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[10px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+      <section className="w-full bg-[#000000] text-white">
+        <div className="mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-[10px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
           <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
             Compare Flights &amp; Hotels with{' '}
             <span className="text-[#ffc629]">TravelMommy</span>
@@ -423,17 +423,17 @@ export default function HeroSection() {
           <p className="font-sans text-[14px] leading-[1.6] text-white/80 max-w-[1120px] max-[480px]:text-[13px]">
             TravelMommy helps you compare flight and hotel prices from trusted 
             airlines, booking websites and travel providers - all in one place.
-             Search live fares, compare accommodation prices, discover the cheapest 
-             travel dates and book directly with your preferred provider. Whether
-              you're planning a weekend city break, a family holiday, a business 
-              trip or a long-haul adventure, TravelMommy makes it easier to compare
-               travel prices without searching multiple websites individually.
+            Search live fares, compare accommodation prices, discover the cheapest 
+            travel dates and book directly with your preferred provider. Whether
+            you're planning a weekend city break, a family holiday, a business 
+            trip or a long-haul adventure, TravelMommy makes it easier to compare
+            travel prices without searching multiple websites individually.
           </p>
         </div>
       </section>
 
-      <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+      <section className="w-full bg-[#ffffff] text-[#111111]">
+        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[40px] px-[32px] pb-[72px] pt-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
 
           <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
             <div className="max-w-[700px] flex flex-col gap-[10px]">
@@ -494,11 +494,6 @@ export default function HeroSection() {
                     type="button"
                     className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#111111] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]"
                   >
-                    {/* height 44px, horizontal padding 18px, gap 6px -> 10px between text
-              and arrow — all from Image 5. Button is now white by default,
-              turns yellow (#ffc629) on hover, darker yellow (#f5b800) on click.
-              isFeatured is no longer used to color this button — every card
-              behaves the same now. */}
                     Compare Prices
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                       <path
@@ -515,12 +510,11 @@ export default function HeroSection() {
             ))}
           </div>
 
-
         </div>
       </section>
 
-      <section className="w-full bg-[#000000] py-[80px] text-white">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+     <section className="w-full bg-[#000000] text-white">
+        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[32px] px-[32px] pb-[72px] pt-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
 
           <div className="flex flex-col gap-[10px]">
             <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
