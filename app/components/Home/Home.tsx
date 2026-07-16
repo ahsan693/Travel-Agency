@@ -148,6 +148,7 @@ const hotelDeals = [
     }
   }
 ];
+
 const destinationCards = [
   {
     id: '1',
@@ -203,71 +204,14 @@ function HotelIcon() {
   );
 }
 
-function CalendarIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-      <line x1="16" y1="2" x2="16" y2="6" />
-      <line x1="8" y1="2" x2="8" y2="6" />
-      <line x1="3" y1="10" x2="21" y2="10" />
-    </svg>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  );
-}
-
-function SwapIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="17 1 21 5 17 9" />
-      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
-      <polyline points="7 23 3 19 7 15" />
-      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-}
-
-function Checkbox({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
-  return (
-    <label className="flex cursor-pointer items-center gap-2 text-[13px] font-medium text-[#555555]">
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-        className="h-4 w-4 rounded border-gray-300 text-[#ffc629] focus:ring-[#ffc629]"
-      />
-      {label}
-    </label>
-  );
-}
-
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'flights' | 'hotels'>('flights');
-  const [nearbyLeft, setNearbyLeft] = useState(false);
-  const [nearbyRight, setNearbyRight] = useState(true);
-  const [directFlights, setDirectFlights] = useState(false);
   const [activeHotelCategory, setActiveHotelCategory] = useState('All');
 
   return (
     <>
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">
-        {/* Background Gradients */}
+      {/* 1. HERO SECTION */}
+      <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-auto -bottom-[9%] -left-[8%] -right-[10%] z-0 h-[54%] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0)),linear-gradient(132deg,rgba(255,184,92,0.34)_0%,rgba(250,235,219,0.28)_24%,rgba(225,240,248,0)_58%),linear-gradient(180deg,rgba(86,106,125,0.24)_0%,rgba(36,50,67,0.28)_8%,rgba(255,255,255,0)_18%)] [clip-path:polygon(0_44%,18%_28%,42%_35%,63%_50%,80%_59%,100%_66%,100%_100%,0_100%)]"
@@ -277,13 +221,10 @@ export default function HeroSection() {
           className="pointer-events-none absolute bottom-0 left-[-8%] z-0 h-[30%] w-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.36))] [clip-path:polygon(0_18%,18%_0,100%_55%,100%_100%,0_100%)]"
         />
 
-        {/* --- Inner Hero Section Container --- */}
-        <div className="inner-hero relative z-10 mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
+        <div className="inner-hero relative z-10 mx-auto box-border flex flex-col w-full max-w-[1280px] gap-[52px] px-[32px] pt-[52px] pb-[72px] max-[768px]:px-8 max-[768px]:pt-[40px] max-[768px]:pb-[56px] max-[430px]:px-4 max-[430px]:pt-[32px] max-[430px]:pb-[48px]">
           <Header />
 
-          {/* Two Column Layout Container */}
           <div className="flex w-full items-start justify-between gap-6 max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
-            
             {/* Left Column */}
             <div className="max-w-[720px] pt-2">
               <h1 className="mb-[26px] max-w-[763px] font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
@@ -291,80 +232,45 @@ export default function HeroSection() {
                 <span className="block whitespace-nowrap">Flights &amp; Hotels</span>
               </h1>
 
-              <p className="mb-[30px] max-w-[360px] font-sans text-[14px] font-medium leading-[100%] text-[#000000] max-[430px]:max-w-full max-[430px]:text-[14px]">
+              <p className="mb-[30px] max-w-[360px] font-sans text-[14px] font-medium leading-[100%] text-[#000000] max-[430px]:max-w-full max-[430px]:text-[15px] max-[430px]:leading-[1.4]">
                 Compare live prices from trusted airlines and hotels in one place.
                 Book directly with the provider—zero booking fees from TravelMommy.
               </p>
 
               <a
                 href="#search"
-                className="inline-flex items-center gap-2 rounded-[18px] border-0 bg-white px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.13)] transition-transform transition-shadow duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
+                className="inline-flex items-center gap-2 rounded-[18px] border-0 bg-white px-[22px] py-4 text-sm font-semibold text-[#000000] shadow-[0_10px_24px_rgba(0,0,0,0.13)] transition-transform transition-shadow duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
               >
                 Search Flights
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path
-                    d="M3 11L11 3M11 3H4M11 3V10"
-                    stroke="#111111"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
 
             {/* Right Column */}
             <div className="flex flex-col items-start justify-start mt-[166px] max-[1024px]:mt-8 max-[1300px]:w-full">
-              
-              {/* Avatars & Reviews Container */}
               <div className="mb-[24px] flex h-[40px] w-[385px] items-center gap-[12px] max-[430px]:h-auto max-[430px]:w-full max-[430px]:flex-wrap">
-                {/* Avatars Container */}
                 <div className="flex shrink-0">
-                  <img 
-                    src="https://i.pravatar.cc/100?img=11" 
-                    alt="Reviewer 1" 
-                    className="relative z-40 h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-                  />
-                  <img 
-                    src="https://i.pravatar.cc/100?img=12" 
-                    alt="Reviewer 2" 
-                    className="relative z-30 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-                  />
-                  <img 
-                    src="https://i.pravatar.cc/100?img=13" 
-                    alt="Reviewer 3" 
-                    className="relative z-20 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-                  />
-                  <img 
-                    src="https://i.pravatar.cc/100?img=14" 
-                    alt="Reviewer 4" 
-                    className="relative z-10 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
-                  />
+                  <img src="https://i.pravatar.cc/100?img=11" alt="Reviewer 1" className="relative z-40 h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" />
+                  <img src="https://i.pravatar.cc/100?img=12" alt="Reviewer 2" className="relative z-30 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" />
+                  <img src="https://i.pravatar.cc/100?img=13" alt="Reviewer 3" className="relative z-20 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" />
+                  <img src="https://i.pravatar.cc/100?img=14" alt="Reviewer 4" className="relative z-10 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" />
                 </div>
-
-                {/* Text Content */}
                 <div className="flex flex-col justify-center text-left">
                   <div className="flex items-center gap-[6px]">
-                    <span className="text-[14px] leading-none tracking-[-0.5px] text-[#000000]">
-                      ★★★★★
-                    </span>
+                    <span className="text-[14px] leading-none tracking-[-0.5px] text-[#000000]">★★★★★</span>
                     <div className="flex items-baseline gap-[3px]">
-                      <span className="font-sans text-[16px] font-bold leading-none text-[#000000]">
-                        4.9
-                      </span>
-                      <span className="font-sans text-[13px] font-medium leading-none text-[#000000]">
-                        / 5
-                      </span>
+                      <span className="font-sans text-[16px] font-bold leading-none text-[#000000]">4.9</span>
+                      <span className="font-sans text-[13px] font-medium leading-none text-[#000000]">/ 5</span>
                     </div>
                   </div>
-                  
-                  <p className="mt-[6px] whitespace-nowrap font-sans text-[14px] font-medium leading-none text-[#000000]">
+                  <p className="mt-[6px] whitespace-nowrap font-sans text-[14px] font-medium leading-none text-[#000000] max-[430px]:whitespace-normal">
                     Compare prices from trusted travel partners
                   </p>
                 </div>
               </div>
 
-              {/* Heading */}
               <h2 className="text-left font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-[100%] tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
                 <span className="block whitespace-nowrap">from 500+</span>
                 <span className="block whitespace-nowrap">Travel Sites</span>
@@ -378,49 +284,39 @@ export default function HeroSection() {
               <div className="relative z-20 flex gap-1 pl-2.5">
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                    }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#000000]' : 'bg-white/90 text-[#8b8f98]'}`}
                   onClick={() => setActiveTab('flights')}
                 >
-                  <PlaneIcon />
-                  Flights
+                  <PlaneIcon /> Flights
                 </button>
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                    }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#000000]' : 'bg-white/90 text-[#8b8f98]'}`}
                   onClick={() => setActiveTab('hotels')}
                 >
-                  <HotelIcon />
-                  Hotels
+                  <HotelIcon /> Hotels
                 </button>
               </div>
 
               <div className="box-border rounded-[24px] border border-white/80 bg-white/95 px-[22px] pb-4 pt-5 shadow-[0_24px_60px_rgba(12,23,40,0.18)] max-[640px]:px-4">
                 {activeTab === 'flights' ? (
-                  <iframe
-                    src="/flights-widget.html"
-                    className="w-full min-h-[500px] border-none bg-transparent"
-                    title="Flights Search"
-                    scrolling="no"
-                  />
+                  <iframe src="/flights-widget.html" className="w-full min-h-[500px] border-none bg-transparent" title="Flights Search" scrolling="no" />
                 ) : (
-                  <div className="flex h-[100px] items-center justify-center text-sm font-medium text-gray-500">
-                    Hotel search is coming soon.
-                  </div>
+                  <div className="flex h-[100px] items-center justify-center text-sm font-medium text-gray-500">Hotel search is coming soon.</div>
                 )}
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* 2. INTRO SECTION */}
       <section className="w-full bg-[#000000] text-white">
-        <div className="mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-[10px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
+        <div className="mx-auto box-border flex flex-col w-full max-w-[1280px] gap-[10px] px-[32px] pt-[52px] pb-[72px] max-[768px]:px-8 max-[768px]:pt-[40px] max-[768px]:pb-[56px] max-[430px]:px-4 max-[430px]:pt-[32px] max-[430px]:pb-[48px]">
           <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
-            Compare Flights &amp; Hotels with{' '}
-            <span className="text-[#ffc629]">TravelMommy</span>
+            Compare Flights &amp; Hotels with <span className="text-[#ffc629]">TravelMommy</span>
           </h2>
-          <p className="font-sans text-[14px] leading-[1.6] text-white/80 max-w-[1120px] max-[480px]:text-[13px]">
+          <p className="font-sans text-[14px] leading-[1.6] text-white/80 max-w-[1120px] max-[480px]:text-[14px]">
             TravelMommy helps you compare flight and hotel prices from trusted 
             airlines, booking websites and travel providers - all in one place.
             Search live fares, compare accommodation prices, discover the cheapest 
@@ -432,12 +328,12 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section className="w-full bg-[#ffffff] text-[#111111]">
-        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[40px] px-[32px] pb-[72px] pt-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
-
+      {/* 3. CHEAP FLIGHTS SECTION */}
+      <section className="w-full bg-[#ffffff] text-[#000000]">
+        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[40px] px-[32px] pt-[52px] pb-[72px] max-[768px]:px-8 max-[768px]:pt-[40px] max-[768px]:pb-[56px] max-[430px]:px-4 max-[430px]:pt-[32px] max-[430px]:pb-[48px]">
           <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
             <div className="max-w-[700px] flex flex-col gap-[10px]">
-              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#000000] max-[768px]:text-[28px] max-[480px]:text-[24px]">
                 Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
               </h2>
               <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
@@ -447,42 +343,26 @@ export default function HeroSection() {
 
             <a
               href="#routes"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#000000] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
             >
               View All Routes
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M3 11L11 3M11 3H4M11 3V10"
-                  stroke="#111111"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
 
           <div className="grid grid-cols-4 gap-2 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
             {flightCards.map((card) => (
-              <div
-                key={card.id}
-                className="flex h-[250px] flex-col justify-between rounded-[20px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-              >
-                {/* corner radius: 24px -> 20px, per the card frame spec (Image 2) */}
+              <div key={card.id} className="flex h-[250px] flex-col justify-between rounded-[20px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md">
                 <div>
                   <div className="mb-4 flex items-center">
-                    <img
-                      src={`https://flagcdn.com/w80/${card.countryCode}.png`}
-                      alt={`${card.destination} flag`}
-                      className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
-                    />
+                    <img src={`https://flagcdn.com/w80/${card.countryCode}.png`} alt={`${card.destination} flag`} className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]" />
                   </div>
-                  <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
+                  <h3 className="font-sans text-[18px] font-semibold text-[#000000] leading-tight">
                     {card.fromCode} &rarr; {card.toCode} {card.destination}
                   </h3>
-                  <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
-                    From {card.price}
-                  </div>
+                  <div className="mt-1 text-[22px] font-bold text-[#ffc629]">From {card.price}</div>
                   <div className="mt-3 flex flex-col gap-0.5 text-[13px] text-[#777777]">
                     <div>{card.type} &bull; {card.duration}</div>
                     <div>{card.airline}</div>
@@ -490,37 +370,27 @@ export default function HeroSection() {
                 </div>
 
                 <div className="mt-6">
-                  <button
-                    type="button"
-                    className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#111111] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]"
-                  >
+                  <button type="button" className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#000000] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]">
                     Compare Prices
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path
-                        d="M3 11L11 3M11 3H4M11 3V10"
-                        stroke="#111111"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                      <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-     <section className="w-full bg-[#000000] text-white">
-        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[32px] px-[32px] pb-[72px] pt-[52px] max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
-
+      {/* 4. HOTEL DEALS SECTION */}
+      <section className="w-full bg-[#000000] text-white">
+        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[32px] px-[32px] pt-[52px] pb-[72px] max-[768px]:px-8 max-[768px]:pt-[40px] max-[768px]:pb-[56px] max-[430px]:px-4 max-[430px]:pt-[32px] max-[430px]:pb-[48px]">
           <div className="flex flex-col gap-[10px]">
             <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
               Compare Hotel Deals
             </h2>
-            <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
+            <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px] max-[480px]:text-[14px]">
               Compare hotel prices from trusted booking partners and find great places to stay around the world.
             </p>
           </div>
@@ -531,14 +401,9 @@ export default function HeroSection() {
                 key={category}
                 type="button"
                 onClick={() => setActiveHotelCategory(category)}
-                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold border-0 transition-all duration-200
-            bg-white text-black
-            hover:bg-[#ffc629] hover:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
-            active:bg-[#ffc629] active:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
-            ${activeHotelCategory === category
-                    ? 'bg-[#ffc629] shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                    : ''
-                  }`}
+                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold border-0 transition-all duration-200 bg-white text-black hover:bg-[#ffc629] hover:shadow-[0_4px_12px_rgba(255,198,41,0.3)] active:bg-[#ffc629] active:shadow-[0_4px_12px_rgba(255,198,41,0.3)] ${
+                  activeHotelCategory === category ? 'bg-[#ffc629] shadow-[0_4px_12px_rgba(255,198,41,0.3)]' : ''
+                }`}
               >
                 {category}
               </button>
@@ -546,79 +411,48 @@ export default function HeroSection() {
           </div>
 
           <div className="grid grid-cols-3 gap-2 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
-            {hotelDeals
-              .filter((hotel) => hotel.categories.includes(activeHotelCategory))
-              .map((hotel) => (
-                <div
-                  key={hotel.id}
-                  className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`}
-                  style={{ borderWidth: '1px' }}
-                >
-                  {/* Image: 388 Fill x 280, radius 14 */}
-                  <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
-                    <img
-                      src={hotel.image}
-                      alt={hotel.name}
-                      className="w-full h-full object-cover"
-                    />
+            {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).map((hotel) => (
+              <div key={hotel.id} className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`} style={{ borderWidth: '1px' }}>
+                <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
+                  <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover" />
+                  <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#000000]">Popular</span>
+                  <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-[#000000] shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </div>
 
-                    <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
-                      Popular
-                    </span>
-
-                    <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path
-                          d="M3 11L11 3M11 3H4M11 3V10"
-                          stroke="#111111"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
+                <div className="flex flex-col gap-[14px] pt-[10px] pr-[12px] pb-[10px] pl-[10px] text-[#000000]">
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
+                      <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">{hotel.buttonText} ↗</a>
+                    </div>
+                    <h3 className="font-sans text-[20px] font-bold leading-snug text-black">{hotel.name}</h3>
+                    {hotel.location && <div className="text-[13px] text-neutral-800 mt-0.5">{hotel.location}</div>}
                   </div>
-
-                  {/* Text content: 388 Fill x 112 Hug, gap 14, padding t10 r12 b10 l10 */}
-                  <div className="flex flex-col gap-[14px] pt-[10px] pr-[12px] pb-[10px] pl-[10px] text-[#111111]">
-                    <div>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
-                        <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
-                          {hotel.buttonText} ↗
-                        </a>
-                      </div>
-                      <h3 className="font-sans text-[20px] font-bold leading-snug text-black">
-                        {hotel.name}
-                      </h3>
-                      {hotel.location && (
-                        <div className="text-[13px] text-neutral-600 mt-0.5">
-                          {hotel.location}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="font-sans text-[16px] font-bold text-black">
-                      From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
-                    </div>
+                  <div className="font-sans text-[16px] font-bold text-black">
+                    From {hotel.price} <span className="text-[13px] font-normal text-neutral-800">{hotel.unit}</span>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
             {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
               <div className="col-span-full py-16 text-center text-white/60 font-medium">
                 No hotel deals available for "{activeHotelCategory}" right now. Check back later!
               </div>
             )}
           </div>
-
         </div>
       </section>
-      <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-        <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
 
+      {/* 5. POPULAR DESTINATIONS SECTION */}
+      <section className="w-full bg-[#ffffff] text-[#000000]">
+        <div className="mx-auto box-border flex w-full max-w-[1280px] flex-col gap-[32px] px-[32px] pt-[52px] pb-[72px] max-[768px]:px-8 max-[768px]:pt-[40px] max-[768px]:pb-[56px] max-[430px]:px-4 max-[430px]:pt-[32px] max-[430px]:pb-[48px]">
           <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
             <div className="max-w-[700px] flex flex-col gap-[10px]">
-              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#000000] max-[768px]:text-[28px] max-[480px]:text-[24px]">
                 Explore Popular Destinations
               </h2>
               <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
@@ -628,73 +462,41 @@ export default function HeroSection() {
 
             <a
               href="#destinations"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#000000] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
             >
               More destinations
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M3 11L11 3M11 3H4M11 3V10"
-                  stroke="#111111"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
 
           <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
             {destinationCards.map((card) => (
-              <div
-                key={card.id}
-                className="flex flex-col rounded-[24px] border border-neutral-200/60 bg-[#FAF7EF] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-              >
-                {/* Image */}
+              <div key={card.id} className="flex flex-col rounded-[24px] border border-neutral-200/60 bg-[#FAF7EF] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md">
                 <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-neutral-900">
-                  <img
-                    src={card.image}
-                    alt={`${card.city}, ${card.country}`}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={card.image} alt={`${card.city}, ${card.country}`} className="w-full h-full object-cover" />
                 </div>
-
-                {/* Content: city name, pills, then Explore link pinned to bottom */}
                 <div className="flex flex-col justify-between flex-1 px-5 py-4">
                   <div className="flex flex-col gap-3">
-                    <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
+                    <h3 className="font-sans text-[18px] font-bold leading-tight text-[#000000]">
                       {card.city}, {card.country}
                     </h3>
-
                     <div className="flex flex-wrap gap-2">
-                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
-                        Flights from {card.flightPrice}
-                      </span>
-                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
-                        Hotels from {card.hotelPrice}
-                      </span>
+                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#000000] select-none">Flights from {card.flightPrice}</span>
+                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#000000] select-none">Hotels from {card.hotelPrice}</span>
                     </div>
                   </div>
-                  <a
-
-                    href="#explore"
-                    className="inline-flex items-center gap-1 text-[15px] font-bold text-[#111111] hover:underline w-fit"
-                  >
+                  <a href="#explore" className="inline-flex items-center gap-1 text-[15px] font-bold text-[#000000] hover:underline w-fit">
                     Explore
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path
-                        d="M3 11L11 3M11 3H4M11 3V10"
-                        stroke="#111111"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                      <path d="M3 11L11 3M11 3H4M11 3V10" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
       <Footer />
