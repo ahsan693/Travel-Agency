@@ -266,7 +266,8 @@ export default function HeroSection() {
 
   return (
     <>
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">    <div
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')]">
+        <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-auto -bottom-[9%] -left-[8%] -right-[10%] z-0 h-[54%] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0)),linear-gradient(132deg,rgba(255,184,92,0.34)_0%,rgba(250,235,219,0.28)_24%,rgba(225,240,248,0)_58%),linear-gradient(180deg,rgba(86,106,125,0.24)_0%,rgba(36,50,67,0.28)_8%,rgba(255,255,255,0)_18%)] [clip-path:polygon(0_44%,18%_28%,42%_35%,63%_50%,80%_59%,100%_66%,100%_100%,0_100%)]"
         />
@@ -275,20 +276,21 @@ export default function HeroSection() {
           className="pointer-events-none absolute bottom-0 left-[-8%] z-0 h-[30%] w-[60%] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.36))] [clip-path:polygon(0_18%,18%_0,100%_55%,100%_100%,0_100%)]"
         />
 
-        <div className="relative z-10 mx-auto box-border max-w-[1376px] px-6 pb-9 pt-6 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
+        {/* --- Inner Hero Section Container --- */}
+        <div className="inner-hero relative z-10 mx-auto box-border flex flex-col w-full max-w-[1280px] px-[32px] pt-[52px] pb-[72px] gap-0 max-[430px]:px-4 max-[430px]:pb-7 max-[430px]:pt-4">
           <Header />
 
-          <div className="flex items-start justify-between gap-6 pt-[78px] max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
+          <div className="flex w-full items-start justify-between gap-6 pt-[78px] max-[1024px]:pt-12 max-[860px]:flex-col max-[860px]:items-start max-[430px]:pt-7">
             <div className="max-w-[720px] pt-2">
-              <h1 className="mb-[26px] max-w-[840px] font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
-                <span className="block">Compare Cheap</span>
-                <span className="block">Flights &amp; Hotels</span>
-              </h1>
+             <h1 className="mb-[26px] max-w-[763px] font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#000000] max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]">
+  <span className="block whitespace-nowrap">Compare Cheap</span>
+  <span className="block whitespace-nowrap">Flights &amp; Hotels</span>
+</h1>
 
-              <p className="mb-[30px] max-w-[360px] text-[16px] leading-[1.45] text-[#171717] max-[430px]:max-w-full max-[430px]:text-[16px]">
-                Compare live prices from trusted airlines and hotels in one place.
-                Book directly with the provider—zero booking fees from TravelMommy.
-              </p>
+             <p className="mb-[30px] max-w-[360px] font-sans text-[14px] font-medium leading-[100%] text-[#000000] max-[430px]:max-w-full max-[430px]:text-[14px]">
+  Compare live prices from trusted airlines and hotels in one place.
+  Book directly with the provider—zero booking fees from TravelMommy.
+</p>
 
               <a
                 href="#search"
@@ -309,45 +311,72 @@ export default function HeroSection() {
 
             <div className="flex min-h-[510px] w-[min(520px,44vw)] flex-col items-end justify-between pt-[6px] max-[1300px]:min-h-0 max-[1300px]:w-full max-[1300px]:items-start">
               <div className="mb-7 mt-[44px] flex items-center gap-[14px] max-[1300px]:mt-0 max-[1024px]:mb-[18px] max-[430px]:flex-wrap">
-                <div className="flex shrink-0">
-                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
-                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
-                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
-                  <span className="-ml-2 h-8 w-8 rounded-full border-2 border-white bg-[radial-gradient(circle_at_35%_32%,rgba(255,255,255,0.9)_0_14%,rgba(255,255,255,0)_15%),linear-gradient(135deg,#68758a_0%,#27405e_48%,#b86d3d_100%)] first:ml-0" />
-                </div>
+                
 
-                <div className="text-left">
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-sm tracking-[0.7px] text-[#111111]">★★★★★</span>
-                    <span className="text-sm text-[#555555]">4.9/5</span>
-                  </div>
-                  <p className="mt-0.5 whitespace-nowrap text-sm text-[#333333] max-[430px]:whitespace-normal">
-                    Compare prices from trusted travel partners
-                  </p>
-                </div>
+               <div className="mb-7 mt-[44px] flex h-[40px] w-[385px] items-center gap-[12px] max-[1300px]:mt-0 max-[1024px]:mb-[18px] max-[430px]:h-auto max-[430px]:w-full max-[430px]:flex-wrap">
+  {/* Avatars Container */}
+  <div className="flex shrink-0">
+    <img 
+      src="https://i.pravatar.cc/100?img=11" 
+      alt="Reviewer 1" 
+      className="relative z-40 h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+    />
+    <img 
+      src="https://i.pravatar.cc/100?img=12" 
+      alt="Reviewer 2" 
+      className="relative z-30 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+    />
+    <img 
+      src="https://i.pravatar.cc/100?img=13" 
+      alt="Reviewer 3" 
+      className="relative z-20 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+    />
+    <img 
+      src="https://i.pravatar.cc/100?img=14" 
+      alt="Reviewer 4" 
+      className="relative z-10 -ml-[14px] h-[40px] w-[40px] shrink-0 rounded-full border-2 border-white object-cover" 
+    />
+  </div>
+
+  {/* Text Content */}
+  <div className="flex flex-col justify-center">
+    <div className="flex items-center gap-[6px]">
+      <span className="text-[14px] leading-none tracking-[-0.5px] text-[#000000]">
+        ★★★★★
+      </span>
+      <div className="flex items-baseline gap-[3px]">
+        <span className="font-sans text-[16px] font-bold leading-none text-[#000000]">
+          4.9
+        </span>
+        <span className="font-sans text-[13px] font-medium leading-none text-[#000000]">
+          / 5
+        </span>
+      </div>
+    </div>
+    
+    <p className="mt-[6px] whitespace-nowrap font-sans text-[14px] font-medium leading-none text-[#000000]">
+      Compare prices from trusted travel partners
+    </p>
+  </div>
+</div>
               </div>
 
-                       <h2
-  className="translate-y-[-48px] text-right font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1300px]:text-left max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]"
->
-  {/* replaced -mt-12 with translate-y-[-48px]: this uses a transform instead of margin,
-      so it visually shifts the heading up without fighting the parent's justify-between
-      layout. Make the number more negative (e.g. -64px, -80px) to move it further up,
-      or less negative (e.g. -24px) to move it back down */}
-  <span className="block">from 500+</span>
-  <span className="block">Travel Sites</span>
-</h2>
+              <h2
+                className="translate-y-[-48px] text-right font-sans text-[clamp(3.25rem,7vw,6.875rem)] font-medium leading-none tracking-[-0.02em] text-[#111111] max-[1300px]:text-left max-[1024px]:text-[clamp(2.75rem,6vw,4.5rem)] max-[430px]:text-[clamp(2rem,9vw,3rem)] max-[430px]:tracking-[-0.01em]"
+              >
+                <span className="block">from 500+</span>
+                <span className="block">Travel Sites</span>
+              </h2>
             </div>
           </div>
 
-          <div id="search" className="mt-auto w-[min(1232px,calc(100vw-48px))] max-[1300px]:w-full max-[860px]:mt-7">
+          <div id="search" className="mt-auto w-full max-[1300px]:w-full max-[860px]:mt-7">
             <div className="w-full">
               <div className="relative z-20 flex gap-1 pl-2.5">
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'flights' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('flights')}
                 >
                   <PlaneIcon />
@@ -355,9 +384,8 @@ export default function HeroSection() {
                 </button>
                 <button
                   type="button"
-                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${
-                    activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
-                  }`}
+                  className={`flex cursor-pointer items-center gap-1.5 rounded-t-[18px] border-0 px-[22px] pb-[14px] pt-[15px] text-[13px] font-semibold ${activeTab === 'hotels' ? 'bg-white text-[#111111]' : 'bg-white/90 text-[#8b8f98]'
+                    }`}
                   onClick={() => setActiveTab('hotels')}
                 >
                   <HotelIcon />
@@ -391,283 +419,288 @@ export default function HeroSection() {
             <span className="text-[#ffc629]">TravelMommy</span>
           </h2>
           <p className="font-sans text-[14px] leading-[1.6] text-white/80 max-w-[1120px] max-[480px]:text-[13px]">
-            TravelMommy helps you compare flight and hotel prices from trusted airlines, booking websites and travel providers - all in one place. Search live fares, compare accommodation prices, discover the cheapest travel dates and book directly with your preferred provider. Whether you're planning a weekend city break, a family holiday, a business trip or a long-haul adventure, TravelMommy makes it easier to compare travel prices without searching multiple websites individually.
+            TravelMommy helps you compare flight and hotel prices from trusted 
+            airlines, booking websites and travel providers - all in one place.
+             Search live fares, compare accommodation prices, discover the cheapest 
+             travel dates and book directly with your preferred provider. Whether
+              you're planning a weekend city break, a family holiday, a business 
+              trip or a long-haul adventure, TravelMommy makes it easier to compare
+               travel prices without searching multiple websites individually.
           </p>
         </div>
       </section>
 
-    <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-  <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-    
-    <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-      <div className="max-w-[700px] flex flex-col gap-[10px]">
-        <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
-          Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
-        </h2>
-        <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
-          Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
-        </p>
-      </div>
-      
-      <a
-        href="#routes"
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
-      >
-        View All Routes
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path
-            d="M3 11L11 3M11 3H4M11 3V10"
-            stroke="#111111"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
-    </div>
-
-   <div className="grid grid-cols-4 gap-2 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
-  {flightCards.map((card) => (
-    <div
-      key={card.id}
-      className="flex h-[250px] flex-col justify-between rounded-[20px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-    >
-      {/* corner radius: 24px -> 20px, per the card frame spec (Image 2) */}
-      <div>
-        <div className="mb-4 flex items-center">
-          <img
-            src={`https://flagcdn.com/w80/${card.countryCode}.png`}
-            alt={`${card.destination} flag`}
-            className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
-          />
-        </div>
-        <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
-          {card.fromCode} &rarr; {card.toCode} {card.destination}
-        </h3>
-        <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
-          From {card.price}
-        </div>
-        <div className="mt-3 flex flex-col gap-0.5 text-[13px] text-[#777777]">
-          <div>{card.type} &bull; {card.duration}</div>
-          <div>{card.airline}</div>
-        </div>
-      </div>
-
-      <div className="mt-6">
-        <button
-          type="button"
-          className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#111111] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]"
-        >
-          {/* height 44px, horizontal padding 18px, gap 6px -> 10px between text
-              and arrow — all from Image 5. Button is now white by default,
-              turns yellow (#ffc629) on hover, darker yellow (#f5b800) on click.
-              isFeatured is no longer used to color this button — every card
-              behaves the same now. */}
-          Compare Prices
-          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path
-              d="M3 11L11 3M11 3H4M11 3V10"
-              stroke="#111111"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  ))}
-</div>
-
-
-  </div>
-</section>
-
-  <section className="w-full bg-[#000000] py-[80px] text-white">
-  <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
-    
-    <div className="flex flex-col gap-[10px]">
-      <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
-        Compare Hotel Deals
-      </h2>
-      <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
-        Compare hotel prices from trusted booking partners and find great places to stay around the world.
-      </p>
-    </div>
-
-    <div className="flex flex-wrap gap-3 max-[480px]:gap-2">
-      {['All', 'Luxury', 'Budget', 'Family', 'Beach', 'Business', 'Boutique'].map((category) => (
-        <button
-          key={category}
-          type="button"
-          onClick={() => setActiveHotelCategory(category)}
-          className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold border-0 transition-all duration-200
-            bg-white text-black
-            hover:bg-[#ffc629] hover:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
-            active:bg-[#ffc629] active:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
-            ${
-              activeHotelCategory === category
-                ? 'bg-[#ffc629] shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
-                : ''
-            }`}
-        >
-          {category}
-        </button>
-      ))}
-    </div>
-
-    <div className="grid grid-cols-3 gap-2 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
-      {hotelDeals
-        .filter((hotel) => hotel.categories.includes(activeHotelCategory))
-        .map((hotel) => (
-          <div
-            key={hotel.id}
-            className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`}
-            style={{ borderWidth: '1px' }}
-          >
-            {/* Image: 388 Fill x 280, radius 14 */}
-            <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
-              <img
-                src={hotel.image}
-                alt={hotel.name}
-                className="w-full h-full object-cover"
-              />
-
-              <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
-                Popular
-              </span>
-
-              <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path
-                    d="M3 11L11 3M11 3H4M11 3V10"
-                    stroke="#111111"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-
-            {/* Text content: 388 Fill x 112 Hug, gap 14, padding t10 r12 b10 l10 */}
-            <div className="flex flex-col gap-[14px] pt-[10px] pr-[12px] pb-[10px] pl-[10px] text-[#111111]">
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
-                  <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
-                    {hotel.buttonText} ↗
-                  </a>
-                </div>
-                <h3 className="font-sans text-[20px] font-bold leading-snug text-black">
-                  {hotel.name}
-                </h3>
-                {hotel.location && (
-                  <div className="text-[13px] text-neutral-600 mt-0.5">
-                    {hotel.location}
-                  </div>
-                )}
-              </div>
-
-              <div className="font-sans text-[16px] font-bold text-black">
-                From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
-        <div className="col-span-full py-16 text-center text-white/60 font-medium">
-          No hotel deals available for "{activeHotelCategory}" right now. Check back later!
-        </div>
-      )}
-    </div>
-
-  </div>
-</section>
       <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
-  <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
-    
-    <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
-      <div className="max-w-[700px] flex flex-col gap-[10px]">
-        <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
-          Explore Popular Destinations
-        </h2>
-        <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
-          Discover popular cities and compare flights and hotels before you book.
-        </p>
-      </div>
-      
-      <a
-        href="#destinations"
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
-      >
-        More destinations
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path
-            d="M3 11L11 3M11 3H4M11 3V10"
-            stroke="#111111"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
-    </div>
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
 
-    <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
-      {destinationCards.map((card) => (
-        <div
-          key={card.id}
-          className="flex flex-col rounded-[24px] border border-neutral-200/60 bg-[#FAF7EF] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
-        >
-          {/* Image */}
-          <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-neutral-900">
-            <img
-              src={card.image}
-              alt={`${card.city}, ${card.country}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Content: city name, pills, then Explore link pinned to bottom */}
-          <div className="flex flex-col justify-between flex-1 px-5 py-4">
-            <div className="flex flex-col gap-3">
-              <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
-                {card.city}, {card.country}
-              </h3>
-
-              <div className="flex flex-wrap gap-2">
-                <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
-                  Flights from {card.flightPrice}
-                </span>
-                <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
-                  Hotels from {card.hotelPrice}
-                </span>
-              </div>
+          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+            <div className="max-w-[700px] flex flex-col gap-[10px]">
+              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+                Cheap Flights from <span className="text-[#ffc629]">Dublin</span>
+              </h2>
+              <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
+                Looking for cheap flights from Dublin? Compare today's lowest fares from Dublin Airport to popular destinations across Europe, North America and beyond. Prices update regularly so you can find the best available deals before you book.
+              </p>
             </div>
-                 <a
-            
-              href="#explore"
-              className="inline-flex items-center gap-1 text-[15px] font-bold text-[#111111] hover:underline w-fit"
+
+            <a
+              href="#routes"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
             >
-              Explore
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              View All Routes
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 11L11 3M11 3H4M11 3V10"
                   stroke="#111111"
-                  strokeWidth="2"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
             </a>
           </div>
-        </div>
-      ))}
-    </div>
 
-  </div>
-</section>
+          <div className="grid grid-cols-4 gap-2 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1">
+            {flightCards.map((card) => (
+              <div
+                key={card.id}
+                className="flex h-[250px] flex-col justify-between rounded-[20px] border border-neutral-200/60 bg-[#ffffff] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
+              >
+                {/* corner radius: 24px -> 20px, per the card frame spec (Image 2) */}
+                <div>
+                  <div className="mb-4 flex items-center">
+                    <img
+                      src={`https://flagcdn.com/w80/${card.countryCode}.png`}
+                      alt={`${card.destination} flag`}
+                      className="h-[22px] w-auto rounded-[4px] border border-neutral-200/50 object-cover shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+                    />
+                  </div>
+                  <h3 className="font-sans text-[18px] font-semibold text-[#111111] leading-tight">
+                    {card.fromCode} &rarr; {card.toCode} {card.destination}
+                  </h3>
+                  <div className="mt-1 text-[22px] font-bold text-[#ffc629]">
+                    From {card.price}
+                  </div>
+                  <div className="mt-3 flex flex-col gap-0.5 text-[13px] text-[#777777]">
+                    <div>{card.type} &bull; {card.duration}</div>
+                    <div>{card.airline}</div>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    className="flex h-[44px] w-full items-center justify-center gap-2.5 rounded-[14px] border border-neutral-200 bg-white px-[18px] text-[13px] font-bold text-[#111111] cursor-pointer transition-colors duration-150 hover:bg-[#ffc629] hover:border-[#ffc629] active:bg-[#f5b800] active:border-[#f5b800]"
+                  >
+                    {/* height 44px, horizontal padding 18px, gap 6px -> 10px between text
+              and arrow — all from Image 5. Button is now white by default,
+              turns yellow (#ffc629) on hover, darker yellow (#f5b800) on click.
+              isFeatured is no longer used to color this button — every card
+              behaves the same now. */}
+                    Compare Prices
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="#111111"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+
+        </div>
+      </section>
+
+      <section className="w-full bg-[#000000] py-[80px] text-white">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[32px] px-[160px] max-[1200px]:px-16 max-[768px]:px-8 max-[480px]:px-4">
+
+          <div className="flex flex-col gap-[10px]">
+            <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-white max-[768px]:text-[28px] max-[480px]:text-[24px]">
+              Compare Hotel Deals
+            </h2>
+            <p className="font-sans text-[14px] leading-[1.6] text-white/60 max-w-[700px]">
+              Compare hotel prices from trusted booking partners and find great places to stay around the world.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3 max-[480px]:gap-2">
+            {['All', 'Luxury', 'Budget', 'Family', 'Beach', 'Business', 'Boutique'].map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveHotelCategory(category)}
+                className={`cursor-pointer px-6 py-2.5 rounded-full text-[14px] font-semibold border-0 transition-all duration-200
+            bg-white text-black
+            hover:bg-[#ffc629] hover:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
+            active:bg-[#ffc629] active:shadow-[0_4px_12px_rgba(255,198,41,0.3)]
+            ${activeHotelCategory === category
+                    ? 'bg-[#ffc629] shadow-[0_4px_12px_rgba(255,198,41,0.3)]'
+                    : ''
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 max-[960px]:grid-cols-2 max-[640px]:grid-cols-1">
+            {hotelDeals
+              .filter((hotel) => hotel.categories.includes(activeHotelCategory))
+              .map((hotel) => (
+                <div
+                  key={hotel.id}
+                  className={`flex flex-col rounded-[20px] border p-[6px] overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${hotel.theme.bg} ${hotel.theme.border}`}
+                  style={{ borderWidth: '1px' }}
+                >
+                  {/* Image: 388 Fill x 280, radius 14 */}
+                  <div className="relative w-full h-[280px] overflow-hidden rounded-[14px] bg-neutral-900">
+                    <img
+                      src={hotel.image}
+                      alt={hotel.name}
+                      className="w-full h-full object-cover"
+                    />
+
+                    <span className="absolute top-4 left-4 rounded-full bg-white px-4 py-1.5 text-[12px] font-semibold text-[#111111]">
+                      Popular
+                    </span>
+
+                    <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#ffc629] text-black shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path
+                          d="M3 11L11 3M11 3H4M11 3V10"
+                          stroke="#111111"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+
+                  {/* Text content: 388 Fill x 112 Hug, gap 14, padding t10 r12 b10 l10 */}
+                  <div className="flex flex-col gap-[14px] pt-[10px] pr-[12px] pb-[10px] pl-[10px] text-[#111111]">
+                    <div>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-[14px] text-black select-none tracking-[1.5px]">★★★★★</span>
+                        <a href="#compare" className="text-[13px] font-bold text-black flex items-center gap-0.5 hover:underline">
+                          {hotel.buttonText} ↗
+                        </a>
+                      </div>
+                      <h3 className="font-sans text-[20px] font-bold leading-snug text-black">
+                        {hotel.name}
+                      </h3>
+                      {hotel.location && (
+                        <div className="text-[13px] text-neutral-600 mt-0.5">
+                          {hotel.location}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="font-sans text-[16px] font-bold text-black">
+                      From {hotel.price} <span className="text-[13px] font-normal text-neutral-600">{hotel.unit}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            {hotelDeals.filter((hotel) => hotel.categories.includes(activeHotelCategory)).length === 0 && (
+              <div className="col-span-full py-16 text-center text-white/60 font-medium">
+                No hotel deals available for "{activeHotelCategory}" right now. Check back later!
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+      <section className="w-full bg-[#ffffff] py-[80px] text-[#111111]">
+        <div className="mx-auto flex max-w-[1216px] flex-col gap-[32px] px-4 min-[1216px]:px-0">
+
+          <div className="flex justify-between items-start gap-8 max-[768px]:flex-col max-[768px]:items-stretch max-[768px]:gap-4">
+            <div className="max-w-[700px] flex flex-col gap-[10px]">
+              <h2 className="font-sans text-[36px] font-semibold leading-tight tracking-tight text-[#111111] max-[768px]:text-[28px] max-[480px]:text-[24px]">
+                Explore Popular Destinations
+              </h2>
+              <p className="font-sans text-[14px] leading-[1.6] text-[#555555]">
+                Discover popular cities and compare flights and hotels before you book.
+              </p>
+            </div>
+
+            <a
+              href="#destinations"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-[18px] bg-[#ffc629] px-[22px] py-4 text-sm font-semibold text-[#111111] shadow-[0_10px_24px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] max-[768px]:self-start"
+            >
+              More destinations
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path
+                  d="M3 11L11 3M11 3H4M11 3V10"
+                  stroke="#111111"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2 w-full max-[1216px]:grid-cols-2 max-[640px]:grid-cols-1">
+            {destinationCards.map((card) => (
+              <div
+                key={card.id}
+                className="flex flex-col rounded-[24px] border border-neutral-200/60 bg-[#FAF7EF] overflow-hidden min-[1216px]:w-[298px] h-[428px] w-full shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-shadow duration-200 hover:shadow-md"
+              >
+                {/* Image */}
+                <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-neutral-900">
+                  <img
+                    src={card.image}
+                    alt={`${card.city}, ${card.country}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Content: city name, pills, then Explore link pinned to bottom */}
+                <div className="flex flex-col justify-between flex-1 px-5 py-4">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="font-sans text-[18px] font-bold leading-tight text-[#111111]">
+                      {card.city}, {card.country}
+                    </h3>
+
+                    <div className="flex flex-wrap gap-2">
+                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
+                        Flights from {card.flightPrice}
+                      </span>
+                      <span className="inline-block rounded-full bg-[#F5DFA0] px-3 py-1.5 text-[12px] font-semibold text-[#111111] select-none">
+                        Hotels from {card.hotelPrice}
+                      </span>
+                    </div>
+                  </div>
+                  <a
+
+                    href="#explore"
+                    className="inline-flex items-center gap-1 text-[15px] font-bold text-[#111111] hover:underline w-fit"
+                  >
+                    Explore
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 11L11 3M11 3H4M11 3V10"
+                        stroke="#111111"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
       <Footer />
     </>
   );
