@@ -26,8 +26,8 @@ function HeroDesktop() {
       {/* Hero Content */}
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
 
-        {/* Main Heading */}
-        <h1 className="font-sans text-[clamp(2.5rem,7vw,6rem)] font-semibold leading-[0.9] tracking-[-0.045em] text-black">
+        {/* Main Heading - Display XXL: 110px (Large Screens) / Display XL: 72px */}
+        <h1 className="font-sans text-[72px] font-medium leading-none text-black xl:text-[110px] xl:leading-[0.89]">
           <span className="block">Compare Flights, Hotels</span>
           <span className="block">&amp; Travel Deals</span>
         </h1>
@@ -37,10 +37,12 @@ function HeroDesktop() {
 
           {/* Left Column (Paragraph & Button) */}
           <div className="flex max-w-[330px] flex-col items-start gap-[18px]">
-            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black">
+            {/* Body M: 14px, Regular, 143% */}
+            <p className="font-sans text-[14px] font-normal leading-[1.43] text-black">
               Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
             </p>
-            <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
+            {/* Title S: 14px, Medium, 143% */}
+            <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
               Compare Flights
               <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
@@ -76,19 +78,22 @@ function HeroDesktop() {
                       <Star key={i} size={11} fill="currentColor" stroke="none" />
                     ))}
                   </div>
-                  <div className="flex items-end gap-[2px]">
-                    <span className="font-sans text-[16px] font-semibold leading-[24px] tracking-[-0.02em] text-black">4.9</span>
-                    <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black">/ 5</span>
+                  <div className="flex items-baseline gap-[4px]">
+                    {/* Title M: 16px, Medium, 150% */}
+                    <span className="font-sans text-[16px] font-medium leading-[1.5] text-black">4.9</span>
+                    {/* Body M: 14px, Regular, 143% */}
+                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-black">/ 5</span>
                   </div>
                 </div>
-                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black">
+                {/* Body M: 14px, Regular, 143% */}
+                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-normal leading-[1.43] text-black">
                   Compare live prices from trusted airlines and travel websites.
                 </p>
               </div>
             </div>
 
-            {/* "from 500+ Travel Sites" Heading */}
-            <h2 className="font-sans text-[clamp(2.5rem,7vw,6rem)] font-semibold leading-[0.9] tracking-[-0.045em] text-black lg:text-right">
+            {/* "from 500+ Travel Sites" Heading - Display XXL/XL */}
+            <h2 className="font-sans text-[72px] font-medium leading-none text-black lg:text-right xl:text-[110px] xl:leading-[0.89]">
               <span className="block">from 500+</span>
               <span className="block">Travel Sites</span>
             </h2>
@@ -128,21 +133,21 @@ function HeroMobile() {
       {/* Content */}
       <div className="relative z-10 flex flex-col px-[20px]">
 
-        {/* Heading */}
-        <h1 className="w-[352px] max-w-full font-sans text-[42px] font-bold leading-[44px] tracking-[-0.03em] text-white">
+        {/* Heading - Display L: 48px, Medium, 100% */}
+        <h1 className="w-[352px] max-w-full font-sans text-[48px] font-medium leading-none text-white">
           <span className="block">Compare Cheap</span>
           <span className="block">Flights &amp; Hotels</span>
           <span className="block">from 500+</span>
           <span className="block">Travel Sites</span>
         </h1>
 
-        {/* Paragraph */}
-        <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-white/90">
+        {/* Paragraph - Body M: 14px, Regular, 143% */}
+        <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.43] text-white/90">
           Unrivaled expertise for unique travel experiences. We're here to take you there dream travels!
         </p>
 
-        {/* Button */}
-        <button className="group mt-[20px] flex h-[44px] w-fit items-center gap-[8px] rounded-full bg-white px-[18px] text-[14px] font-medium tracking-[-0.02em] text-black shadow-sm transition-transform active:scale-[0.98]">
+        {/* Button - Title S: 14px, Medium, 143% */}
+        <button className="group mt-[20px] flex h-[44px] w-fit items-center gap-[8px] rounded-full bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-sm transition-transform active:scale-[0.98]">
           Discover now
           <ArrowUpRight size={14} className="transition-transform group-active:translate-x-0.5 group-active:-translate-y-0.5" />
         </button>
@@ -177,11 +182,13 @@ function HeroMobile() {
                   <Star key={i} size={10} fill="currentColor" stroke="none" />
                 ))}
               </div>
-              <span className="font-sans text-[13px] font-semibold leading-[16px] tracking-[-0.02em] text-white">
-                4.9 <span className="font-medium text-white/80">/ 5</span>
+              {/* Title S: 14px, Medium, 143% */}
+              <span className="font-sans text-[14px] font-medium leading-[1.43] text-white">
+                4.9 <span className="font-normal text-white/80">/ 5</span>
               </span>
             </div>
-            <p className="mt-[2px] font-sans text-[13px] font-medium leading-[16px] tracking-[-0.02em] text-white/90">
+            {/* Title XS: 12px, Medium, 133% */}
+            <p className="mt-[2px] font-sans text-[12px] font-medium leading-[1.33] text-white/90">
               Trusted by 300+ travelers
             </p>
           </div>

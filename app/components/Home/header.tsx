@@ -16,35 +16,37 @@ export default function Header() {
 
         {/* Desktop Nav (Hidden on Mobile) */}
         <nav className="hidden lg:flex flex-1 items-center justify-end gap-[4px]">
+          {/* Nav Links - Mapped to Title S: 14px, Medium, 143% */}
           <Link
             href="#"
-            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Flights
           </Link>
           <Link
             href="#"
-            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Hotels
           </Link>
           <Link
             href="#"
-            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Destinations
           </Link>
           <Link
             href="#"
-            className="flex h-[40px] items-center rounded-[14px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black transition-colors hover:bg-white"
+            className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             About
           </Link>
 
           <div className="w-[6px]" />
 
+          {/* Search Button - Mapped to Title S: 14px, Medium, 143% */}
           <button
-            className="relative flex h-[40px] min-w-[100px] items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black shadow-[0px_16px_8px_0px_rgba(31,31,31,0.01),0px_12px_6px_0px_rgba(31,31,31,0.04),0px_4px_4px_0px_rgba(31,31,31,0.07),0px_1.5px_3px_0px_rgba(31,31,31,0.08),0px_0px_0px_1px_#c29700] transition-all hover:brightness-105"
+            className="relative flex h-[40px] min-w-[100px] items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-[0px_16px_8px_0px_rgba(31,31,31,0.01),0px_12px_6px_0px_rgba(31,31,31,0.04),0px_4px_4px_0px_rgba(31,31,31,0.07),0px_1.5px_3px_0px_rgba(31,31,31,0.08),0px_0px_0px_1px_#c29700] transition-all hover:brightness-105"
           >
             Search Deals
             <ArrowUpRight size={14} />

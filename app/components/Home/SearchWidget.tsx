@@ -26,7 +26,8 @@ function DesktopCheckbox({ checked, onChange, label }) {
         {checked && <Check size={11} strokeWidth={3} className="text-black" />}
       </span>
       <input type="checkbox" checked={checked} onChange={onChange} className="hidden" />
-      <span className="whitespace-nowrap text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-black">
+      {/* Title S: 14px, Medium, 143% */}
+      <span className="whitespace-nowrap font-sans text-[14px] font-medium leading-[1.43] text-black">
         {label}
       </span>
     </label>
@@ -44,10 +45,11 @@ function SearchWidgetDesktop() {
 
       {/* Tabs — fused to the top edge of the card, no gap, no wrapper pill */}
       <div className="absolute bottom-full left-0 flex h-[52px] items-end gap-[3px]">
+        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
-          className={`flex h-full items-center gap-[6px] rounded-tl-[24px] rounded-tr-[14px] px-[20px] text-[15px] font-medium leading-[20px] tracking-[-0.02em] transition-colors ${
+          className={`flex h-full items-center gap-[6px] rounded-tl-[24px] rounded-tr-[14px] px-[20px] font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
             activeTab === "flights"
               ? "bg-white/90 text-black"
               : "bg-white/25 text-black/60 backdrop-blur-md"
@@ -56,10 +58,11 @@ function SearchWidgetDesktop() {
           <Plane size={18} />
           Flights
         </button>
+        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("hotels")}
           aria-pressed={activeTab === "hotels"}
-          className={`flex h-full items-center gap-[6px] rounded-tl-[14px] rounded-tr-[24px] px-[20px] text-[15px] font-medium leading-[20px] tracking-[-0.02em] transition-colors ${
+          className={`flex h-full items-center gap-[6px] rounded-tl-[14px] rounded-tr-[24px] px-[20px] font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
             activeTab === "hotels"
               ? "bg-white/90 text-black"
               : "bg-white/25 text-black/60 backdrop-blur-md"
@@ -81,9 +84,11 @@ function SearchWidgetDesktop() {
               <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
                 <field.icon size={16} className="text-black" />
               </div>
-              <div className="flex flex-col gap-[2px] text-[14px] leading-[20px] tracking-[-0.02em]">
-                <span className="whitespace-nowrap font-medium text-[#7d7d7d]">{field.label}</span>
-                <span className="whitespace-nowrap font-medium text-black">{field.value}</span>
+              <div className="flex flex-col gap-[2px] font-sans">
+                {/* Title S: 14px, Medium, 143% */}
+                <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-[#7d7d7d]">{field.label}</span>
+                {/* Title S: 14px, Medium, 143% */}
+                <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-black">{field.value}</span>
               </div>
             </div>
           </div>
@@ -152,9 +157,11 @@ function MobileFieldBox({ icon: Icon, label, value, className = "" }) {
       <div className="flex size-[28px] shrink-0 items-center justify-center rounded-[8px] bg-[#ffed91]">
         <Icon size={14} className="text-black" />
       </div>
-      <div className="flex min-w-0 flex-col gap-[1px] text-[13px] leading-[17px] tracking-[-0.02em]">
-        <span className="truncate font-medium text-[#7d7d7d]">{label}</span>
-        <span className="truncate font-medium text-black">{value}</span>
+      <div className="flex min-w-0 flex-col font-sans">
+        {/* Title XS: 12px, Medium, 133% */}
+        <span className="truncate text-[12px] font-medium leading-[1.33] text-[#7d7d7d]">{label}</span>
+        {/* Title S: 14px, Medium, 143% */}
+        <span className="truncate text-[14px] font-medium leading-[1.43] text-black">{value}</span>
       </div>
     </div>
   );
@@ -168,20 +175,22 @@ function SearchWidgetMobile() {
 
       {/* Tabs — pill style, inline at top of the card */}
       <div className="mb-[16px] flex items-center gap-[8px]">
+        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
-          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] text-[14px] font-medium tracking-[-0.02em] transition-colors ${
+          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
             activeTab === "flights" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
           }`}
         >
           <Plane size={16} />
           Flights
         </button>
+        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("hotels")}
           aria-pressed={activeTab === "hotels"}
-          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] text-[14px] font-medium tracking-[-0.02em] transition-colors ${
+          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
             activeTab === "hotels" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
           }`}
         >
@@ -206,8 +215,8 @@ function SearchWidgetMobile() {
         <MobileFieldBox icon={mobileTravellersField.icon} label={mobileTravellersField.label} value={mobileTravellersField.value} />
       </div>
 
-      {/* Search button — full width, icon bubble on the right */}
-      <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] text-[15px] font-medium tracking-[-0.02em] text-black transition-transform active:scale-[0.98]">
+      {/* Search button — Title M: 16px, Medium, 150% */}
+      <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] font-sans text-[16px] font-medium leading-[1.5] text-black transition-transform active:scale-[0.98]">
         Search Flights
         <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
           <Search size={16} className="text-black" />

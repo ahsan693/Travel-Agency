@@ -53,21 +53,26 @@ export default function HotelDeals() {
     <section className="w-full bg-[#000000] py-[80px] text-[#ffffff]">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-[32px] max-[430px]:px-4">
 
-        {/* Header Section — DESKTOP ONLY (untouched) */}
+        {/* =========================================
+            HEADER SECTION — DESKTOP ONLY
+            ========================================= */}
         <div className="mb-[48px] hidden flex-col lg:flex">
-          <h2 className="mb-[16px] font-sans text-[36px] font-bold leading-tight tracking-tight">
+          {/* Display L: 48px, Medium, 100% */}
+          <h2 className="mb-[16px] font-sans text-[48px] font-medium leading-none text-[#ffffff]">
             Find Great Hotel Deals
           </h2>
-          <p className="mb-[32px] max-w-[700px] font-sans text-[14px] leading-[1.6] text-white/60">
+          {/* Body L: 16px, Regular, 150% */}
+          <p className="mb-[32px] max-w-[700px] font-sans text-[16px] font-normal leading-[1.5] text-white/60">
             Compare hotel prices from trusted booking partners and find great places to stay around the world.
           </p>
 
-          {/* Filter Pills - White with Black Text and Yellow Hover */}
+          {/* Filter Pills */}
           <div className="flex flex-wrap gap-[10px]">
             {filterTags.map((tag, i) => (
               <button 
                 key={tag} 
-                className={`rounded-full px-[24px] py-[10px] font-sans text-[14px] font-semibold transition-colors duration-200 
+                // Title S: 14px, Medium, 143%
+                className={`rounded-full px-[24px] py-[10px] font-sans text-[14px] font-medium leading-[1.43] transition-colors duration-200 
                   ${i === 0 
                     ? 'bg-[#FDDB32] text-[#000000]' 
                     : 'bg-[#ffffff] text-[#000000] hover:bg-[#FDDB32]'
@@ -79,15 +84,16 @@ export default function HotelDeals() {
           </div>
         </div>
 
-        {/* Cards Grid - 3 Columns — DESKTOP ONLY (untouched) */}
+        {/* =========================================
+            CARDS GRID — DESKTOP ONLY
+            ========================================= */}
         <div className="hidden w-full grid-cols-1 gap-[24px] md:grid-cols-2 lg:grid lg:grid-cols-3">
           {hotels.map((hotel, i) => (
             <div 
               key={i} 
-              // Explicit 527px height with 10px bottom padding applied per Figma spec
               className="group flex h-[527px] flex-col overflow-hidden rounded-[24px] bg-[#ffffff] pb-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:-translate-y-1"
             >
-              {/* Image Header - Explicit 200px height per Figma Y:200 start position */}
+              {/* Image Header */}
               <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-900">
                 <Image 
                   src={hotel.image} 
@@ -96,8 +102,8 @@ export default function HotelDeals() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
                 
-                {/* Badges */}
-                <div className="absolute left-[16px] top-[16px] rounded-full bg-white px-[12px] py-[6px] font-sans text-[12px] font-bold tracking-wide text-[#000000] shadow-sm">
+                {/* Popular Badge - Title XS: 12px, Medium, 133% */}
+                <div className="absolute left-[16px] top-[16px] rounded-full bg-white px-[12px] py-[6px] font-sans text-[12px] font-medium leading-[1.33] text-[#000000] shadow-sm">
                   Popular
                 </div>
                 
@@ -106,7 +112,7 @@ export default function HotelDeals() {
                 </div>
               </div>
 
-              {/* Card Body - Exactly 14px padding and 12px gap per Figma spec */}
+              {/* Card Body */}
               <div className="flex flex-1 flex-col gap-[12px] p-[14px]">
                 
                 {/* Rating & Compare Row */}
@@ -117,28 +123,31 @@ export default function HotelDeals() {
                         <Star key={j} size={14} fill="currentColor" stroke="none" />
                       ))}
                     </div>
-                    <div className="flex items-baseline font-sans text-[14px]">
-                      <span className="font-bold text-[#E2BC1B]">{hotel.rating}</span>
-                      <span className="font-medium text-[#777777]">{hotel.maxRating}</span>
+                    <div className="flex items-baseline font-sans">
+                      {/* Title S: 14px, Medium, 143% */}
+                      <span className="text-[14px] font-medium leading-[1.43] text-[#E2BC1B]">{hotel.rating}</span>
+                      {/* Body M: 14px, Regular, 143% */}
+                      <span className="text-[14px] font-normal leading-[1.43] text-[#777777]">{hotel.maxRating}</span>
                     </div>
                   </div>
-                  <Link href="#" className="font-sans text-[12px] font-bold text-[#111111] transition-colors hover:text-[#555555]">
+                  {/* Compare Link - Title XS: 12px, Medium, 133% */}
+                  <Link href="#" className="font-sans text-[12px] font-medium leading-[1.33] uppercase text-[#111111] transition-colors hover:text-[#555555]">
                     Compare Prices ↗
                   </Link>
                 </div>
 
-                {/* Title */}
-                <h3 className="font-sans text-[22px] font-bold leading-tight text-[#000000]">
+                {/* Title L: 24px, Medium, 100% */}
+                <h3 className="font-sans text-[24px] font-medium leading-none text-[#000000]">
                   {hotel.name}
                 </h3>
 
-                {/* Location */}
-                <div className="flex items-center gap-[6px] font-sans text-[13px] font-medium text-[#777777]">
+                {/* Body M: 14px, Regular, 143% */}
+                <div className="flex items-center gap-[6px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                   <MapPin size={15} strokeWidth={2.5} className="text-[#777777]" />
                   {hotel.location}
                 </div>
 
-                {/* Tags (Using specific hex colors per Figma spec) */}
+                {/* Tags - Title XS: 12px, Medium, 133% */}
                 <div className="flex flex-wrap gap-[8px]">
                   {hotel.tags.map(tag => (
                     <span 
@@ -148,45 +157,49 @@ export default function HotelDeals() {
                         borderColor: `${hotel.tagColor}50`, 
                         backgroundColor: 'transparent'
                       }}
-                      className="rounded-full border px-[12px] py-[3px] font-sans text-[11px] font-semibold"
+                      className="rounded-full border px-[12px] py-[3px] font-sans text-[12px] font-medium leading-[1.33]"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* Details List */}
+                {/* Details List - Body M: 14px, Regular, 143% */}
                 <div className="flex flex-col gap-[8px] border-t border-[#F3F4F6] pt-[12px]">
-                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                  <div className="flex items-center gap-[12px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                     <Calendar size={16} strokeWidth={2.5} className="text-[#999999]" />
                     <span>Check-in: {hotel.checkin}</span>
                   </div>
-                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                  <div className="flex items-center gap-[12px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                     <MapPin size={16} strokeWidth={2.5} className="text-[#999999]" />
                     <span>{hotel.location}</span>
                   </div>
-                  <div className="flex items-center gap-[12px] font-sans text-[13px] font-medium text-[#777777]">
+                  <div className="flex items-center gap-[12px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                     <Clock size={16} strokeWidth={2.5} className="text-[#999999]" />
                     <span>Check-out: {hotel.checkout}</span>
                   </div>
                 </div>
 
-                {/* Footer (Price & CTA) - Pinned to bottom using mt-auto */}
+                {/* Footer */}
                 <div className="mt-auto flex items-center justify-between border-t border-[#F3F4F6] pt-[12px]">
                   <div className="flex flex-col">
-                    <p className="font-sans text-[11px] font-medium text-[#777777]">
+                    {/* Title XS: 12px, Medium, 133% */}
+                    <p className="font-sans text-[12px] font-medium leading-[1.33] uppercase text-[#777777]">
                       Start from
                     </p>
                     <div className="flex items-baseline gap-[4px]">
-                      <span className="font-sans text-[26px] font-bold text-[#000000] tracking-tight">
+                      {/* Title L: 24px, Medium, 100% */}
+                      <span className="font-sans text-[24px] font-medium leading-none text-[#000000]">
                         {hotel.price}
                       </span>
-                      <span className="font-sans text-[13px] font-medium text-[#777777]">
+                      {/* Body M: 14px, Regular, 143% */}
+                      <span className="font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                         {hotel.unit}
                       </span>
                     </div>
                   </div>
-                  <button className="flex h-[42px] items-center justify-center rounded-xl bg-[#FDDB32] px-[22px] font-sans text-[14px] font-bold text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+                  {/* Title S: 14px, Medium, 143% */}
+                  <button className="flex h-[42px] items-center justify-center rounded-xl bg-[#FDDB32] px-[22px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
                     Book Now
                   </button>
                 </div>
@@ -196,16 +209,19 @@ export default function HotelDeals() {
           ))}
         </div>
 
-        {/* ===================== MOBILE VIEW (lg:hidden) ===================== */}
-        {/* Outer frame spec: W390 Hug, padding L20/R20, T64/B80, gap 40 */}
+        {/* =========================================
+            MOBILE VIEW (lg:hidden)
+            ========================================= */}
         <div className="flex w-full flex-col gap-[40px] pt-[64px] pb-[80px] px-[20px] lg:hidden">
 
           {/* Mobile Header + Filters */}
           <div className="flex flex-col gap-[16px]">
-            <h2 className="font-sans text-[32px] font-bold leading-[1.15] tracking-tight text-white">
+            {/* Title L: 24px, Medium, 100% */}
+            <h2 className="font-sans text-[24px] font-medium leading-none text-white">
               Find Great Hotel Deals
             </h2>
-            <p className="font-sans text-[14px] leading-[1.6] text-white/60">
+            {/* Body M: 14px, Regular, 143% */}
+            <p className="font-sans text-[14px] font-normal leading-[1.43] text-white/60">
               Compare hotel prices from trusted booking partners and find great places to stay around the world.
             </p>
 
@@ -213,7 +229,8 @@ export default function HotelDeals() {
               {filterTags.map((tag, i) => (
                 <button
                   key={tag}
-                  className={`rounded-full px-[20px] py-[9px] font-sans text-[13px] font-semibold transition-colors duration-200
+                  // Title S: 14px, Medium, 143%
+                  className={`rounded-full px-[20px] py-[9px] font-sans text-[14px] font-medium leading-[1.43] transition-colors duration-200
                     ${i === 0
                       ? 'bg-[#FDDB32] text-[#000000]'
                       : 'bg-[#ffffff] text-[#000000]'
@@ -225,22 +242,23 @@ export default function HotelDeals() {
             </div>
           </div>
 
-          {/* Mobile Cards Stack — card spec: W350 Fill x H511, radius 24, gap 0 */}
+          {/* Mobile Cards Stack */}
           <div className="flex w-full flex-col gap-[24px]">
             {hotels.map((hotel, i) => (
               <div
                 key={i}
-                className="flex h-[511px] w-full flex-col overflow-hidden rounded-[24px] bg-[#ffffff] shadow-[0_4px_20px_rgba(0,0,0,0.1)]"
+                className="flex h-[527px] w-full flex-col overflow-hidden rounded-[24px] bg-[#ffffff] pb-[10px] shadow-[0_4px_20px_rgba(0,0,0,0.1)]"
               >
                 {/* Image */}
-                <div className="relative h-[210px] w-full shrink-0 overflow-hidden bg-neutral-900">
+                <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-900">
                   <Image
                     src={hotel.image}
                     alt={hotel.name}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute left-[14px] top-[14px] rounded-full bg-white px-[12px] py-[6px] font-sans text-[11px] font-bold tracking-wide text-[#000000] shadow-sm">
+                  {/* Title XS: 12px, Medium, 133% */}
+                  <div className="absolute left-[14px] top-[14px] rounded-full bg-white px-[12px] py-[6px] font-sans text-[12px] font-medium leading-[1.33] text-[#000000] shadow-sm">
                     Popular
                   </div>
                   <div className="absolute right-[14px] top-[14px] flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#FDDB32] shadow-md">
@@ -259,28 +277,31 @@ export default function HotelDeals() {
                           <Star key={j} size={13} fill="currentColor" stroke="none" />
                         ))}
                       </div>
-                      <div className="flex items-baseline font-sans text-[13px]">
-                        <span className="font-bold text-[#E2BC1B]">{hotel.rating}</span>
-                        <span className="font-medium text-[#777777]">{hotel.maxRating}</span>
+                      <div className="flex items-baseline font-sans">
+                        {/* Title S: 14px, Medium, 143% */}
+                        <span className="text-[14px] font-medium leading-[1.43] text-[#E2BC1B]">{hotel.rating}</span>
+                        {/* Body M: 14px, Regular, 143% */}
+                        <span className="text-[14px] font-normal leading-[1.43] text-[#777777]">{hotel.maxRating}</span>
                       </div>
                     </div>
-                    <Link href="#" className="font-sans text-[11px] font-bold text-[#111111]">
+                    {/* Title XS: 12px, Medium, 133% */}
+                    <Link href="#" className="font-sans text-[12px] font-medium leading-[1.33] uppercase text-[#111111]">
                       Compare Prices ↗
                     </Link>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="mt-[10px] font-sans text-[19px] font-bold leading-tight text-[#000000]">
+                  {/* Title L: 24px, Medium, 100% */}
+                  <h3 className="mt-[10px] font-sans text-[24px] font-medium leading-none text-[#000000]">
                     {hotel.name}
                   </h3>
 
-                  {/* Location */}
-                  <div className="mt-[6px] flex items-center gap-[6px] font-sans text-[12px] font-medium text-[#777777]">
+                  {/* Body M: 14px, Regular, 143% */}
+                  <div className="mt-[6px] flex items-center gap-[6px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                     <MapPin size={13} strokeWidth={2.5} className="text-[#777777]" />
                     {hotel.location}
                   </div>
 
-                  {/* Tags */}
+                  {/* Tags - Title XS: 12px, Medium, 133% */}
                   <div className="mt-[10px] flex flex-wrap gap-[6px]">
                     {hotel.tags.map(tag => (
                       <span
@@ -290,24 +311,24 @@ export default function HotelDeals() {
                           borderColor: `${hotel.tagColor}50`,
                           backgroundColor: 'transparent'
                         }}
-                        className="rounded-full border px-[10px] py-[3px] font-sans text-[10px] font-semibold"
+                        className="rounded-full border px-[10px] py-[3px] font-sans text-[12px] font-medium leading-[1.33]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Details List */}
+                  {/* Details List - Body M: 14px, Regular, 143% */}
                   <div className="mt-[14px] flex flex-col gap-[7px] border-t border-[#F3F4F6] pt-[12px]">
-                    <div className="flex items-center gap-[10px] font-sans text-[12px] font-medium text-[#777777]">
+                    <div className="flex items-center gap-[10px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                       <Calendar size={14} strokeWidth={2.5} className="text-[#999999]" />
                       <span>Check-in: {hotel.checkin}</span>
                     </div>
-                    <div className="flex items-center gap-[10px] font-sans text-[12px] font-medium text-[#777777]">
+                    <div className="flex items-center gap-[10px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                       <MapPin size={14} strokeWidth={2.5} className="text-[#999999]" />
                       <span>{hotel.location}</span>
                     </div>
-                    <div className="flex items-center gap-[10px] font-sans text-[12px] font-medium text-[#777777]">
+                    <div className="flex items-center gap-[10px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                       <Clock size={14} strokeWidth={2.5} className="text-[#999999]" />
                       <span>Check-out: {hotel.checkout}</span>
                     </div>
@@ -316,19 +337,23 @@ export default function HotelDeals() {
                   {/* Footer (Price & CTA) */}
                   <div className="mt-auto flex items-center justify-between border-t border-[#F3F4F6] pt-[12px]">
                     <div className="flex flex-col">
-                      <p className="font-sans text-[10px] font-medium text-[#777777]">
+                      {/* Title XS: 12px, Medium, 133% */}
+                      <p className="font-sans text-[12px] font-medium leading-[1.33] uppercase text-[#777777]">
                         Start from
                       </p>
                       <div className="flex items-baseline gap-[4px]">
-                        <span className="font-sans text-[22px] font-bold text-[#000000] tracking-tight">
+                        {/* Title L: 24px, Medium, 100% */}
+                        <span className="font-sans text-[24px] font-medium leading-none text-[#000000]">
                           {hotel.price}
                         </span>
-                        <span className="font-sans text-[12px] font-medium text-[#777777]">
+                        {/* Body M: 14px, Regular, 143% */}
+                        <span className="font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
                           {hotel.unit}
                         </span>
                       </div>
                     </div>
-                    <button className="flex h-[40px] items-center justify-center rounded-full bg-[#FDDB32] px-[20px] font-sans text-[13px] font-bold text-[#000000]">
+                    {/* Title S: 14px, Medium, 143% */}
+                    <button className="flex h-[40px] items-center justify-center rounded-xl bg-[#FDDB32] px-[20px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000]">
                       Book Now
                     </button>
                   </div>
