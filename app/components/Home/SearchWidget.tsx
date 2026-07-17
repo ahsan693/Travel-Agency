@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { Plane, Building2, Calendar, Users, Search, ArrowLeftRight, Check } from "lucide-react";
 
-const fields = [
+/* ----------------------------------------------------------------
+   DESKTOP
+---------------------------------------------------------------- */
+
+const desktopFields = [
   { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
   { key: "to", icon: Plane, label: "To", value: "Country, City or air...", width: "w-[198px]" },
   { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
@@ -11,7 +15,7 @@ const fields = [
   { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
 ];
 
-function Checkbox({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) {
+function DesktopCheckbox({ checked, onChange, label }) {
   return (
     <label className="flex cursor-pointer items-center gap-[8px]">
       <span
@@ -29,7 +33,7 @@ function Checkbox({ checked, onChange, label }: { checked: boolean; onChange: ()
   );
 }
 
-export default function SearchWidget() {
+function SearchWidgetDesktop() {
   const [activeTab, setActiveTab] = useState("flights");
   const [nearbyDeparture, setNearbyDeparture] = useState(false);
   const [nearbyTo, setNearbyTo] = useState(true);
@@ -68,7 +72,7 @@ export default function SearchWidget() {
 
       {/* Fields Row */}
       <div className="relative flex items-center gap-[11px] px-[24px]">
-        {fields.map((field) => (
+        {desktopFields.map((field) => (
           <div
             key={field.key}
             className={`flex h-[75px] shrink-0 items-center rounded-[20px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[15px] ${field.width}`}
@@ -101,19 +105,19 @@ export default function SearchWidget() {
       {/* Additional Options — aligned in two columns under Departure & To fields */}
       <div className="mt-[16px] flex gap-[11px] px-[24px]">
         <div className="flex w-[197px] flex-col gap-[10px] pl-[15px]">
-          <Checkbox
+          <DesktopCheckbox
             checked={nearbyDeparture}
             onChange={() => setNearbyDeparture((v) => !v)}
             label="Add Nearby Airports"
           />
-          <Checkbox
+          <DesktopCheckbox
             checked={directFlights}
             onChange={() => setDirectFlights((v) => !v)}
             label="Direct Flights"
           />
         </div>
         <div className="flex w-[198px] flex-col gap-[10px] pl-[15px]">
-          <Checkbox
+          <DesktopCheckbox
             checked={nearbyTo}
             onChange={() => setNearbyTo((v) => !v)}
             label="Add Nearby Airports"
@@ -121,5 +125,111 @@ export default function SearchWidget() {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ----------------------------------------------------------------
+   MOBILE
+---------------------------------------------------------------- */
+
+const mobileFields = [
+  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)" },
+  { key: "to", icon: Plane, label: "To", value: "Country, City or Airport" },
+];
+
+const mobileSplitFields = [
+  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov" },
+  { key: "return", icon: Calendar, label: "Return", value: "08 Jan" },
+];
+
+const mobileTravellersField = { key: "travellers", icon: Users, label: "Travellers", value: "01 Adult, 01 Child" };
+
+function MobileFieldBox({ icon: Icon, label, value, className = "" }) {
+  return (
+    <div
+      className={`flex h-[64px] w-full items-center gap-[12px] rounded-[18px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[14px] pr-[14px] ${className}`}
+    >
+      <div className="flex size-[28px] shrink-0 items-center justify-center rounded-[8px] bg-[#ffed91]">
+        <Icon size={14} className="text-black" />
+      </div>
+      <div className="flex min-w-0 flex-col gap-[1px] text-[13px] leading-[17px] tracking-[-0.02em]">
+        <span className="truncate font-medium text-[#7d7d7d]">{label}</span>
+        <span className="truncate font-medium text-black">{value}</span>
+      </div>
+    </div>
+  );
+}
+
+function SearchWidgetMobile() {
+  const [activeTab, setActiveTab] = useState("flights");
+
+  return (
+    <div className="w-full rounded-[28px] bg-white p-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
+
+      {/* Tabs — pill style, inline at top of the card */}
+      <div className="mb-[16px] flex items-center gap-[8px]">
+        <button
+          onClick={() => setActiveTab("flights")}
+          aria-pressed={activeTab === "flights"}
+          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] text-[14px] font-medium tracking-[-0.02em] transition-colors ${
+            activeTab === "flights" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
+          }`}
+        >
+          <Plane size={16} />
+          Flights
+        </button>
+        <button
+          onClick={() => setActiveTab("hotels")}
+          aria-pressed={activeTab === "hotels"}
+          className={`flex h-[36px] items-center gap-[6px] rounded-full px-[14px] text-[14px] font-medium tracking-[-0.02em] transition-colors ${
+            activeTab === "hotels" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
+          }`}
+        >
+          <Building2 size={16} />
+          Hotels
+        </button>
+      </div>
+
+      {/* Fields — stacked full width */}
+      <div className="flex flex-col gap-[12px]">
+        {mobileFields.map((f) => (
+          <MobileFieldBox key={f.key} icon={f.icon} label={f.label} value={f.value} />
+        ))}
+
+        {/* Depart / Return — two-up grid */}
+        <div className="grid grid-cols-2 gap-[12px]">
+          {mobileSplitFields.map((f) => (
+            <MobileFieldBox key={f.key} icon={f.icon} label={f.label} value={f.value} />
+          ))}
+        </div>
+
+        <MobileFieldBox icon={mobileTravellersField.icon} label={mobileTravellersField.label} value={mobileTravellersField.value} />
+      </div>
+
+      {/* Search button — full width, icon bubble on the right */}
+      <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] text-[15px] font-medium tracking-[-0.02em] text-black transition-transform active:scale-[0.98]">
+        Search Flights
+        <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
+          <Search size={16} className="text-black" />
+        </span>
+      </button>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------------
+   EXPORT — renders both, CSS breakpoint decides which shows
+---------------------------------------------------------------- */
+
+export default function SearchWidget() {
+  return (
+    <>
+      <div className="lg:hidden">
+        <SearchWidgetMobile />
+      </div>
+      <div className="hidden lg:block">
+        <SearchWidgetDesktop />
+      </div>
+    </>
   );
 }

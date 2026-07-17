@@ -4,9 +4,13 @@ import Image from "next/image";
 import { Star, ArrowUpRight } from "lucide-react";
 import SearchWidget from "./SearchWidget";
 
-export default function Hero() {
+/* ----------------------------------------------------------------
+   DESKTOP
+---------------------------------------------------------------- */
+
+function HeroDesktop() {
   return (
-    <section className="relative flex min-h-[820px] flex-col items-center overflow-hidden pt-[100px]">
+    <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -99,5 +103,104 @@ export default function Hero() {
 
       </div>
     </section>
+  );
+}
+
+/* ----------------------------------------------------------------
+   MOBILE
+---------------------------------------------------------------- */
+
+function HeroMobile() {
+  return (
+    <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[88px] lg:hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80"
+          alt="Hero background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/10" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col px-[20px]">
+
+        {/* Heading */}
+        <h1 className="w-[352px] max-w-full font-sans text-[42px] font-bold leading-[44px] tracking-[-0.03em] text-white">
+          <span className="block">Compare Cheap</span>
+          <span className="block">Flights &amp; Hotels</span>
+          <span className="block">from 500+</span>
+          <span className="block">Travel Sites</span>
+        </h1>
+
+        {/* Paragraph */}
+        <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.02em] text-white/90">
+          Unrivaled expertise for unique travel experiences. We're here to take you there dream travels!
+        </p>
+
+        {/* Button */}
+        <button className="group mt-[20px] flex h-[44px] w-fit items-center gap-[8px] rounded-full bg-white px-[18px] text-[14px] font-medium tracking-[-0.02em] text-black shadow-sm transition-transform active:scale-[0.98]">
+          Discover now
+          <ArrowUpRight size={14} className="transition-transform group-active:translate-x-0.5 group-active:-translate-y-0.5" />
+        </button>
+
+        {/* Search Widget */}
+        <div className="mt-[32px]">
+          <SearchWidget />
+        </div>
+
+        {/* Trust row */}
+        <div className="mt-[16px] flex items-center gap-[12px]">
+          <div className="flex shrink-0 items-center">
+            {[11, 12, 13, 14].map((imgId, index) => (
+              <div
+                key={imgId}
+                className={`flex size-[28px] items-center justify-center rounded-full bg-white p-[2px] ${index > 0 ? "-ml-3" : ""}`}
+                style={{ zIndex: 40 - index * 10 }}
+              >
+                <img
+                  src={`https://i.pravatar.cc/100?img=${imgId}`}
+                  alt={`Reviewer ${index + 1}`}
+                  className="size-[24px] shrink-0 rounded-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col justify-center">
+            <div className="flex items-center gap-[6px]">
+              <div className="flex gap-px text-[#fddb32]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={10} fill="currentColor" stroke="none" />
+                ))}
+              </div>
+              <span className="font-sans text-[13px] font-semibold leading-[16px] tracking-[-0.02em] text-white">
+                4.9 <span className="font-medium text-white/80">/ 5</span>
+              </span>
+            </div>
+            <p className="mt-[2px] font-sans text-[13px] font-medium leading-[16px] tracking-[-0.02em] text-white/90">
+              Trusted by 300+ travelers
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------------
+   EXPORT — renders both, CSS breakpoint decides which shows
+---------------------------------------------------------------- */
+
+export default function Hero() {
+  return (
+    <>
+      <HeroMobile />
+      <HeroDesktop />
+    </>
   );
 }
