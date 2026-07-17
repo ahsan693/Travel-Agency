@@ -153,7 +153,7 @@ function HeroMobile() {
         </div>
 
         {/* Trust row */}
-        <div className="mt-[16px] flex items-center gap-[12px]">
+        <div className="mt-[16px] flex items-center justify-center gap-[12px]">
           <div className="flex shrink-0 items-center">
             {[11, 12, 13, 14].map((imgId, index) => (
               <div
