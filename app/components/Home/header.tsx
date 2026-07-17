@@ -18,28 +18,28 @@ export default function Header() {
         <nav className="hidden lg:flex flex-1 items-center justify-end gap-[4px]">
           {/* Nav Links - Mapped to Title S: 14px, Medium, 143% */}
           <Link
-            href="#"
+            href="/flight"
             className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Flights
           </Link>
           <Link
-            href="#"
+            href="/hotels"
             className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Hotels
           </Link>
           <Link
-            href="#"
+            href="/destinations"
             className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
             Destinations
           </Link>
           <Link
-            href="#"
+            href="/travel"
             className="flex h-[40px] items-center rounded-[14px] px-[16px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-white"
           >
-            About
+            Travel
           </Link>
 
           <div className="w-[6px]" />
