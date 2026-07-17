@@ -11,7 +11,7 @@ const fields = [
   { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
 ];
 
-function Checkbox({ checked, onChange, label }) {
+function Checkbox({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) {
   return (
     <label className="flex cursor-pointer items-center gap-[8px]">
       <span
