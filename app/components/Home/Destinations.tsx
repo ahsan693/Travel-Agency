@@ -1,28 +1,28 @@
 'use client';
 
 import Image from "next/image";
-import { Plane, Hotel, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const destinations = [
   { 
     city: "Paris, France", 
     tagline: "The City of Light", 
-    image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&w=800&q=80&fit=crop" 
+    image: "/Homepage/Section 5/Images/hero-image.png" 
   },
   { 
     city: "Barcelona, Spain", 
     tagline: "Modernism & beaches", 
-    image: "https://images.pexels.com/photos/16984552/pexels-photo-16984552.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" 
+    image: "/Homepage/Section 5/Images/hero-image-1.png" 
   },
   { 
     city: "Dubai, UAE", 
     tagline: "Luxury & desert dunes", 
-    image: "https://images.pexels.com/photos/31566720/pexels-photo-31566720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" 
+    image: "/Homepage/Section 5/Images/hero-image-2.png" 
   },
   { 
     city: "Bali, Indonesia", 
     tagline: "Island paradise & temples", 
-    image: "https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&w=800&q=80&fit=crop" 
+    image: "/Homepage/Section 5/Images/hero-image-3.png" 
   },
 ];
 
@@ -88,14 +88,14 @@ export default function Destinations() {
                 {/* Pills List */}
                 <div className="mt-[24px] flex flex-col gap-[10px]">
                   <div className="flex w-fit items-center gap-[8px] rounded-full border border-[#E5E7EB] bg-[#ffffff] px-[14px] py-[8px]">
-                    <Plane size={14} strokeWidth={2.5} className="text-[#111827]" />
+                    <Image src="/Homepage/Section 5/Icons/Vector.png" alt="Flight" width={14} height={14} className="object-contain" />
                     {/* Title XS: 12px, Medium, 133% */}
                     <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#111827]">
                       Flights from €38
                     </span>
                   </div>
                   <div className="flex w-fit items-center gap-[8px] rounded-full border border-[#E5E7EB] bg-[#ffffff] px-[14px] py-[8px]">
-                    <Hotel size={14} strokeWidth={2.5} className="text-[#111827]" />
+                    <Image src="/Homepage/Section 5/Icons/Vector-1.png" alt="Hotel" width={14} height={14} className="object-contain" />
                     {/* Title XS: 12px, Medium, 133% */}
                     <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#111827]">
                       Hotels from €94/night
