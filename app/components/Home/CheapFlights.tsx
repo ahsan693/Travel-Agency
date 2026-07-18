@@ -53,11 +53,6 @@ export default function CheapFlights() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
-                {/* Flag Badge (Top-Left) */}
-                <div className="absolute left-[12px] top-[12px] flex items-center justify-center rounded-[20px] bg-[#FFFFFF] px-[10px] py-[6px]">
-                  <span className="text-[24px] leading-none">{flight.emoji}</span>
-                </div>
               </div>
 
               {/* 2. Content Section (156px height) */}
@@ -97,7 +92,7 @@ export default function CheapFlights() {
 
               {/* 3. Footer Section (68px height) */}
               <div className="mt-auto px-[20px] pb-[20px] pt-0">
-                <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors hover:bg-gray-50">
+                <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors hover:bg-[#FDDB32] hover:border-[#FDDB32]">
                   <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
                     View Flights
                   </span>
