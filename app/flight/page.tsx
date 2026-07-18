@@ -194,8 +194,8 @@ function HeroDesktop() {
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
         
         {/* Display XXL/XL */}
-        <h1 className="font-sans text-[72px] font-medium leading-none text-white xl:text-[110px] xl:leading-[0.89]">
-          <span className="block">Compare Cheap Flights</span>
+      <h1 className="w-full max-w-[1400px] font-sans text-[60px] font-medium leading-[0.89] text-white xl:text-[100px] xl:leading-[100px]">
+      <span className="block">Compare Cheap Flights</span>
           <span className="block">from Hundreds of Airlines</span>
         </h1>
 
