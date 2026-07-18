@@ -28,7 +28,7 @@ import Footer from "../components/Home/footer";
 interface CountryChip {
   name: string;
   img: string;
-  swatch?: string; // Marks swatch as an optional property to fix the build error
+  swatch?: string;
 }
 
 interface DestinationItem {
@@ -480,7 +480,7 @@ function FaqSection() {
    PAGE
 ===================================================================== */
 
-export default function Destinations(): JSX.Element {
+export default function Destinations() {
   return (
     <main className="flex min-h-screen w-full flex-col bg-[#FFFFFF]">
       <HeroSection />
