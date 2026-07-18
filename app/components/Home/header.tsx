@@ -1,13 +1,24 @@
 'use client';
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="absolute top-0 left-0 right-0 z-50 px-6 lg:px-10 py-6">
-      <div className="mx-auto flex w-full max-w-[1216px] items-center justify-between gap-[24px] rounded-[20px] bg-[#f5f5f5] p-[12px]">
+      <div className="mx-auto flex w-full max-w-[1216px] items-center justify-between gap-[24px] rounded-[20px] bg-[#f5f5f5] p-[12px] relative">
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
@@ -56,11 +67,62 @@ export default function Header() {
 
         {/* Mobile Menu Button (Hidden on Desktop) */}
         <button 
+          onClick={toggleMobileMenu}
           className="flex lg:hidden h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[12px] bg-[#fddb32] text-black transition-transform hover:brightness-105 active:scale-95"
-          aria-label="Open mobile menu"
+          aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
         >
-          <Menu size={22} strokeWidth={2.5} />
+          {isMobileMenuOpen ? (
+            <X size={22} strokeWidth={2.5} />
+          ) : (
+            <Menu size={22} strokeWidth={2.5} />
+          )}
         </button>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 flex flex-col rounded-[20px] bg-[#f5f5f5] p-[12px] shadow-lg lg:hidden">
+            <nav className="flex flex-col gap-[4px]">
+              <Link
+                href="/flight"
+                onClick={closeMobileMenu}
+                className="flex h-[48px] items-center rounded-[14px] px-[16px] font-sans text-[16px] font-medium text-black transition-colors hover:bg-white"
+              >
+                Flights
+              </Link>
+              <Link
+                href="/hotels"
+                onClick={closeMobileMenu}
+                className="flex h-[48px] items-center rounded-[14px] px-[16px] font-sans text-[16px] font-medium text-black transition-colors hover:bg-white"
+              >
+                Hotels
+              </Link>
+              <Link
+                href="/destinations"
+                onClick={closeMobileMenu}
+                className="flex h-[48px] items-center rounded-[14px] px-[16px] font-sans text-[16px] font-medium text-black transition-colors hover:bg-white"
+              >
+                Destinations
+              </Link>
+              <Link
+                href="/travel"
+                onClick={closeMobileMenu}
+                className="flex h-[48px] items-center rounded-[14px] px-[16px] font-sans text-[16px] font-medium text-black transition-colors hover:bg-white"
+              >
+                Travel
+              </Link>
+
+              <div className="my-[4px] h-[1px] w-full bg-black/5" />
+
+              <button
+                onClick={closeMobileMenu}
+                className="relative mt-1 flex h-[48px] w-full items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[16px] font-medium text-black transition-all hover:brightness-105"
+              >
+                Search Deals
+                <ArrowUpRight size={18} />
+              </button>
+            </nav>
+          </div>
+        )}
 
       </div>
     </header>
