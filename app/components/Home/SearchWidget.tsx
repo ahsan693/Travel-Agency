@@ -15,7 +15,14 @@ const desktopFields = [
   { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
 ];
 
-function DesktopCheckbox({ checked, onChange, label }) {
+// Added TypeScript interface for DesktopCheckbox props
+interface DesktopCheckboxProps {
+  checked: boolean;
+  onChange: () => void;
+  label: string;
+}
+
+function DesktopCheckbox({ checked, onChange, label }: DesktopCheckboxProps) {
   return (
     <label className="flex cursor-pointer items-center gap-[8px]">
       <span
@@ -149,7 +156,15 @@ const mobileSplitFields = [
 
 const mobileTravellersField = { key: "travellers", icon: Users, label: "Travellers", value: "01 Adult, 01 Child" };
 
-function MobileFieldBox({ icon: Icon, label, value, className = "" }) {
+// Added TypeScript interface for MobileFieldBox props
+interface MobileFieldBoxProps {
+  icon: any;
+  label: string;
+  value: string;
+  className?: string;
+}
+
+function MobileFieldBox({ icon: Icon, label, value, className = "" }: MobileFieldBoxProps) {
   return (
     <div
       className={`flex h-[64px] w-full items-center gap-[12px] rounded-[18px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[14px] pr-[14px] ${className}`}
