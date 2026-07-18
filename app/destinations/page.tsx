@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import type { JSX } from "react";
 import {
   ChevronDown,
   ArrowUpRight,
@@ -22,6 +22,31 @@ import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
 
 /* =====================================================================
+   TYPES & INTERFACES
+===================================================================== */
+
+interface CountryChip {
+  name: string;
+  img: string;
+  swatch?: string; // Marks swatch as an optional property to fix the build error
+}
+
+interface DestinationItem {
+  city?: string;
+  name?: string;
+  desc: string;
+  badge?: string;
+  badgeStyles?: string;
+  flightsFrom?: string;
+  hotelsFrom?: string;
+  image: string;
+  tags?: string[];
+  perk?: string;
+  price?: string;
+  rating?: string;
+}
+
+/* =====================================================================
    STATIC DATA
 ===================================================================== */
 
@@ -34,7 +59,7 @@ const REGIONS = [
   "South America",
 ];
 
-const COUNTRY_CHIPS = [
+const COUNTRY_CHIPS: CountryChip[] = [
   { name: "Canada", img: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&w=100&q=80" },
   { name: "Poland", img: "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&w=100&q=80" },
   { name: "United States", img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&w=100&q=80" },
@@ -49,7 +74,7 @@ const COUNTRY_CHIPS = [
   { name: "Osaka", img: "https://images.unsplash.com/photo-1590559899731-a38283bce401?auto=format&w=100&q=80" },
 ];
 
-const FEATURED_COUNTRIES = [
+const FEATURED_COUNTRIES: DestinationItem[] = [
   {
     name: "Greece",
     desc: "Beautiful islands, ancient history",
@@ -244,7 +269,7 @@ function FeaturedCountriesSection() {
               <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-[#F3F4F6] p-[14px]">
                 <Image
                   src={country.image}
-                  alt={country.name}
+                  alt={country.name || ""}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -291,7 +316,7 @@ function FeaturedCountriesSection() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-[6px]">
-                  {country.tags.map((tag) => (
+                  {country.tags?.map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-[#FBBDEA] bg-[#FFF0F8] px-[10px] py-[2px] font-sans text-[14px] font-regular leading-[20px] tracking-[-0.28px] text-[#C050A0]"
