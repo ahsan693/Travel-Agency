@@ -114,6 +114,10 @@ const FAQS = [
 function HeroSection() {
   return (
     <section className="relative flex h-[581px] w-full flex-col items-center justify-center overflow-hidden bg-[#000000]">
+      
+      {/* Absolute Header Overlay */}
+      <Header />
+
       {/* Background Image + 30% Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -135,12 +139,12 @@ function HeroSection() {
         </div>
         
         {/* Title: 72px, Medium, 100%, -3% */}
-        <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-none tracking-[-0.03em] text-[#FFFFFF]">
+        <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-none tracking-[-0.03em] text-[#FFFFFF] max-[768px]:text-[48px]">
           Discover Greece
         </h1>
         
         {/* Subtitle: 16px, Regular, 24px, 0px */}
-        <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF]">
+        <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[14px]">
           Explore ancient ruins, pristine beaches, and world-class island hopping in one of Europe's most breathtaking destinations.
         </p>
       </div>
@@ -190,7 +194,7 @@ function AboutSection() {
         <div className="flex flex-col gap-[64px] lg:flex-row lg:items-start lg:gap-[80px]">
           {/* Left Col */}
           <div className="flex flex-1 flex-col gap-[24px]">
-            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
               About Greece
             </h2>
             <div className="flex flex-col gap-[16px]">
@@ -295,7 +299,7 @@ function DestinationsSection() {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
         
         <div className="mb-[56px] flex flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Greece's Most Popular Destinations
           </h2>
           <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
@@ -324,7 +328,7 @@ function PopularFlightsSection() {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
         
         <div className="mb-[48px] flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Popular Flights to <span className="text-[#FDDB32]">Greece</span>
           </h2>
           <button className="flex items-center gap-[6px] rounded-full bg-[#F9FBF5] px-[20px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors hover:bg-neutral-100">
@@ -399,7 +403,7 @@ function TopThingsToDoSection() {
     <section className="w-full bg-[#000000] py-[80px] lg:py-[120px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
         
-        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF]">
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
           Top Things To Do
         </h2>
 
@@ -440,7 +444,7 @@ function WhereToStaySection() {
     <section className="w-full bg-[#F9FBF5] py-[80px] lg:py-[120px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
         
-        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
           Where To Stay
         </h2>
 
@@ -486,7 +490,7 @@ function NearbyCountriesSection() {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
         
         <div className="mb-[56px] flex flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Nearby Countries
           </h2>
           <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
@@ -518,7 +522,7 @@ function TravelHelpSection() {
         
         {/* Left Col */}
         <div className="flex flex-1 flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
             Travel Help
           </h2>
           <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
@@ -568,7 +572,7 @@ function NewsletterSection() {
     <section className="w-full bg-[#FFFFFF] py-[80px]">
       <div className="mx-auto w-full max-w-[1440px] px-[20px] lg:px-[160px]">
         <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] p-[40px] text-center lg:h-[328px] lg:p-[64px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Get Greece Travel Deals
           </h2>
           <p className="mt-[16px] max-w-[600px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
