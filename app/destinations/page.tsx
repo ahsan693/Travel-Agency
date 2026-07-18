@@ -1,27 +1,28 @@
-"use client";
+'use client';
 
 import { useState } from "react";
-import type { JSX } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   ChevronDown,
-  ChevronUp,
   ArrowUpRight,
   Star,
-  Users,
-  Clock3,
+  MapPin,
+  Plane,
+  Building2,
+  Umbrella,
   Minus,
   Plus,
-  HelpCircle,
+  BarChart2,
+  ShieldCheck,
+  Compass
 } from "lucide-react";
+
 import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
-import Link from "next/link";
 
 /* =====================================================================
-   DATA
-   In production, all of the arrays below should come from Sanity CMS
-   (e.g. `groq` queries for `region`, `destination`, `hotel`, `faq`
-   document types) instead of being hard-coded here.
+   STATIC DATA
 ===================================================================== */
 
 const REGIONS = [
@@ -30,489 +31,375 @@ const REGIONS = [
   "Africa",
   "Caribbean",
   "North America",
-  "North America",
-] as const;
+  "South America",
+];
 
 const COUNTRY_CHIPS = [
-  { name: "Canada", img: "canada" },
-  { name: "Poland", img: "poland" },
-  { name: "United States", img: "united-states" },
-  { name: "Paris", img: "paris" },
-  { name: "UAE", img: "uae" },
-  { name: "Czech Republic", img: "czech" },
-  { name: "Germany", img: "germany" },
-  { name: "New York City", img: "nyc", swatch: "#E7B8F0" },
-  { name: "Fukuoka", img: "fukuoka" },
-  { name: "Sapporo", img: "sapporo" },
-  { name: "Kyoto", img: "kyoto" },
-  { name: "Osaka", img: "osaka" },
+  { name: "Canada", img: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&w=100&q=80" },
+  { name: "Poland", img: "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&w=100&q=80" },
+  { name: "United States", img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&w=100&q=80" },
+  { name: "Paris", img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=100&q=80" },
+  { name: "UAE", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=100&q=80" },
+  { name: "Czech Republic", img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&w=100&q=80" },
+  { name: "Germany", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&w=100&q=80" },
+  { name: "New York City", img: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=100&q=80" },
+  { name: "Fukuoka", img: "https://images.unsplash.com/photo-1574343806283-e18e59ec2548?auto=format&w=100&q=80" },
+  { name: "Sapporo", img: "https://images.unsplash.com/photo-1596711585257-227bb30953a7?auto=format&w=100&q=80" },
+  { name: "Kyoto", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&w=100&q=80" },
+  { name: "Osaka", img: "https://images.unsplash.com/photo-1590559899731-a38283bce401?auto=format&w=100&q=80" },
 ];
 
-const CATEGORIES = [
-  { label: "Beaches", emoji: "🏖️" },
-  { label: "City Breaks", emoji: "🏙️" },
-  { label: "Mountains", emoji: "🏔️" },
-  { label: "Islands", emoji: "🏝️" },
-  { label: "Ski", emoji: "🎿" },
-  { label: "Romantic", emoji: "🌅" },
-  { label: "Family", emoji: "👨‍👩‍👧" },
-  { label: "Digital Nomad", emoji: "💻" },
-];
-
-const DESTINATIONS = [
+const FEATURED_COUNTRIES = [
   {
-    city: "Paris, France",
-    img: "paris-eiffel",
-    flightsFrom: "€48",
-    hotelsFrom: "€109/night",
-    seasonLabel: "Best time: Apr–Jun",
-    ctaLabel: "Explore Destination",
+    name: "Greece",
+    desc: "Beautiful islands, ancient history",
+    rating: "4.8",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=800&q=80",
+    tags: ["Islands", "History", "Beach"],
+    flightsFrom: "€50",
+    hotelsFrom: "€65",
+    perk: "Mediterranean beaches",
+    price: "€49",
   },
   {
-    city: "Kyoto,Japan",
-    img: "kyoto-temple",
-    flightsFrom: "€699",
-    hotelsFrom: "€82/night",
-    seasonLabel: "Best Seasons",
-    ctaLabel: "Explore",
+    name: "Spain",
+    desc: "Sun-soaked beaches, vibrant culture",
+    rating: "4.7",
+    image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&w=800&q=80",
+    tags: ["Culture", "Beaches", "Tapas"],
+    flightsFrom: "€35",
+    hotelsFrom: "€55",
+    perk: "Incredible tapas & nightlife",
+    price: "€39",
   },
   {
-    city: "New York, USA",
-    img: "new-york",
-    flightsFrom: "€389",
-    hotelsFrom: "€145/night",
-    seasonLabel: "Best Seasons",
-    ctaLabel: "Explore",
-  },
-  {
-    city: "Barcelona, Spain",
-    img: "barcelona",
-    flightsFrom: "€38",
-    hotelsFrom: "€94/night",
-    seasonLabel: "Best Seasons",
-    ctaLabel: "Explore",
+    name: "Italy",
+    desc: "Ancient ruins, rolling vineyards",
+    rating: "4.9",
+    image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80",
+    tags: ["Art", "History", "Wine"],
+    flightsFrom: "€40",
+    hotelsFrom: "€70",
+    perk: "World-class cuisine & art",
+    price: "€55",
   },
 ];
 
-const HOTEL_FILTERS = [
-  "All",
-  "★★★★★ 5-Star",
-  "★★★★ 4-Star",
-  "Budget",
-  "Family Friendly",
-  "Luxury",
-  "Business",
-  "Boutique",
-  "Beach Resorts",
-  "Pet Friendly",
-];
-
-const HOTELS = [
+const WHY_COMPARE = [
   {
-    name: "Hilton Barcelona",
-    city: "Barcelona",
-    img: "hilton-barcelona",
-    price: "$29",
-    tags: ["Free cancellation", "Breakfast included"],
-    tagIcon: "clock" as const,
-    compareLabel: "Compare Prices",
-    bg: "#F98DF2",
-    tagBg: "#FBBDEA",
+    icon: BarChart2,
+    title: "Compare Prices",
+    description: "Compare flights and hotels from hundreds of trusted travel providers.",
   },
   {
-    name: "Marriott Dubai",
-    city: "Dubai",
-    img: "marriott-dubai-1",
-    price: "$169",
-    tags: ["Excellent (4.7)"],
-    tagIcon: "users" as const,
-    compareLabel: "Compare",
-    bg: "#FFC796",
-    tagBg: "#FFDCB3",
+    icon: ShieldCheck,
+    title: "Trusted Partners",
+    description: "Book securely through leading airlines and hotel booking platforms.",
   },
   {
-    name: "Marriott Dubai",
-    city: "Dubai",
-    img: "marriott-dubai-2",
-    price: "$169",
-    tags: ["Excellent (4.7)"],
-    tagIcon: "users" as const,
-    compareLabel: "Compare",
-    bg: "#FFED91",
-    tagBg: "#FFF4B8",
+    icon: Compass,
+    title: "Travel Inspiration",
+    description: "Discover destinations, travel guides and tips to help plan your next adventure.",
   },
 ];
 
 const FAQS = [
   {
-    q: "How do I choose a destination?",
-    a: "Browse destinations by region, travel style or budget and compare flights and hotels before booking.",
+    q: "Is TravelMommy free to use?",
+    a: "Yes. You can compare flights and hotels for free and book directly with trusted travel partners.",
   },
   {
-    q: "Can I compare flights for every destination?",
-    a: "Yes. TravelMommy helps you compare flight prices for destinations around the world.",
+    q: "Can I compare flights and hotels?",
+    a: "Yes. Compare prices from hundreds of airlines, hotels and booking websites in one place.",
   },
   {
-    q: "Can I compare hotel prices too?",
-    a: "Yes. Search hotels from trusted booking providers and compare accommodation prices before booking.",
+    q: "Which countries are most popular?",
+    a: "Some of our most searched destinations include Greece, Spain, Italy, France, Thailand and Japan.",
   },
   {
-    q: "Can I compare hotel prices too?",
-    a: "Yes. Search hotels from trusted booking providers and compare accommodation prices before booking.",
+    q: "How do I find cheap flights?",
+    a: "Use our flight search to compare prices across multiple travel providers and book when you find the best deal.",
   },
   {
-    q: "Are destination prices updated?",
-    a: "Flight and hotel prices are updated from our travel partners and may change based on availability.",
+    q: "When is the best time to travel?",
+    a: "It depends on your destination. Each country guide includes seasonal travel tips and the best times to visit.",
   },
 ];
 
-const FOOTER_COLUMNS: { title: string; links: string[] }[] = [
-  { title: "Search", links: ["Flights", "Hotels", "Airlines", "Airports"] },
-  { title: "Discover", links: ["Deals", "Destinations", "Airlines", "Airports"] },
-  { title: "Discover", links: ["Trips", "Travel Guide", "Travel Tips", "FAQs"] },
-  { title: "Company", links: ["About", "Contact", "Partners", "Help Centre"] },
-];
-
-/** Deterministic placeholder image. Swap for Sanity `image` asset urls. */
-function img(seed: string, w: number, h: number) {
-  return `https://picsum.photos/seed/travelmommy-${seed}/${w}/${h}`;
-}
-
 /* =====================================================================
-   SHARED PRIMITIVES
-===================================================================== */
-
-function Container({
-  className = "",
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className={`mx-auto w-full max-w-[1216px] px-6 lg:px-0 ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-function Pill({
-  active,
-  children,
-  className = "",
-  onClick,
-}: {
-  active?: boolean;
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-5 py-2.5 text-[15px] font-medium transition-colors ${
-        active
-          ? "border-[#FDDB32] bg-[#FDDB32] text-black"
-          : "border-gray-200 bg-white text-black hover:border-gray-300"
-      } ${className}`}
-    >
-      {children}
-    </button>
-  );
-}
-
-/* =====================================================================
-   HERO SECTION  (background image + heading + region browser)
+   HERO SECTION
 ===================================================================== */
 
 function HeroSection() {
-  const [activeRegion, setActiveRegion] = useState(0);
+  const [activeRegion, setActiveRegion] = useState("Europe");
 
   return (
-    <section className="relative h-[700px] w-full overflow-hidden bg-black">
-      <img
-        src={img("canyon-arch-hero", 1920, 1000)}
-        alt="Desert canyon arch at sunset"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      {/* Dark gradient overlay so text stays legible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/60" />
+    <section className="relative flex h-[700px] w-full flex-col items-center overflow-hidden bg-[#000000]">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&w=1920&q=80"
+          alt="Desert canyon arch at sunset"
+          fill
+          className="object-cover opacity-80"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60" />
+      </div>
 
-      <Container className="relative z-10 flex h-full flex-col pt-6">
+      <div className="relative z-10 flex h-full w-full max-w-[1440px] flex-col px-[112px] pb-[80px] pt-[24px]">
         <Header />
 
-        <div className="flex flex-1 flex-col justify-end pb-16">
-        <h1 className="max-w-3xl text-6xl font-bold leading-[1.05] tracking-tight text-white sm:text-7xl">
-          Explore Travel Destinations
-          <br />
-          Around the World
-        </h1>
-
-        <div className="mt-10">
-          <p className="mb-3 text-[15px] font-medium text-white/90">
-            Browse by Region
-          </p>
-
-          {/* Region pills */}
-          <div className="flex gap-3 overflow-x-auto pb-1">
-            {REGIONS.map((region, i) => (
-              <button
-                key={`${region}-${i}`}
-                type="button"
-                onClick={() => setActiveRegion(i)}
-                className={`inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-5 py-2.5 text-[15px] font-medium transition-colors ${
-                  activeRegion === i
-                    ? "border-[#FDDB32] bg-[#FDDB32] text-black"
-                    : "border-white/25 bg-[#F9F8F5]/95 text-black"
-                }`}
-              >
-                {region}
-                {activeRegion === i ? (
-                  <ChevronDown className="h-4 w-4" />
-                ) : (
-                  <ChevronUp className="h-4 w-4" />
-                )}
-              </button>
-            ))}
+        <div className="mt-auto flex w-full max-w-[1198px] flex-col gap-[26px]">
+          
+          <div className="flex flex-col gap-[12px]">
+            {/* Display: 72px, Medium, 100%, -3% */}
+            <h1 className="font-sans text-[72px] font-medium leading-none tracking-[-0.03em] text-[#FFFFFF]">
+              Discover Your Next Destination
+            </h1>
+            {/* Subtitle: 16px, Regular, 150%, 0px */}
+            <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[1.5] tracking-[0px] text-[rgba(255,255,255,0.8)]">
+              Explore countries across Europe, Asia, the Americas, Africa and Oceania. Compare flights and
+              hotels, explore travel guides, and plan your next adventure with TravelMommy.
+            </p>
           </div>
 
-          {/* Divider */}
-          <div className="my-4 h-px w-full bg-white/25" />
+          <div className="flex flex-col gap-[19px]">
+            <p className="font-sans text-[14px] font-medium leading-[1.43] tracking-[-0.28px] text-[#FFFFFF]">
+              Browse by Region
+            </p>
 
-          {/* Country / city chips */}
-          <div className="flex flex-wrap gap-3">
-            {COUNTRY_CHIPS.map((chip) => (
-              <button
-                key={chip.name}
-                type="button"
-                className="inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full border border-white/20 bg-[#F9F8F5]/95 py-1.5 pl-1.5 pr-5 text-[15px] font-medium text-black"
-              >
-                {chip.swatch ? (
-                  <span
-                    className="h-8 w-8 rounded-full"
-                    style={{ backgroundColor: chip.swatch }}
-                  />
-                ) : (
-                  <img
-                    src={img(chip.img, 64, 64)}
-                    alt=""
-                    className="h-8 w-8 rounded-full object-cover"
-                  />
-                )}
-                {chip.name}
-              </button>
-            ))}
+            {/* Region pills */}
+            <div className="flex flex-wrap gap-[8px]">
+              {REGIONS.map((region) => (
+                <button
+                  key={region}
+                  onClick={() => setActiveRegion(region)}
+                  className={`flex h-[40px] items-center gap-[6px] rounded-full px-[20px] font-sans text-[14px] font-medium leading-[1.43] tracking-[-0.28px] transition-colors ${
+                    activeRegion === region
+                      ? "bg-[#FDDB32] text-[#000000]"
+                      : "bg-[#FFFFFF] text-[#000000] hover:bg-[#F9FBF5]"
+                  }`}
+                >
+                  {region}
+                  {activeRegion === region && <ChevronDown className="h-[16px] w-[16px]" />}
+                </button>
+              ))}
+            </div>
+
+            {/* Country chips */}
+            <div className="mt-[4px] flex flex-wrap gap-[8px]">
+              {COUNTRY_CHIPS.map((chip) => (
+                <button
+                  key={chip.name}
+                  className="flex h-[40px] items-center gap-[8px] rounded-full border border-white/20 bg-white/10 py-[4px] pl-[4px] pr-[16px] font-sans text-[14px] font-medium leading-[1.43] tracking-[-0.28px] text-[#FFFFFF] backdrop-blur-sm transition-colors hover:bg-white/20"
+                >
+                  {chip.swatch ? (
+                    <span className="h-[32px] w-[32px] rounded-full" style={{ backgroundColor: chip.swatch }} />
+                  ) : (
+                    <Image
+                      src={chip.img}
+                      alt={chip.name}
+                      width={32}
+                      height={32}
+                      className="h-[32px] w-[32px] rounded-full object-cover"
+                    />
+                  )}
+                  {chip.name}
+                </button>
+              ))}
+            </div>
           </div>
+
         </div>
-        </div>
-      </Container>
+      </div>
     </section>
   );
 }
 
 /* =====================================================================
-   CATEGORY FILTER TABS  +  DESTINATION CARDS GRID
+   FEATURED COUNTRIES SECTION
 ===================================================================== */
 
-function DestinationsSection() {
-  const [activeCategory, setActiveCategory] = useState(0);
-
+function FeaturedCountriesSection() {
   return (
-    <section className="bg-white pb-24 pt-16">
-      <Container>
-        {/* Category tabs */}
-        <div className="flex gap-3 overflow-x-auto pb-1">
-          {CATEGORIES.map((cat, i) => (
-            <Pill
-              key={cat.label}
-              active={activeCategory === i}
-              onClick={() => setActiveCategory(i)}
-            >
-              <span className="text-lg leading-none">{cat.emoji}</span>
-              {cat.label}
-            </Pill>
-          ))}
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] py-[80px]">
+      <div className="flex w-full max-w-[1440px] flex-col px-[80px]">
+        
+        <div className="mb-[32px] flex flex-col items-center text-center">
+          {/* Section Title: 48px, Medium, 100%, -1px */}
+          <h2 className="font-sans text-[48px] font-medium leading-none tracking-[-1px] text-[#000000]">
+            Featured Countries
+          </h2>
         </div>
 
-        {/* Destination cards */}
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {DESTINATIONS.map((d) => (
-            <article
-              key={d.city}
-              className="rounded-[28px] border border-gray-200 bg-white p-3.5"
+        {/* Card Grid */}
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-[24px] md:grid-cols-3">
+          {FEATURED_COUNTRIES.map((country, idx) => (
+            <div
+              key={idx}
+              className="group flex h-[527px] w-full flex-col overflow-hidden rounded-[20px] border border-[rgba(0,0,0,0.16)] bg-[#FFFFFF] pb-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
             >
-              <div className="overflow-hidden rounded-2xl">
-                <img
-                  src={img(d.img, 640, 640)}
-                  alt={d.city}
-                  className="aspect-square w-full object-cover"
+              {/* Image Container */}
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-[#F3F4F6] p-[14px]">
+                <Image
+                  src={country.image}
+                  alt={country.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
-
-              <div className="px-1 pt-4">
-                <h3 className="text-lg font-semibold text-black">{d.city}</h3>
-
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-[#FFED91] px-3.5 py-1.5 text-sm font-medium text-black">
-                    Flights from {d.flightsFrom}
-                  </span>
-                  <span className="rounded-full bg-[#FFED91] px-3.5 py-1.5 text-sm font-medium text-black">
-                    Hotels from {d.hotelsFrom}
+                
+                {/* Popular Badge */}
+                <div className="absolute left-[14px] top-[14px] rounded-full bg-[#FFFFFF] px-[12px] py-[4px] shadow-sm">
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                    Popular
                   </span>
                 </div>
-
-                <p className="mt-4 text-[15px] text-gray-500">
-                  {d.seasonLabel}
-                </p>
-
-                <Link
-                  href="/city"
-                  className="mt-2 inline-flex items-center gap-1 text-[15px] font-semibold text-black hover:underline"
-                >
-                  {d.ctaLabel}
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* =====================================================================
-   "EXPLORE DESTINATIONS WITH TRAVELMOMMY" BANNER (black band)
-===================================================================== */
-
-function AboutBanner() {
-  return (
-    <section className="bg-black py-24">
-      <Container>
-        <h2 className="text-4xl font-bold leading-tight sm:text-5xl">
-          <span className="text-[#FDDB32]">Explore Destinations</span>{" "}
-          <span className="text-white">with TravelMommy</span>
-        </h2>
-        <p className="mt-6 max-w-4xl text-lg leading-relaxed text-white/70">
-          TravelMommy helps you discover destinations around the world while
-          comparing flights and hotel prices from trusted travel providers.
-          Explore popular cities, beach holidays, mountain escapes and
-          cultural destinations, then compare travel options before booking
-          your trip.
-        </p>
-      </Container>
-    </section>
-  );
-}
-
-/* =====================================================================
-   POPULAR HOTELS SECTION
-===================================================================== */
-
-function TagIcon({ type }: { type: "clock" | "users" }) {
-  return type === "clock" ? (
-    <Clock3 className="h-3.5 w-3.5" />
-  ) : (
-    <Users className="h-3.5 w-3.5" />
-  );
-}
-
-function PopularHotelsSection() {
-  const [activeFilter, setActiveFilter] = useState(0);
-
-  return (
-    <section className="bg-white py-24">
-      <Container>
-        <h2 className="text-5xl font-bold text-black sm:text-6xl">
-          Popular Hotels
-        </h2>
-        <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Compare prices on popular hotels from trusted booking partners.
-          Discover great stays for every budget.
-        </p>
-
-        {/* Filter pills */}
-        <div className="mt-8 flex gap-3 overflow-x-auto pb-1">
-          {HOTEL_FILTERS.map((f, i) => (
-            <Pill
-              key={f}
-              active={activeFilter === i}
-              onClick={() => setActiveFilter(i)}
-            >
-              {f}
-            </Pill>
-          ))}
-        </div>
-
-        {/* Hotel cards */}
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {HOTELS.map((h, idx) => (
-            <article
-              key={`${h.name}-${idx}`}
-              className="overflow-hidden rounded-[28px] border-2 p-3.5"
-              style={{ backgroundColor: h.bg, borderColor: h.bg }}
-            >
-              <div className="relative overflow-hidden rounded-2xl">
-                <img
-                  src={img(h.img, 640, 480)}
-                  alt={h.name}
-                  className="aspect-[4/3] w-full object-cover"
-                />
-                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-black">
-                  Popular
-                </span>
-                <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#FDDB32]">
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
-                </span>
+                
+                <div className="absolute right-[14px] top-[14px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-md transition-transform group-hover:scale-110">
+                  <ArrowUpRight size={18} strokeWidth={2.5} className="text-[#000000]" />
+                </div>
               </div>
 
-              <div className="px-1 pt-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-black text-black"
-                      />
+              {/* Card Body */}
+              <div className="flex flex-1 flex-col gap-[12px] p-[14px]">
+                
+                {/* Rating */}
+                <div className="flex h-[20px] items-center gap-[6px]">
+                  <div className="flex gap-[2px]">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <Star key={j} size={14} className="fill-[#F59E0B] text-[#F59E0B]" strokeWidth={0} />
                     ))}
                   </div>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-black hover:underline"
-                  >
-                    {h.compareLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
-                  </a>
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#F59E0B]">
+                    {country.rating}/5
+                  </span>
                 </div>
 
-                <h3 className="mt-2 text-lg font-semibold text-black">
-                  {h.name}
-                </h3>
-                <p className="text-[15px] text-black/60">{h.city}</p>
+                {/* Country Name & Desc */}
+                <div className="flex flex-col gap-[2px]">
+                  <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                    {country.name}
+                  </h3>
+                  <div className="flex items-center gap-[6px]">
+                    <MapPin size={14} className="text-[#7D7D7D]" />
+                    <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                      {country.desc}
+                    </span>
+                  </div>
+                </div>
 
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {h.tags.map((tag) => (
+                {/* Tags */}
+                <div className="flex flex-wrap gap-[6px]">
+                  {country.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-black"
-                      style={{ backgroundColor: h.tagBg }}
+                      className="rounded-full border border-[#FBBDEA] bg-[#FFF0F8] px-[10px] py-[2px] font-sans text-[14px] font-regular leading-[20px] tracking-[-0.28px] text-[#C050A0]"
                     >
-                      <TagIcon type={h.tagIcon} />
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="mt-4 text-lg text-black">
-                  <span className="font-bold">From{h.price}</span>{" "}
-                  <span className="text-black/60">/ night</span>
-                </p>
+                <div className="h-[1px] w-full bg-[#E6E6E6]" />
+
+                {/* Details List */}
+                <div className="flex flex-col gap-[8px]">
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    <Plane size={14} className="text-[#7D7D7D]" />
+                    <span>Flights from {country.flightsFrom}</span>
+                  </div>
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    <Building2 size={14} className="text-[#7D7D7D]" />
+                    <span>Hotels from {country.hotelsFrom}</span>
+                  </div>
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    <Umbrella size={14} className="text-[#7D7D7D]" />
+                    <span>{country.perk}</span>
+                  </div>
+                </div>
+
+                <div className="h-[1px] w-full bg-[#E6E6E6]" />
+
+                {/* Footer / Price & CTA */}
+                <div className="mt-auto flex items-center justify-between">
+                  <div className="flex flex-col gap-[2px]">
+                    <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                      Explore
+                    </span>
+                    <div className="flex items-baseline gap-[2px]">
+                      <span className="font-sans text-[22px] font-medium leading-none tracking-[0px] text-[#000000]">
+                        {country.price}
+                      </span>
+                      <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                        / night
+                      </span>
+                    </div>
+                  </div>
+                  <button className="flex h-[40px] items-center justify-center gap-[6px] rounded-full bg-[#FDDB32] px-[16px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+                    Explore
+                    <ArrowUpRight size={14} />
+                  </button>
+                </div>
+                
               </div>
-            </article>
+            </div>
           ))}
         </div>
-      </Container>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   WHY PLAN YOUR TRIP SECTION
+===================================================================== */
+
+function WhyPlanSection() {
+  return (
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] py-[80px]">
+      <div className="flex w-full max-w-[1280px] flex-col items-center px-[32px]">
+        
+        {/* Heading Block */}
+        <div className="mb-[48px] flex w-full max-w-[1216px] flex-col items-center text-center gap-[24px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+            Why Plan Your Trip with TravelMommy?
+          </h2>
+          <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+            Search and compare cheap flights from multiple airlines and trusted booking
+            partners to find the best fare for your trip.
+          </p>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid w-full max-w-[1216px] grid-cols-1 gap-[15px] md:grid-cols-3">
+          {WHY_COMPARE.map((feature, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center justify-center rounded-[20px] border-[1.5px] border-[#E6E6E6] bg-[#F9FBF5] p-[30px] text-center"
+            >
+              <div className="mb-[15px] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#FDDB32]">
+                <feature.icon className="h-[24px] w-[24px] text-[#000000]" strokeWidth={2} />
+              </div>
+              <h3 className="mb-[15px] font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+                {feature.title}
+              </h3>
+              <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Explore Button */}
+        <div className="mt-[48px]">
+          <button className="flex h-[44px] items-center justify-center gap-[6px] rounded-full bg-[#FDDB32] px-[24px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+            Explore tours
+            <ArrowUpRight size={16} />
+          </button>
+        </div>
+
+      </div>
     </section>
   );
 }
@@ -522,109 +409,47 @@ function PopularHotelsSection() {
 ===================================================================== */
 
 function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-white py-24">
-      <Container className="max-w-[860px]">
-        <h2 className="text-center text-5xl font-bold leading-tight text-black sm:text-6xl">
-          Frequently Asked
-          <br />
-          Questions
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] pt-[80px] pb-[160px] px-[80px]">
+      <div className="flex w-full max-w-[800px] flex-col items-center">
+        
+        <h2 className="mb-[48px] text-center font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000]">
+          Frequently Asked Questions
         </h2>
 
-        <div className="mt-16">
-          {FAQS.map((item, i) => {
+        <div className="flex w-full flex-col gap-[24px]">
+          {FAQS.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="border-b border-gray-200 py-6">
+              <div key={i} className="flex flex-col gap-[12px] border-b border-[#E6E6E6] pb-[24px]">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-6 text-left"
+                  className="flex w-full items-center justify-between text-left"
                 >
-                  <span className="text-lg font-semibold text-black">
-                    {item.q}
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                    {faq.q}
                   </span>
-                  {isOpen ? (
-                    <Minus className="h-5 w-5 shrink-0 text-black" />
-                  ) : (
-                    <Plus className="h-5 w-5 shrink-0 text-black" />
-                  )}
+                  <span className="flex shrink-0 text-[#000000]">
+                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                  </span>
                 </button>
                 {isOpen && (
-                  <p className="mt-4 text-[15px] leading-relaxed text-gray-500">
-                    {item.a}
+                  <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#7D7D7D]">
+                    {faq.a}
                   </p>
                 )}
               </div>
             );
           })}
         </div>
-      </Container>
-    </section>
-  );
-}
 
-/* =====================================================================
-   NEWSLETTER SECTION (yellow banner)
-===================================================================== */
-
-function NewsletterSection() {
-  return (
-    <section className="bg-white px-6 py-16">
-      <div className="mx-auto max-w-[1216px] rounded-[36px] bg-[#FDDB32] px-6 py-16 text-center">
-        <span className="inline-block rounded-full bg-[#F9F8F5] px-5 py-2 text-sm font-semibold text-black">
-          Let&apos;s go on a trip!
-        </span>
-
-        <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-bold leading-tight text-black sm:text-5xl">
-          Get Hotel Deals Delivered to Your Inbox
-        </h2>
-
-        <p className="mx-auto mt-4 max-w-xl text-[15px] text-black/70">
-          Get Travel Inspiration &amp; Exclusive Deals Receive destination
-          ideas, cheap flights and hotel offers directly in your inbox.
-        </p>
-
-        <form className="mx-auto mt-8 flex max-w-lg items-center gap-3">
-          <div className="flex flex-1 items-center gap-2 rounded-full bg-white px-5 py-3.5">
-            <input
-              type="email"
-              placeholder="Your Email Address"
-              className="w-full bg-transparent text-[15px] text-black placeholder:text-gray-400 focus:outline-none"
-            />
-            <HelpCircle className="h-4 w-4 shrink-0 text-gray-400" />
-          </div>
-          <button
-            type="submit"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-black px-6 py-3.5 text-[15px] font-semibold text-white hover:bg-black/90"
-          >
-            Get Deals
-            <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
-          </button>
-        </form>
       </div>
     </section>
   );
 }
-
-/* =====================================================================
-   FOOTER
-===================================================================== */
-
-function SocialIcon({ children }: { children: React.ReactNode }) {
-  return (
-    <a
-      href="#"
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white hover:bg-white/10"
-    >
-      {children}
-    </a>
-  );
-}
-
-
 
 /* =====================================================================
    PAGE
@@ -632,13 +457,11 @@ function SocialIcon({ children }: { children: React.ReactNode }) {
 
 export default function Destinations(): JSX.Element {
   return (
-    <main className="min-h-screen w-full bg-white">
+    <main className="flex min-h-screen w-full flex-col bg-[#FFFFFF]">
       <HeroSection />
-      <DestinationsSection />
-      <AboutBanner />
-      <PopularHotelsSection />
+      <FeaturedCountriesSection />
+      <WhyPlanSection />
       <FaqSection />
-      <NewsletterSection />
       <Footer />
     </main>
   );
