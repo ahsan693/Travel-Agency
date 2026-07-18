@@ -1,544 +1,621 @@
-"use client";
+'use client';
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  MapPin,
+  Coins,
+  MessageCircle,
+  Clock,
+  Calendar,
+  Plane,
+  Building2,
+  ArrowUpRight,
+  Minus,
+  Plus,
+  Star,
+  ChevronDown
+} from "lucide-react";
+
 import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
 
+/* =====================================================================
+   STATIC DATA
+===================================================================== */
 
-
-import { useState, type ReactNode } from "react";
-
-/* ------------------------------------------------------------------ */
-/*  Palette sampled directly from the source PDF                       */
-/* ------------------------------------------------------------------ */
-const YELLOW = "#FDDB32";
-const CREAM = "#F9F8F5";
-const GOLD_TEXT = "#C79A00"; // "From €24" price text on cream cards
-const PALE_YELLOW = "#FFED91"; // icon badge circles
-
-/* ------------------------------------------------------------------ */
-/*  Static content — mirrors the copy in the source PDF exactly       */
-/* ------------------------------------------------------------------ */
-
-const NAV_LINKS = ["Flights", "Hotels", "Destinations", "About", "Travel"];
-
-const FLIGHT_ROUTES = [
-  { flag: "🇬🇧", route: "Dub → LHR London", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇬🇧", route: "Dub → LHR London", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇪🇸", route: "Dub → BCN Barcelona", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇵🇹", route: "Dub → LIS Lisbon", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇺🇸", route: "Dub → JFK New York", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇮🇹", route: "Dub → FCO Rome", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇦🇪", route: "Dub → DXB Dubai", duration: "1h 20m", airline: "Ryanair" },
-  { flag: "🇳🇱", route: "Dub → AMS Amsterdam", duration: "1h 20m", airline: "Ryanair" },
+const INFO_BAR_DATA = [
+  { icon: MapPin, label: "Capital", value: "Athens" },
+  { icon: Coins, label: "Currency", value: "Euro" },
+  { icon: MessageCircle, label: "Language", value: "Greek" },
+  { icon: Clock, label: "Timezone", value: "GMT+2" },
+  { icon: Calendar, label: "Best Time", value: "May - Oct" },
 ];
 
-const FEATURES = [
+const DESTINATIONS = [
   {
-    title: "No Hidden Booking Fees",
-    text: "TravelMommy doesn't sell flights or charge booking fees. Compare prices for free and choose the deal that works best for you.",
-    icon: "fee",
+    city: "Santorini",
+    desc: "Iconic white-washed houses, blue domes, and breathtaking sunsets.",
+    badge: "Popular",
+    badgeStyles: "bg-[#DBEAFE] text-[#1E40AF]",
+    flightsFrom: "€50",
+    hotelsFrom: "€85",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=800&q=80",
   },
   {
-    title: "Book with Trusted Partners",
-    text: "View the latest flight prices and availability so you can compare deals before booking with your preferred travel provider.",
-    icon: "shield",
+    city: "Athens",
+    desc: "The historical heart of ancient Greece, home to the mighty Acropolis.",
+    badge: "Best Value",
+    badgeStyles: "bg-[#E0E7FF] text-[#3730A3]",
+    flightsFrom: "€35",
+    hotelsFrom: "€55",
+    image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80",
   },
   {
-    title: "Live Prices, Updated Daily",
-    text: "View the latest flight prices and availability so you can compare deals before booking with your preferred travel provider.",
-    icon: "clock",
+    city: "Mykonos",
+    desc: "Vibrant nightlife, luxury resorts, and picturesque windmills.",
+    badge: "Trending",
+    badgeStyles: "bg-[#FCE7F3] text-[#9D174D]",
+    flightsFrom: "€60",
+    hotelsFrom: "€120",
+    image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80",
+  },
+  {
+    city: "Crete",
+    desc: "A massive island offering diverse landscapes, deep history, and beaches.",
+    badge: "Hidden Gem",
+    badgeStyles: "bg-[#D1FAE5] text-[#065F46]",
+    flightsFrom: "€45",
+    hotelsFrom: "€60",
+    image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80",
   },
 ];
 
-const AIRLINES = [
-  "Emirates",
-  "American Airlines",
-  "Ryanair",
-  "Qatar Airways",
-  "British Airways",
-  "Etihad Airways",
-  "KLM",
-  "Lufthansa",
-  "Turkish Airlines",
-  "easyJet",
+const POPULAR_FLIGHTS = [
+  { city: "London", route: "LON → ATH", price: "€24", airline: "Ryanair", duration: "Direct • 3h 40m", emoji: "🇬🇧", image: "https://images.unsplash.com/photo-1513635269975-5969336cdac0?auto=format&w=800&q=80" },
+  { city: "Manchester", route: "MAN → ATH", price: "€32", airline: "easyJet", duration: "Direct • 3h 55m", emoji: "🇬🇧", image: "https://images.unsplash.com/photo-1515586835455-8d2a632c0255?auto=format&w=800&q=80" },
+  { city: "Dublin", route: "DUB → ATH", price: "€45", airline: "Ryanair", duration: "Direct • 4h 10m", emoji: "🇮🇪", image: "https://images.unsplash.com/photo-1549918864-48ac978761a4?auto=format&w=800&q=80" },
+  { city: "New York", route: "JFK → ATH", price: "€310", airline: "Delta", duration: "Direct • 9h 30m", emoji: "🇺🇸", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=800&q=80" },
+];
+
+const THINGS_TO_DO = [
+  { title: "Oia Sunset Catamaran Cruise", duration: "5 Hours", price: "From €95", image: "https://images.unsplash.com/photo-1598094625513-43fccf8e2170?auto=format&w=800&q=80" },
+  { title: "Acropolis Guided Tour", duration: "2 Hours", price: "From €35", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80" },
+  { title: "Delos & Rhenia Boat Trip", duration: "6 Hours", price: "From €80", image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80" },
+  { title: "Knossos Palace Ticket", duration: "Flexible", price: "From €18", image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80" },
+];
+
+const HOTELS = [
+  { name: "Grace Santorini", location: "Imerovigli", rating: "4.9/5", price: "€450", image: "https://images.unsplash.com/photo-1580946342895-716b2512a803?auto=format&w=800&q=80" },
+  { name: "Cavo Tagoo", location: "Mykonos Town", rating: "4.8/5", price: "€520", image: "https://images.unsplash.com/photo-1601582589907-f92af5ed9db8?auto=format&w=800&q=80" },
+  { name: "Katikies Hotel", location: "Oia", rating: "4.9/5", price: "€480", image: "https://images.unsplash.com/photo-1469796466635-455ede14929b?auto=format&w=800&q=80" },
+];
+
+const NEARBY_COUNTRIES = [
+  { city: "Italy", desc: "Just across the Ionian Sea, explore Rome, Venice, and incredible cuisine.", image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80" },
+  { city: "Turkey", desc: "Discover the vibrant culture of Istanbul and the ruins of Ephesus.", image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&w=800&q=80" },
+  { city: "Cyprus", desc: "An island nation mixing Greek and Turkish influences with stunning beaches.", image: "https://images.unsplash.com/photo-1588180891305-ec9b26e0e37e?auto=format&w=800&q=80" },
+  { city: "Croatia", desc: "Sail the Adriatic coast and walk the ancient walls of Dubrovnik.", image: "https://images.unsplash.com/photo-1555661608-8e6f1f31f9d4?auto=format&w=800&q=80" },
 ];
 
 const FAQS = [
-  {
-    q: "How does TravelMommy compare flight prices?",
-    a: "TravelMommy displays prices provided by airlines and trusted travel partners. Because fares can change quickly, the final price is confirmed when you complete your booking on the provider's website.",
-  },
-  {
-    q: "Does TravelMommy charge booking fees?",
-    a: "No. TravelMommy is a travel metasearch platform. We compare flight prices but do not sell tickets directly or charge booking fees. You always book with the airline or travel provider you choose.",
-  },
-  {
-    q: "Can I compare flights from different airlines?",
-    a: "Yes. TravelMommy lets you compare flights from multiple airlines and travel providers, making it easier to find the best combination of price, travel time and convenience.",
-  },
-  {
-    q: "When is the best time to book cheap flights?",
-    a: "Flight prices can change based on demand, season and availability. Comparing fares early and checking different travel dates can help you find cheaper flights.",
-  },
-  {
-    q: "Are the flight prices shown on TravelMommy live?",
-    a: "TravelMommy displays prices provided by airlines and trusted travel partners. Because fares can change quickly, the final price is confirmed when you complete your booking on the provider's website.",
-  },
-  {
-    q: "Can I book flights directly on TravelMommy?",
-    a: "No. TravelMommy helps you compare flight prices from multiple providers. When you choose a flight, you'll be redirected to the airline or booking partner to complete your booking securely.",
-  },
-  {
-    q: "Which airlines can I compare on TravelMommy?",
-    a: "You can compare flights from a wide range of domestic and international airlines, as well as trusted online travel agencies, helping you find the best available deal for your journey.",
-  },
-  {
-    q: "Why should I compare flights before booking?",
-    a: "Comparing flights helps you find the best available fare, discover alternative airlines or travel dates, and make informed booking decisions without searching multiple websites individually.",
-  },
+  { q: "When is the best time to visit Greece?", a: "The best time to visit is during the shoulder seasons (May-June and September-October) when the weather is pleasant and the crowds are thinner. July and August are peak summer months, ideal for beach holidays but can be very hot and crowded." },
+  { q: "Do I need a visa to travel to Greece?", a: "Greece is part of the Schengen Area. If you are an EU citizen, or from a visa-exempt country (like the US, UK, Canada, Australia), you do not need a visa for stays up to 90 days. Always check the latest entry requirements before traveling." },
+  { q: "How do I get around the Greek islands?", a: "The most common way to hop between islands is by ferry. Domestic flights are also available connecting Athens to major islands like Santorini, Mykonos, and Crete." },
+  { q: "What should I pack for a trip to Greece?", a: "Pack light, breathable clothing for the summer, comfortable walking shoes for ancient ruins, swimwear, a hat, and plenty of sunscreen. A light jacket is recommended for breezy island evenings." },
+  { q: "Is Greece expensive?", a: "Greece caters to all budgets. While luxury hotspots like Santorini and Mykonos can be expensive, destinations like Crete, Naxos, and the mainland offer excellent value for money with affordable local food and accommodation." },
 ];
 
-const FOOTER_COLUMNS = [
-  { title: "Search", links: ["Flights", "Hotels", "Airlines", "Airports"] },
-  { title: "Discover", links: ["Deals", "Destinations", "Airlines", "Airports"] },
-  { title: "Discover", links: ["Trips", "Travel Guide", "Travel Tips", "FAQs"] },
-  { title: "Company", links: ["About", "Contact", "Partners", "Help Centre"] },
-];
+/* =====================================================================
+   HERO SECTION
+===================================================================== */
 
-/* ------------------------------------------------------------------ */
-/*  Icons                                                               */
-/* ------------------------------------------------------------------ */
-
-const ArrowUpRight = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17 17 7M8 7h9v9" />
-  </svg>
-);
-
-const SearchIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className={className}>
-    <circle cx="11" cy="11" r="7" />
-    <path strokeLinecap="round" d="m20 20-3.5-3.5" />
-  </svg>
-);
-
-const PlaneTakeoff = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M6 16l4-1 3.5-6.5L16 8l4 4-2 1-4.5-1.5L9 15l-3-1-2 1z" />
-  </svg>
-);
-
-const PlaneLanding = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M4 13l4 1 4.5-4L15 9l4.5 2-1 2-5-1-4 3.5-3-.5-1.5-1z" />
-  </svg>
-);
-
-const CalendarIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-    <rect x="3.5" y="5" width="17" height="15" rx="2" />
-    <path strokeLinecap="round" d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
-  </svg>
-);
-
-const UsersIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-    <circle cx="9" cy="8" r="3" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15.5 5.5a3 3 0 0 1 0 5.8M18.5 19c0-2.6-1.8-4.6-4-5.2" />
-  </svg>
-);
-
-const ChevronDown = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
-  </svg>
-);
-
-const PlusMinus = ({ open, className = "" }: { open: boolean; className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-    <path strokeLinecap="round" d="M5 12h14" />
-    {!open && <path strokeLinecap="round" d="M12 5v14" />}
-  </svg>
-);
-
-const FeatureIcon = ({ type, className = "" }: { type: string; className?: string }) => {
-  if (type === "fee")
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h13l3 5-3 5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" />
-        <circle cx="14" cy="12" r="1.6" />
-      </svg>
-    );
-  if (type === "shield")
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
-      </svg>
-    );
+function HeroSection() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-      <circle cx="12" cy="12" r="8.5" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5V12l3 2" />
-    </svg>
-  );
-};
+    <section className="relative flex h-[581px] w-full flex-col items-center justify-center overflow-hidden bg-[#000000]">
+      
+      {/* Absolute Header Overlay */}
+      <Header />
 
-const InstagramIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className}>
-    <rect x="3" y="3" width="18" height="18" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
-  </svg>
-);
-const FacebookIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M13.8 8.5h-1.4c-.7 0-1.2.5-1.2 1.2V11h2.5l-.3 2.2h-2.2V21" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-const TikTokIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className={className}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M11.5 7v7.2a2 2 0 1 1-1.4-1.9" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M11.5 7.2c.3 1.3 1.3 2.3 2.6 2.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-/* ------------------------------------------------------------------ */
-/*  Small reusable bits                                                */
-/* ------------------------------------------------------------------ */
-
-function Logo({ color = "#111111", size = "text-2xl" }: { color?: string; size?: string }) {
-  return (
-    <div className={`leading-[0.8] ${size}`} style={{ color, fontFamily: "'Brush Script MT','Segoe Script',cursive" }}>
-      <div>Travel</div>
-      <div className="-mt-1">Mommy</div>
-    </div>
-  );
-}
-
-function SectionHeading({
-  title,
-  subtitle,
-  action,
-  dark,
-  center,
-}: {
-  title: ReactNode;
-  subtitle?: string;
-  action?: string;
-  dark?: boolean;
-  center?: boolean;
-}) {
-  return (
-    <div className={`mb-8 flex items-start justify-between gap-6 ${center ? "flex-col items-center text-center" : ""}`}>
-      <div className={center ? "max-w-2xl" : ""}>
-        <h2 className={`text-3xl font-extrabold tracking-tight sm:text-[2.25rem] ${dark ? "text-white" : "text-gray-900"}`}>
-          {title}
-        </h2>
-        {subtitle && <p className={`mt-3 text-sm leading-relaxed ${dark ? "text-gray-300" : "text-gray-500"}`}>{subtitle}</p>}
+      {/* Background Image + 30% Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=1920&q=80"
+          alt="Greece"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
       </div>
-      {action && !center && (
-        <button
-          className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:brightness-95"
-          style={{ backgroundColor: YELLOW }}
-        >
-          {action}
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </button>
-      )}
-    </div>
+
+      <div className="relative z-10 mt-[104px] flex w-full max-w-[1440px] flex-col items-center px-[32px] text-center">
+        {/* Breadcrumb: 12px, Medium, 16px, -0.12px */}
+        <div className="mb-[12px] flex items-center justify-center rounded-full bg-[#FDDB32] px-[12px] py-[4px]">
+          <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
+            GREECE
+          </span>
+        </div>
+        
+        {/* Title: 72px, Medium, 100%, -3% */}
+        <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-none tracking-[-0.03em] text-[#FFFFFF] max-[768px]:text-[48px]">
+          Discover Greece
+        </h1>
+        
+        {/* Subtitle: 16px, Regular, 24px, 0px */}
+        <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[14px]">
+          Explore ancient ruins, pristine beaches, and world-class island hopping in one of Europe's most breathtaking destinations.
+        </p>
+      </div>
+    </section>
   );
 }
 
-function FieldDivider() {
-  return <div className="hidden h-10 w-px shrink-0 bg-gray-200 lg:block" />;
-}
+/* =====================================================================
+   INFO BAR SECTION
+===================================================================== */
 
-/* ------------------------------------------------------------------ */
-/*  Page                                                               */
-/* ------------------------------------------------------------------ */
-
-export default function Travel() {
-  const [openFaqs, setOpenFaqs] = useState<Set<number>>(new Set([0]));
-
-  const toggleFaq = (i: number) => {
-    setOpenFaqs((prev) => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
-    });
-  };
-
+function InfoBarSection() {
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 antialiased">
-      {/* ============================= HERO ============================= */}
-      <section
-        className="relative overflow-hidden bg-cover bg-center pb-16"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(10,8,6,0.35) 0%, rgba(8,10,10,0.65) 45%, rgba(3,6,7,0.92) 100%), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80')",
-        }}
-      >
-        {/* header */}
-        <div className="mx-auto max-w-7xl px-6 pt-6 lg:px-8">
-          <div className="flex items-center justify-between rounded-full px-6 py-3.5" style={{ backgroundColor: CREAM }}>
-            <Logo color="#111111" size="text-[1.6rem]" />
-            <nav className="hidden items-center gap-8 text-[15px] font-medium text-gray-800 md:flex">
-              {NAV_LINKS.map((link) => (
-                <a key={link} href="#" className="transition-colors hover:text-gray-950">
-                  {link}
-                </a>
-              ))}
-            </nav>
-            <button
-              className="flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:brightness-95"
-              style={{ backgroundColor: YELLOW }}
-            >
-              Search Deals
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        </div>
-
-        {/* heading */}
-        <div className="mx-auto max-w-7xl px-6 pt-16 lg:px-8">
-          <h1 className="max-w-2xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-[3.4rem]">
-            Compare Cheap Flights from Hundreds of Airlines
-          </h1>
-          <p className="mt-5 max-w-lg text-sm leading-relaxed text-gray-200">
-            Compare live flight prices from airlines and trusted travel partners to find the best fare before you
-            book.
-          </p>
-        </div>
-
-        {/* search widget */}
-        <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-t-2xl px-6 py-3 text-sm font-semibold text-gray-900" style={{ backgroundColor: CREAM }}>
-            <PlaneTakeoff className="h-4 w-4" />
-            Flights
-          </div>
-
-          <div className="rounded-b-[24px] rounded-tr-[24px] bg-white p-6 shadow-xl sm:p-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-4">
-              {/* Departure */}
-              <div className="flex-1">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <PlaneTakeoff className="h-3.5 w-3.5" /> Departure
-                </label>
-                <p className="mt-1.5 text-base font-bold text-gray-900">Dublin (DUB)</p>
-                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400">
-                  <button className="underline decoration-dotted hover:text-gray-600">Add Nearby Airports</button>
-                  <label className="flex items-center gap-1.5">
-                    <input type="checkbox" className="h-3.5 w-3.5 rounded border-gray-300" />
-                    Direct Flights
-                  </label>
-                </div>
-              </div>
-
-              <FieldDivider />
-
-              {/* To */}
-              <div className="flex-1">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <PlaneLanding className="h-3.5 w-3.5" /> To
-                </label>
-                <p className="mt-1.5 text-base font-bold text-gray-400">Country, City or airport</p>
-                <button className="mt-1 text-xs text-gray-400 underline decoration-dotted hover:text-gray-600">
-                  Add Nearby Airports
-                </button>
-              </div>
-
-              <FieldDivider />
-
-              {/* Depart */}
-              <div className="flex-1">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <CalendarIcon className="h-3.5 w-3.5" /> Depart
-                </label>
-                <p className="mt-1.5 text-base font-bold text-gray-900">08 Nov 2025</p>
-              </div>
-
-              <FieldDivider />
-
-              {/* Return */}
-              <div className="flex-1">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <CalendarIcon className="h-3.5 w-3.5" /> Return
-                </label>
-                <p className="mt-1.5 text-base font-bold text-gray-900">08 Jan 2026</p>
-              </div>
-
-              <FieldDivider />
-
-              {/* Travellers */}
-              <div className="flex-1">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <UsersIcon className="h-3.5 w-3.5" /> Travellers and Cabin Class
-                </label>
-                <p className="mt-1.5 flex items-center gap-1 text-base font-bold text-gray-900">
-                  01 Adult, 01 Child <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
-                </p>
-              </div>
-
-              {/* Search button */}
-              <button
-                className="flex h-14 w-14 shrink-0 items-center justify-center self-center rounded-full text-gray-900 shadow-sm transition-transform hover:scale-105 lg:self-auto"
-                style={{ backgroundColor: YELLOW }}
-                aria-label="Search flights"
-              >
-                <SearchIcon className="h-5 w-5" />
-              </button>
+    <section className="w-full bg-[#F9FBF5]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-[24px] px-[20px] py-[40px] lg:px-[80px]">
+        {INFO_BAR_DATA.map((info, i) => (
+          <div key={i} className="flex items-center gap-[12px]">
+            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FFFFFF] shadow-sm">
+              <info.icon size={18} className="text-[#000000]" />
+            </div>
+            <div className="flex flex-col gap-[2px]">
+              {/* Label: 12px, Medium, 16px, -0.12px */}
+              <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
+                {info.label}
+              </span>
+              {/* Value: 14px, Medium, 20px, -0.28px */}
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                {info.value}
+              </span>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-      <main className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* ===================== CHEAP FLIGHTS FROM DUBLIN ===================== */}
-        <section className="py-16">
-          <SectionHeading
-            title={
-              <>
-                Cheap Flights from <span style={{ color: GOLD_TEXT }}>Dublin</span>
-              </>
-            }
-            action="View All Routes"
-          />
-          <p className="-mt-6 mb-8 max-w-3xl text-sm leading-relaxed text-gray-500">
-            Looking for cheap flights from Dublin? Compare today&apos;s lowest fares from Dublin Airport to popular
-            destinations across Europe, North America and beyond. Prices update regularly so you can find the best
-            available deals before you book.
-          </p>
+/* =====================================================================
+   ABOUT SECTION
+===================================================================== */
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {FLIGHT_ROUTES.map((f, i) => {
-              const featured = i === 0;
-              return (
-                <div key={i} className="rounded-2xl p-6" style={{ backgroundColor: CREAM }}>
-                  <div className="flex items-center gap-2 text-sm font-bold text-gray-900">
-                    <span className="text-base leading-none">{f.flag}</span>
-                    <span>{f.route}</span>
-                  </div>
-                  <p className="mt-5 text-2xl font-extrabold" style={{ color: GOLD_TEXT }}>
-                    From €24
-                  </p>
-                  <p className="mt-2 text-xs text-gray-500">Direct • {f.duration}</p>
-                  <p className="mt-0.5 text-xs text-gray-500">{f.airline}</p>
-                  <button
-                    className={`mt-5 w-full rounded-full py-2.5 text-xs font-semibold transition-colors ${
-                      featured ? "text-gray-900" : "border border-gray-300 bg-white text-gray-800 hover:border-gray-400"
-                    }`}
-                    style={featured ? { backgroundColor: YELLOW } : undefined}
-                  >
-                    Compare Prices
-                  </button>
+function AboutSection() {
+  return (
+    <section className="w-full bg-[#FFFFFF] py-[80px] lg:py-[120px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[20px] lg:px-[160px]">
+        
+        <div className="flex flex-col gap-[64px] lg:flex-row lg:items-start lg:gap-[80px]">
+          {/* Left Col */}
+          <div className="flex flex-1 flex-col gap-[24px]">
+            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
+              About Greece
+            </h2>
+            <div className="flex flex-col gap-[16px]">
+              <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+                Greece is a country in southeastern Europe with thousands of islands throughout the Aegean and Ionian seas. Influential in ancient times, it's often called the cradle of Western civilization.
+              </p>
+              <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+                Athens, its capital, retains landmarks including the 5th-century B.C. Acropolis citadel with the Parthenon temple. Beaches, black sands, and party resorts like Mykonos make it a premier destination.
+              </p>
+            </div>
+            <div className="mt-[16px] flex flex-wrap gap-[12px]">
+              {["Ancient History", "Island Hopping", "Mediterranean Cuisine"].map(feat => (
+                <div key={feat} className="flex items-center gap-[8px] rounded-full border border-[#E5E7EB] bg-[#F9FBF5] px-[16px] py-[8px]">
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                    ✓ {feat}
+                  </span>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-        </section>
 
-        {/* ===================== WHY COMPARE FLIGHTS ===================== */}
-        <section className="py-16">
-          <p className="text-center text-xs font-bold uppercase tracking-wider" style={{ color: GOLD_TEXT }}>
-            Easy process
-          </p>
-          <SectionHeading
-            title="Why Compare Flights with TravelMommy?"
-            subtitle="Search and compare cheap flights from multiple airlines and trusted booking partners to find the best fare for your trip."
-            center
-          />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="rounded-2xl p-7" style={{ backgroundColor: CREAM }}>
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-full text-gray-900"
-                  style={{ backgroundColor: PALE_YELLOW }}
-                >
-                  <FeatureIcon type={f.icon} className="h-5 w-5" />
-                </div>
-                <p className="mt-5 text-base font-bold text-gray-900">{f.title}</p>
-                <p className="mt-2 text-sm leading-relaxed text-gray-500">{f.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      {/* ===================== POPULAR AIRLINES (dark) ===================== */}
-      <section className="bg-black py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            title="Compare Flights from Popular Airlines."
-            subtitle="Search and compare fares from leading airlines around the world. Discover competitive prices, flexible travel options and routes from trusted carriers."
-            action="View All Routes"
-            dark
-          />
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {AIRLINES.map((name) => (
-              <div
-                key={name}
-                className="flex h-24 items-center justify-center rounded-2xl px-4 text-center text-sm font-bold text-gray-900"
-                style={{ backgroundColor: CREAM }}
-              >
-                {name}
-              </div>
-            ))}
+          {/* Right Col */}
+          <div className="relative h-[300px] w-full flex-1 overflow-hidden rounded-[24px] lg:h-[400px]">
+            <Image 
+              src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&w=800&q=80" 
+              alt="Greece Coastline" 
+              fill 
+              className="object-cover"
+            />
           </div>
         </div>
-      </section>
 
-      <main className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* ===================== FAQ ===================== */}
-        <section className="py-16">
-          <h2 className="mb-10 text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-[2.25rem]">
-            Frequently Asked Questions
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   DESTINATIONS SECTION & NEARBY COUNTRIES
+===================================================================== */
+
+function DestinationCard({ item }: { item: any }) {
+  return (
+    <div className="flex h-[524px] w-full flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0,0,0,0.06),0_18px_40px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1">
+      {/* Image Container (282x220 scaled to flex width) */}
+      <div className="relative h-[220px] w-full shrink-0 overflow-hidden bg-neutral-100">
+        <Image src={item.image} alt={item.city || item.name} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+        
+        {item.badge && (
+          <div className={`absolute left-[16px] top-[16px] rounded-full px-[12px] py-[4px] font-sans text-[12px] font-medium leading-[16px] tracking-[0px] ${item.badgeStyles}`}>
+            {item.badge}
+          </div>
+        )}
+      </div>
+
+      {/* Content Area */}
+      <div className="flex flex-1 flex-col gap-[16px] p-[24px]">
+        <div className="flex flex-col gap-[4px]">
+          <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+            {item.city || item.name}
+          </h3>
+          <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000] line-clamp-2">
+            {item.desc}
+          </p>
+        </div>
+
+        {(item.flightsFrom || item.hotelsFrom) && (
+          <div className="flex flex-col gap-[8px] rounded-[12px] bg-[#F9FBF5] p-[12px]">
+            {item.flightsFrom && (
+              <div className="flex items-center gap-[8px]">
+                <Plane size={14} className="text-[#000000]" />
+                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
+                  Flights from {item.flightsFrom}
+                </span>
+              </div>
+            )}
+            {item.hotelsFrom && (
+              <div className="flex items-center gap-[8px]">
+                <Building2 size={14} className="text-[#000000]" />
+                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
+                  Hotels from {item.hotelsFrom} / night
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="mt-auto">
+          <button className="flex h-[44px] w-full items-center justify-center rounded-[12px] bg-[#000000] font-sans text-[14px] font-medium leading-[20px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DestinationsSection() {
+  return (
+    <section className="w-full bg-[#000000] py-[80px] lg:py-[96px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+        
+        <div className="mb-[56px] flex flex-col gap-[12px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
+            Explore Greece's Most Popular Destinations
           </h2>
-          <div className="mx-auto max-w-3xl divide-y divide-gray-100 border-t border-b border-gray-100">
-            {FAQS.map((f, i) => {
-              const open = openFaqs.has(i);
-              return (
-                <div key={i}>
-                  <button onClick={() => toggleFaq(i)} className="flex w-full items-center justify-between gap-4 py-5 text-left">
-                    <span className="text-sm font-bold text-gray-900 sm:text-base">{f.q}</span>
-                    <PlusMinus open={open} className="h-4 w-4 shrink-0 text-gray-500" />
-                  </button>
-                  {open && <p className="pb-5 text-sm leading-relaxed text-gray-500">{f.a}</p>}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      </main>
-
-      {/* ===================== NEWSLETTER CTA ===================== */}
-      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
-        <div className="rounded-[28px] px-8 py-14 text-center" style={{ backgroundColor: YELLOW }}>
-          <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-gray-900">
-            Let&apos;s go on a trip!
-          </span>
-          <h2 className="mt-4 text-3xl font-extrabold text-gray-900 sm:text-[2.25rem]">Never Miss a Great Travel Deal</h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-gray-800">
-            Get cheap flight alerts, hotel deals and travel inspiration delivered to your inbox.
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
+            Discover top-rated cities and islands for your Mediterranean adventure.
           </p>
-          <form className="mx-auto mt-6 flex max-w-md items-center gap-2 rounded-full bg-white p-1.5 shadow-sm">
+        </div>
+
+        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+          {DESTINATIONS.map((dest, i) => (
+            <DestinationCard key={i} item={dest} />
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   POPULAR FLIGHTS SECTION
+===================================================================== */
+
+function PopularFlightsSection() {
+  return (
+    <section className="w-full bg-[#FFFFFF] py-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+        
+        <div className="mb-[48px] flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
+            Popular Flights to <span className="text-[#FDDB32]">Greece</span>
+          </h2>
+          <button className="flex items-center gap-[6px] rounded-full bg-[#F9FBF5] px-[20px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors hover:bg-neutral-100">
+            Browse All Greece Routes <ArrowUpRight size={14} />
+          </button>
+        </div>
+
+        {/* Flight Cards Grid (Re-used structure) */}
+        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+          {POPULAR_FLIGHTS.map((flight, i) => (
+            <div
+              key={i}
+              className="flex h-[364px] flex-col overflow-hidden rounded-[24px] border border-[#E6E6E6] bg-[#FFFFFF] shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="relative h-[140px] w-full shrink-0 overflow-hidden bg-neutral-100">
+                <Image src={flight.image} alt={flight.city} fill className="object-cover" />
+                <div className="absolute left-[12px] top-[12px] flex items-center justify-center rounded-[20px] bg-[#FFFFFF] px-[10px] py-[6px]">
+                  <span className="text-[24px] leading-none">{flight.emoji}</span>
+                </div>
+              </div>
+
+              <div className="flex w-full flex-col gap-[12px] p-[20px]">
+                <div className="flex w-full flex-col gap-[4px]">
+                  <h3 className="font-sans text-[24px] font-medium leading-[24px] text-[#000000]">
+                    {flight.city}
+                  </h3>
+                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    {flight.route}
+                  </p>
+                </div>
+                <div className="flex h-[24px] w-full items-center justify-between">
+                  <p className="font-sans text-[24px] font-medium leading-[24px] text-[#212121]">
+                    {flight.price}
+                  </p>
+                  <div className="flex items-center gap-[4px] rounded-[6px] border border-[#E6E6E6] bg-[#F9FBF5] px-[8px] py-[4px]">
+                    <Plane size={16} className="text-[#00529C]" />
+                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
+                      {flight.airline}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex h-[20px] items-center gap-[6px]">
+                  <Clock size={14} className="text-[#7D7D7D]" />
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    {flight.duration}
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-auto px-[20px] pb-[20px] pt-0">
+                <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] bg-[#FDDB32] transition-colors hover:bg-[#e5c52c]">
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                    View Flights
+                  </span>
+                  <ArrowUpRight size={14} className="text-[#000000]" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   THINGS TO DO SECTION
+===================================================================== */
+
+function TopThingsToDoSection() {
+  return (
+    <section className="w-full bg-[#000000] py-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
+        
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
+          Top Things To Do
+        </h2>
+
+        <div className="grid w-full max-w-[1120px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+          {THINGS_TO_DO.map((item, i) => (
+            <div key={i} className="flex h-[292px] flex-col rounded-[24px] bg-[#FFFFFF] p-[6px] transition-transform duration-300 hover:-translate-y-1">
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[20px]">
+                <Image src={item.image} alt={item.title} fill className="object-cover" />
+              </div>
+              <div className="flex flex-col justify-between px-[12px] pb-[12px] pt-[12px]">
+                <h3 className="truncate font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                  {item.title}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    {item.duration}
+                  </span>
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                    {item.price}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   WHERE TO STAY SECTION (HOTELS)
+===================================================================== */
+
+function WhereToStaySection() {
+  return (
+    <section className="w-full bg-[#F9FBF5] py-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
+        
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
+          Where To Stay
+        </h2>
+
+        <div className="grid w-full max-w-[1120px] grid-cols-1 gap-[24px] md:grid-cols-3">
+          {HOTELS.map((hotel, i) => (
+            <div key={i} className="flex flex-col rounded-[32px] bg-[#FFFFFF] p-[6px] shadow-sm transition-transform duration-300 hover:-translate-y-1">
+              <div className="relative h-[300px] w-full shrink-0 overflow-hidden rounded-[26px]">
+                <Image src={hotel.image} alt={hotel.name} fill className="object-cover" />
+              </div>
+              <div className="flex flex-col gap-[16px] p-[20px]">
+                <div className="flex items-center gap-[4px]">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={14} className="fill-[#F59E0B] text-[#F59E0B]" strokeWidth={0} />
+                  ))}
+                  <span className="ml-[4px] font-sans text-[14px] font-medium text-[#F59E0B]">{hotel.rating}</span>
+                </div>
+                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                  {hotel.name}
+                </h3>
+                <div className="flex items-center justify-between">
+                  <span className="font-sans text-[16px] font-medium text-[#000000]">{hotel.price} <span className="text-[14px] font-normal text-[#7D7D7D]">/ night</span></span>
+                  <button className="rounded-full bg-[#000000] px-[16px] py-[8px] font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   NEARBY COUNTRIES SECTION
+===================================================================== */
+
+function NearbyCountriesSection() {
+  return (
+    <section className="w-full bg-[#000000] py-[80px] lg:py-[96px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+        
+        <div className="mb-[56px] flex flex-col gap-[12px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
+            Explore Nearby Countries
+          </h2>
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
+            Add more destinations to your itinerary with these fantastic nearby escapes.
+          </p>
+        </div>
+
+        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+          {NEARBY_COUNTRIES.map((dest, i) => (
+            <DestinationCard key={i} item={dest} />
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   TRAVEL HELP (FAQ) SECTION
+===================================================================== */
+
+function TravelHelpSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section className="w-full bg-[#F9F8F5] py-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[64px] px-[20px] lg:flex-row lg:items-start lg:px-[160px]">
+        
+        {/* Left Col */}
+        <div className="flex flex-1 flex-col gap-[12px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
+            Travel Help
+          </h2>
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+            Everything you need to know about visiting Greece.
+          </p>
+        </div>
+
+        {/* Right Col */}
+        <div className="flex w-full max-w-[800px] flex-col gap-[24px]">
+          {FAQS.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={i} className="flex flex-col gap-[12px] border-b border-[#E6E6E6] pb-[24px]">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between text-left"
+                >
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                    {faq.q}
+                  </span>
+                  <span className="flex shrink-0 text-[#000000]">
+                    {isOpen ? <ChevronDown size={20} className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`} /> : <ChevronDown size={20} />}
+                  </span>
+                </button>
+                {isOpen && (
+                  <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#7D7D7D]">
+                    {faq.a}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
+   NEWSLETTER SECTION
+===================================================================== */
+
+function NewsletterSection() {
+  return (
+    <section className="w-full bg-[#FFFFFF] py-[80px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[20px] lg:px-[160px]">
+        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] p-[40px] text-center lg:h-[328px] lg:p-[64px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
+            Get Greece Travel Deals
+          </h2>
+          <p className="mt-[16px] max-w-[600px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+            Sign up to our newsletter and be the first to know about cheap flights and hotel offers.
+          </p>
+
+          <form className="mt-[32px] flex w-full max-w-[500px] flex-col gap-[12px] sm:flex-row">
             <input
               type="email"
-              placeholder="Your Email Address"
-              className="w-full flex-1 bg-transparent px-4 py-2 text-sm text-gray-700 outline-none placeholder:text-gray-400"
+              placeholder="Email Address"
+              className="h-[56px] flex-1 rounded-full px-[24px] font-sans text-[16px] text-[#000000] focus:outline-none"
             />
-            <button type="submit" className="flex shrink-0 items-center gap-1.5 rounded-full bg-gray-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800">
-              Get Deals
-              <ArrowUpRight className="h-3.5 w-3.5" />
+            <button
+              type="submit"
+              className="flex h-[56px] shrink-0 items-center justify-center rounded-full bg-[#000000] px-[32px] font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#FFFFFF] transition-colors hover:bg-neutral-800"
+            >
+              Subscribe
             </button>
           </form>
-          <p className="mt-3 text-xs text-gray-700">No Spam, Unsubscribe Anytime</p>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
+/* =====================================================================
+   PAGE EXPORT
+===================================================================== */
+
+export default function DiscoverGreecePage() {
+  return (
+    <main className="flex min-h-screen w-full flex-col bg-[#FFFFFF]">
+      <HeroSection />
+      <InfoBarSection />
+      <AboutSection />
+      <DestinationsSection />
+      <PopularFlightsSection />
+      <TopThingsToDoSection />
+      <WhereToStaySection />
+      <NearbyCountriesSection />
+      <TravelHelpSection />
+      <NewsletterSection />
       <Footer />
-    </div>
+    </main>
   );
 }
