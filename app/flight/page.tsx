@@ -1,44 +1,77 @@
 'use client';
 
-import { useState, type ElementType } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Plane,
   Building2,
-  ArrowLeftRight,
   Calendar,
   Users,
   Search,
-  Clock,
+  ArrowLeftRight,
+  Check,
+  Star,
   ArrowUpRight,
+  Clock,
   CreditCard,
   UserCheck,
   RefreshCw,
-  MapPin,
   Minus,
   Plus,
   Mail,
-  Star,
-  Check,
 } from "lucide-react";
 
+// ============================================================================
+// IMPORTANT: Adjust these import paths to match your project's folder structure
+// ============================================================================
 import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
 
-// ============================================================================
-// STATIC DATA
-// ============================================================================
+/* ----------------------------------------------------------------
+   STATIC DATA
+---------------------------------------------------------------- */
+
+const desktopFields = [
+  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
+  { key: "to", icon: Plane, label: "To", value: "Country, City or air...", width: "w-[198px]" },
+  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
+  { key: "return", icon: Calendar, label: "Return", value: "08 Jan 2026", width: "w-[193px]" },
+  { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
+];
+
+const mobileFields = [
+  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)" },
+  { key: "to", icon: Plane, label: "To", value: "Country, City or Airport" },
+];
+
+const mobileSplitFields = [
+  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov" },
+  { key: "return", icon: Calendar, label: "Return", value: "08 Jan" },
+];
+
+const mobileTravellersField = { key: "travellers", icon: Users, label: "Travellers", value: "01 Adult, 01 Child" };
 
 const cheapFlights = [
-  { flag: "🇬🇧", city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/london-1.jpg", featured: true },
-  { flag: "🇬🇧", city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/london-2.jpg" },
-  { flag: "🇪🇸", city: "Barcelona", route: "Dub → BCN", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/barcelona.jpg" },
-  { flag: "🇵🇹", city: "Lisbon", route: "Dub → LIS", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/lisbon.jpg" },
-  { flag: "🇺🇸", city: "New York", route: "Dub → JFK", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/new-york.jpg" },
-  { flag: "🇮🇹", city: "Rome", route: "Dub → FCO", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/rome.jpg" },
-  { flag: "🇦🇪", city: "Dubai", route: "Dub → DXB", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/dubai.jpg" },
-  { flag: "🇳🇱", city: "Amsterdam", route: "Dub → AMS", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "/assets/destinations/amsterdam.jpg" },
+  { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg", featured: true },
+  { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "Direct • 1h 20m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg" },
+  { city: "Barcelona", route: "Dub → BCN", price: "€24", airline: "Ryanair", duration: "Direct • 2h 35m", image: "https://images.unsplash.com/photo-1578095172812-dcc191c5aed8?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/es.svg" },
+  { city: "Lisbon", route: "Dub → LIS", price: "€24", airline: "Ryanair", duration: "Direct • 2h 50m", image: "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/pt.svg" },
+  { city: "New York", route: "Dub → JFK", price: "€24", airline: "Aer Lingus", duration: "Direct • 7h 15m", image: "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/us.svg" },
+  { city: "Rome", route: "Dub → FCO", price: "€24", airline: "Ryanair", duration: "Direct • 3h 10m", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/it.svg" },
+  { city: "Dubai", route: "Dub → DXB", price: "€24", airline: "Emirates", duration: "Direct • 7h 45m", image: "https://images.unsplash.com/photo-1623725206109-3ef2c2eec00e?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/ae.svg" },
+  { city: "Amsterdam", route: "Dub → AMS", price: "€24", airline: "Ryanair", duration: "Direct • 1h 40m", image: "https://images.unsplash.com/photo-1580996378027-23040f16f157?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/nl.svg" },
+];
+
+const mobileFlights = [
+  { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "1h 20m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg" },
+  { city: "London", route: "Dub → LGW", price: "€24", airline: "Ryanair", duration: "1h 25m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg" },
+  { city: "Barcelona", route: "Dub → BCN", price: "€29", airline: "Ryanair", duration: "2h 35m", image: "https://images.unsplash.com/photo-1578095172812-dcc191c5aed8?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/es.svg" },
+  { city: "Lisbon", route: "Dub → LIS", price: "€31", airline: "Ryanair", duration: "2h 50m", image: "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/pt.svg" },
+  { city: "New York", route: "Dub → JFK", price: "€189", airline: "Aer Lingus", duration: "7h 15m", image: "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/us.svg" },
+  { city: "Rome", route: "Dub → FCO", price: "€34", airline: "Ryanair", duration: "3h 10m", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/it.svg" },
+  { city: "Dubai", route: "Dub → DXB", price: "€245", airline: "Emirates", duration: "7h 45m", image: "https://images.unsplash.com/photo-1623725206109-3ef2c2eec00e?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/ae.svg" },
+  { city: "Amsterdam", route: "Dub → AMS", price: "€28", airline: "Ryanair", duration: "1h 40m", image: "https://images.unsplash.com/photo-1580996378027-23040f16f157?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/nl.svg" },
 ];
 
 const whyCompareFeatures = [
@@ -60,8 +93,16 @@ const whyCompareFeatures = [
 ];
 
 const popularAirlines = [
-  "Emirates", "American Airlines", "Ryanair", "Qatar Airways", "British Airways",
-  "Etihad", "KLM", "Lufthansa", "Turkish Airlines", "easyJet",
+  { name: "Emirates", logo: "/assets/airlines/emirates.svg" },
+  { name: "American Airlines", logo: "/assets/airlines/american-airlines.svg" },
+  { name: "RYANAIR", logo: "/assets/airlines/ryanair.svg" },
+  { name: "QATAR AIRWAYS", logo: "/assets/airlines/qatar-airways.svg" },
+  { name: "BRITISH AIRWAYS", logo: "/assets/airlines/british-airways.svg" },
+  { name: "ETIHAD", logo: "/assets/airlines/etihad.svg" },
+  { name: "KLM", logo: "/assets/airlines/klm.svg" },
+  { name: "Lufthansa", logo: "/assets/airlines/lufthansa.svg" },
+  { name: "TURKISH AIRLINES", logo: "/assets/airlines/turkish-airlines.svg" },
+  { name: "easyJet", logo: "/assets/airlines/easyjet.svg" },
 ];
 
 const popularAirports = [
@@ -108,229 +149,122 @@ const faqs = [
   },
 ];
 
-// ============================================================================
-// PAGE
-// ============================================================================
+/* ----------------------------------------------------------------
+   MAIN PAGE COMPONENT
+---------------------------------------------------------------- */
 
-export default function FlightsPage() {
+export default function FlightPage() {
   return (
     <main className="bg-[#f9fbf5]">
-      {/* Global Header */}
       <Header />
-      
-      {/* Hero Sections (Mobile + Desktop handled internally) */}
-      <HeroMobile />
-      <HeroDesktop />
-
-      {/* Content Sections */}
+      <Hero />
       <CheapFlightsFromDublinSection />
       <WhyCompareFlightsSection />
       <PopularAirlinesSection />
-      <PopularAirportsSection />
       <FaqSection />
       <NewsletterSection />
-      
-      {/* Global Footer */}
       <Footer />
     </main>
   );
 }
 
-// ============================================================================
-// HERO DESKTOP
-// ============================================================================
+/* ----------------------------------------------------------------
+   HERO SECTIONS
+---------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------
+   HERO SECTIONS
+---------------------------------------------------------------- */
 
 function HeroDesktop() {
   return (
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
-      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20" />
+       <Image
+  src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
+  alt="Hero background"
+  fill
+  className="object-cover"
+  priority
+/>
+        {/* Exact 27% Black overlay from color spec */}
+        <div className="absolute inset-0 bg-[#000000]/[0.27]" />
       </div>
 
-      {/* Hero Content */}
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
-        {/* Main Heading - Display XXL/XL */}
-        <h1 className="font-sans text-[72px] font-medium leading-none text-black xl:text-[110px] xl:leading-[0.89]">
-          <span className="block">Compare Flights &amp;</span>
-          <span className="block">Travel Deals</span>
+        
+        {/* Display XXL/XL */}
+        <h1 className="font-sans text-[72px] font-medium leading-none text-white xl:text-[110px] xl:leading-[0.89]">
+          <span className="block">Compare Cheap Flights</span>
+          <span className="block">from Hundreds of Airlines</span>
         </h1>
 
-        {/* Two-Column Layout */}
         <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-          {/* Left Column */}
-          <div className="flex max-w-[330px] flex-col items-start gap-[18px]">
-            {/* Body M: 14px, Regular, 143% */}
-            <p className="font-sans text-[14px] font-normal leading-[1.43] text-black">
-              Compare flight prices from airlines and trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
+          <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
+            {/* Body M */}
+            <p className="font-sans text-[14px] font-normal leading-[1.43] text-white">
+              Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
             </p>
-            {/* Title S: 14px, Medium, 143% */}
-            <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
-              Compare Flights
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </div>
-
-          {/* Right Column */}
-          <div className="flex flex-col items-start gap-[18px] lg:items-end">
-            <div className="flex items-end gap-[14px]">
-              <div className="flex shrink-0 items-center">
-                {[11, 12, 13, 14].map((imgId, index) => (
-                  <div
-                    key={imgId}
-                    className={`flex size-[36px] items-center justify-center rounded-full bg-white p-[2px] ${index > 0 ? '-ml-4' : ''}`}
-                    style={{ zIndex: 40 - index * 10 }}
-                  >
-                    <img
-                      src={`https://i.pravatar.cc/100?img=${imgId}`}
-                      alt={`Reviewer ${index + 1}`}
-                      className="size-[32px] shrink-0 rounded-full object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col justify-center text-left">
-                <div className="flex items-center gap-[8px]">
-                  <div className="flex gap-px text-[#fddb32]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={11} fill="currentColor" stroke="none" />
-                    ))}
-                  </div>
-                  <div className="flex items-baseline gap-[4px]">
-                    {/* Title M: 16px, Medium, 150% */}
-                    <span className="font-sans text-[16px] font-medium leading-[1.5] text-black">4.9</span>
-                    {/* Body M: 14px, Regular, 143% */}
-                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-black">/ 5</span>
-                  </div>
-                </div>
-                {/* Body M: 14px, Regular, 143% */}
-                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-normal leading-[1.43] text-black">
-                  Compare live prices from trusted airlines and travel websites.
-                </p>
-              </div>
-            </div>
-
-            {/* "from 500+ Airlines & Sites" Heading - Display XXL/XL */}
-            <h2 className="font-sans text-[72px] font-medium leading-none text-black lg:text-right xl:text-[110px] xl:leading-[0.89]">
-              <span className="block">from 500+</span>
-              <span className="block">Airlines &amp; Sites</span>
-            </h2>
           </div>
         </div>
 
-        {/* Search Widget */}
         <div className="mt-[64px] w-full">
           <SearchWidget />
         </div>
+        
       </div>
     </section>
   );
 }
-
-// ============================================================================
-// HERO MOBILE
-// ============================================================================
 
 function HeroMobile() {
   return (
     <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[88px] lg:hidden">
-      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80"
+          src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&w=900&q=80"
           alt="Hero background"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/10" />
+        {/* Exact 27% Black overlay from color spec */}
+        <div className="absolute inset-0 bg-[#000000]/[0.27]" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col px-[20px]">
-        {/* Heading - Display L: 48px, Medium, 100% */}
-        <h1 className="w-[352px] max-w-full font-sans text-[48px] font-medium leading-none text-white">
+        {/* Display L */}
+        <h1 className="w-full max-w-full font-sans text-[48px] font-medium leading-none text-white">
           <span className="block">Compare Cheap</span>
-          <span className="block">Flights from 500+</span>
-          <span className="block">Airlines &amp; Sites</span>
+          <span className="block">Flights from Hundreds</span>
+          <span className="block">of Airlines</span>
         </h1>
 
-        {/* Paragraph - Body M: 14px, Regular, 143% */}
+        {/* Body M */}
         <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.43] text-white/90">
-          Unrivaled expertise for unique travel experiences. We're here to take you to your dream travels!
+          Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
         </p>
 
-        {/* Button - Title S: 14px, Medium, 143% */}
-        <button className="group mt-[20px] flex h-[44px] w-fit items-center gap-[8px] rounded-full bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-sm transition-transform active:scale-[0.98]">
-          Discover now
-          <ArrowUpRight size={14} className="transition-transform group-active:translate-x-0.5 group-active:-translate-y-0.5" />
-        </button>
-
-        {/* Search Widget */}
         <div className="mt-[32px]">
           <SearchWidget />
-        </div>
-
-        {/* Trust row */}
-        <div className="mt-[16px] flex items-center justify-center gap-[12px]">
-          <div className="flex shrink-0 items-center">
-            {[11, 12, 13, 14].map((imgId, index) => (
-              <div
-                key={imgId}
-                className={`flex size-[28px] items-center justify-center rounded-full bg-white p-[2px] ${index > 0 ? "-ml-3" : ""}`}
-                style={{ zIndex: 40 - index * 10 }}
-              >
-                <img
-                  src={`https://i.pravatar.cc/100?img=${imgId}`}
-                  alt={`Reviewer ${index + 1}`}
-                  className="size-[24px] shrink-0 rounded-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center gap-[6px]">
-              <div className="flex gap-px text-[#fddb32]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={10} fill="currentColor" stroke="none" />
-                ))}
-              </div>
-              {/* Title S: 14px, Medium, 143% */}
-              <span className="font-sans text-[14px] font-medium leading-[1.43] text-white">
-                4.9 <span className="font-normal text-white/80">/ 5</span>
-              </span>
-            </div>
-            {/* Title XS: 12px, Medium, 133% */}
-            <p className="mt-[2px] font-sans text-[12px] font-medium leading-[1.33] text-white/90">
-              Trusted by 300+ travelers
-            </p>
-          </div>
         </div>
       </div>
     </section>
   );
 }
 
-// ============================================================================
-// SEARCH WIDGET DESKTOP
-// ============================================================================
+function Hero() {
+  return (
+    <>
+      <HeroMobile />
+      <HeroDesktop />
+    </>
+  );
+}
 
-const desktopFields = [
-  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
-  { key: "to", icon: Plane, label: "To", value: "Country, City or air...", width: "w-[198px]" },
-  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
-  { key: "return", icon: Calendar, label: "Return", value: "08 Jan 2026", width: "w-[193px]" },
-  { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
-];
+/* ----------------------------------------------------------------
+   SEARCH WIDGET SECTIONS
+---------------------------------------------------------------- */
 
 function DesktopCheckbox({ checked, onChange, label }: any) {
   return (
@@ -343,7 +277,7 @@ function DesktopCheckbox({ checked, onChange, label }: any) {
         {checked && <Check size={11} strokeWidth={3} className="text-black" />}
       </span>
       <input type="checkbox" checked={checked} onChange={onChange} className="hidden" />
-      {/* Title S: 14px, Medium, 143% */}
+      {/* Title S */}
       <span className="whitespace-nowrap font-sans text-[14px] font-medium leading-[1.43] text-black">
         {label}
       </span>
@@ -360,7 +294,7 @@ function SearchWidgetDesktop() {
   return (
     <div className="relative w-fit rounded-b-[28px] rounded-tr-[28px] bg-white/90 pb-[24px] pt-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm">
       <div className="absolute bottom-full left-0 flex h-[52px] items-end gap-[3px]">
-        {/* Title S: 14px, Medium, 143% */}
+        {/* Title S */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
@@ -373,6 +307,7 @@ function SearchWidgetDesktop() {
           <Plane size={18} />
           Flights
         </button>
+        {/* Title S */}
         <button
           onClick={() => setActiveTab("hotels")}
           aria-pressed={activeTab === "hotels"}
@@ -398,7 +333,7 @@ function SearchWidgetDesktop() {
                 <field.icon size={16} className="text-black" />
               </div>
               <div className="flex flex-col gap-[2px] font-sans">
-                {/* Title S: 14px, Medium, 143% */}
+                {/* Title S */}
                 <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-[#7d7d7d]">{field.label}</span>
                 <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-black">{field.value}</span>
               </div>
@@ -431,22 +366,6 @@ function SearchWidgetDesktop() {
   );
 }
 
-// ============================================================================
-// SEARCH WIDGET MOBILE
-// ============================================================================
-
-const mobileFields = [
-  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)" },
-  { key: "to", icon: Plane, label: "To", value: "Country, City or Airport" },
-];
-
-const mobileSplitFields = [
-  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov" },
-  { key: "return", icon: Calendar, label: "Return", value: "08 Jan" },
-];
-
-const mobileTravellersField = { key: "travellers", icon: Users, label: "Travellers", value: "01 Adult, 01 Child" };
-
 function MobileFieldBox({ icon: Icon, label, value, className = "" }: any) {
   return (
     <div className={`flex h-[64px] w-full items-center gap-[12px] rounded-[18px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[14px] pr-[14px] ${className}`}>
@@ -454,9 +373,9 @@ function MobileFieldBox({ icon: Icon, label, value, className = "" }: any) {
         <Icon size={14} className="text-black" />
       </div>
       <div className="flex min-w-0 flex-col font-sans">
-        {/* Title XS: 12px, Medium, 133% */}
+        {/* Title XS */}
         <span className="truncate text-[12px] font-medium leading-[1.33] text-[#7d7d7d]">{label}</span>
-        {/* Title S: 14px, Medium, 143% */}
+        {/* Title S */}
         <span className="truncate text-[14px] font-medium leading-[1.43] text-black">{value}</span>
       </div>
     </div>
@@ -469,7 +388,7 @@ function SearchWidgetMobile() {
   return (
     <div className="w-full rounded-[28px] bg-white p-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
       <div className="mb-[16px] flex items-center gap-[8px]">
-        {/* Title S: 14px, Medium, 143% */}
+        {/* Title S */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
@@ -504,7 +423,7 @@ function SearchWidgetMobile() {
         <MobileFieldBox icon={mobileTravellersField.icon} label={mobileTravellersField.label} value={mobileTravellersField.value} />
       </div>
 
-      {/* Title M: 16px, Medium, 150% */}
+      {/* Title M */}
       <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] font-sans text-[16px] font-medium leading-[1.5] text-black transition-transform active:scale-[0.98]">
         Search Flights
         <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
@@ -528,111 +447,214 @@ function SearchWidget() {
   );
 }
 
-// ============================================================================
-// CHEAP FLIGHTS SECTION
-// ============================================================================
+/* ----------------------------------------------------------------
+   CHEAP FLIGHTS FROM DUBLIN SECTION
+---------------------------------------------------------------- */
 
 function CheapFlightsFromDublinSection() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1280px] px-6 pb-24 pt-32 lg:px-10 lg:pt-40">
-        <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
-          <div>
-            {/* Display L: 48px, Medium, 100% */}
-            <h2 className="font-sans text-[36px] font-medium leading-none text-black lg:text-[48px]">
+    <section className="w-full bg-[#ffffff] py-[80px] text-[#000000]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-[32px] max-[430px]:px-4">
+
+        {/* ===================== DESKTOP VIEW ===================== */}
+        <div className="mb-[48px] hidden items-start justify-between gap-8 lg:flex">
+          <div className="flex max-w-[700px] flex-col gap-[10px]">
+            {/* Display L */}
+            <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
               Cheap Flights from <span className="text-[#FDDB32]">Dublin</span>
             </h2>
-            {/* Body L: 16px, Regular, 150% */}
-            <p className="mt-4 max-w-2xl font-sans text-[16px] font-normal leading-[1.5] text-black/50">
-              Looking for cheap flights from Dublin? Compare today&apos;s lowest
-              fares from Dublin Airport to popular destinations across
-              Europe, North America and beyond. Prices update regularly so
-              you can find the best available deals before you book.
+            {/* Body M */}
+            <p className="font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
+              Looking for cheap flights from Dublin? Compare today&apos;s lowest fares from Dublin Airport to
+              popular destinations across Europe, North America and beyond. Prices update regularly so you
+              can find the best available deals before you book.
             </p>
           </div>
 
-          {/* Title S: 14px, Medium, 143% */}
-          <Link
-            href="/flights/routes"
-            className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-5 py-3 font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-[#f5cf1a]"
-          >
+          {/* Title S */}
+          <Link href="/flights/routes" className="inline-flex h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] transition-colors hover:bg-[#e5c52c]">
             Browse All Flight Routes
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight size={16} strokeWidth={2.5} />
           </Link>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Flight Cards Grid — DESKTOP ONLY */}
+        <div className="hidden w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid lg:grid-cols-4">
           {cheapFlights.map((flight, i) => (
-            <div key={i} className="flex flex-col overflow-hidden rounded-[24px] border border-black/10">
-              <div className="relative h-[192px] w-full">
-                <Image src={flight.image} alt={flight.city} fill className="object-cover" />
-                <span className="absolute left-[16px] top-[16px] flex h-[24px] w-[34px] items-center justify-center rounded-[4px] bg-white text-[12px] shadow-sm">
-                  {flight.flag}
-                </span>
+            <div
+              key={i}
+              className="group flex flex-col overflow-hidden rounded-[24px] border border-neutral-200/60 bg-[#ffffff] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              {/* Image & Flag Badge */}
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-100">
+                <Image
+                  src={flight.image}
+                  alt={flight.city}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute left-[16px] top-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white p-[6px] shadow-md">
+                  <img src={flight.flag} alt={`${flight.city} flag`} className="h-full w-full rounded-full object-cover" />
+                </div>
               </div>
 
-              <div className="flex flex-1 flex-col gap-3 p-[20px]">
-                <div>
-                  {/* Title M: 16px, Medium, 150% */}
-                  <h3 className="font-sans text-[16px] font-medium leading-[1.5] text-black">{flight.city}</h3>
-                  {/* Title XS: 12px, Medium, 133% */}
-                  <p className="mt-1 font-sans text-[12px] font-medium leading-[1.33] text-black/40 uppercase tracking-wider">{flight.route}</p>
+              {/* Card Content */}
+              <div className="flex flex-1 flex-col p-[24px]">
+                {/* Title L */}
+                <h3 className="font-sans text-[24px] font-medium leading-none text-[#000000]">
+                  {flight.city}
+                </h3>
+                {/* Body M */}
+                <p className="mt-[4px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
+                  {flight.route}
+                </p>
+
+                {/* Price & Airline Row */}
+                <div className="mt-[16px] flex items-center justify-between">
+                  {/* Title L */}
+                  <p className="font-sans text-[24px] font-medium leading-none text-[#000000]">
+                    {flight.price}
+                  </p>
+                  <div className="flex items-center gap-[6px] rounded-full border border-neutral-200 px-[10px] py-[5px]">
+                    {/* Title XS */}
+                    <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">by</span>
+                    <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#00529C]">{flight.airline}</span>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-auto">
-                  {/* Title L: 24px, Medium, 100% */}
-                  <span className="font-sans text-[24px] font-medium leading-none text-black">{flight.price}</span>
-                  {/* Title XS: 12px, Medium, 133% */}
-                  <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#00529C]">
-                    by {flight.airline}
-                  </span>
+                {/* Duration Row — Body M */}
+                <div className="mt-[14px] mb-[20px] flex items-center gap-[6px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
+                  <Clock size={14} strokeWidth={2.5} />
+                  <span>{flight.duration}</span>
                 </div>
 
-                {/* Body M: 14px, Regular, 143% */}
-                <div className="flex items-center gap-[6px] font-sans text-[14px] font-normal leading-[1.43] text-[#777777] my-[10px]">
-                  <Clock className="h-[14px] w-[14px]" />
-                  {flight.duration}
+                {/* Card Button — Title S */}
+                <div className="mt-auto">
+                  <Link
+                    href="/flights/search"
+                    className={`flex h-[48px] w-full items-center justify-center gap-2 rounded-[16px] border font-sans text-[14px] font-medium leading-[1.43] transition-colors duration-200
+                      ${flight.featured
+                        ? 'border-[#FDDB32] bg-[#FDDB32] text-[#000000] hover:bg-[#f5cf1a]'
+                        : 'border-neutral-200 bg-white text-[#000000] hover:border-[#FDDB32] hover:bg-[#FDDB32]'
+                      }`
+                    }
+                  >
+                    View Flights
+                    <ArrowUpRight size={16} strokeWidth={2.5} />
+                  </Link>
                 </div>
-
-                {/* Title S: 14px, Medium, 143% */}
-                <Link
-                  href="/flights/search"
-                  className={`mt-1 flex h-[44px] items-center justify-center gap-2 rounded-[14px] px-4 font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
-                    flight.featured
-                      ? "bg-[#FDDB32] text-black hover:bg-[#f5cf1a]"
-                      : "border border-black/10 text-black hover:bg-[#FDDB32] hover:border-[#FDDB32]"
-                  }`}
-                >
-                  View Flights
-                  <ArrowUpRight className="h-[16px] w-[16px]" />
-                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ===================== MOBILE VIEW ===================== */}
+        <div className="flex w-full flex-col gap-[32px] py-[10px] px-[16px] lg:hidden">
+          {/* Mobile Header */}
+          <div className="flex flex-col gap-[8px]">
+            {/* Display L */}
+            <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
+              Cheap Flights from
+              <br />
+              <span className="text-[#FDDB32]">Dublin</span>
+            </h2>
+            {/* Body M */}
+            <p className="font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
+              Compare today&apos;s lowest fares from Dublin Airport to popular destinations across Europe, North
+              America, and beyond. Prices update regularly.
+            </p>
+          </div>
+
+          {/* Mobile Flight Cards Grid */}
+          <div className="grid w-full grid-cols-2 gap-x-[10px] gap-y-[16px]">
+            {mobileFlights.map((flight, i) => (
+              <div
+                key={i}
+                className="flex flex-col overflow-hidden rounded-[12px] border border-neutral-200/60 bg-[#ffffff] shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
+              >
+                {/* Image & Flag Badge */}
+                <div className="relative h-[110px] w-full shrink-0 overflow-hidden bg-neutral-100">
+                  <Image
+                    src={flight.image}
+                    alt={flight.city}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute left-[8px] top-[8px] flex h-[28px] w-[28px] items-center justify-center rounded-full bg-white p-[4px] shadow-sm">
+                    <img src={flight.flag} alt={`${flight.city} flag`} className="h-full w-full rounded-full object-cover" />
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="flex flex-1 flex-col p-[12px]">
+                  {/* Title S */}
+                  <h3 className="font-sans text-[14px] font-medium leading-[1.43] text-[#000000]">
+                    {flight.city}
+                  </h3>
+                  {/* Title XS */}
+                  <p className="mt-[2px] font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">
+                    {flight.route}
+                  </p>
+
+                  <div className="mt-[10px] flex items-center justify-between gap-[4px]">
+                    {/* Title M */}
+                    <p className="font-sans text-[16px] font-medium leading-[1.5] text-[#000000]">
+                      {flight.price}
+                    </p>
+                    <div className="flex items-center gap-[3px] rounded-full border border-neutral-200 px-[6px] py-[3px]">
+                      {/* Title XS */}
+                      <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">by</span>
+                      <span className="font-sans text-[12px] font-medium leading-[1.33] text-[#00529C]">{flight.airline}</span>
+                    </div>
+                  </div>
+
+                  {/* Title XS */}
+                  <div className="mt-[8px] mb-[10px] flex items-center gap-[4px] font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">
+                    <Clock size={11} strokeWidth={2.5} />
+                    <span>Direct &bull; {flight.duration}</span>
+                  </div>
+
+                  <div className="mt-auto">
+                    {/* Title XS */}
+                    <Link href="/flights/search" className="flex h-[34px] w-full items-center justify-center gap-1 rounded-[8px] border border-neutral-200 bg-white font-sans text-[12px] font-medium leading-[1.33] text-[#000000] hover:bg-neutral-50 transition-colors">
+                      View Flights
+                      <ArrowUpRight size={12} strokeWidth={2.5} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile CTA Button — Title S */}
+          <Link href="/flights/routes" className="flex h-[56px] w-full items-center justify-center gap-2 rounded-full bg-[#FDDB32] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] hover:bg-[#e5c52c] transition-colors">
+            Browse All Flight Routes
+            <ArrowUpRight size={18} strokeWidth={2.5} />
+          </Link>
         </div>
       </div>
     </section>
   );
 }
 
-// ============================================================================
-// WHY COMPARE SECTION
-// ============================================================================
+/* ----------------------------------------------------------------
+   WHY COMPARE SECTION
+---------------------------------------------------------------- */
 
 function WhyCompareFlightsSection() {
   return (
     <section className="bg-white">
       <div className="mx-auto w-full max-w-[1280px] px-6 pb-24 lg:px-10">
         <div className="mx-auto max-w-[800px] text-center">
-          {/* Title S: 14px, Medium, 143% */}
+          {/* Title S */}
           <span className="mx-auto w-fit rounded-full border border-black/10 bg-[#F9FBF5] px-4 py-2 font-sans text-[14px] font-medium leading-[1.43] text-black">
             Easy process
           </span>
-          {/* Display L: 48px, Medium, 100% */}
-          <h2 className="mt-[20px] font-sans text-[36px] font-medium leading-none text-black lg:text-[48px]">
+          {/* Display L */}
+          <h2 className="mt-[20px] font-sans text-[48px] font-medium leading-none text-black">
             Why Compare Flights with TravelMommy?
           </h2>
-          {/* Body L: 16px, Regular, 150% */}
+          {/* Body L */}
           <p className="mt-[16px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
             Search and compare cheap flights from multiple airlines and
             trusted booking partners to find the best fare for your trip.
@@ -648,9 +670,9 @@ function WhyCompareFlightsSection() {
               <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#FDDB32]">
                 <feature.icon className="h-[24px] w-[24px] text-black" />
               </span>
-              {/* Title L: 24px, Medium, 100% */}
+              {/* Title L */}
               <h3 className="mt-[20px] font-sans text-[24px] font-medium leading-none text-black">{feature.title}</h3>
-              {/* Body M: 14px, Regular, 143% */}
+              {/* Body M */}
               <p className="mt-[12px] font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
                 {feature.description}
               </p>
@@ -662,9 +684,9 @@ function WhyCompareFlightsSection() {
   );
 }
 
-// ============================================================================
-// POPULAR AIRLINES SECTION
-// ============================================================================
+/* ----------------------------------------------------------------
+   POPULAR AIRLINES SECTION
+---------------------------------------------------------------- */
 
 function PopularAirlinesSection() {
   return (
@@ -672,11 +694,11 @@ function PopularAirlinesSection() {
       <div className="mx-auto w-full max-w-[1280px] px-6 py-[80px] lg:px-10">
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
           <div>
-            {/* Display L: 48px, Medium, 100% */}
-            <h2 className="font-sans text-[32px] font-medium leading-none text-[#000000] lg:text-[48px]">
+            {/* Display L */}
+            <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
               Compare Flights from Popular Airlines.
             </h2>
-            {/* Body L: 16px, Regular, 150% */}
+            {/* Body L */}
             <p className="mt-[16px] max-w-2xl font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
               Search and compare fares from leading airlines around the
               world. Discover competitive prices, flexible travel options
@@ -684,73 +706,31 @@ function PopularAirlinesSection() {
             </p>
           </div>
 
-          {/* Title S: 14px, Medium, 143% */}
+          {/* Title S */}
           <Link
             href="/flights/airlines"
             className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-[#e5c52c]"
           >
-            View All Airlines
+            View All Routes
             <ArrowUpRight className="h-[16px] w-[16px]" />
           </Link>
         </div>
 
+        {/* Airline Logos Grid */}
         <div className="mt-[48px] grid grid-cols-2 gap-[16px] sm:grid-cols-3 lg:grid-cols-5">
           {popularAirlines.map((airline) => (
             <div
-              key={airline}
-              className="flex h-[80px] items-center justify-center rounded-[16px] bg-[#ffffff] px-4 transition-transform hover:-translate-y-1 hover:shadow-sm"
+              key={airline.name}
+              className="group flex h-[100px] w-full items-center justify-center rounded-[16px] bg-[#ffffff] px-[24px] py-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
             >
-              {/* Title M: 16px, Medium, 150% */}
-              <span className="text-center font-sans text-[16px] font-medium leading-[1.5] text-[#000000]">
-                {airline}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================================
-// POPULAR AIRPORTS SECTION
-// ============================================================================
-
-function PopularAirportsSection() {
-  return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1280px] px-6 py-[80px] lg:px-10">
-        <div className="mx-auto max-w-[800px] text-center">
-          {/* Display L: 48px, Medium, 100% */}
-          <h2 className="font-sans text-[32px] font-medium leading-none text-[#000000] lg:text-[48px]">
-            Popular Airports
-          </h2>
-          {/* Body L: 16px, Regular, 150% */}
-          <p className="mt-[16px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
-            Search and compare flights from major airports around the
-            world. Discover convenient departure points, route options and
-            travel times before you book.
-          </p>
-        </div>
-
-        <div className="mt-[48px] grid grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-3">
-          {popularAirports.map((airport) => (
-            <div
-              key={airport.code}
-              className="group flex cursor-pointer items-center justify-between gap-[16px] rounded-[20px] border border-neutral-200 bg-[#ffffff] p-[24px] transition-all hover:border-[#FDDB32] hover:shadow-md"
-            >
-              <div className="flex items-center gap-[16px]">
-                <span className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full bg-[#F5F5F5] transition-colors group-hover:bg-[#FDDB32]">
-                  <Plane className="h-[20px] w-[20px] text-[#000000]" />
-                </span>
-                <div className="flex flex-col">
-                  {/* Title L: 24px, Medium, 100% */}
-                  <p className="font-sans text-[20px] font-medium leading-none text-[#000000] lg:text-[24px]">{airport.name}</p>
-                  {/* Title XS: 12px, Medium, 133% */}
-                  <p className="mt-[6px] font-sans text-[12px] font-medium leading-[1.33] uppercase text-[#777777] tracking-wider">{airport.code}</p>
-                </div>
+              <div className="relative h-full w-full max-w-[140px]">
+                <Image
+                  src={airline.logo}
+                  alt={`${airline.name} logo`}
+                  fill
+                  className="object-contain opacity-90 transition-opacity group-hover:opacity-100"
+                />
               </div>
-              <ArrowUpRight className="h-[20px] w-[20px] text-[#777777] transition-colors group-hover:text-[#000000]" />
             </div>
           ))}
         </div>
@@ -759,44 +739,47 @@ function PopularAirportsSection() {
   );
 }
 
-// ============================================================================
-// FAQ SECTION
-// ============================================================================
+/* ----------------------------------------------------------------
+   POPULAR AIRPORTS SECTION
+---------------------------------------------------------------- *
+
+/* ----------------------------------------------------------------
+   FAQ SECTION
+---------------------------------------------------------------- */
 
 function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#F9FBF5]">
-      <div className="mx-auto w-full max-w-[800px] px-6 py-[80px] lg:px-10">
-        {/* Display L: 48px, Medium, 100% */}
-        <h2 className="text-center font-sans text-[32px] font-medium leading-none text-[#000000] lg:text-[48px]">
+     <section className="bg-white">
+      <div className="mx-auto w-full max-w-[820px] px-6 py-20 lg:px-10 lg:py-24">
+        {/* Display L */}
+        <h2 className="text-center font-sans text-[36px] font-medium leading-none text-[#000000] lg:text-[48px]">
           Frequently Asked Questions
         </h2>
 
-        <div className="mt-[48px] flex flex-col gap-[16px]">
+        <div className="mt-12 flex flex-col gap-8">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div 
-                key={faq.question} 
-                onClick={() => setOpenIndex(isOpen ? null : i)}
-                className="cursor-pointer rounded-[20px] border border-neutral-100 bg-[#ffffff] p-[24px] shadow-sm transition-all hover:border-[#FDDB32]"
-              >
-                <div className="flex items-center justify-between gap-[16px]">
-                  {/* Title M: 16px, Medium, 150% */}
-                  <span className="font-sans text-[16px] font-medium leading-[1.5] text-[#000000]">{faq.question}</span>
-                  <span className="flex h-[20px] w-[20px] shrink-0 items-center justify-center text-[#000000]">
-                    {isOpen ? <Minus className="h-[20px] w-[20px]" /> : <Plus className="h-[20px] w-[20px]" />}
+              <div key={faq.question}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between gap-6 text-left"
+                >
+                  {/* Title M */}
+                  <span className="font-sans text-[16px] font-semibold leading-[1.5] text-black">
+                    {faq.question}
                   </span>
-                </div>
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center text-black">
+                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                  </span>
+                </button>
                 {isOpen && (
-                  <div className="mt-[16px] border-t border-neutral-100 pt-[16px]">
-                    {/* Body M: 14px, Regular, 143% */}
-                    <p className="font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
-                      {faq.answer}
-                    </p>
-                  </div>
+                  <p className="mt-4 max-w-[680px] font-sans text-[14px] font-normal leading-[1.55] text-[#555555]">
+                    {faq.answer}
+                  </p>
                 )}
               </div>
             );
@@ -807,41 +790,56 @@ function FaqSection() {
   );
 }
 
-// ============================================================================
-// NEWSLETTER SECTION
-// ============================================================================
+/* ----------------------------------------------------------------
+   NEWSLETTER SECTION
+---------------------------------------------------------------- */
 
 function NewsletterSection() {
   return (
-    <section className="bg-[#000000] py-[80px] text-[#ffffff]">
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center px-6 text-center lg:px-10">
-        <div className="mb-[24px] flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#FDDB32]">
-          <Mail className="h-[32px] w-[32px] text-[#000000]" />
-        </div>
-        {/* Display L: 48px, Medium, 100% */}
-        <h2 className="mb-[16px] font-sans text-[32px] font-medium leading-none text-[#ffffff] lg:text-[48px]">
-          Never Miss a Great Travel Deal
-        </h2>
-        {/* Body L: 16px, Regular, 150% */}
-        <p className="mb-[40px] max-w-[600px] font-sans text-[16px] font-normal leading-[1.5] text-white/70">
-          Compare flights and hotels from trusted travel providers in one place. Sign up for our newsletter to receive the latest deals straight to your inbox.
-        </p>
+    <section className="bg-white">
+      <div className="mx-auto w-full max-w-[1216px] px-6 pb-24 lg:px-10">
+        <div className="flex flex-col items-center rounded-[32px] bg-[#FDDB32] px-6 py-16 text-center lg:py-20">
+          {/* Title S */}
+          <span className="w-fit rounded-full bg-white px-[16px] py-[8px] font-sans text-[14px] font-medium leading-[1.43] text-black">
+            Let's go on a trip!
+          </span>
+          
+          {/* Display L */}
+          <h2 className="mt-[20px] max-w-2xl font-sans text-[36px] font-medium leading-none text-black lg:text-[48px]">
+            Never Miss a Great Travel Deal
+          </h2>
+          
+          {/* Body L */}
+          <p className="mt-[16px] max-w-xl font-sans text-[16px] font-normal leading-[1.5] text-black/70">
+            Get cheap flight alerts, hotel deals and travel inspiration delivered to your inbox.
+          </p>
 
-        <form className="flex w-full max-w-[500px] flex-col gap-[12px] sm:flex-row">
-          <input
-            type="email"
-            placeholder="Enter your email address"
-            // Title S: 14px, Medium, 143%
-            className="h-[56px] flex-1 rounded-[16px] border border-white/20 bg-white/10 px-[24px] font-sans text-[14px] font-medium leading-[1.43] text-white placeholder-white/50 outline-none focus:border-[#FDDB32]"
-          />
-          {/* Title S: 14px, Medium, 143% */}
-          <button
-            type="submit"
-            className="flex h-[56px] shrink-0 items-center justify-center gap-2 rounded-[16px] bg-[#FDDB32] px-[32px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] transition-colors hover:bg-[#e5c52c]"
-          >
-            Subscribe
-          </button>
-        </form>
+          <form className="mt-[32px] flex w-full max-w-md flex-col gap-3 sm:flex-row">
+            <div className="flex flex-1 items-center gap-2 rounded-full bg-white px-[20px] py-[14px]">
+              {/* Body M */}
+              <input
+                type="email"
+                placeholder="Your Email Address"
+                className="w-full bg-transparent font-sans text-[14px] font-normal leading-[1.43] text-black placeholder:text-black/40 focus:outline-none"
+              />
+              <Mail className="h-[16px] w-[16px] shrink-0 text-black/30" />
+            </div>
+            
+            {/* Title S */}
+            <button
+              type="submit"
+              className="flex shrink-0 items-center justify-center gap-2 rounded-full bg-black px-[24px] py-[14px] font-sans text-[14px] font-medium leading-[1.43] text-white transition-colors hover:bg-black/80"
+            >
+              Get Deals
+              <ArrowUpRight className="h-[16px] w-[16px]" />
+            </button>
+          </form>
+          
+          {/* Body S / Custom */}
+          <p className="mt-[12px] font-sans text-[12px] font-normal leading-[1.33] text-black/50">
+            No Spam, Unsubscribe Anytime
+          </p>
+        </div>
       </div>
     </section>
   );
