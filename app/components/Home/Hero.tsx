@@ -33,20 +33,19 @@ function HeroDesktop() {
         </h1>
 
         {/* Two-Column Layout */}
-        <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+       <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
 
-          {/* Left Column (Paragraph & Button) */}
-          <div className="flex max-w-[330px] flex-col items-start gap-[18px]">
-            {/* Body M: 14px, Regular, 143% */}
-            <p className="font-sans text-[14px] font-normal leading-[1.43] text-black">
-              Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
-            </p>
-            {/* Title S: 14px, Medium, 143% */}
-            <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
-              Compare Flights
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </div>
+  {/* Left Column (Paragraph & Button) */}
+<div className="flex max-w-[330px] transform -translate-y-4 flex-col items-start gap-[10px]">
+  <p className="font-sans text-[14px] font-medium leading-[1.43] text-black">
+    Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
+  </p>
+  <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
+    Compare Flights
+    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+  </button>
+</div>
+
 
           {/* Right Column (Reviews & Huge Text) */}
           <div className="flex flex-col items-start gap-[18px] lg:items-end">
@@ -86,7 +85,7 @@ function HeroDesktop() {
                   </div>
                 </div>
                 {/* Body M: 14px, Regular, 143% */}
-                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-normal leading-[1.43] text-black">
+                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-medium leading-[1.43] text-black">
                   Compare live prices from trusted airlines and travel websites.
                 </p>
               </div>

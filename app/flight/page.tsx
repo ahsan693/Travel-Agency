@@ -179,41 +179,41 @@ export default function FlightPage() {
 function HeroDesktop() {
   return (
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
-      <div className="absolute inset-0 z-0">
-       <Image
-  src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
-  alt="Hero background"
-  fill
-  className="object-cover"
-  priority
-/>
-        {/* Exact 27% Black overlay from color spec */}
-        <div className="absolute inset-0 bg-[#000000]/[0.27]" />
+  <div className="absolute inset-0 z-0">
+    <Image
+      src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
+      alt="Hero background"
+      fill
+      className="object-cover"
+      priority
+    />
+    {/* Exact 27% Black overlay from color spec */}
+    <div className="absolute inset-0 bg-[#000000]/[0.27]" />
+  </div>
+
+  <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
+    
+    {/* Headline - Exact specs applied */}
+    <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-[570] leading-[98px] tracking-[-5px] text-white">
+      <span className="block">Compare Flights from</span>
+      <span className="block">500+ Airlines &amp; Travel Sites</span>
+    </h1>
+
+    <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+      <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
+        {/* Subheading / Description - Exact specs applied */}
+        <p className="font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-white">
+          Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
+        </p>
       </div>
+    </div>
 
-      <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
-        
-        {/* Display XXL/XL */}
-      <h1 className="w-full max-w-[1400px] font-sans text-[60px] font-medium leading-[0.89] text-white xl:text-[100px] xl:leading-[100px]">
-      <span className="block">Compare Cheap Flights</span>
-          <span className="block">from Hundreds of Airlines</span>
-        </h1>
-
-        <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-          <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
-            {/* Body M */}
-            <p className="font-sans text-[14px] font-normal leading-[1.43] text-white">
-              Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-[64px] w-full">
-          <SearchWidget />
-        </div>
-        
-      </div>
-    </section>
+    <div className="mt-[64px] w-full">
+      <SearchWidget />
+    </div>
+    
+  </div>
+</section>
   );
 }
 
