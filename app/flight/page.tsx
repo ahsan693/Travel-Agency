@@ -172,48 +172,44 @@ export default function FlightPage() {
    HERO SECTIONS
 ---------------------------------------------------------------- */
 
-/* ----------------------------------------------------------------
-   HERO SECTIONS
----------------------------------------------------------------- */
-
 function HeroDesktop() {
   return (
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
-  <div className="absolute inset-0 z-0">
-    <Image
-      src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
-      alt="Hero background"
-      fill
-      className="object-cover"
-      priority
-    />
-    {/* Exact 27% Black overlay from color spec */}
-    <div className="absolute inset-0 bg-[#000000]/[0.27]" />
-  </div>
-
-  <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
-    
-    {/* Headline - Exact specs applied */}
-    <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-[570] leading-[98px] tracking-[-5px] text-white">
-      <span className="block">Compare Flights from</span>
-      <span className="block">500+ Airlines &amp; Travel Sites</span>
-    </h1>
-
-    <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-      <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
-        {/* Subheading / Description - Exact specs applied */}
-        <p className="font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-white">
-          Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
-        </p>
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
+          alt="Hero background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Exact 27% Black overlay from color spec */}
+        <div className="absolute inset-0 bg-[#000000]/[0.27]" />
       </div>
-    </div>
 
-    <div className="mt-[64px] w-full">
-      <SearchWidget />
-    </div>
-    
-  </div>
-</section>
+      <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
+        
+        {/* Headline - Exact specs applied */}
+        <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-[570] leading-[98px] tracking-[-5px] text-white">
+          <span className="block">Compare Flights from</span>
+          <span className="block">500+ Airlines &amp; Travel Sites</span>
+        </h1>
+
+        <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+          <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
+            {/* Subheading / Description - Exact specs applied */}
+            <p className="font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-white">
+              Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-[64px] w-full">
+          <SearchWidget />
+        </div>
+        
+      </div>
+    </section>
   );
 }
 
@@ -690,49 +686,46 @@ function WhyCompareFlightsSection() {
 
 function PopularAirlinesSection() {
   return (
-    <section className="bg-[#F5F5F5]">
-      <div className="mx-auto w-full max-w-[1280px] px-6 py-[80px] lg:px-10">
-        <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
-          <div>
-            {/* Display L */}
-            <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
-              Compare Flights from Popular Airlines.
-            </h2>
-            {/* Body L */}
-            <p className="mt-[16px] max-w-2xl font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
-              Search and compare fares from leading airlines around the
-              world. Discover competitive prices, flexible travel options
-              and routes from trusted carriers.
+    <section className="w-full bg-[#000000] py-[80px] lg:px-[80px] lg:py-[160px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 lg:px-[32px]">
+        <div className="flex flex-col gap-[48px]">
+          
+          <div className="flex flex-col gap-[15px]">
+            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-[121px]">
+            <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-[570] leading-[48px] tracking-[-1px] text-[#FFFFFF] lg:max-w-[794px]">
+  Compare Flights from Popular Airlines.
+</h2>
+              <Link
+                href="/flights/airlines"
+                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-[570] leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors hover:bg-[#e5c52c]"
+              >
+                View All Airlines
+                <ArrowUpRight className="h-[16px] w-[16px] text-[#000000]" />
+              </Link>
+            </div>
+            <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#FFFFFF] lg:max-w-[800px]">
+              Search and compare fares from leading airlines around the world. Discover competitive prices, flexible travel options and routes from trusted carriers.
             </p>
           </div>
 
-          {/* Title S */}
-          <Link
-            href="/flights/airlines"
-            className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors hover:bg-[#e5c52c]"
-          >
-            View All Routes
-            <ArrowUpRight className="h-[16px] w-[16px]" />
-          </Link>
-        </div>
-
-        {/* Airline Logos Grid */}
-        <div className="mt-[48px] grid grid-cols-2 gap-[16px] sm:grid-cols-3 lg:grid-cols-5">
-          {popularAirlines.map((airline) => (
-            <div
-              key={airline.name}
-              className="group flex h-[100px] w-full items-center justify-center rounded-[16px] bg-[#ffffff] px-[24px] py-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
-            >
-              <div className="relative h-full w-full max-w-[140px]">
-                <Image
-                  src={airline.logo}
-                  alt={`${airline.name} logo`}
-                  fill
-                  className="object-contain opacity-90 transition-opacity group-hover:opacity-100"
-                />
+          <div className="grid grid-cols-2 gap-[6.39px] sm:grid-cols-3 lg:grid-cols-5">
+            {popularAirlines.map((airline) => (
+              <div
+                key={airline.name}
+                className="group flex h-[151.80px] w-full flex-col items-center justify-center rounded-[16px] border border-[#E6E6E6] bg-[#F9FBF5] p-[4.79px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md lg:w-[238.09px]"
+              >
+                <div className="relative flex h-full w-full max-w-[140px] items-center justify-center">
+                  <Image
+                    src={airline.logo}
+                    alt={`${airline.name} logo`}
+                    fill
+                    className="object-contain opacity-90 transition-opacity group-hover:opacity-100"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
@@ -741,7 +734,7 @@ function PopularAirlinesSection() {
 
 /* ----------------------------------------------------------------
    POPULAR AIRPORTS SECTION
----------------------------------------------------------------- *
+---------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------
    FAQ SECTION
