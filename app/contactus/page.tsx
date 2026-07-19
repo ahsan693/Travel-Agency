@@ -122,16 +122,16 @@ export default function ContactUs() {
 
 function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] px-[16px] pb-[100px] pt-[24px] md:px-[112px]">
+    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] px-[16px] pb-[64px] pt-[20px] md:pb-[100px] md:pt-[24px] md:px-[112px]">
       <div className="w-full max-w-[1440px]">
         <Header />
       </div>
 
-      <div className="mt-[64px] flex max-w-[800px] flex-col items-center text-center md:mt-[100px]">
-        <h1 className="font-sans text-[42px] font-medium leading-none tracking-[-1.5px] text-[#000000] md:text-[64px] md:tracking-[-0.03em]">
+      <div className="mt-[48px] flex max-w-[320px] flex-col items-center text-center md:mt-[100px] md:max-w-[800px]">
+        <h1 className="font-sans text-[38px] font-medium leading-[1.05] tracking-[-1px] text-[#000000] md:text-[64px] md:leading-none md:tracking-[-0.03em]">
           Contact TravelMommy
         </h1>
-        <p className="mt-[24px] max-w-[650px] font-sans text-[15px] font-normal leading-[1.6] text-[#000000] opacity-80 md:text-[16px]">
+        <p className="mt-[20px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] opacity-80 md:mt-[24px] md:max-w-[650px] md:text-[16px]">
           Have a question about TravelMommy? We're here to help. Whether you need
           assistance using our platform, have feedback, or want to discuss a partnership,
           we'd love to hear from you.
@@ -147,25 +147,25 @@ function HeroSection() {
 
 function ContactCardsSection() {
   return (
-    <section className="flex w-full flex-col items-center bg-[#0F1420] px-[16px] py-[100px] md:px-[112px]">
-      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[24px] md:grid-cols-3">
+    <section className="flex w-full flex-col items-center bg-[#0F1420] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[16px] md:gap-[24px] md:grid-cols-3">
         {contactCards.map(({ icon: Icon, title, description, email }) => (
           <div
             key={title}
-            className="flex flex-col items-start rounded-[20px] bg-[#FFFFFF] p-[32px] shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+            className="flex flex-col items-start rounded-[16px] bg-[#FFFFFF] p-[24px] shadow-[0_8px_30px_rgba(0,0,0,0.06)] md:rounded-[20px] md:p-[32px]"
           >
-            <div className="mb-[24px] flex h-[48px] w-[48px] items-center justify-center rounded-[12px] bg-[#FFED91]">
-              <Icon className="h-[22px] w-[22px] text-[#000000]" strokeWidth={2} />
+            <div className="mb-[20px] flex h-[44px] w-[44px] items-center justify-center rounded-[10px] bg-[#FFED91] md:mb-[24px] md:h-[48px] md:w-[48px] md:rounded-[12px]">
+              <Icon className="h-[20px] w-[20px] text-[#000000] md:h-[22px] md:w-[22px]" strokeWidth={2} />
             </div>
-            <h3 className="mb-[12px] font-sans text-[20px] font-medium leading-[26px] tracking-[-0.2px] text-[#000000]">
+            <h3 className="mb-[10px] font-sans text-[18px] font-medium leading-[24px] tracking-[-0.2px] text-[#000000] md:mb-[12px] md:text-[20px] md:leading-[26px]">
               {title}
             </h3>
-            <p className="mb-[32px] flex-1 font-sans text-[15px] font-normal leading-[24px] text-[#7D7D7D]">
+            <p className="mb-[24px] flex-1 font-sans text-[14px] font-normal leading-[22px] text-[#7D7D7D] md:mb-[32px] md:text-[15px] md:leading-[24px]">
               {description}
             </p>
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-[8px] font-sans text-[14px] font-medium text-[#000000] transition-colors hover:text-[#7D7D7D]"
+              className="flex items-center gap-[8px] font-sans text-[13px] font-medium text-[#000000] transition-colors hover:text-[#7D7D7D] md:text-[14px]"
             >
               <AtSign className="h-[16px] w-[16px]" />
               {email}
@@ -197,15 +197,15 @@ function FormSection() {
   };
 
   return (
-    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[100px] md:px-[112px]">
-      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[56px] lg:grid-cols-[1fr_1.2fr] lg:gap-[96px]">
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[32px] lg:grid-cols-[1fr_1.2fr] lg:gap-[96px]">
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[40px]">
-          <h2 className="mb-[24px] font-sans text-[36px] font-medium leading-[1.1] tracking-[-1px] text-[#000000] sm:text-[48px]">
+          <h2 className="mb-[16px] font-sans text-[28px] font-medium leading-[1.15] tracking-[-0.6px] text-[#000000] md:mb-[24px] sm:text-[48px] md:leading-[1.1] md:tracking-[-1px]">
             Before You Get in Touch
           </h2>
-          <p className="max-w-[480px] font-sans text-[15px] font-normal leading-[1.6] text-[#000000] opacity-80 sm:text-[16px]">
+          <p className="max-w-[320px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] opacity-80 md:max-w-[480px] sm:text-[16px]">
             TravelMommy helps you compare flights and hotels from trusted travel
             partners. We don't process bookings or payments directly. If you've already
             made a booking, please contact the booking provider shown in your
@@ -215,18 +215,18 @@ function FormSection() {
         </div>
 
         {/* Right Column: Form Card */}
-        <div className="rounded-[24px] border border-[#E6E6E6] bg-[#FFFFFF] p-[32px] shadow-[0_4px_30px_rgba(0,0,0,0.03)] sm:p-[48px]">
+        <div className="rounded-[16px] border border-[#E6E6E6] bg-[#FFFFFF] p-[20px] shadow-[0_4px_30px_rgba(0,0,0,0.03)] md:rounded-[24px] sm:p-[48px]">
           {submitted ? (
-            <div className="flex min-h-[460px] flex-col items-center justify-center text-center">
-              <h3 className="font-sans text-[24px] font-medium text-[#000000]">Message sent!</h3>
-              <p className="mt-[12px] max-w-[300px] font-sans text-[16px] text-[#7D7D7D]">
+            <div className="flex min-h-[360px] flex-col items-center justify-center text-center md:min-h-[460px]">
+              <h3 className="font-sans text-[22px] font-medium text-[#000000] md:text-[24px]">Message sent!</h3>
+              <p className="mt-[12px] max-w-[300px] font-sans text-[15px] text-[#7D7D7D] md:text-[16px]">
                 Thanks for reaching out. Our team will get back to you shortly.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-[24px]">
-              <div className="flex flex-col gap-[10px]">
-                <label htmlFor="name" className="font-sans text-[14px] font-medium text-[#000000]">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[20px] md:gap-[24px]">
+              <div className="flex flex-col gap-[8px] md:gap-[10px]">
+                <label htmlFor="name" className="font-sans text-[13px] font-medium text-[#000000] md:text-[14px]">
                   Full Name
                 </label>
                 <input
@@ -237,12 +237,12 @@ function FormSection() {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] px-[16px] py-[14px] font-sans text-[15px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32]"
+                  className="w-full rounded-[10px] border border-[#E6E6E6] bg-[#FFFFFF] px-[14px] py-[12px] font-sans text-[14px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32] md:rounded-[12px] md:px-[16px] md:py-[14px] md:text-[15px]"
                 />
               </div>
 
-              <div className="flex flex-col gap-[10px]">
-                <label htmlFor="email" className="font-sans text-[14px] font-medium text-[#000000]">
+              <div className="flex flex-col gap-[8px] md:gap-[10px]">
+                <label htmlFor="email" className="font-sans text-[13px] font-medium text-[#000000] md:text-[14px]">
                   Email Address
                 </label>
                 <input
@@ -253,12 +253,12 @@ function FormSection() {
                   value={form.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] px-[16px] py-[14px] font-sans text-[15px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32]"
+                  className="w-full rounded-[10px] border border-[#E6E6E6] bg-[#FFFFFF] px-[14px] py-[12px] font-sans text-[14px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32] md:rounded-[12px] md:px-[16px] md:py-[14px] md:text-[15px]"
                 />
               </div>
 
-              <div className="flex flex-col gap-[10px]">
-                <label htmlFor="subject" className="font-sans text-[14px] font-medium text-[#000000]">
+              <div className="flex flex-col gap-[8px] md:gap-[10px]">
+                <label htmlFor="subject" className="font-sans text-[13px] font-medium text-[#000000] md:text-[14px]">
                   Subject
                 </label>
                 <input
@@ -269,12 +269,12 @@ function FormSection() {
                   value={form.subject}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] px-[16px] py-[14px] font-sans text-[15px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32]"
+                  className="w-full rounded-[10px] border border-[#E6E6E6] bg-[#FFFFFF] px-[14px] py-[12px] font-sans text-[14px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32] md:rounded-[12px] md:px-[16px] md:py-[14px] md:text-[15px]"
                 />
               </div>
 
-              <div className="flex flex-col gap-[10px]">
-                <label htmlFor="message" className="font-sans text-[14px] font-medium text-[#000000]">
+              <div className="flex flex-col gap-[8px] md:gap-[10px]">
+                <label htmlFor="message" className="font-sans text-[13px] font-medium text-[#000000] md:text-[14px]">
                   Message
                 </label>
                 <textarea
@@ -285,13 +285,13 @@ function FormSection() {
                   value={form.message}
                   onChange={handleChange}
                   required
-                  className="w-full resize-none rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] px-[16px] py-[14px] font-sans text-[15px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32]"
+                  className="w-full resize-none rounded-[10px] border border-[#E6E6E6] bg-[#FFFFFF] px-[14px] py-[12px] font-sans text-[14px] text-[#000000] placeholder:text-[#A0A0A0] outline-none transition-colors focus:border-[#FDDB32] md:rounded-[12px] md:px-[16px] md:py-[14px] md:text-[15px]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="mt-[8px] flex w-full items-center justify-center rounded-[12px] bg-[#FDDB32] py-[16px] font-sans text-[15px] font-medium text-[#000000] transition-colors hover:bg-[#e5c52c]"
+                className="mt-[4px] flex w-full items-center justify-center rounded-[10px] bg-[#FDDB32] py-[14px] font-sans text-[14px] font-medium text-[#000000] transition-colors hover:bg-[#e5c52c] md:mt-[8px] md:rounded-[12px] md:py-[16px] md:text-[15px]"
               >
                 Send Message
               </button>
@@ -312,39 +312,39 @@ function FaqSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <section className="flex w-full flex-col items-center bg-[#000000] px-[16px] py-[100px] md:px-[112px]">
-      <div className="mx-auto grid w-full max-w-[1216px] gap-[56px] lg:grid-cols-[1fr_1.4fr] lg:gap-[64px]">
+    <section className="flex w-full flex-col items-center bg-[#000000] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1216px] gap-[32px] lg:grid-cols-[1fr_1.4fr] lg:gap-[64px]">
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[20px]">
-          <h2 className="mb-[16px] font-sans text-[36px] font-medium leading-[1.1] tracking-[-1px] text-[#FFFFFF] sm:text-[48px]">
+          <h2 className="mb-[12px] font-sans text-[28px] font-medium leading-[1.15] tracking-[-0.6px] text-[#FFFFFF] md:mb-[16px] sm:text-[48px] md:leading-[1.1] md:tracking-[-1px]">
             Frequently Asked<br />Questions
           </h2>
-          <p className="font-sans text-[15px] font-normal leading-[24px] text-[#FFFFFF] opacity-80 sm:text-[16px]">
+          <p className="font-sans text-[14px] font-normal leading-[22px] text-[#FFFFFF] opacity-80 sm:text-[16px] md:leading-[24px]">
             Got questions? We've got answers.
           </p>
         </div>
 
         {/* Right Column: Accordion */}
-        <div className="flex flex-col gap-[16px]">
+        <div className="flex flex-col gap-[12px] md:gap-[16px]">
           {faqs.map((faq, idx) => {
             const isOpen = openFaq === idx;
             return (
-              <div key={faq.question} className="rounded-[20px] bg-[#FFFFFF] px-[28px] py-[24px]">
+              <div key={faq.question} className="rounded-[16px] bg-[#FFFFFF] px-[20px] py-[18px] md:rounded-[20px] md:px-[28px] md:py-[24px]">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
                   className="flex w-full items-center justify-between text-left"
                 >
-                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                  <span className="font-sans text-[15px] font-medium leading-[22px] tracking-[-0.32px] text-[#000000] md:text-[16px] md:leading-[24px]">
                     {faq.question}
                   </span>
-                  <span className="flex h-[24px] w-[24px] flex-shrink-0 items-center justify-center text-[#000000]">
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                  <span className="flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center text-[#000000] md:h-[24px] md:w-[24px]">
+                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                   </span>
                 </button>
                 {isOpen && (
-                  <p className="mt-[16px] font-sans text-[15px] font-normal leading-[1.6] text-[#7D7D7D]">
+                  <p className="mt-[12px] font-sans text-[14px] font-normal leading-[1.55] text-[#7D7D7D] md:mt-[16px] md:text-[15px]">
                     {faq.answer}
                   </p>
                 )}
@@ -364,19 +364,19 @@ function FaqSection() {
 
 function FollowUsSection() {
   return (
-    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[80px]">
-      <h3 className="mb-[28px] font-sans text-[20px] font-medium leading-[24px] text-[#000000]">
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[56px] md:py-[80px]">
+      <h3 className="mb-[20px] font-sans text-[18px] font-medium leading-[24px] text-[#000000] md:mb-[28px] md:text-[20px]">
         Follow Us
       </h3>
-      <div className="flex items-center gap-[16px]">
+      <div className="flex items-center gap-[14px] md:gap-[16px]">
         {socialLinks.map(({ icon: Icon, href, label, bgColor }) => (
           <a
             key={label}
             href={href}
             aria-label={label}
-            className={`flex h-[48px] w-[48px] items-center justify-center rounded-full text-[#FFFFFF] transition-transform hover:scale-110 ${bgColor}`}
+            className={`flex h-[44px] w-[44px] items-center justify-center rounded-full text-[#FFFFFF] transition-transform hover:scale-110 md:h-[48px] md:w-[48px] ${bgColor}`}
           >
-            <Icon className="h-[20px] w-[20px]" />
+            <Icon className="h-[18px] w-[18px] md:h-[20px] md:w-[20px]" />
           </a>
         ))}
       </div>
