@@ -639,41 +639,68 @@ function CheapFlightsFromDublinSection() {
 
 function WhyCompareFlightsSection() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1280px] px-6 pb-24 lg:px-10">
-        <div className="mx-auto max-w-[800px] text-center">
-          {/* Title S */}
-          <span className="mx-auto w-fit rounded-full border border-black/10 bg-[#F9FBF5] px-4 py-2 font-sans text-[14px] font-medium leading-[1.43] text-black">
-            Easy process
-          </span>
-          {/* Display L */}
-          <h2 className="mt-[20px] font-sans text-[48px] font-medium leading-none text-black">
-            Why Compare Flights with TravelMommy?
-          </h2>
-          {/* Body L */}
-          <p className="mt-[16px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
-            Search and compare cheap flights from multiple airlines and
-            trusted booking partners to find the best fare for your trip.
-          </p>
-        </div>
-
-        <div className="mt-[48px] grid grid-cols-1 gap-[32px] lg:grid-cols-3">
-          {whyCompareFeatures.map((feature) => (
-            <div
-              key={feature.title}
-              className="flex flex-col items-center rounded-[24px] border border-neutral-100 bg-[#F9FBF5] p-[32px] text-center"
-            >
-              <span className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#FDDB32]">
-                <feature.icon className="h-[24px] w-[24px] text-black" />
-              </span>
-              {/* Title L */}
-              <h3 className="mt-[20px] font-sans text-[24px] font-medium leading-none text-black">{feature.title}</h3>
-              {/* Body M */}
-              <p className="mt-[12px] font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
-                {feature.description}
+    <section className="w-full bg-[#FFFFFF] pt-[80px] pb-[160px] lg:px-[80px]">
+      {/* Section Frame: 80px top padding, 160px bottom padding, 80px side padding on desktop */}
+      
+      {/* Inner Container: max-width 1280px, 32px side padding */}
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 lg:px-[32px]">
+        
+        {/* Main layout: 48px gap between Heading Block and Cards Row */}
+        <div className="flex w-full flex-col gap-[48px]">
+          
+          {/* Heading Block: vertical, center-aligned, 24px gap between Tag and Content */}
+          <div className="flex flex-col items-center gap-[24px]">
+            
+            {/* Tag / Badge - Exact Typography and Colors applied */}
+            <span className="flex h-[28px] items-center justify-center rounded-full border border-[#E6E6E6] bg-[#F9FBF5] px-[12px] py-[4px] font-sans text-[14px] font-[570] leading-[20px] tracking-[-0.28px] text-[#000000]">
+              Easy process
+            </span>
+            
+            {/* Content (Title + Subtext): 876px max-width, 15px gap */}
+            <div className="flex w-full max-w-[876px] flex-col items-center gap-[15px] text-center">
+              {/* Section Heading (H2) - Exact Typography applied */}
+             <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-[570] leading-[48px] tracking-[-1px] text-[#000000]">
+  Why Compare Flights with TravelMommy?
+</h2>
+              {/* Section Subtext - Exact Typography applied */}
+              <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#000000]">
+                Search and compare cheap flights from multiple airlines and trusted booking partners to find the best fare for your trip.
               </p>
             </div>
-          ))}
+          </div>
+
+          {/* Cards Row: Horizontal grid, 15px gap */}
+          <div className="grid w-full grid-cols-1 gap-[15px] lg:grid-cols-3">
+            {whyCompareFeatures.map((feature) => (
+              <div key={feature.title}>
+                {/* Individual Card: 276px height, 15px outer padding, #F9FBF5 bg, #E6E6E6 border */}
+                <div className="flex h-[276px] w-full flex-col items-center rounded-[20px] border border-[#E6E6E6] bg-[#F9FBF5] p-[15px]">
+                  {/* Card Inner Container: 10px padding, 20px gap between icon and text content */}
+                  <div className="flex h-full w-full flex-col items-center gap-[20px] p-[10px] text-center">
+                    
+                    {/* Icon Circle: ~61x61px, #FFED91 bg */}
+                    <span className="flex h-[61px] w-[61px] shrink-0 items-center justify-center rounded-full bg-[#FFED91]">
+                      <feature.icon className="h-[24px] w-[24px] text-[#000000]" />
+                    </span>
+                    
+                    {/* Card Content (Title + Body): 10px gap */}
+                    <div className="flex flex-col items-center gap-[10px]">
+                      {/* Card Title - Exact Typography applied */}
+                      <h3 className="w-full font-sans text-[24px] font-[570] leading-[24px] tracking-[0px] text-[#000000]">
+                        {feature.title}
+                      </h3>
+                      {/* Card Body Text - Exact Typography applied */}
+                      <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#000000]">
+                        {feature.description}
+                      </p>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
