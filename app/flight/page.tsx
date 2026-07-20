@@ -190,7 +190,7 @@ function HeroDesktop() {
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
         
         {/* Headline - Exact specs applied */}
-        <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-[570] leading-[98px] tracking-[-5px] text-white">
+        <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-medium leading-[98px] tracking-[0px] text-white">
           <span className="block">Compare Flights from</span>
           <span className="block">500+ Airlines &amp; Travel Sites</span>
         </h1>
@@ -198,7 +198,7 @@ function HeroDesktop() {
         <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div className="flex max-w-[500px] flex-col items-start gap-[18px]">
             {/* Subheading / Description - Exact specs applied */}
-            <p className="font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-white">
+            <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-white">
               Compare live flight prices from airlines and trusted travel partners to find the best fare before you book.
             </p>
           </div>
@@ -652,18 +652,18 @@ function WhyCompareFlightsSection() {
           <div className="flex flex-col items-center gap-[24px]">
             
             {/* Tag / Badge - Exact Typography and Colors applied */}
-            <span className="flex h-[28px] items-center justify-center rounded-full border border-[#E6E6E6] bg-[#F9FBF5] px-[12px] py-[4px] font-sans text-[14px] font-[570] leading-[20px] tracking-[-0.28px] text-[#000000]">
+            <span className="flex h-[28px] items-center justify-center rounded-full border border-[#E6E6E6] bg-[#F9FBF5] px-[12px] py-[4px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
               Easy process
             </span>
             
             {/* Content (Title + Subtext): 876px max-width, 15px gap */}
             <div className="flex w-full max-w-[876px] flex-col items-center gap-[15px] text-center">
               {/* Section Heading (H2) - Exact Typography applied */}
-             <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-[570] leading-[48px] tracking-[-1px] text-[#000000]">
+             <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000]">
   Why Compare Flights with TravelMommy?
 </h2>
               {/* Section Subtext - Exact Typography applied */}
-              <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#000000]">
+              <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
                 Search and compare cheap flights from multiple airlines and trusted booking partners to find the best fare for your trip.
               </p>
             </div>
@@ -686,11 +686,11 @@ function WhyCompareFlightsSection() {
                     {/* Card Content (Title + Body): 10px gap */}
                     <div className="flex flex-col items-center gap-[10px]">
                       {/* Card Title - Exact Typography applied */}
-                      <h3 className="w-full font-sans text-[24px] font-[570] leading-[24px] tracking-[0px] text-[#000000]">
+                      <h3 className="w-full font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
                         {feature.title}
                       </h3>
                       {/* Card Body Text - Exact Typography applied */}
-                      <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#000000]">
+                      <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
                         {feature.description}
                       </p>
                     </div>
@@ -719,18 +719,18 @@ function PopularAirlinesSection() {
           
           <div className="flex flex-col gap-[15px]">
             <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-[121px]">
-            <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-[570] leading-[48px] tracking-[-1px] text-[#FFFFFF] lg:max-w-[794px]">
+            <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF] lg:max-w-[794px]">
   Compare Flights from Popular Airlines.
 </h2>
               <Link
                 href="/flights/airlines"
-                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-[570] leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors hover:bg-[#e5c52c]"
+                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] transition-colors hover:bg-[#e5c52c]"
               >
                 View All Airlines
                 <ArrowUpRight className="h-[16px] w-[16px] text-[#000000]" />
               </Link>
             </div>
-            <p className="w-full font-sans text-[16px] font-[380] leading-[24px] tracking-[0px] text-[#FFFFFF] lg:max-w-[800px]">
+            <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF] lg:max-w-[800px]">
               Search and compare fares from leading airlines around the world. Discover competitive prices, flexible travel options and routes from trusted carriers.
             </p>
           </div>
@@ -789,7 +789,7 @@ function FaqSection() {
                   className="flex w-full items-center justify-between gap-6 text-left"
                 >
                   {/* Title M */}
-                  <span className="font-sans text-[16px] font-semibold leading-[1.5] text-black">
+                  <span className="font-sans text-[16px] font-medium leading-[1.5] text-black">
                     {faq.question}
                   </span>
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center text-black">

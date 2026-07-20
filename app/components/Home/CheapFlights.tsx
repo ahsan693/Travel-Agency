@@ -22,7 +22,7 @@ export default function CheapFlights() {
         {/* Header Section */}
         <div className="mb-[48px] flex flex-col items-start justify-between gap-8 lg:flex-row">
           <div className="flex max-w-[700px] flex-col gap-[10px]">
-            <h2 className="font-sans text-[48px] font-medium leading-[100%] tracking-tight text-[#000000]">
+            <h2 className="font-sans text-[48px] font-medium leading-[100%] tracking-[0px] text-[#000000]">
               Cheap Flights from <span className="text-[#FDDB32]">Dublin</span>
             </h2>
             <p className="font-sans text-[14px] font-normal leading-[143%] text-[#555555]">
@@ -63,7 +63,7 @@ export default function CheapFlights() {
                   <h3 className="font-sans text-[24px] font-medium leading-[24px] text-[#000000]">
                     {flight.city}
                   </h3>
-                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     {flight.route}
                   </p>
                 </div>
@@ -75,7 +75,7 @@ export default function CheapFlights() {
                   </p>
                   <div className="flex items-center gap-[4px] rounded-[6px] border border-[#E6E6E6] bg-[#F9FBF5] px-[8px] py-[4px]">
                     <Plane size={16} className="text-[#00529C]" />
-                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
+                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#000000]">
                       {flight.airline}
                     </span>
                   </div>
@@ -84,7 +84,7 @@ export default function CheapFlights() {
                 {/* Meta Row */}
                 <div className="flex h-[20px] items-center gap-[6px]">
                   <Clock size={14} className="text-[#7D7D7D]" />
-                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     Direct &bull; {flight.duration}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export default function CheapFlights() {
               {/* 3. Footer Section (68px height) */}
               <div className="mt-auto px-[20px] pb-[20px] pt-0">
                 <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors hover:bg-[#FDDB32] hover:border-[#FDDB32]">
-                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
                     View Flights
                   </span>
                   <ArrowUpRight size={14} className="text-[#000000]" />

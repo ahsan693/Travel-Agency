@@ -331,7 +331,7 @@ function RouteCard({ route }: { route: (typeof routeResults)[number] }) {
           </span>
           <div className="flex items-center gap-[8px]">
             <span
-              className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full text-[9px] font-semibold text-white"
+              className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full text-[9px] font-medium text-white"
               style={{ backgroundColor: route.airlineColor }}
             >
               {route.airlineCode}

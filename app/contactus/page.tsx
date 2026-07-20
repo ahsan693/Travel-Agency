@@ -138,7 +138,7 @@ function HeroSection() {
       </div>
 
       <div className="mt-[24px] flex max-w-[320px] flex-col items-center text-center md:mt-[80px] md:max-w-[800px]">
-        <h1 className="font-sans text-[38px] font-medium leading-[1.05] tracking-[-1px] text-[#000000] md:text-[64px] md:leading-none md:tracking-[-0.03em]">
+        <h1 className="font-sans text-[38px] font-medium leading-[1.05] tracking-[0px] text-[#000000] md:text-[64px] md:leading-none md:tracking-[0px]">
           Contact TravelMommy
         </h1>
         <p className="mt-[20px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] opacity-80 md:mt-[24px] md:max-w-[650px] md:text-[16px]">
@@ -167,7 +167,7 @@ function ContactCardsSection() {
             <div className="mb-[20px] flex h-[44px] w-[44px] items-center justify-center rounded-[10px] bg-[#FFED91] md:mb-[24px] md:h-[48px] md:w-[48px] md:rounded-[12px]">
               <Icon className="h-[20px] w-[20px] text-[#000000] md:h-[22px] md:w-[22px]" strokeWidth={2} />
             </div>
-            <h3 className="mb-[10px] font-sans text-[18px] font-medium leading-[24px] tracking-[-0.2px] text-[#000000] md:mb-[12px] md:text-[20px] md:leading-[26px]">
+            <h3 className="mb-[10px] font-sans text-[18px] font-medium leading-[24px] tracking-[0px] text-[#000000] md:mb-[12px] md:text-[20px] md:leading-[26px]">
               {title}
             </h3>
             <p className="mb-[24px] flex-1 font-sans text-[14px] font-normal leading-[22px] text-[#7D7D7D] md:mb-[32px] md:text-[15px] md:leading-[24px]">
@@ -212,7 +212,7 @@ function FormSection() {
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[40px]">
-          <h2 className="mb-[16px] font-sans text-[28px] font-medium leading-[1.15] tracking-[-0.6px] text-[#000000] md:mb-[24px] sm:text-[48px] md:leading-[1.1] md:tracking-[-1px]">
+          <h2 className="mb-[16px] font-sans text-[28px] font-medium leading-[1.15] tracking-[0px] text-[#000000] md:mb-[24px] sm:text-[48px] md:leading-[1.1] md:tracking-[0px]">
             Before You Get in Touch
           </h2>
           <p className="max-w-[320px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] opacity-80 md:max-w-[480px] sm:text-[16px]">
@@ -327,7 +327,7 @@ function FaqSection() {
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[20px]">
-          <h2 className="mb-[12px] font-sans text-[28px] font-medium leading-[1.15] tracking-[-0.6px] text-[#FFFFFF] md:mb-[16px] sm:text-[48px] md:leading-[1.1] md:tracking-[-1px]">
+          <h2 className="mb-[12px] font-sans text-[28px] font-medium leading-[1.15] tracking-[0px] text-[#FFFFFF] md:mb-[16px] sm:text-[48px] md:leading-[1.1] md:tracking-[0px]">
             Frequently Asked<br />Questions
           </h2>
           <p className="font-sans text-[14px] font-normal leading-[22px] text-[#FFFFFF] opacity-80 sm:text-[16px] md:leading-[24px]">
@@ -346,7 +346,7 @@ function FaqSection() {
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
                   className="flex w-full items-center justify-between text-left"
                 >
-                  <span className="font-sans text-[15px] font-medium leading-[22px] tracking-[-0.32px] text-[#000000] md:text-[16px] md:leading-[24px]">
+                  <span className="font-sans text-[15px] font-medium leading-[22px] tracking-[0px] text-[#000000] md:text-[16px] md:leading-[24px]">
                     {faq.question}
                   </span>
                   <span className="flex h-[22px] w-[22px] flex-shrink-0 items-center justify-center text-[#000000] md:h-[24px] md:w-[24px]">

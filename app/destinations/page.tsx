@@ -179,7 +179,7 @@ function HeroSection() {
           
           <div className="flex flex-col gap-[12px]">
             {/* Title */}
-            <h1 className="font-sans text-[42px] leading-[44px] tracking-[-1.5px] font-medium text-[#FFFFFF] md:text-[72px] md:leading-none md:tracking-[-0.03em]">
+            <h1 className="font-sans text-[42px] leading-[44px] tracking-[0px] font-medium text-[#FFFFFF] md:text-[72px] md:leading-none md:tracking-[0px]">
               Discover Your Next Destination
             </h1>
             {/* Subtitle */}
@@ -190,7 +190,7 @@ function HeroSection() {
           </div>
 
           <div className="flex flex-col gap-[12px] md:gap-[19px]">
-            <p className="font-sans text-[13px] leading-[18px] text-[#F9FBF5] md:text-[14px] md:leading-[1.43] md:tracking-[-0.28px] md:text-[#FFFFFF] md:font-medium font-normal">
+            <p className="font-sans text-[13px] leading-[18px] text-[#F9FBF5] md:text-[14px] md:leading-[1.43] md:tracking-[0px] md:text-[#FFFFFF] md:font-medium font-normal">
               Browse by Region
             </p>
 
@@ -200,7 +200,7 @@ function HeroSection() {
                 <button
                   key={region}
                   onClick={() => setActiveRegion(region)}
-                  className={`flex h-[32px] md:h-[40px] items-center gap-[6px] rounded-full px-[14px] md:px-[20px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0.1px] md:tracking-[-0.28px] font-normal md:font-medium transition-colors ${
+                  className={`flex h-[32px] md:h-[40px] items-center gap-[6px] rounded-full px-[14px] md:px-[20px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0px] md:tracking-[0px] font-normal md:font-medium transition-colors ${
                     activeRegion === region
                       ? "bg-[#FDDB32] text-[#000000] border border-[#000000] md:border-none"
                       : "bg-[#F9FBF5] md:bg-[#FFFFFF] text-[#000000] border border-[#E6E6E6] md:border-none hover:bg-[#F9FBF5]"
@@ -219,7 +219,7 @@ function HeroSection() {
               {COUNTRY_CHIPS.map((chip) => (
                 <button
                   key={chip.name}
-                  className="flex h-[40px] items-center gap-[8px] rounded-full border border-[#E6E6E6] md:border-white/20 bg-[#F9FBF5] md:bg-white/10 py-[6px] pl-[6px] pr-[14px] md:py-[4px] md:pl-[4px] md:pr-[16px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0.1px] md:tracking-[-0.28px] font-normal md:font-medium text-[#000000] md:text-[#FFFFFF] md:backdrop-blur-sm transition-colors hover:bg-[#e8ece3] md:hover:bg-white/20"
+                  className="flex h-[40px] items-center gap-[8px] rounded-full border border-[#E6E6E6] md:border-white/20 bg-[#F9FBF5] md:bg-white/10 py-[6px] pl-[6px] pr-[14px] md:py-[4px] md:pl-[4px] md:pr-[16px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0px] md:tracking-[0px] font-normal md:font-medium text-[#000000] md:text-[#FFFFFF] md:backdrop-blur-sm transition-colors hover:bg-[#e8ece3] md:hover:bg-white/20"
                 >
                   {chip.swatch ? (
                     <span className="h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full" style={{ backgroundColor: chip.swatch }} />
@@ -255,7 +255,7 @@ function FeaturedCountriesSection() {
         
         <div className="mb-[24px] md:mb-[32px] flex flex-col items-center text-center">
           {/* Section Title */}
-          <h2 className="font-sans text-[32px] leading-[38px] tracking-[-0.5px] md:text-[48px] font-medium md:leading-none md:tracking-[-1px] text-[#000000]">
+          <h2 className="font-sans text-[32px] leading-[38px] tracking-[0px] md:text-[48px] font-medium md:leading-none md:tracking-[0px] text-[#000000]">
             Featured Countries
           </h2>
         </div>
@@ -278,7 +278,7 @@ function FeaturedCountriesSection() {
                 
                 {/* Popular Badge */}
                 <div className="absolute left-[12px] top-[12px] rounded-full bg-white/30 backdrop-blur-[4px] border border-[#FFFFFF] md:bg-[#FFFFFF] md:border-none px-[10px] py-[4px] md:px-[12px] shadow-sm">
-                  <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#000000]">
+                  <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#000000]">
                     Popular
                   </span>
                 </div>
@@ -298,19 +298,19 @@ function FeaturedCountriesSection() {
                       <Star key={j} size={12} className="fill-[#000000] text-[#000000] md:fill-[#F59E0B] md:text-[#F59E0B]" strokeWidth={0} />
                     ))}
                   </div>
-                  <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#F59E0B]">
+                  <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#F59E0B]">
                     {country.rating}/5
                   </span>
                 </div>
 
                 {/* Country Name & Desc */}
                 <div className="flex flex-col gap-[2px]">
-                  <h3 className="font-sans text-[15px] leading-[22px] md:text-[16px] font-medium md:leading-[24px] tracking-[0px] md:tracking-[-0.32px] text-[#000000]">
+                  <h3 className="font-sans text-[15px] leading-[22px] md:text-[16px] font-medium md:leading-[24px] tracking-[0px] md:tracking-[0px] text-[#000000]">
                     {country.name}
                   </h3>
                   <div className="flex items-center gap-[4px] md:gap-[6px]">
                     <MapPin size={12} className="text-[#7D7D7D] md:w-[14px] md:h-[14px]" />
-                    <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                    <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                       {country.desc}
                     </span>
                   </div>
@@ -321,7 +321,7 @@ function FeaturedCountriesSection() {
                   {country.tags?.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[#FBBDEA] bg-[#FFF0F8] px-[8px] py-[3px] md:px-[10px] md:py-[2px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#C050A0]"
+                      className="rounded-full border border-[#FBBDEA] bg-[#FFF0F8] px-[8px] py-[3px] md:px-[10px] md:py-[2px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#C050A0]"
                     >
                       {tag}
                     </span>
@@ -332,15 +332,15 @@ function FeaturedCountriesSection() {
 
                 {/* Details List */}
                 <div className="flex flex-col gap-[8px]">
-                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                     <Plane size={14} className="text-[#7D7D7D]" />
                     <span>✈ Flights from {country.flightsFrom}</span>
                   </div>
-                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                     <Building2 size={14} className="text-[#7D7D7D]" />
                     <span>🏨 Hotels from {country.hotelsFrom}</span>
                   </div>
-                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                     <Umbrella size={14} className="text-[#7D7D7D]" />
                     <span>{country.perk}</span>
                   </div>
@@ -351,19 +351,19 @@ function FeaturedCountriesSection() {
                 {/* Footer / Price & CTA */}
                 <div className="mt-auto flex items-center justify-between">
                   <div className="flex flex-col gap-[2px]">
-                    <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                    <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                       Explore
                     </span>
                     <div className="flex items-baseline gap-[2px]">
-                      <span className="font-sans text-[20px] leading-[24px] tracking-[-0.2px] md:text-[22px] font-medium md:leading-none md:tracking-[0px] text-[#000000]">
+                      <span className="font-sans text-[20px] leading-[24px] tracking-[0px] md:text-[22px] font-medium md:leading-none md:tracking-[0px] text-[#000000]">
                         {country.price}
                       </span>
-                      <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#7D7D7D]">
+                      <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-normal md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#7D7D7D]">
                         / flight
                       </span>
                     </div>
                   </div>
-                  <button className="flex h-[38px] md:h-[40px] items-center justify-center gap-[4px] md:gap-[6px] rounded-full bg-[#FDDB32] px-[18px] py-[10px] md:px-[16px] font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+                  <button className="flex h-[38px] md:h-[40px] items-center justify-center gap-[4px] md:gap-[6px] rounded-full bg-[#FDDB32] px-[18px] py-[10px] md:px-[16px] font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
                     Explore →
                   </button>
                 </div>
@@ -388,7 +388,7 @@ function WhyPlanSection() {
         
         {/* Heading Block */}
         <div className="mb-[32px] md:mb-[48px] flex w-full max-w-[1216px] flex-col items-center text-center gap-[12px] md:gap-[24px]">
-          <h2 className="font-sans text-[32px] leading-[38px] tracking-[-0.5px] md:text-[48px] font-medium md:leading-[48px] md:tracking-[-1px] text-[#000000]">
+          <h2 className="font-sans text-[32px] leading-[38px] tracking-[0px] md:text-[48px] font-medium md:leading-[48px] md:tracking-[0px] text-[#000000]">
             Why Plan Your Trip with TravelMommy?
           </h2>
           <p className="max-w-[700px] font-sans text-[15px] leading-[22px] opacity-80 md:opacity-100 font-normal md:text-[16px] md:leading-[24px] tracking-[0px] text-[#000000]">
@@ -408,7 +408,7 @@ function WhyPlanSection() {
                 <feature.icon className="h-[28px] w-[28px] md:h-[24px] md:w-[24px] text-[#000000]" strokeWidth={2} />
               </div>
               <div className="flex flex-col items-center gap-[8px] md:gap-[15px]">
-                <h3 className="font-sans text-[20px] leading-[26px] tracking-[-0.2px] md:text-[24px] font-medium md:leading-[24px] md:tracking-[0px] text-[#000000]">
+                <h3 className="font-sans text-[20px] leading-[26px] tracking-[0px] md:text-[24px] font-medium md:leading-[24px] md:tracking-[0px] text-[#000000]">
                   {feature.title}
                 </h3>
                 <p className="font-sans text-[15px] leading-[22px] opacity-80 md:opacity-100 font-normal md:text-[16px] md:leading-[24px] tracking-[0px] text-[#000000]">
@@ -421,7 +421,7 @@ function WhyPlanSection() {
 
         {/* Explore Button */}
         <div className="mt-[16px] md:mt-[48px] w-full md:w-auto">
-          <button className="flex w-full md:w-auto h-[44px] items-center justify-center gap-[8px] md:gap-[6px] rounded-[14px] md:rounded-full bg-[#FDDB32] px-[20px] md:px-[24px] font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[-0.28px] text-[#000000] shadow-[0_1.5px_3px_rgba(31,31,31,0.078),0_1px_0_0.5px_#C29700,inset_0_1px_2px_rgba(255,255,255,0.12)] md:shadow-none transition-colors duration-200 hover:bg-[#e5c52c]">
+          <button className="flex w-full md:w-auto h-[44px] items-center justify-center gap-[8px] md:gap-[6px] rounded-[14px] md:rounded-full bg-[#FDDB32] px-[20px] md:px-[24px] font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#000000] shadow-[0_1.5px_3px_rgba(31,31,31,0.078),0_1px_0_0.5px_#C29700,inset_0_1px_2px_rgba(255,255,255,0.12)] md:shadow-none transition-colors duration-200 hover:bg-[#e5c52c]">
             Explore tours
             <ArrowUpRight size={14} className="md:w-[16px] md:h-[16px]" />
           </button>
@@ -443,7 +443,7 @@ function FaqSection() {
     <section className="flex w-full flex-col items-center bg-[#F9F8F5] md:bg-[#FFFFFF] py-[64px] px-[24px] md:pt-[80px] md:pb-[160px] md:px-[80px]">
       <div className="flex w-full max-w-[800px] flex-col items-center">
         
-        <h2 className="mb-[32px] md:mb-[48px] text-center font-sans text-[20px] leading-[26px] tracking-[-0.2px] md:text-[48px] font-medium md:leading-[48px] md:tracking-[-1px] text-[#000000]">
+        <h2 className="mb-[32px] md:mb-[48px] text-center font-sans text-[20px] leading-[26px] tracking-[0px] md:text-[48px] font-medium md:leading-[48px] md:tracking-[0px] text-[#000000]">
           Frequently Asked Questions
         </h2>
 
@@ -457,7 +457,7 @@ function FaqSection() {
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="flex w-full items-center justify-between text-left"
                 >
-                  <span className="font-sans text-[15px] leading-[22px] md:text-[16px] font-medium md:leading-[24px] tracking-[0px] md:tracking-[-0.32px] text-[#000000]">
+                  <span className="font-sans text-[15px] leading-[22px] md:text-[16px] font-medium md:leading-[24px] tracking-[0px] md:tracking-[0px] text-[#000000]">
                     {faq.q}
                   </span>
                   <span className="flex shrink-0 text-[#000000]">

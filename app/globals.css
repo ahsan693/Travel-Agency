@@ -36,9 +36,27 @@
   --color-tag-hotel: var(--tag-hotel);
   --color-tag-business: var(--tag-business);
   --color-tag-beach: var(--tag-beach);
-  
-  /* Map the Saans font to Tailwind's sans family */
+
   --font-sans: var(--font-saans), ui-sans-serif, system-ui, sans-serif;
+
+  --text-display-xxl: 110px;
+  --text-display-xxl--line-height: 89%;
+  --text-display-xl: 72px;
+  --text-display-xl--line-height: 100%;
+  --text-display-l: 48px;
+  --text-display-l--line-height: 100%;
+  --text-title-l: 24px;
+  --text-title-l--line-height: 100%;
+  --text-title-m: 16px;
+  --text-title-m--line-height: 150%;
+  --text-title-s: 14px;
+  --text-title-s--line-height: 143%;
+  --text-title-xs: 12px;
+  --text-title-xs--line-height: 133%;
+  --text-body-l: 16px;
+  --text-body-l--line-height: 150%;
+  --text-body-m: 14px;
+  --text-body-m--line-height: 143%;
 }
 
 body {
@@ -46,10 +64,75 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .font-saans {
   font-family: var(--font-sans);
+}
+
+.text-display-xxl {
+  font-size: var(--text-display-xxl);
+  line-height: var(--text-display-xxl--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-display-xl {
+  font-size: var(--text-display-xl);
+  line-height: var(--text-display-xl--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-display-l {
+  font-size: var(--text-display-l);
+  line-height: var(--text-display-l--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-title-l {
+  font-size: var(--text-title-l);
+  line-height: var(--text-title-l--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-title-m {
+  font-size: var(--text-title-m);
+  line-height: var(--text-title-m--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-title-s {
+  font-size: var(--text-title-s);
+  line-height: var(--text-title-s--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-title-xs {
+  font-size: var(--text-title-xs);
+  line-height: var(--text-title-xs--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-body-l {
+  font-size: var(--text-body-l);
+  line-height: var(--text-body-l--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.text-body-m {
+  font-size: var(--text-body-m);
+  line-height: var(--text-body-m--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 a {
@@ -61,6 +144,7 @@ input,
 textarea,
 select {
   font: inherit;
+  letter-spacing: inherit;
 }
 
 .sr-only {

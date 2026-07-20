@@ -2,12 +2,26 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// Configure the local Saans Trial font
 const saansTrial = localFont({
   src: [
     {
-      path: "../public/fonts/DP_saans_TRIAL/Saans-TRIAL-VF.ttf",
-      weight: "100 900",
+      path: "../public/fonts/DP_saans_TRIAL/DP_saans_TRIAL/Saans-TRIAL-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DP_saans_TRIAL/DP_saans_TRIAL/Saans-TRIAL-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DP_saans_TRIAL/DP_saans_TRIAL/Saans-TRIAL-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DP_saans_TRIAL/DP_saans_TRIAL/Saans-TRIAL-Bold.woff2",
+      weight: "700",
       style: "normal",
     },
   ],

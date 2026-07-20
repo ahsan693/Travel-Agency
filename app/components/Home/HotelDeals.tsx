@@ -58,7 +58,7 @@ export default function HotelDeals() {
             ========================================= */}
         <div className="flex flex-col">
           <div className="flex flex-col gap-[15px]">
-            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF]">
+            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF]">
               Find Great Hotel Deals
             </h2>
             <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF]">
@@ -121,22 +121,22 @@ export default function HotelDeals() {
                       ))}
                     </div>
                     <div className="flex items-baseline font-sans">
-                      <span className="text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#F59E0B]">
-                        {hotel.rating}<span className="text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">{hotel.maxRating}</span>
+                      <span className="text-[14px] font-medium leading-[20px] tracking-[0px] text-[#F59E0B]">
+                        {hotel.rating}<span className="text-[14px] font-medium leading-[20px] tracking-[0px] text-[#7D7D7D]">{hotel.maxRating}</span>
                       </span>
                     </div>
                   </div>
-                  <Link href="#" className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] hover:underline">
+                  <Link href="#" className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] hover:underline">
                     Compare Prices ↗
                   </Link>
                 </div>
 
                 {/* Row 2: Title & Location */}
                 <div className="flex flex-col gap-[2px]">
-                  <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                  <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
                     {hotel.name}
                   </h3>
-                  <div className="flex items-center gap-[4px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[4px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     <MapPin size={12} className="text-[#7D7D7D]" />
                     <span>{hotel.location}</span>
                   </div>
@@ -164,15 +164,15 @@ export default function HotelDeals() {
 
                 {/* Row 4: Details List */}
                 <div className="flex flex-col gap-[8px]">
-                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     <Calendar size={14} className="text-[#7D7D7D]" />
                     <span>Check-in: {hotel.checkin}</span>
                   </div>
-                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     <MapPin size={14} className="text-[#7D7D7D]" />
                     <span>{hotel.location}</span>
                   </div>
-                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                     <Clock size={14} className="text-[#7D7D7D]" />
                     <span>Check-out: {hotel.checkout}</span>
                   </div>
@@ -184,19 +184,19 @@ export default function HotelDeals() {
                 {/* Row 5: Price & CTA */}
                 <div className="mt-auto flex items-center justify-between">
                   <div className="flex flex-col gap-[2px]">
-                    <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                    <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                       Start from
                     </span>
                     <div className="flex items-baseline gap-[2px]">
-                      <span className="font-sans text-[22px] font-bold leading-none tracking-[0px] text-[#000000]">
+                      <span className="font-sans text-[22px] font-medium leading-none tracking-[0px] text-[#000000]">
                         {hotel.price}
                       </span>
-                      <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
+                      <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
                         {hotel.unit}
                       </span>
                     </div>
                   </div>
-                  <button className="flex h-[40px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+                  <button className="flex h-[40px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
                     Book Now
                   </button>
                 </div>
