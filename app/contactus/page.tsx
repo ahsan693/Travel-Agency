@@ -122,12 +122,22 @@ export default function ContactUs() {
 
 function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] px-[16px] pb-[64px] pt-[20px] md:pb-[100px] md:pt-[24px] md:px-[112px]">
-      <div className="w-full max-w-[1440px]">
-        <Header />
+    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] pb-[64px] md:pb-[100px] md:px-[112px]">
+      
+      {/* 
+        The Header is absolutely positioned globally, but on this specific layout, 
+        we want it to flow normally (or at least leave space) so it doesn't overlap 
+        the hero text on mobile. By making the header relative here or adding top padding, 
+        we create the needed gap.
+      */}
+      <div className="w-full max-w-[1440px] pt-[20px] md:pt-[24px]">
+        {/* We use a wrapper with height to offset the absolute positioning of the Header component itself if needed, or rely on pt */}
+        <div className="relative h-[80px] w-full">
+          <Header />
+        </div>
       </div>
 
-      <div className="mt-[48px] flex max-w-[320px] flex-col items-center text-center md:mt-[100px] md:max-w-[800px]">
+      <div className="mt-[24px] flex max-w-[320px] flex-col items-center text-center md:mt-[80px] md:max-w-[800px]">
         <h1 className="font-sans text-[38px] font-medium leading-[1.05] tracking-[-1px] text-[#000000] md:text-[64px] md:leading-none md:tracking-[-0.03em]">
           Contact TravelMommy
         </h1>
