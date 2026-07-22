@@ -37,7 +37,8 @@ function HeroDesktop() {
 
           {/* Left Column (Paragraph & Button) */}
           <div className="flex max-w-[330px] transform -translate-y-4 flex-col items-start gap-[10px]">
-            <p className="font-sans text-[14px] font-medium leading-[1.43] text-black">
+            {/* Paragraph Text - Title S: 14px, Medium, 20px leading, -0.28px tracking */}
+            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-black">
               Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
             </p>
             <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
@@ -45,7 +46,6 @@ function HeroDesktop() {
               <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
-
 
           {/* Right Column (Reviews & Huge Text) */}
           <div className="flex flex-col items-start gap-[18px] lg:items-end">
@@ -78,9 +78,7 @@ function HeroDesktop() {
                     ))}
                   </div>
                   <div className="flex items-baseline gap-[4px]">
-                    {/* Title M: 16px, Medium, 150% */}
                     <span className="font-sans text-[16px] font-medium leading-[1.5] text-black">4.9</span>
-                    {/* Body M: 14px, Regular, 143% */}
                     <span className="font-sans text-[14px] font-normal leading-[1.43] text-black">/ 5</span>
                   </div>
                 </div>
@@ -140,8 +138,8 @@ function HeroMobile() {
           <span className="block">Travel Sites</span>
         </h1>
 
-        {/* Paragraph - Body M: 14px, Regular, 143% */}
-        <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.43] text-white/90">
+        {/* Paragraph Text - Title S: 14px, Medium, 20px leading, -0.28px tracking */}
+        <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-white/90">
           Unrivaled expertise for unique travel experiences. We're here to take you there dream travels!
         </p>
 
