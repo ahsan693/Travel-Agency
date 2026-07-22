@@ -189,8 +189,8 @@ function HeroDesktop() {
 
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
         
-        {/* Headline - Exact specs applied */}
-        <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-medium leading-[98px] tracking-[0px] text-white">
+        {/* Headline - Exact specs applied (110px size, 98px leading, -5px tracking) */}
+        <h1 className="w-full max-w-[1400px] font-sans text-[110px] font-medium leading-[98px] tracking-[-5px] text-white">
           <span className="block">Compare Flights from</span>
           <span className="block">500+ Airlines &amp; Travel Sites</span>
         </h1>
