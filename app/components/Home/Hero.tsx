@@ -36,7 +36,7 @@ function HeroDesktop() {
         <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
 
         {/* Left Column (Paragraph & Button) */}
-          <div className="flex max-w-[330px] transform -translate-y-[28px] flex-col items-start gap-[10px]">
+          <div className="flex max-w-[330px] transform -translate-y-[60px] flex-col items-start gap-[10px]">
             {/* Paragraph Text - Title S: 14px, Medium, 20px leading, -0.28px tracking */}
             <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-black">
               Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
