@@ -161,6 +161,7 @@ export default function FlightPage() {
       <CheapFlightsFromDublinSection />
       <WhyCompareFlightsSection />
       <PopularAirlinesSection />
+      <PopularAirportsSection />
       <FaqSection />
       <NewsletterSection />
       <Footer />
@@ -767,6 +768,64 @@ function PopularAirlinesSection() {
 /* ----------------------------------------------------------------
    POPULAR AIRPORTS SECTION
 ---------------------------------------------------------------- */
+
+function PopularAirportsSection() {
+  return (
+    <section className="w-full bg-white px-[80px] py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-[48px]">
+
+        {/* Heading */}
+        <div className="flex flex-col items-center gap-3 text-center">
+          <h2 className="font-sans text-[48px] font-semibold leading-[1.1] tracking-[-0.01em] text-black">
+            Popular Airports
+          </h2>
+          <p className="max-w-[640px] font-sans text-[16px] font-normal leading-[24px] text-black/60">
+            Search and compare flights from major airports around the world.
+            Discover convenient departure points, route options and travel
+            times before you book.
+          </p>
+        </div>
+
+        {/* Airport grid */}
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {popularAirports.map((airport) => (
+            <div
+              key={airport.code}
+              className="flex w-full items-center justify-between rounded-2xl border border-[#E6E6E6] bg-white px-6 py-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FDDB32]">
+                  <Plane className="h-5 w-5 text-black" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-sans text-[16px] font-semibold leading-[24px] text-black">
+                    {airport.name}
+                  </span>
+                  <span className="font-sans text-[14px] font-normal leading-[20px] text-black/50">
+                    {airport.location}
+                  </span>
+                </div>
+              </div>
+              <span className="font-sans text-[14px] font-medium leading-[20px] text-black/60">
+                {airport.code}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA button */}
+        <Link
+          href="/flights/airports"
+          className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] text-black transition-colors hover:bg-[#e5c52c]"
+        >
+          Explore All Airports
+          <ArrowUpRight className="h-[16px] w-[16px] text-black" />
+        </Link>
+
+      </div>
+    </section>
+  );
+}
 
 /* ----------------------------------------------------------------
    FAQ SECTION
