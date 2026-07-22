@@ -26,25 +26,25 @@ function HeroDesktop() {
       {/* Hero Content */}
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
 
-        {/* Main Heading - Display XXL: 110px (Large Screens) / Display XL: 72px */}
-        <h1 className="font-sans text-[72px] font-medium leading-none text-black xl:text-[110px] xl:leading-[0.89]">
+        {/* Main Heading - Display XXL: 110px, 98px line-height, -5px letter spacing */}
+        <h1 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
           <span className="block">Compare Flights, Hotels</span>
           <span className="block">&amp; Travel Deals</span>
         </h1>
 
         {/* Two-Column Layout */}
-       <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="mt-[28px] flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
 
-  {/* Left Column (Paragraph & Button) */}
-<div className="flex max-w-[330px] transform -translate-y-4 flex-col items-start gap-[10px]">
-  <p className="font-sans text-[14px] font-medium leading-[1.43] text-black">
-    Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
-  </p>
-  <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
-    Compare Flights
-    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-  </button>
-</div>
+          {/* Left Column (Paragraph & Button) */}
+          <div className="flex max-w-[330px] transform -translate-y-4 flex-col items-start gap-[10px]">
+            <p className="font-sans text-[14px] font-medium leading-[1.43] text-black">
+              Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
+            </p>
+            <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
+              Compare Flights
+              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
 
 
           {/* Right Column (Reviews & Huge Text) */}
@@ -91,8 +91,8 @@ function HeroDesktop() {
               </div>
             </div>
 
-            {/* "from 500+ Travel Sites" Heading - Display XXL/XL */}
-            <h2 className="font-sans text-[72px] font-medium leading-none text-black lg:text-right xl:text-[110px] xl:leading-[0.89]">
+            {/* "from 500+ Travel Sites" Heading - Display XXL: 110px, 98px line-height, -5px letter spacing */}
+            <h2 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black lg:text-right xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
               <span className="block">from 500+</span>
               <span className="block">Travel Sites</span>
             </h2>
@@ -133,7 +133,7 @@ function HeroMobile() {
       <div className="relative z-10 flex flex-col px-[20px]">
 
         {/* Heading - Display L: 48px, Medium, 100% */}
-        <h1 className="w-[352px] max-w-full font-sans text-[48px] font-medium leading-none text-white">
+        <h1 className="w-[352px] max-w-full font-sans text-[48px] font-medium leading-none tracking-[-1px] text-white">
           <span className="block">Compare Cheap</span>
           <span className="block">Flights &amp; Hotels</span>
           <span className="block">from 500+</span>
