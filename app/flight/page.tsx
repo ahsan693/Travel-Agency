@@ -713,35 +713,40 @@ function WhyCompareFlightsSection() {
 
 function PopularAirlinesSection() {
   return (
-    <section className="w-full bg-[#000000] py-[80px] lg:px-[80px] lg:py-[160px]">
+     <section className="w-full bg-black py-[80px] lg:py-[120px]">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 lg:px-[32px]">
-        <div className="flex flex-col gap-[48px]">
-          
-          <div className="flex flex-col gap-[15px]">
-            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-[121px]">
-            <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF] lg:max-w-[794px]">
-  Compare Flights from Popular Airlines.
-</h2>
+        <div className="flex flex-col gap-[32px]">
+
+          {/* Heading row */}
+          <div className="flex flex-col gap-[16px]">
+            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <h2 className="font-sans text-[36px] font-semibold leading-[1.1] tracking-[-0.01em] text-white lg:text-[48px] lg:leading-[52px]">
+                Compare Flights from Popular Airlines.
+              </h2>
               <Link
                 href="/flights/airlines"
-                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] transition-colors hover:bg-[#e5c52c]"
+                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] text-black transition-colors hover:bg-[#e5c52c]"
               >
                 View All Airlines
-                <ArrowUpRight className="h-[16px] w-[16px] text-[#000000]" />
+                <ArrowUpRight className="h-[16px] w-[16px] text-black" />
               </Link>
             </div>
-            <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF] lg:max-w-[800px]">
-              Search and compare fares from leading airlines around the world. Discover competitive prices, flexible travel options and routes from trusted carriers.
+
+            <p className="max-w-[800px] font-sans text-[16px] font-normal leading-[24px] text-white/80">
+              Search and compare fares from leading airlines around the world.
+              Discover competitive prices, flexible travel options and routes
+              from trusted carriers.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-[6.39px] sm:grid-cols-3 lg:grid-cols-5">
+          {/* Airline grid */}
+          <div className="grid grid-cols-2 gap-x-[6.39px] gap-y-[6.39px] sm:grid-cols-3 lg:grid-cols-5">
             {popularAirlines.map((airline) => (
               <div
                 key={airline.name}
-                className="group flex h-[151.80px] w-full flex-col items-center justify-center rounded-[16px] border border-[#E6E6E6] bg-[#F9FBF5] p-[4.79px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md lg:w-[238.09px]"
+                className="group flex aspect-[238/152] w-full items-center justify-center rounded-2xl border border-[#E6E6E6] bg-[#F9FBF5] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="relative flex h-full w-full max-w-[140px] items-center justify-center">
+                <div className="relative h-full w-full max-w-[140px]">
                   <Image
                     src={airline.logo}
                     alt={`${airline.name} logo`}
