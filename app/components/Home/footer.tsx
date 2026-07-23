@@ -12,14 +12,6 @@ const columns = [
 
 const mobileOrder = ["order-1", "order-3", "order-2", "order-4"];
 
-const legalLinks = [
-  "Privacy Policy",
-  "Terms & Conditions",
-  "Cookie Policy",
-  "Affiliate Disclosure",
-  "Accessibility",
-];
-
 const socialIcons = [
   {
     alt: "Instagram",
@@ -95,7 +87,7 @@ export default function Footer() {
                 providers - all in one place.
               </p>
 
-              {/* Social Icons - Using !text to force color override */}
+              {/* Social Icons */}
               <div className="flex items-center gap-5 pt-2">
                 {socialIcons.map((social) => (
                   <Link 
@@ -118,12 +110,12 @@ export default function Footer() {
                 key={i}
                 className={`flex flex-col gap-4 ${mobileOrder[i]} sm:order-none`}
               >
-                {/* Column Title (Kept White) */}
+                {/* Column Title */}
                 <span className="font-sans text-[16px] font-medium leading-[1.5] text-white">
                   {col.title}
                 </span>
 
-                {/* Navigation Links - Using !text to force override global styles */}
+                {/* Navigation Links */}
                 <ul className="m-0 flex list-none flex-col gap-0 p-0">
                   {col.links.map((link) => (
                     <li key={link} className="m-0 p-0">
@@ -147,18 +139,27 @@ export default function Footer() {
           {/* Divider 1 */}
           <div className="h-px w-full bg-white/10" />
 
-          {/* Legal links */}
+          {/* Legal links perfectly matched to Figma dimensions/layout */}
           <div className="flex justify-center py-[33px]">
-            <p className="flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[6px] text-center font-sans text-[16px] font-normal leading-[24px] text-white">
-              {legalLinks.map((link, i) => (
-                <span key={link} className="flex items-center gap-[10px]">
-                  <Link href="#" className="transition-colors hover:text-white/70">
-                    {link}
-                  </Link>
-                  {i < legalLinks.length - 1 && <span className="text-white/20">|</span>}
-                </span>
-              ))}
-            </p>
+            <div className="flex w-[364px] flex-col items-center justify-center font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-white">
+              
+              {/* Line 1: 3 Links */}
+              <div className="flex items-center gap-[6px] whitespace-nowrap">
+                <Link href="#" className="transition-colors hover:text-white/70">Privacy Policy</Link>
+                <span>|</span>
+                <Link href="#" className="transition-colors hover:text-white/70">Terms & Conditions</Link>
+                <span>|</span>
+                <Link href="#" className="transition-colors hover:text-white/70">Cookie Policy</Link>
+              </div>
+
+              {/* Line 2: 2 Links */}
+              <div className="flex items-center gap-[6px] whitespace-nowrap">
+                <Link href="#" className="transition-colors hover:text-white/70">Affiliate Disclosure</Link>
+                <span>|</span>
+                <Link href="#" className="transition-colors hover:text-white/70">Accessibility</Link>
+              </div>
+
+            </div>
           </div>
 
           {/* Divider 2 */}
