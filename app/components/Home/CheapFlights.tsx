@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { Clock, ArrowUpRight } from "lucide-react";
+import { Clock } from "lucide-react";
 
 const cheapFlights = [
   { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "1h 20m", image: "/Homepage/Section 3/Images/Image Container.png" },
@@ -34,7 +34,13 @@ export default function CheapFlights() {
 
           <button className="inline-flex h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[143%] text-[#000000] transition-colors hover:bg-[#e5c52c]">
             Browse All Flight Routes
-            <ArrowUpRight size={16} strokeWidth={2} />
+            <Image 
+              src="/Homepage/Section 3/Icon/KQY0VNx64.png" 
+              alt="Arrow Right" 
+              width={16} 
+              height={16} 
+              className="object-contain" 
+            />
           </button>
         </div>
 
@@ -102,7 +108,13 @@ export default function CheapFlights() {
                   <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
                     View Flights
                   </span>
-                  <ArrowUpRight size={14} className="text-[#000000]" />
+                  <Image 
+                    src="/Homepage/Section 3/Icon/KQY0VNx64.png" 
+                    alt="Arrow Right" 
+                    width={14} 
+                    height={14} 
+                    className="object-contain" 
+                  />
                 </button>
               </div>
 
