@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Search, ArrowLeftRight } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 
 const ICON_PATH = "/Homepage/Section 1/Header Icons/Icons";
 
@@ -107,7 +107,7 @@ function SearchWidgetDesktop() {
         ))}
 
         <button className="flex h-[49px] w-[52px] shrink-0 items-center justify-center rounded-[12px] bg-[#fddb32] transition-transform hover:scale-105">
-          <Search size={22} className="text-black" />
+          <Image src={`${ICON_PATH}/search - 01.png`} alt="Search" width={22} height={22} className="object-contain" />
         </button>
 
         {/* Swap Icon */}
@@ -234,7 +234,7 @@ function SearchWidgetMobile() {
       <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] font-sans text-[16px] font-medium leading-[1.5] text-black transition-transform active:scale-[0.98]">
         Search Flights
         <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
-          <Search size={16} className="text-black" />
+          <Image src={`${ICON_PATH}/search - 01.png`} alt="Search" width={16} height={16} className="object-contain" />
         </span>
       </button>
     </div>
