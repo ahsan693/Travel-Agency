@@ -11,7 +11,7 @@ const ICON_PATH = "/Homepage/Section 1/Header Icons/Icons";
 ---------------------------------------------------------------- */
 
 const desktopFields = [
-  { key: "from", iconSrc: `${ICON_PATH}/plane - 02.png`, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
+  { key: "from", iconSrc: `${ICON_PATH}/plane - 01.png`, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
   { key: "to", iconSrc: `${ICON_PATH}/plane - 03.png`, label: "To", value: "Country, City or air...", width: "w-[198px]" },
   { key: "depart", iconSrc: `${ICON_PATH}/calendar - 02.png`, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
   { key: "return", iconSrc: `${ICON_PATH}/calendar - 3.png`, label: "Return", value: "08 Jan 2026", width: "w-[193px]" },
