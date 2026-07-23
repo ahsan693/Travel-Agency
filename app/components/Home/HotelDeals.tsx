@@ -235,3 +235,4 @@ export default function HotelDeals() {
     </section>
   );
 }
+

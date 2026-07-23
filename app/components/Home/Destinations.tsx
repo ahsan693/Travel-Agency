@@ -1,7 +1,6 @@
 'use client';
 
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 
 const destinations = [
   { 
@@ -47,7 +46,13 @@ export default function Destinations() {
           {/* Title S: 14px, Medium, 143% */}
           <button className="inline-flex h-[44px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] font-sans text-[14px] font-medium leading-[1.43] text-[#111827] transition-colors hover:bg-[#e5c52c] max-[768px]:self-start">
             More Destinations
-            <ArrowUpRight size={16} strokeWidth={2.5} />
+            <Image 
+              src="/Homepage/Section 5/Icons/KQY0VNx64.png" 
+              alt="Arrow Right" 
+              width={14} 
+              height={14} 
+              className="object-contain" 
+            />
           </button>
         </div>
 
@@ -108,7 +113,13 @@ export default function Destinations() {
                   {/* Title S: 14px, Medium, 143% */}
                   <button className="flex h-[44px] w-full items-center justify-center gap-2 rounded-[14px] bg-[#FDDB32] font-sans text-[14px] font-medium leading-[1.43] text-[#111827] transition-colors duration-200 hover:bg-[#e5c52c]">
                     Explore
-                    <ArrowUpRight size={16} strokeWidth={2.5} />
+                    <Image 
+                      src="/Homepage/Section 5/Icons/KQY0VNx64.png" 
+                      alt="Arrow Right" 
+                      width={14} 
+                      height={14} 
+                      className="object-contain" 
+                    />
                   </button>
                 </div>
                 
