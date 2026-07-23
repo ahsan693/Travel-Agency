@@ -5,6 +5,16 @@ import { Star, ArrowUpRight } from "lucide-react";
 import SearchWidget from "./SearchWidget";
 
 /* ----------------------------------------------------------------
+   REVIEWER IMAGES ARRAY
+---------------------------------------------------------------- */
+const reviewerImages = [
+  "/Homepage/Section 1/Header Icons/Icons/Profile picture of Lindsay Walton.png",
+  "/Homepage/Section 1/Header Icons/Icons/Profile picture of Michael Foster.png",
+  "/Homepage/Section 1/Header Icons/Icons/Profile picture of Tom Cook.png",
+  "/Homepage/Section 1/Header Icons/Icons/Profile picture of Tom Walton.png"
+];
+
+/* ----------------------------------------------------------------
    DESKTOP
 ---------------------------------------------------------------- */
 
@@ -26,7 +36,7 @@ function HeroDesktop() {
       {/* Hero Content */}
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
 
-        {/* Main Heading - Display XXL: 110px, 98px line-height, -5px letter spacing */}
+        {/* Main Heading */}
         <h1 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
           <span className="block">Compare Flights, Hotels</span>
           <span className="block">&amp; Travel Deals</span>
@@ -37,7 +47,6 @@ function HeroDesktop() {
 
         {/* Left Column (Paragraph & Button) */}
           <div className="flex max-w-[330px] transform -translate-y-[60px] flex-col items-start gap-[10px]">
-            {/* Paragraph Text - Title S: 14px, Medium, 20px leading, -0.28px tracking */}
             <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-black">
               Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
             </p>
@@ -54,14 +63,14 @@ function HeroDesktop() {
             <div className="flex items-end gap-[14px]">
               {/* Avatars */}
               <div className="flex shrink-0 items-center">
-                {[11, 12, 13, 14].map((imgId, index) => (
+                {reviewerImages.map((src, index) => (
                   <div
-                    key={imgId}
+                    key={index}
                     className={`flex size-[36px] items-center justify-center rounded-full bg-white p-[2px] ${index > 0 ? '-ml-4' : ''}`}
                     style={{ zIndex: 40 - index * 10 }}
                   >
                     <img
-                      src={`https://i.pravatar.cc/100?img=${imgId}`}
+                      src={src}
                       alt={`Reviewer ${index + 1}`}
                       className="size-[32px] shrink-0 rounded-full object-cover"
                     />
@@ -82,14 +91,13 @@ function HeroDesktop() {
                     <span className="font-sans text-[14px] font-normal leading-[1.43] text-black">/ 5</span>
                   </div>
                 </div>
-                {/* Body M: 14px, Regular, 143% */}
                 <p className="mt-[2px] w-[215px] font-sans text-[14px] font-medium leading-[1.43] text-black">
                   Compare live prices from trusted airlines and travel websites.
                 </p>
               </div>
             </div>
 
-            {/* "from 500+ Travel Sites" Heading - Display XXL: 110px, 98px line-height, -5px letter spacing */}
+            {/* "from 500+ Travel Sites" Heading */}
             <h2 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black lg:text-right xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
               <span className="block">from 500+</span>
               <span className="block">Travel Sites</span>
@@ -130,7 +138,7 @@ function HeroMobile() {
       {/* Content */}
       <div className="relative z-10 flex flex-col px-[20px]">
 
-        {/* Heading - Display L: 48px, Medium, 100% */}
+        {/* Heading */}
         <h1 className="w-[352px] max-w-full font-sans text-[48px] font-medium leading-none tracking-[-1px] text-white">
           <span className="block">Compare Cheap</span>
           <span className="block">Flights &amp; Hotels</span>
@@ -138,12 +146,12 @@ function HeroMobile() {
           <span className="block">Travel Sites</span>
         </h1>
 
-        {/* Paragraph Text - Title S: 14px, Medium, 20px leading, -0.28px tracking */}
+        {/* Paragraph Text */}
         <p className="mt-[16px] max-w-[300px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-white/90">
           Unrivaled expertise for unique travel experiences. We're here to take you there dream travels!
         </p>
 
-        {/* Button - Title S: 14px, Medium, 143% */}
+        {/* Button */}
         <button className="group mt-[20px] flex h-[44px] w-fit items-center gap-[8px] rounded-full bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-sm transition-transform active:scale-[0.98]">
           Discover now
           <ArrowUpRight size={14} className="transition-transform group-active:translate-x-0.5 group-active:-translate-y-0.5" />
@@ -157,14 +165,14 @@ function HeroMobile() {
         {/* Trust row */}
         <div className="mt-[16px] flex items-center justify-center gap-[12px]">
           <div className="flex shrink-0 items-center">
-            {[11, 12, 13, 14].map((imgId, index) => (
+            {reviewerImages.map((src, index) => (
               <div
-                key={imgId}
+                key={index}
                 className={`flex size-[28px] items-center justify-center rounded-full bg-white p-[2px] ${index > 0 ? "-ml-3" : ""}`}
                 style={{ zIndex: 40 - index * 10 }}
               >
                 <img
-                  src={`https://i.pravatar.cc/100?img=${imgId}`}
+                  src={src}
                   alt={`Reviewer ${index + 1}`}
                   className="size-[24px] shrink-0 rounded-full object-cover"
                 />
@@ -179,12 +187,10 @@ function HeroMobile() {
                   <Star key={i} size={10} fill="currentColor" stroke="none" />
                 ))}
               </div>
-              {/* Title S: 14px, Medium, 143% */}
               <span className="font-sans text-[14px] font-medium leading-[1.43] text-white">
                 4.9 <span className="font-normal text-white/80">/ 5</span>
               </span>
             </div>
-            {/* Title XS: 12px, Medium, 133% */}
             <p className="mt-[2px] font-sans text-[12px] font-medium leading-[1.33] text-white/90">
               Trusted by 300+ travelers
             </p>

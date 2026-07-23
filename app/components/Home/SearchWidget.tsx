@@ -1,21 +1,23 @@
 'use client';
 
 import { useState } from "react";
-import { Plane, Building2, Calendar, Users, Search, ArrowLeftRight, Check } from "lucide-react";
+import Image from "next/image";
+import { Search, ArrowLeftRight } from "lucide-react";
+
+const ICON_PATH = "/Homepage/Section 1/Header Icons/Icons";
 
 /* ----------------------------------------------------------------
    DESKTOP
 ---------------------------------------------------------------- */
 
 const desktopFields = [
-  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
-  { key: "to", icon: Plane, label: "To", value: "Country, City or air...", width: "w-[198px]" },
-  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
-  { key: "return", icon: Calendar, label: "Return", value: "08 Jan 2026", width: "w-[193px]" },
-  { key: "travellers", icon: Users, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
+  { key: "from", iconSrc: `${ICON_PATH}/plane - 02.png`, label: "Departure", value: "Dublin (DUB)", width: "w-[197px]" },
+  { key: "to", iconSrc: `${ICON_PATH}/plane - 03.png`, label: "To", value: "Country, City or air...", width: "w-[198px]" },
+  { key: "depart", iconSrc: `${ICON_PATH}/calendar - 02.png`, label: "Depart", value: "08 Nov 2025", width: "w-[193px]" },
+  { key: "return", iconSrc: `${ICON_PATH}/calendar - 3.png`, label: "Return", value: "08 Jan 2026", width: "w-[193px]" },
+  { key: "travellers", iconSrc: `${ICON_PATH}/join a group - 01.png`, label: "Travellers and Cabin Class", value: "01 Adult 01 Child", width: "w-[273px]" },
 ];
 
-// Added TypeScript interface for DesktopCheckbox props
 interface DesktopCheckboxProps {
   checked: boolean;
   onChange: () => void;
@@ -30,10 +32,17 @@ function DesktopCheckbox({ checked, onChange, label }: DesktopCheckboxProps) {
           checked ? "border-[#fddb32] bg-[#fddb32]" : "border-[#e6e6e6] bg-[#f9fbf5]"
         }`}
       >
-        {checked && <Check size={11} strokeWidth={3} className="text-black" />}
+        {checked && (
+          <Image 
+            src={`${ICON_PATH}/Check.png`} 
+            alt="Check" 
+            width={11} 
+            height={11} 
+            className="object-contain" 
+          />
+        )}
       </span>
       <input type="checkbox" checked={checked} onChange={onChange} className="hidden" />
-      {/* Title S: 14px, Medium, 143% */}
       <span className="whitespace-nowrap font-sans text-[14px] font-medium leading-[1.43] text-black">
         {label}
       </span>
@@ -50,9 +59,8 @@ function SearchWidgetDesktop() {
   return (
     <div className="relative w-fit rounded-b-[28px] rounded-tr-[28px] bg-white/90 pb-[24px] pt-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm">
 
-      {/* Tabs — fused to the top edge of the card, no gap, no wrapper pill */}
+      {/* Tabs */}
       <div className="absolute bottom-full left-0 flex h-[52px] items-end gap-[3px]">
-        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
@@ -62,10 +70,9 @@ function SearchWidgetDesktop() {
               : "bg-white/25 text-black/60 backdrop-blur-md"
           }`}
         >
-          <Plane size={18} />
+          <Image src={`${ICON_PATH}/plane - 01.png`} alt="Flights" width={18} height={18} />
           Flights
         </button>
-        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("hotels")}
           aria-pressed={activeTab === "hotels"}
@@ -75,7 +82,7 @@ function SearchWidgetDesktop() {
               : "bg-white/25 text-black/60 backdrop-blur-md"
           }`}
         >
-          <Building2 size={18} />
+          <Image src={`${ICON_PATH}/home - 04.png`} alt="Hotels" width={18} height={18} />
           Hotels
         </button>
       </div>
@@ -89,12 +96,10 @@ function SearchWidgetDesktop() {
           >
             <div className="flex items-center gap-[12px]">
               <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
-                <field.icon size={16} className="text-black" />
+                <Image src={field.iconSrc} alt={field.label} width={16} height={16} className="object-contain" />
               </div>
               <div className="flex flex-col gap-[2px] font-sans">
-                {/* Title S: 14px, Medium, 143% */}
                 <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-[#7d7d7d]">{field.label}</span>
-                {/* Title S: 14px, Medium, 143% */}
                 <span className="whitespace-nowrap text-[14px] font-medium leading-[1.43] text-black">{field.value}</span>
               </div>
             </div>
@@ -105,7 +110,7 @@ function SearchWidgetDesktop() {
           <Search size={22} className="text-black" />
         </button>
 
-        {/* Swap Icon — sits between Departure and To fields */}
+        {/* Swap Icon */}
         <button
           aria-label="Swap origin and destination"
           className="absolute left-[188px] top-1/2 flex size-[30px] -translate-y-[46px] items-center justify-center rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
@@ -114,7 +119,7 @@ function SearchWidgetDesktop() {
         </button>
       </div>
 
-      {/* Additional Options — aligned in two columns under Departure & To fields */}
+      {/* Additional Options */}
       <div className="mt-[16px] flex gap-[11px] px-[24px]">
         <div className="flex w-[197px] flex-col gap-[10px] pl-[15px]">
           <DesktopCheckbox
@@ -145,37 +150,34 @@ function SearchWidgetDesktop() {
 ---------------------------------------------------------------- */
 
 const mobileFields = [
-  { key: "from", icon: Plane, label: "Departure", value: "Dublin (DUB)" },
-  { key: "to", icon: Plane, label: "To", value: "Country, City or Airport" },
+  { key: "from", iconSrc: `${ICON_PATH}/plane - 02.png`, label: "Departure", value: "Dublin (DUB)" },
+  { key: "to", iconSrc: `${ICON_PATH}/plane - 03.png`, label: "To", value: "Country, City or Airport" },
 ];
 
 const mobileSplitFields = [
-  { key: "depart", icon: Calendar, label: "Depart", value: "08 Nov" },
-  { key: "return", icon: Calendar, label: "Return", value: "08 Jan" },
+  { key: "depart", iconSrc: `${ICON_PATH}/calendar - 02.png`, label: "Depart", value: "08 Nov" },
+  { key: "return", iconSrc: `${ICON_PATH}/calendar - 3.png`, label: "Return", value: "08 Jan" },
 ];
 
-const mobileTravellersField = { key: "travellers", icon: Users, label: "Travellers", value: "01 Adult, 01 Child" };
+const mobileTravellersField = { key: "travellers", iconSrc: `${ICON_PATH}/join a group - 01.png`, label: "Travellers", value: "01 Adult, 01 Child" };
 
-// Added TypeScript interface for MobileFieldBox props
 interface MobileFieldBoxProps {
-  icon: any;
+  iconSrc: string;
   label: string;
   value: string;
   className?: string;
 }
 
-function MobileFieldBox({ icon: Icon, label, value, className = "" }: MobileFieldBoxProps) {
+function MobileFieldBox({ iconSrc, label, value, className = "" }: MobileFieldBoxProps) {
   return (
     <div
       className={`flex h-[64px] w-full items-center gap-[12px] rounded-[18px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[14px] pr-[14px] ${className}`}
     >
       <div className="flex size-[28px] shrink-0 items-center justify-center rounded-[8px] bg-[#ffed91]">
-        <Icon size={14} className="text-black" />
+        <Image src={iconSrc} alt={label} width={14} height={14} className="object-contain" />
       </div>
       <div className="flex min-w-0 flex-col font-sans">
-        {/* Title XS: 12px, Medium, 133% */}
         <span className="truncate text-[12px] font-medium leading-[1.33] text-[#7d7d7d]">{label}</span>
-        {/* Title S: 14px, Medium, 143% */}
         <span className="truncate text-[14px] font-medium leading-[1.43] text-black">{value}</span>
       </div>
     </div>
@@ -188,9 +190,8 @@ function SearchWidgetMobile() {
   return (
     <div className="w-full rounded-[28px] bg-white p-[16px] shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
 
-      {/* Tabs — pill style, inline at top of the card */}
+      {/* Tabs */}
       <div className="mb-[16px] flex items-center gap-[8px]">
-        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("flights")}
           aria-pressed={activeTab === "flights"}
@@ -198,10 +199,9 @@ function SearchWidgetMobile() {
             activeTab === "flights" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
           }`}
         >
-          <Plane size={16} />
+          <Image src={`${ICON_PATH}/plane - 01.png`} alt="Flights" width={16} height={16} />
           Flights
         </button>
-        {/* Title S: 14px, Medium, 143% */}
         <button
           onClick={() => setActiveTab("hotels")}
           aria-pressed={activeTab === "hotels"}
@@ -209,28 +209,28 @@ function SearchWidgetMobile() {
             activeTab === "hotels" ? "bg-[#fddb32] text-black" : "text-[#7d7d7d]"
           }`}
         >
-          <Building2 size={16} />
+          <Image src={`${ICON_PATH}/home - 04.png`} alt="Hotels" width={16} height={16} />
           Hotels
         </button>
       </div>
 
-      {/* Fields — stacked full width */}
+      {/* Fields */}
       <div className="flex flex-col gap-[12px]">
         {mobileFields.map((f) => (
-          <MobileFieldBox key={f.key} icon={f.icon} label={f.label} value={f.value} />
+          <MobileFieldBox key={f.key} iconSrc={f.iconSrc} label={f.label} value={f.value} />
         ))}
 
-        {/* Depart / Return — two-up grid */}
+        {/* Depart / Return */}
         <div className="grid grid-cols-2 gap-[12px]">
           {mobileSplitFields.map((f) => (
-            <MobileFieldBox key={f.key} icon={f.icon} label={f.label} value={f.value} />
+            <MobileFieldBox key={f.key} iconSrc={f.iconSrc} label={f.label} value={f.value} />
           ))}
         </div>
 
-        <MobileFieldBox icon={mobileTravellersField.icon} label={mobileTravellersField.label} value={mobileTravellersField.value} />
+        <MobileFieldBox iconSrc={mobileTravellersField.iconSrc} label={mobileTravellersField.label} value={mobileTravellersField.value} />
       </div>
 
-      {/* Search button — Title M: 16px, Medium, 150% */}
+      {/* Search button */}
       <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] font-sans text-[16px] font-medium leading-[1.5] text-black transition-transform active:scale-[0.98]">
         Search Flights
         <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
