@@ -12,6 +12,14 @@ const columns = [
 
 const mobileOrder = ["order-1", "order-3", "order-2", "order-4"];
 
+const legalLinks = [
+  "Privacy Policy",
+  "Terms & Conditions",
+  "Cookie Policy",
+  "Affiliate Disclosure",
+  "Accessibility",
+];
+
 const socialIcons = [
   {
     alt: "Instagram",
@@ -44,7 +52,8 @@ const socialIcons = [
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1216px] px-6 pb-10 pt-16 lg:px-10 lg:pb-12 lg:pt-20">
+      {/* Applied ~158px top padding on desktop per Figma specs */}
+      <div className="mx-auto w-full max-w-[1216px] px-6 pb-10 pt-[80px] lg:px-10 lg:pb-12 lg:pt-[158px]">
 
         {/* ===== Top frame: logo block (left) + nav columns (right) ===== */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[33px]">
@@ -87,7 +96,7 @@ export default function Footer() {
                 providers - all in one place.
               </p>
 
-              {/* Social Icons */}
+              {/* Social Icons - Using !text to force color override */}
               <div className="flex items-center gap-5 pt-2">
                 {socialIcons.map((social) => (
                   <Link 
@@ -110,12 +119,12 @@ export default function Footer() {
                 key={i}
                 className={`flex flex-col gap-4 ${mobileOrder[i]} sm:order-none`}
               >
-                {/* Column Title */}
+                {/* Column Title (Kept White) */}
                 <span className="font-sans text-[16px] font-medium leading-[1.5] text-white">
                   {col.title}
                 </span>
 
-                {/* Navigation Links */}
+                {/* Navigation Links - Using !text to force override global styles */}
                 <ul className="m-0 flex list-none flex-col gap-0 p-0">
                   {col.links.map((link) => (
                     <li key={link} className="m-0 p-0">
