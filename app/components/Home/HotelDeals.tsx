@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MapPin, Calendar, Clock, ArrowUpRight } from "lucide-react";
+import { Star, MapPin, Calendar, Clock } from "lucide-react";
 
 const hotels = [
   { 
@@ -108,9 +108,15 @@ export default function HotelDeals() {
                   </span>
                 </div>
 
-                {/* Arrow Badge */}
+                {/* Arrow Badge (Top Right) */}
                 <div className="absolute right-[12px] top-[12px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-sm">
-                  <ArrowUpRight size={18} className="text-[#000000]" />
+                  <Image 
+                    src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                    alt="Arrow" 
+                    width={14} 
+                    height={14} 
+                    className="object-contain" 
+                  />
                 </div>
               </div>
 
@@ -118,11 +124,11 @@ export default function HotelDeals() {
               <div className="flex flex-1 flex-col gap-[12px] p-[14px]">
                 
                 {/* Row 1: Rating & Compare Row */}
-                <div className="flex h-[20px] items-center justify-between">
-                  <div className="flex items-center gap-[6px]">
+                <div className="flex h-[20px] w-full items-center justify-between">
+                  <div className="flex shrink-0 items-center gap-[6px]">
                     <div className="flex gap-[2px]">
                       {Array.from({ length: 5 }).map((_, j) => (
-                        <Star key={j} size={12} className="fill-[#F59E0B] text-[#F59E0B]" strokeWidth={0} />
+                        <Star key={j} size={12} className="fill-[#000000] text-[#000000]" strokeWidth={0} />
                       ))}
                     </div>
                     <div className="flex items-baseline font-sans">
@@ -131,8 +137,22 @@ export default function HotelDeals() {
                       </span>
                     </div>
                   </div>
-                  <Link href="#" className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] hover:underline">
-                    Compare Prices ↗
+                  
+                  {/* Explicitly Black Compare Prices Link */}
+                  <Link 
+                    href="#" 
+                    className="group/compare z-10 flex shrink-0 items-center gap-[4px] whitespace-nowrap hover:underline"
+                  >
+                    <span className="font-sans text-[13px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+                      Compare Prices
+                    </span>
+                    <Image 
+                      src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                      alt="Arrow" 
+                      width={10} 
+                      height={10} 
+                      className="object-contain transition-transform group-hover/compare:translate-x-0.5 group-hover/compare:-translate-y-0.5" 
+                    />
                   </Link>
                 </div>
 
