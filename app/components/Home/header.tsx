@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,7 +22,13 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
-          <Image src="/assets/logo.svg" alt="TravelMommy" width={72} height={30} className="h-[30px] w-auto" />
+          <Image 
+            src="/Homepage/Section 1/Header Images/navbarlogo.png" 
+            alt="TravelMommy" 
+            width={72} 
+            height={30} 
+            className="h-[30px] w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Nav (Hidden on Mobile) */}
@@ -60,7 +66,13 @@ export default function Header() {
             className="relative flex h-[40px] min-w-[100px] items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-[0px_16px_8px_0px_rgba(31,31,31,0.01),0px_12px_6px_0px_rgba(31,31,31,0.04),0px_4px_4px_0px_rgba(31,31,31,0.07),0px_1.5px_3px_0px_rgba(31,31,31,0.08),0px_0px_0px_1px_#c29700] transition-all hover:brightness-105"
           >
             Search Deals
-            <ArrowUpRight size={14} />
+            <Image 
+              src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+              alt="Arrow Right" 
+              width={14} 
+              height={14} 
+              className="object-contain" 
+            />
             <span className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_1px_2px_0px_rgba(255,255,255,0.12)]" />
           </button>
         </nav>
@@ -118,7 +130,13 @@ export default function Header() {
                 className="relative mt-1 flex h-[48px] w-full items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[16px] font-medium text-black transition-all hover:brightness-105"
               >
                 Search Deals
-                <ArrowUpRight size={18} />
+                <Image 
+                  src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                  alt="Arrow Right" 
+                  width={18} 
+                  height={18} 
+                  className="object-contain" 
+                />
               </button>
             </nav>
           </div>
