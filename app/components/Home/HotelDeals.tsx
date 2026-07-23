@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MapPin, Calendar, Clock } from "lucide-react";
+import { Star, MapPin, Calendar, Clock, ArrowUpRight } from "lucide-react";
 
 const hotels = [
   { 
@@ -106,6 +106,11 @@ export default function HotelDeals() {
                   <span className="font-sans text-[14px] font-medium text-[#000000]">
                     Popular
                   </span>
+                </div>
+
+                {/* Arrow Badge */}
+                <div className="absolute right-[12px] top-[12px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-sm">
+                  <ArrowUpRight size={18} className="text-[#000000]" />
                 </div>
               </div>
 
