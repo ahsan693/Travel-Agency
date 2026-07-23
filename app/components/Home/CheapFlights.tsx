@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { Clock, ArrowUpRight, Plane } from "lucide-react";
+import { Clock, ArrowUpRight } from "lucide-react";
 
 const cheapFlights = [
   { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "1h 20m", image: "/Homepage/Section 3/Images/Image Container.png" },
@@ -74,7 +74,13 @@ export default function CheapFlights() {
                     {flight.price}
                   </p>
                   <div className="flex items-center gap-[4px] rounded-[6px] border border-[#E6E6E6] bg-[#F9FBF5] px-[8px] py-[4px]">
-                    <Plane size={16} className="text-[#00529C]" />
+                    <Image 
+                      src="/Homepage/Section 3/Icon/Airline Logo.png" 
+                      alt={`${flight.airline} logo`} 
+                      width={16} 
+                      height={16} 
+                      className="object-contain" 
+                    />
                     <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#000000]">
                       {flight.airline}
                     </span>
