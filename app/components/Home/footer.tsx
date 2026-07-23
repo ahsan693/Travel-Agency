@@ -10,9 +10,6 @@ const columns = [
   { title: "Company", links: ["About", "Contact", "Partners", "Help Centre"] },
 ];
 
-// On mobile (2-col grid) the design shows the 2nd and 3rd columns swapped
-// (Search / Discover-Trips on row 1, Discover-Deals / Company on row 2).
-// Desktop keeps natural left-to-right order, so these orders reset at sm.
 const mobileOrder = ["order-1", "order-3", "order-2", "order-4"];
 
 const legalLinks = [
@@ -24,9 +21,32 @@ const legalLinks = [
 ];
 
 const socialIcons = [
-  { src: "/assets/instagram.svg", alt: "Instagram" },
-  { src: "/assets/facebook.svg", alt: "Facebook" },
-  { src: "/assets/tiktok.svg", alt: "TikTok" },
+  {
+    alt: "Instagram",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    )
+  },
+  {
+    alt: "Facebook",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+      </svg>
+    )
+  },
+  {
+    alt: "TikTok",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 12a4 4 0 1 0 4 4V2a5 5 0 0 0 5 5h-2a3 3 0 0 1-3-3V2H9v10Z"></path>
+      </svg>
+    )
+  }
 ];
 
 export default function Footer() {
@@ -34,44 +54,60 @@ export default function Footer() {
     <footer className="bg-black text-white">
       <div className="mx-auto w-full max-w-[1216px] px-6 pb-10 pt-16 lg:px-10 lg:pb-12 lg:pt-20">
 
-        {/* ===== Top frame: logo block (left) + nav columns (right), gap 33 ===== */}
+        {/* ===== Top frame: logo block (left) + nav columns (right) ===== */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[33px]">
 
           {/* Logo + locale pill + blurb + socials */}
-          <div className="flex max-w-[300px] flex-col gap-6">
+          <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center">
               <Image
-                src="/assets/logo.svg"
-                alt="TravelMommy"
+                src="/Homepage/Section 7/Vector-1.png"
+                alt="TravelMommy Logo"
                 width={203}
                 height={128}
-                className="h-32 w-auto lg:h-[117px]"
+                className="h-32 w-auto object-contain lg:h-[117px]"
               />
             </Link>
 
-            {/* Title XS: 12px, Medium, 133% */}
-            <span className="w-fit rounded-[10px] border border-white/15 bg-white/5 px-[12px] py-[8px] font-sans text-[12px] font-medium leading-[1.33] text-white">
+            {/* Locale Pill */}
+            <button className="flex w-fit items-center gap-[8px] rounded-[10px] border border-white/15 bg-white/5 px-[12px] py-[8px] font-sans text-[12px] font-medium leading-[1.33] text-white transition-colors hover:bg-white/10">
+              <Image
+                src="/Homepage/Section 7/Vector.png"
+                alt="Region Settings"
+                width={14}
+                height={14}
+                className="object-contain"
+              />
               IE Ireland · English (UK) · EUR €
-            </span>
+              <Image
+                src="/Homepage/Section 7/KQY0VNx64.png"
+                alt="Dropdown Arrow"
+                width={12}
+                height={12}
+                className="object-contain"
+              />
+            </button>
 
-            {/* Body M: 14px, Regular, 143% */}
-            <p className="font-sans text-[14px] font-normal leading-[1.43] text-white">
-              Compare flights, hotels and travel deals from trusted travel
-              providers - all in one place.
-            </p>
+            {/* Description text + social icons under logo */}
+            <div className="flex flex-col gap-[10px]">
+              <p className="w-full max-w-[350px] font-sans text-[16px] font-normal leading-[24px] text-white">
+                Compare flights, hotels and travel deals from trusted travel
+                providers - all in one place.
+              </p>
 
-            <div className="flex items-center gap-4">
-              {socialIcons.map((icon) => (
-                <Link key={icon.alt} href="#" aria-label={icon.alt}>
-                  <Image
-                    src={icon.src}
-                    alt={icon.alt}
-                    width={18}
-                    height={18}
-                    className="opacity-50 transition-opacity hover:opacity-100"
-                  />
-                </Link>
-              ))}
+              {/* Social Icons - Using !text to force color override */}
+              <div className="flex items-center gap-5 pt-2">
+                {socialIcons.map((social) => (
+                  <Link 
+                    key={social.alt} 
+                    href="#" 
+                    aria-label={social.alt}
+                    className="!text-[#7D7D7D] transition-colors hover:!text-white"
+                  >
+                    {social.icon}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -82,17 +118,18 @@ export default function Footer() {
                 key={i}
                 className={`flex flex-col gap-4 ${mobileOrder[i]} sm:order-none`}
               >
-                {/* Title M: 16px, Medium, 150% */}
+                {/* Column Title (Kept White) */}
                 <span className="font-sans text-[16px] font-medium leading-[1.5] text-white">
                   {col.title}
                 </span>
-                <ul className="flex flex-col gap-3">
+
+                {/* Navigation Links - Using !text to force override global styles */}
+                <ul className="m-0 flex list-none flex-col gap-0 p-0">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      {/* Body M: 14px, Regular, 143% */}
+                    <li key={link} className="m-0 p-0">
                       <Link
                         href="#"
-                        className="font-sans text-[14px] font-normal leading-[1.43] text-white/50 transition-colors hover:text-white"
+                        className="block py-[8px] font-sans text-[14px] font-medium leading-[20px] !text-[#7D7D7D] transition-colors hover:!text-white"
                       >
                         {link}
                       </Link>
@@ -104,34 +141,42 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ===== Divider ===== */}
-        <div className="mt-16 border-t border-white/10 lg:mt-20" />
+        {/* ===== Bottom frame: dividers and legal text ===== */}
+        <div className="mt-16 flex flex-col lg:mt-[33px]">
 
-        {/* ===== Bottom frame: fully centered (legal links → copyright → disclaimer) ===== */}
-        <div className="flex flex-col items-center gap-4 pt-8 text-center">
-          {/* Title XS: 12px, Medium, 133% */}
-          <p className="flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[6px] font-sans text-[12px] font-medium leading-[1.33] text-white">
-            {legalLinks.map((link, i) => (
-              <span key={link} className="flex items-center gap-[10px]">
-                <Link href="#" className="transition-colors hover:text-white/70">
-                  {link}
-                </Link>
-                {i < legalLinks.length - 1 && <span className="text-white/20">|</span>}
-              </span>
-            ))}
-          </p>
+          {/* Divider 1 */}
+          <div className="h-px w-full bg-white/10" />
 
-          {/* Title XS: 12px, Medium, 133% */}
-          <p className="font-sans text-[12px] font-medium leading-[1.33] text-white">
-            © 2025 TravelMommy
-          </p>
+          {/* Legal links */}
+          <div className="flex justify-center py-[33px]">
+            <p className="flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[6px] text-center font-sans text-[16px] font-normal leading-[24px] text-white">
+              {legalLinks.map((link, i) => (
+                <span key={link} className="flex items-center gap-[10px]">
+                  <Link href="#" className="transition-colors hover:text-white/70">
+                    {link}
+                  </Link>
+                  {i < legalLinks.length - 1 && <span className="text-white/20">|</span>}
+                </span>
+              ))}
+            </p>
+          </div>
 
-          {/* Title XS: 12px, Medium, 133% */}
-          <p className="max-w-[640px] font-sans text-[12px] font-medium leading-[1.33] text-white">
-            TravelMommy is a travel metasearch platform. We compare prices
-            from airlines, hotels and travel providers. Bookings are
-            completed directly with our travel partners.
-          </p>
+          {/* Divider 2 */}
+          <div className="h-px w-full bg-white/10" />
+
+          {/* Copyright + disclaimer */}
+          <div className="flex flex-col items-center pt-[33px] text-center">
+            <p className="font-sans text-[16px] font-normal leading-[24px] text-white">
+              © 2025 TravelMommy
+            </p>
+
+            <div className="h-[24px]" />
+
+            <p className="max-w-[889px] font-sans text-[16px] font-normal leading-[24px] text-white">
+              TravelMommy is a travel metasearch platform. We compare prices from airlines, hotels and travel providers. Bookings are completed directly with our travel partners.
+            </p>
+          </div>
+
         </div>
 
       </div>

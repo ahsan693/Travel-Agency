@@ -1,7 +1,6 @@
 'use client';
 
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 
 const guides = [
   { 
@@ -29,7 +28,7 @@ export default function TravelGuides() {
     <section className="w-full bg-[#ffffff] py-[80px] text-[#000000]">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-[32px] max-[430px]:px-4">
         
-        {/* Section Heading - Display L: 48px, Medium, 100% (Desktop) | Title L: 24px (Mobile) */}
+        {/* Section Heading */}
         <h2 className="mb-[48px] text-center font-sans text-[48px] font-medium leading-none text-[#000000] max-[768px]:text-[24px]">
           Featured Travel Guides
         </h2>
@@ -52,21 +51,24 @@ export default function TravelGuides() {
                 
                 {/* Top Right Hover Icon */}
                 <div className="absolute right-5 top-5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-white shadow-sm transition-transform duration-300 group-hover:scale-110">
-                  <ArrowUpRight size={18} strokeWidth={2.5} className="text-[#000000]" />
+                  <Image 
+                    src="/Homepage/Section 6/Icon/KQY0VNx64.png" 
+                    alt="Arrow" 
+                    width={14} 
+                    height={14} 
+                    className="object-contain" 
+                  />
                 </div>
               </div>
 
               {/* Text Content */}
               <div className="flex flex-col px-1">
-                {/* Date - Title XS: 12px, Medium, 133% */}
+                {/* Date */}
                 <span className="mb-[6px] font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">
                   {guide.date}
                 </span>
                 
-                {/* Guide Title 
-                    Large Card -> Title L: 24px, Medium, 100% 
-                    Small Card -> Title M: 16px, Medium, 150% 
-                */}
+                {/* Guide Title */}
                 <h3 className={`font-sans font-medium text-[#000000] ${guide.large ? 'text-[24px] leading-none' : 'text-[16px] leading-[1.5]'}`}>
                   {guide.title}
                 </h3>
@@ -77,10 +79,15 @@ export default function TravelGuides() {
 
         {/* Call to Action Button */}
         <div className="mt-[48px] flex justify-center">
-          {/* Button - Title S: 14px, Medium, 143% */}
           <button className="flex h-[44px] items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] transition-colors hover:bg-[#e5c52c]">
             View All Guides
-            <ArrowUpRight size={16} strokeWidth={2.5} className="text-[#000000]" />
+            <Image 
+              src="/Homepage/Section 6/Icon/KQY0VNx64.png" 
+              alt="Arrow" 
+              width={14} 
+              height={14} 
+              className="object-contain" 
+            />
           </button>
         </div>
 
