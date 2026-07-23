@@ -4,11 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Building2,
-  Plane,
-  Calendar,
-  Users,
-  Search,
   Check,
   Star,
   ArrowUpRight,
@@ -16,6 +11,7 @@ import {
   Minus,
   Plus,
   Mail,
+  Search, // Keeping this for "Why Compare" section if it's used there
 } from "lucide-react";
 
 // ============================================================================
@@ -24,14 +20,17 @@ import {
 import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
 
+const HOTELS_ICON_PATH = "/Hotels Page/Section 1/Icon";
+
 /* ----------------------------------------------------------------
    STATIC DATA
 ---------------------------------------------------------------- */
 
+// Updated to match the exact stars shown in the images
 const hotelFilters = [
   "All",
-  "★ 5-Star",
-  "★ 4-Star",
+  "★★★★★ 5-Star",
+  "★★★★ 4-Star",
   "Budget",
   "Family Friendly",
   "Luxury",
@@ -167,7 +166,7 @@ function SearchWidgetDesktop() {
         <button
           className="flex h-full items-center gap-[6px] rounded-tl-[24px] rounded-tr-[14px] bg-white/90 px-[20px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors"
         >
-          <Building2 size={18} />
+          <Image src={`${HOTELS_ICON_PATH}/home - 04.png`} alt="Hotels" width={18} height={18} className="object-contain" />
           Hotels
         </button>
       </div>
@@ -177,7 +176,7 @@ function SearchWidgetDesktop() {
         <div className="flex h-[75px] w-[270px] shrink-0 items-center rounded-[20px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[15px]">
           <div className="flex items-center gap-[12px]">
             <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
-              <MapPin size={16} className="text-black" />
+              <Image src={`${HOTELS_ICON_PATH}/location square - 02.png`} alt="Location" width={16} height={16} className="object-contain" />
             </div>
             <div className="flex flex-col gap-[2px] font-sans">
               {/* Title S */}
@@ -192,7 +191,7 @@ function SearchWidgetDesktop() {
         <div className="flex h-[75px] w-[193px] shrink-0 items-center rounded-[20px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[15px]">
           <div className="flex items-center gap-[12px]">
             <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
-              <Calendar size={16} className="text-black" />
+              <Image src={`${HOTELS_ICON_PATH}/calendar - 02.png`} alt="Check In" width={16} height={16} className="object-contain" />
             </div>
             <div className="flex flex-col gap-[2px] font-sans">
               {/* Title S */}
@@ -207,7 +206,7 @@ function SearchWidgetDesktop() {
         <div className="flex h-[75px] w-[193px] shrink-0 items-center rounded-[20px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[15px]">
           <div className="flex items-center gap-[12px]">
             <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
-              <Calendar size={16} className="text-black" />
+              <Image src={`${HOTELS_ICON_PATH}/calendar - 3.png`} alt="Check Out" width={16} height={16} className="object-contain" />
             </div>
             <div className="flex flex-col gap-[2px] font-sans">
               {/* Title S */}
@@ -222,7 +221,7 @@ function SearchWidgetDesktop() {
         <div className="flex h-[75px] w-[273px] shrink-0 items-center rounded-[20px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[15px]">
           <div className="flex items-center gap-[12px]">
             <div className="flex size-[29.6px] shrink-0 items-center justify-center rounded-[7.4px] bg-[#ffed91]">
-              <Users size={16} className="text-black" />
+              <Image src={`${HOTELS_ICON_PATH}/join a group - 01.png`} alt="Guests" width={16} height={16} className="object-contain" />
             </div>
             <div className="flex flex-col gap-[2px] font-sans">
               {/* Title S */}
@@ -235,18 +234,18 @@ function SearchWidgetDesktop() {
 
         {/* Search Button */}
         <button className="flex h-[49px] w-[52px] shrink-0 items-center justify-center rounded-[12px] bg-[#fddb32] transition-transform hover:scale-105">
-          <Search size={22} className="text-black" />
+          <Image src={`${HOTELS_ICON_PATH}/search - 01.png`} alt="Search" width={22} height={22} className="object-contain" />
         </button>
       </div>
     </div>
   );
 }
 
-function MobileFieldBox({ icon: Icon, label, value, className = "" }: any) {
+function MobileFieldBox({ iconSrc, label, value, className = "" }: any) {
   return (
     <div className={`flex h-[64px] w-full items-center gap-[12px] rounded-[18px] border border-[#e6e6e6] bg-[#f9fbf5] pl-[14px] pr-[14px] ${className}`}>
       <div className="flex size-[28px] shrink-0 items-center justify-center rounded-[8px] bg-[#ffed91]">
-        <Icon size={14} className="text-black" />
+        <Image src={iconSrc} alt={label} width={14} height={14} className="object-contain" />
       </div>
       <div className="flex min-w-0 flex-col font-sans">
         {/* Title XS */}
@@ -264,24 +263,24 @@ function SearchWidgetMobile() {
       <div className="mb-[16px] flex items-center gap-[8px]">
         {/* Title S */}
         <button className="flex h-[36px] items-center gap-[6px] rounded-full bg-[#fddb32] px-[14px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-colors">
-          <Building2 size={16} /> Hotels
+          <Image src={`${HOTELS_ICON_PATH}/home - 04.png`} alt="Hotels" width={16} height={16} className="object-contain" /> Hotels
         </button>
       </div>
 
       <div className="flex flex-col gap-[12px]">
-        <MobileFieldBox icon={MapPin} label="Where are you going?" value="Jeddah, Saudi Arabia" />
+        <MobileFieldBox iconSrc={`${HOTELS_ICON_PATH}/location square - 02.png`} label="Where are you going?" value="Jeddah, Saudi Arabia" />
         <div className="grid grid-cols-2 gap-[12px]">
-          <MobileFieldBox icon={Calendar} label="Check In date" value="08 Nov 2025" />
-          <MobileFieldBox icon={Calendar} label="Check Out Date" value="08Jan 2026" />
+          <MobileFieldBox iconSrc={`${HOTELS_ICON_PATH}/calendar - 02.png`} label="Check In date" value="08 Nov 2025" />
+          <MobileFieldBox iconSrc={`${HOTELS_ICON_PATH}/calendar - 3.png`} label="Check Out Date" value="08Jan 2026" />
         </div>
-        <MobileFieldBox icon={Users} label="Guests and rooms" value="01 Adult 01 Child" />
+        <MobileFieldBox iconSrc={`${HOTELS_ICON_PATH}/join a group - 01.png`} label="Guests and rooms" value="01 Adult 01 Child" />
       </div>
 
       {/* Title M */}
       <button className="relative mt-[16px] flex h-[56px] w-full items-center justify-center rounded-full bg-[#fddb32] font-sans text-[16px] font-medium leading-[1.5] text-black transition-transform active:scale-[0.98]">
         Search Hotels
         <span className="absolute right-[6px] flex size-[36px] items-center justify-center rounded-full bg-white">
-          <Search size={16} className="text-black" />
+          <Image src={`${HOTELS_ICON_PATH}/search - 01.png`} alt="Search" width={16} height={16} className="object-contain" />
         </span>
       </button>
     </div>
@@ -395,35 +394,39 @@ function PopularHotelsSection() {
   return (
     <section className="bg-[#f9fbf5] py-20">
       <div className="mx-auto w-full max-w-[1280px] px-6 lg:px-8">
-        <div className="flex flex-col gap-2">
-          {/* Display L */}
-          <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
-            Popular Hotels
-          </h2>
-          {/* Body L */}
-          <p className="mt-[10px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
-            Compare prices on popular hotels from trusted booking partners. Discover great stays for every budget.
-          </p>
+        
+        {/* Header and Filters Block with exact 48px gap */}
+        <div className="flex w-full flex-col gap-[48px]">
+          <div className="flex flex-col">
+            {/* Display L */}
+            <h2 className="font-sans text-[48px] font-medium leading-none text-[#000000]">
+              Popular Hotels
+            </h2>
+            {/* Body L */}
+            <p className="mt-[10px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
+              Compare prices on popular hotels from trusted booking partners. Discover great stays for every budget.
+            </p>
+          </div>
+
+          <div className="flex gap-[6px] overflow-x-auto pb-4 scrollbar-hide">
+            {hotelFilters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                // Exact styling matching the provided images (44px height, minimal 6px gap, and tighter 16px horizontal padding)
+                className={`flex h-[44px] shrink-0 items-center justify-center rounded-full border px-[16px] font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
+                  activeFilter === filter
+                    ? "border-[#FDDB32] bg-[#FDDB32] text-[#000000]"
+                    : "border-[#E6E6E6] bg-[#FFFFFF] text-[#000000] hover:border-[#FDDB32]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-8 flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
-          {hotelFilters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              // Title S
-              className={`shrink-0 rounded-full border px-5 py-2.5 font-sans text-[14px] font-medium leading-[1.43] transition-colors ${
-                activeFilter === filter
-                  ? "border-[#FDDB32] bg-[#FDDB32] text-black"
-                  : "border-gray-200 bg-white text-gray-700 hover:border-[#FDDB32]"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-[32px] grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {popularHotels.map((hotel, i) => (
             <div key={i} className="group overflow-hidden rounded-[24px] bg-white shadow-sm border border-neutral-100 transition-all hover:-translate-y-1 hover:shadow-xl">
               <div className="relative h-[240px] w-full overflow-hidden">
