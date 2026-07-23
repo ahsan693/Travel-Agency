@@ -169,7 +169,7 @@ function HeroDesktop() {
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Homepage/Section 1/Header Images/526214caf79a7211f2ad2806141f3fa8.jpg"
+          src="/Flights Page/Section 1/Header Images/nils-nedel-ONpGBpns3cs-unsplash.jpg"
           alt="Hero background"
           fill
           className="object-cover"
@@ -210,7 +210,7 @@ function HeroMobile() {
     <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[88px] lg:hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&w=900&q=80"
+          src="/Flights Page/Section 1/Header Images/nils-nedel-ONpGBpns3cs-unsplash.jpg"
           alt="Hero background"
           fill
           className="object-cover"
