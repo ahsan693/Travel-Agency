@@ -150,7 +150,7 @@ function SearchWidgetDesktop() {
 ---------------------------------------------------------------- */
 
 const mobileFields = [
-  { key: "from", iconSrc: `${ICON_PATH}/plane - 02.png`, label: "Departure", value: "Dublin (DUB)" },
+  { key: "from", iconSrc: `${ICON_PATH}/plane - 01.png`, label: "Departure", value: "Dublin (DUB)" }, // Matched to plane - 01.png
   { key: "to", iconSrc: `${ICON_PATH}/plane - 03.png`, label: "To", value: "Country, City or Airport" },
 ];
 
