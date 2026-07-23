@@ -4,13 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Plane,
   ArrowLeftRight,
-  ArrowUpRight,
   Clock,
-  CreditCard,
-  UserCheck,
-  RefreshCw,
   Minus,
   Plus,
   Mail,
@@ -59,35 +54,46 @@ const cheapFlights = [
   { city: "Amsterdam", route: "Dub → AMS", price: "€28", airline: "Ryanair", duration: "1h 40m", image: "/Homepage/Section 3/Images/Image Container-7.png" },
 ];
 
+const mobileFlights = [
+  { city: "London", route: "Dub → LHR", price: "€24", airline: "Ryanair", duration: "1h 20m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg" },
+  { city: "London", route: "Dub → LGW", price: "€24", airline: "Ryanair", duration: "1h 25m", image: "https://images.pexels.com/photos/16230720/pexels-photo-16230720.jpeg?auto=compress&cs=tinysrgb&w=800&q=80", flag: "https://flagcdn.com/gb.svg" },
+  { city: "Barcelona", route: "Dub → BCN", price: "€29", airline: "Ryanair", duration: "2h 35m", image: "https://images.unsplash.com/photo-1578095172812-dcc191c5aed8?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/es.svg" },
+  { city: "Lisbon", route: "Dub → LIS", price: "€31", airline: "Ryanair", duration: "2h 50m", image: "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/pt.svg" },
+  { city: "New York", route: "Dub → JFK", price: "€189", airline: "Aer Lingus", duration: "7h 15m", image: "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/us.svg" },
+  { city: "Rome", route: "Dub → FCO", price: "€34", airline: "Ryanair", duration: "3h 10m", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/it.svg" },
+  { city: "Dubai", route: "Dub → DXB", price: "€245", airline: "Emirates", duration: "7h 45m", image: "https://images.unsplash.com/photo-1623725206109-3ef2c2eec00e?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/ae.svg" },
+  { city: "Amsterdam", route: "Dub → AMS", price: "€28", airline: "Ryanair", duration: "1h 40m", image: "https://images.unsplash.com/photo-1580996378027-23040f16f157?auto=format&w=800&q=80&fit=crop", flag: "https://flagcdn.com/nl.svg" },
+];
+
 const whyCompareFeatures = [
   {
-    icon: CreditCard,
+    iconSrc: "/Flights Page/Section 3/Icons/credit card declined - 02.png",
     title: "No Hidden Booking Fees",
     description: "TravelMommy doesn't sell flights or charge booking fees. Compare prices for free and choose the deal that works best for you.",
   },
   {
-    icon: UserCheck,
+    iconSrc: "/Flights Page/Section 3/Icons/follow user - 01.png",
     title: "Book with Trusted Partners",
     description: "View the latest flight prices and availability so you can compare deals before booking with your preferred travel provider.",
   },
   {
-    icon: RefreshCw,
+    iconSrc: "/Flights Page/Section 3/Icons/time refresh - 02.png",
     title: "Live Prices, Updated Daily",
     description: "View the latest flight prices and availability so you can compare deals before booking with your preferred travel provider.",
   },
 ];
 
 const popularAirlines = [
-  { name: "Emirates", logo: "/assets/airlines/emirates.svg" },
-  { name: "American Airlines", logo: "/assets/airlines/american-airlines.svg" },
-  { name: "RYANAIR", logo: "/assets/airlines/ryanair.svg" },
-  { name: "QATAR AIRWAYS", logo: "/assets/airlines/qatar-airways.svg" },
-  { name: "BRITISH AIRWAYS", logo: "/assets/airlines/british-airways.svg" },
-  { name: "ETIHAD", logo: "/assets/airlines/etihad.svg" },
-  { name: "KLM", logo: "/assets/airlines/klm.svg" },
-  { name: "Lufthansa", logo: "/assets/airlines/lufthansa.svg" },
-  { name: "TURKISH AIRLINES", logo: "/assets/airlines/turkish-airlines.svg" },
-  { name: "easyJet", logo: "/assets/airlines/easyjet.svg" },
+  { name: "Emirates", logo: "/Flights Page/Section 4/Images/Emirates-Logo 1.png" },
+  { name: "American Airlines", logo: "/Flights Page/Section 4/Images/american-airlines-logo-1 1.png" },
+  { name: "RYANAIR", logo: "/Flights Page/Section 4/Images/Ryanair-Logo 1.png" },
+  { name: "QATAR AIRWAYS", logo: "/Flights Page/Section 4/Images/qatar-airways-logo 1.png" },
+  { name: "BRITISH AIRWAYS", logo: "/Flights Page/Section 4/Images/Group.png" },
+  { name: "ETIHAD", logo: "/Flights Page/Section 4/Images/Etihad-airways-logo.svg 1.png" },
+  { name: "KLM", logo: "/Flights Page/Section 4/Images/KLM-Logo 1.png" },
+  { name: "Lufthansa", logo: "/Flights Page/Section 4/Images/Lufthansa-Logo.wine 1.png" },
+  { name: "TURKISH AIRLINES", logo: "/Flights Page/Section 4/Images/Turkish-Airlines-Emblem 1.png" },
+  { name: "easyJet", logo: "/Flights Page/Section 4/Images/Vector.png" },
 ];
 
 const popularAirports = [
@@ -451,7 +457,7 @@ function CheapFlightsFromDublinSection() {
             </p>
           </div>
 
-          <button className="inline-flex h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[143%] text-[#000000] transition-colors hover:bg-[#e5c52c]">
+          <Link href="/flights/routes" className="inline-flex h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[143%] text-[#000000] transition-colors hover:bg-[#e5c52c]">
             Browse All Flight Routes
             <Image 
               src="/Homepage/Section 3/Icon/KQY0VNx64.png" 
@@ -460,7 +466,7 @@ function CheapFlightsFromDublinSection() {
               height={16} 
               className="object-contain" 
             />
-          </button>
+          </Link>
         </div>
 
         {/* Flight Cards Grid (Unified for Desktop and Mobile) */}
@@ -523,7 +529,7 @@ function CheapFlightsFromDublinSection() {
 
               {/* 3. Footer Section (68px height) */}
               <div className="mt-auto px-[20px] pb-[20px] pt-0">
-                <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors hover:bg-[#FDDB32] hover:border-[#FDDB32]">
+                <Link href="/flights/search" className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors hover:bg-[#FDDB32] hover:border-[#FDDB32]">
                   <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
                     View Flights
                   </span>
@@ -534,7 +540,7 @@ function CheapFlightsFromDublinSection() {
                     height={14} 
                     className="object-contain" 
                   />
-                </button>
+                </Link>
               </div>
 
             </div>
@@ -575,7 +581,7 @@ function WhyCompareFlightsSection() {
                 <div className="flex h-[276px] w-full flex-col items-center rounded-[20px] border border-[#E6E6E6] bg-[#F9FBF5] p-[15px]">
                   <div className="flex h-full w-full flex-col items-center gap-[20px] p-[10px] text-center">
                     <span className="flex h-[61px] w-[61px] shrink-0 items-center justify-center rounded-full bg-[#FFED91]">
-                      <feature.icon className="h-[24px] w-[24px] text-[#000000]" />
+                      <Image src={feature.iconSrc} alt={feature.title} width={24} height={24} className="object-contain" />
                     </span>
                     <div className="flex flex-col items-center gap-[10px]">
                       <h3 className="w-full font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
@@ -684,7 +690,14 @@ function PopularAirportsSection() {
             >
               <div className="flex items-center gap-4">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FDDB32]">
-                  <Plane className="h-5 w-5 text-black" />
+                  {/* REPLACED Lucide Plane with Custom Icon */}
+                  <Image 
+                    src="/Flights Page/Section 5/Icons/Vector.png" 
+                    alt="Airport" 
+                    width={20} 
+                    height={20} 
+                    className="object-contain" 
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-sans text-[16px] font-semibold leading-[24px] text-black">
