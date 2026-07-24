@@ -128,7 +128,7 @@ const popularSearches = [
     price: "$120", 
     rating: "4.9", 
     hotelCount: "3,200+", 
-    image: "https://images.unsplash.com/photo-1502602898657-3e9076006085?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&w=800&q=80" 
   },
   { 
     city: "London", 
@@ -136,7 +136,7 @@ const popularSearches = [
     price: "$110", 
     rating: "4.8", 
     hotelCount: "2,850+", 
-    image: "https://images.unsplash.com/photo-1520939817895-060bdaf4ed1a?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" 
   },
   { 
     city: "Dubai", 
@@ -152,7 +152,7 @@ const popularSearches = [
     price: "$89", 
     rating: "4.7", 
     hotelCount: "1,600+", 
-    image: "https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1745186487192-09eccb385169?auto=format&fit=crop&w=800&q=80" 
   },
 ];
 
