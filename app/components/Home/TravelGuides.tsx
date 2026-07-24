@@ -6,7 +6,7 @@ const guides = [
   { 
     date: "June 12, 2026", 
     title: "Best Time to Visit Bali", 
-    image: "https://images.unsplash.com/photo-1537522515082-f5f458117769?q=80&w=1200&auto=format&fit=crop", 
+    image: "https://images.unsplash.com/photo-1553902000-e036b7d05af5?q=80&w=1200&auto=format&fit=crop", 
     large: true 
   },
   { 
@@ -18,7 +18,7 @@ const guides = [
   { 
     date: "May 15, 2026", 
     title: "Paris Travel Guide", 
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop", 
+    image: "https://images.unsplash.com/photo-1777541743077-de523b619fb3?q=80&w=800&auto=format&fit=crop", 
     large: false 
   },
 ];
