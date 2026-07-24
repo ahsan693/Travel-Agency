@@ -8,6 +8,8 @@ import {
   Star,
   ArrowUpRight,
   MapPin,
+  Calendar,
+  Clock,
   Minus,
   Plus,
   Mail,
@@ -41,29 +43,44 @@ const hotelFilters = [
 ];
 
 const popularHotels = [
-  {
-    name: "The Ritz-Carlton",
-    location: "Paris, France",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&w=800&q=80",
-    price: "€129",
-    rating: 5,
-    tags: ["Free cancellation", "Breakfast included"],
+  { 
+    name: "The Westin Paris", 
+    location: "Paris, France", 
+    rating: "4.9",
+    maxRating: "/5",
+    price: "€29", 
+    unit: "/ person", 
+    tags: ["Hotel", "Luxury", "Spa"], 
+    checkin: "Apr 21, 2024",
+    checkout: "12:00 PM",
+    image: "/Homepage/Section 4/Images/Image.png",
+    tagColors: { bg: "#FFF0F8", border: "#FBBDEA", text: "#C050A0" }
   },
-  {
-    name: "Hilton Barcelona",
-    location: "Barcelona, Spain",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&w=800&q=80",
-    price: "€142",
-    rating: 4,
-    tags: ["Free WiFi", "Pool included"],
+  { 
+    name: "Hilton Barcelona", 
+    location: "Barcelona, Spain", 
+    rating: "4.7",
+    maxRating: "/5",
+    price: "€142", 
+    unit: "/ night", 
+    tags: ["Hotel", "Business", "Pool"], 
+    checkin: "May 10, 2024",
+    checkout: "11:00 AM",
+    image: "/Homepage/Section 4/Images/Image-1.png",
+    tagColors: { bg: "#FFF4ED", border: "#FDCBA8", text: "#C06020" }
   },
-  {
-    name: "Marriott Dubai",
-    location: "Dubai, UAE",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c0d13c05?auto=format&w=800&q=80",
-    price: "€98",
-    rating: 5,
-    tags: ["Excellent (4.8)", "Spa access"],
+  { 
+    name: "Marriott Dubai", 
+    location: "Dubai, UAE", 
+    rating: "4.8",
+    maxRating: "/5",
+    price: "€98", 
+    unit: "/ night", 
+    tags: ["Hotel", "Resort", "Beachfront"], 
+    checkin: "Jun 15, 2024",
+    checkout: "12:00 PM",
+    image: "/Homepage/Section 4/Images/Image-2.png",
+    tagColors: { bg: "#FFFBEB", border: "#FDE68A", text: "#A08010" }
   },
 ];
 
@@ -426,69 +443,146 @@ function PopularHotelsSection() {
           </div>
         </div>
 
-        <div className="mt-[32px] grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-[32px] grid w-full grid-cols-1 gap-[8px] md:grid-cols-2 lg:grid-cols-3">
           {popularHotels.map((hotel, i) => (
-            <div key={i} className="group overflow-hidden rounded-[24px] bg-white shadow-sm border border-neutral-100 transition-all hover:-translate-y-1 hover:shadow-xl">
-              <div className="relative h-[240px] w-full overflow-hidden">
-                <Image
-                  src={hotel.image}
-                  alt={hotel.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+            <div 
+              key={i} 
+              className="group flex h-auto lg:h-[527px] flex-col overflow-hidden rounded-[20px] bg-[#ffffff] pb-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
+            >
+              {/* Image Header */}
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-900">
+                <Image 
+                  src={hotel.image} 
+                  alt={hotel.name} 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
                 />
-                {/* Title XS */}
-                <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 font-sans text-[12px] font-medium leading-[1.33] text-black">
-                  Popular
-                </span>
-                <span className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#FDDB32]">
-                  <ArrowUpRight className="h-4 w-4 text-black" strokeWidth={2.5} />
-                </span>
+                
+                {/* Popular Badge */}
+                <div className="absolute left-[12px] top-[12px] rounded-full bg-[#FFFFFF] px-[10px] py-[4px] shadow-sm">
+                  <span className="font-sans text-[14px] font-medium text-[#000000]">
+                    Popular
+                  </span>
+                </div>
+
+                {/* Arrow Badge (Top Right) */}
+                <div className="absolute right-[12px] top-[12px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-sm">
+                  <Image 
+                    src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                    alt="Arrow" 
+                    width={14} 
+                    height={14} 
+                    className="object-contain" 
+                  />
+                </div>
               </div>
 
-              <div className="flex flex-col p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <Star key={idx} className={`h-4 w-4 ${idx < hotel.rating ? 'fill-[#FDDB32] text-[#FDDB32]' : 'fill-gray-200 text-gray-200'}`} />
-                    ))}
+              {/* Card Body */}
+              <div className="flex flex-1 flex-col gap-[12px] p-[14px]">
+                
+                {/* Row 1: Rating & Compare Row */}
+                <div className="flex h-[20px] w-full items-center justify-between">
+                  <div className="flex shrink-0 items-center gap-[6px]">
+                    <div className="flex gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} size={12} className="fill-[#000000] text-[#000000]" strokeWidth={0} />
+                      ))}
+                    </div>
+                    <div className="flex items-baseline font-sans">
+                      <span className="text-[14px] font-medium leading-[20px] tracking-[0px] text-[#F59E0B]">
+                        {hotel.rating}<span className="text-[14px] font-medium leading-[20px] tracking-[0px] text-[#7D7D7D]">{hotel.maxRating}</span>
+                      </span>
+                    </div>
                   </div>
-                  {/* Title S */}
-                  <Link href="#" className="flex items-center gap-1 font-sans text-[14px] font-medium leading-[1.43] text-black hover:underline">
-                    Compare Prices <ArrowUpRight className="h-3.5 w-3.5" />
+                  
+                  {/* Explicitly Black Compare Prices Link */}
+                  <Link 
+                    href="#" 
+                    className="group/compare z-10 flex shrink-0 items-center gap-[4px] whitespace-nowrap hover:underline"
+                  >
+                    <span className="font-sans text-[13px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+                      Compare Prices
+                    </span>
+                    <Image 
+                      src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                      alt="Arrow" 
+                      width={10} 
+                      height={10} 
+                      className="object-contain transition-transform group-hover/compare:translate-x-0.5 group-hover/compare:-translate-y-0.5" 
+                    />
                   </Link>
                 </div>
 
-                {/* Title L */}
-                <h3 className="font-sans text-[24px] font-medium leading-none text-black">{hotel.name}</h3>
-                
-                {/* Body M */}
-                <p className="mt-[6px] flex items-center gap-1.5 font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">
-                  <MapPin size={14} /> {hotel.location}
-                </p>
+                {/* Row 2: Title & Location */}
+                <div className="flex flex-col gap-[2px]">
+                  <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+                    {hotel.name}
+                  </h3>
+                  <div className="flex items-center gap-[4px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                    <MapPin size={12} className="text-[#7D7D7D]" />
+                    <span>{hotel.location}</span>
+                  </div>
+                </div>
 
-                <div className="mt-4 flex flex-col gap-2">
+                {/* Row 3: Tags */}
+                <div className="flex flex-wrap gap-[6px]">
                   {hotel.tags.map(tag => (
-                    // Body M
-                    <div key={tag} className="flex items-center gap-2 font-sans text-[14px] font-normal leading-[1.43] text-gray-600">
-                      <Check size={14} className="text-green-600" /> {tag}
-                    </div>
+                    <span 
+                      key={tag} 
+                      style={{ 
+                        backgroundColor: hotel.tagColors.bg,
+                        borderColor: hotel.tagColors.border, 
+                        color: hotel.tagColors.text
+                      }}
+                      className="flex h-[26px] items-center justify-center rounded-full border px-[8px] py-[3px] font-sans text-[14px] font-normal leading-[20px]"
+                    >
+                      {tag}
+                    </span>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-end justify-between border-t border-gray-100 pt-4">
-                  <div>
-                    {/* Body M */}
-                    <span className="block font-sans text-[14px] font-normal leading-[1.43] text-[#777777]">Prices from</span>
-                    {/* Title L */}
-                    <span className="font-sans text-[24px] font-medium leading-none text-black">{hotel.price}</span>
-                    {/* Body M */}
-                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-[#777777]"> / night</span>
+                {/* Divider */}
+                <div className="h-[1px] w-full bg-[#E6E6E6]" />
+
+                {/* Row 4: Details List */}
+                <div className="flex flex-col gap-[8px]">
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                    <Calendar size={14} className="text-[#7D7D7D]" />
+                    <span>Check-in: {hotel.checkin}</span>
                   </div>
-                  {/* Title S */}
-                  <Link href="#" className="rounded-full bg-[#FDDB32] px-6 py-2.5 font-sans text-[14px] font-medium leading-[1.43] text-black hover:bg-[#e5c52c] transition-colors">
-                    View Deal
-                  </Link>
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                    <MapPin size={14} className="text-[#7D7D7D]" />
+                    <span>{hotel.location}</span>
+                  </div>
+                  <div className="flex items-center gap-[8px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                    <Clock size={14} className="text-[#7D7D7D]" />
+                    <span>Check-out: {hotel.checkout}</span>
+                  </div>
                 </div>
+
+                {/* Divider */}
+                <div className="h-[1px] w-full bg-[#E6E6E6]" />
+
+                {/* Row 5: Price & CTA */}
+                <div className="mt-auto flex items-center justify-between">
+                  <div className="flex flex-col gap-[2px]">
+                    <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                      Start from
+                    </span>
+                    <div className="flex items-baseline gap-[2px]">
+                      <span className="font-sans text-[22px] font-medium leading-none tracking-[0px] text-[#000000]">
+                        {hotel.price}
+                      </span>
+                      <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                        {hotel.unit}
+                      </span>
+                    </div>
+                  </div>
+                  <button className="flex h-[40px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] transition-colors duration-200 hover:bg-[#e5c52c]">
+                    Book Now
+                  </button>
+                </div>
+                
               </div>
             </div>
           ))}
