@@ -120,7 +120,7 @@ const FEATURED_COUNTRIES: DestinationItem[] = [
     name: "Italy",
     desc: "Ancient ruins, rolling vineyards",
     rating: "4.9",
-    image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80",
     tags: ["Art", "History", "Wine"],
     flightsFrom: "€40",
     hotelsFrom: "€70",
