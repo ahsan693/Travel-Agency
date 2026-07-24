@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   MapPin,
   Coins,
@@ -12,10 +11,9 @@ import {
   Plane,
   Building2,
   ArrowUpRight,
-  Minus,
-  Plus,
   Star,
-  ChevronDown
+  ChevronDown,
+  Check
 } from "lucide-react";
 
 import Header from "../components/Home/header";
@@ -38,7 +36,7 @@ const DESTINATIONS = [
     city: "Santorini",
     desc: "Iconic white-washed houses, blue domes, and breathtaking sunsets.",
     badge: "Popular",
-    badgeStyles: "bg-[#DBEAFE] text-[#1E40AF]",
+    badgeStyles: "bg-[#1E40AF] text-[#FFFFFF]",
     flightsFrom: "€50",
     hotelsFrom: "€85",
     image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=800&q=80",
@@ -47,7 +45,7 @@ const DESTINATIONS = [
     city: "Athens",
     desc: "The historical heart of ancient Greece, home to the mighty Acropolis.",
     badge: "Best Value",
-    badgeStyles: "bg-[#E0E7FF] text-[#3730A3]",
+    badgeStyles: "bg-[#3730A3] text-[#FFFFFF]",
     flightsFrom: "€35",
     hotelsFrom: "€55",
     image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80",
@@ -56,7 +54,7 @@ const DESTINATIONS = [
     city: "Mykonos",
     desc: "Vibrant nightlife, luxury resorts, and picturesque windmills.",
     badge: "Trending",
-    badgeStyles: "bg-[#FCE7F3] text-[#9D174D]",
+    badgeStyles: "bg-[#9D174D] text-[#FFFFFF]",
     flightsFrom: "€60",
     hotelsFrom: "€120",
     image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80",
@@ -65,7 +63,7 @@ const DESTINATIONS = [
     city: "Crete",
     desc: "A massive island offering diverse landscapes, deep history, and beaches.",
     badge: "Hidden Gem",
-    badgeStyles: "bg-[#D1FAE5] text-[#065F46]",
+    badgeStyles: "bg-[#065F46] text-[#FFFFFF]",
     flightsFrom: "€45",
     hotelsFrom: "€60",
     image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80",
@@ -121,7 +119,7 @@ function HeroSection() {
       {/* Background Image + 30% Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=1920&q=80"
+          src="/Country Details/Section 1/Images/Hero.png"
           alt="Greece"
           fill
           className="object-cover"
@@ -133,13 +131,13 @@ function HeroSection() {
       <div className="relative z-10 mt-[104px] flex w-full max-w-[1440px] flex-col items-center px-[32px] text-center">
         {/* Breadcrumb: 12px, Medium, 16px, -0.12px */}
         <div className="mb-[12px] flex items-center justify-center rounded-full bg-[#FDDB32] px-[12px] py-[4px]">
-          <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#000000]">
+          <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
             GREECE
           </span>
         </div>
         
         {/* Title: 72px, Medium, 100%, -3% */}
-        <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-none tracking-[0px] text-[#FFFFFF] max-[768px]:text-[48px]">
+        <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-[72px] tracking-[-0.03em] text-[#FFFFFF] max-[768px]:text-[48px]">
           Discover Greece
         </h1>
         
@@ -158,20 +156,20 @@ function HeroSection() {
 
 function InfoBarSection() {
   return (
-    <section className="w-full bg-[#F9FBF5]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-[24px] px-[20px] py-[40px] lg:px-[80px]">
+    <section className="w-full bg-[#F9FBFA]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-[24px] px-[80px] py-[40px] max-[1024px]:px-[20px]">
         {INFO_BAR_DATA.map((info, i) => (
           <div key={i} className="flex items-center gap-[12px]">
-            <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#FFFFFF] shadow-sm">
+            <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#FDDB32]">
               <info.icon size={18} className="text-[#000000]" />
             </div>
-            <div className="flex flex-col gap-[2px]">
+            <div className="flex flex-col">
               {/* Label: 12px, Medium, 16px, -0.12px */}
-              <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#000000]">
+              <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
                 {info.label}
               </span>
               {/* Value: 14px, Medium, 20px, -0.28px */}
-              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
                 {info.value}
               </span>
             </div>
@@ -188,13 +186,13 @@ function InfoBarSection() {
 
 function AboutSection() {
   return (
-    <section className="w-full bg-[#FFFFFF] py-[80px] lg:py-[120px]">
-      <div className="mx-auto w-full max-w-[1440px] px-[20px] lg:px-[160px]">
+    <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[160px] max-[1024px]:px-[20px]">
         
-        <div className="flex flex-col gap-[64px] lg:flex-row lg:items-start lg:gap-[80px]">
+        <div className="flex flex-col items-center gap-[80px] lg:flex-row">
           {/* Left Col */}
-          <div className="flex flex-1 flex-col gap-[24px]">
-            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000] max-[768px]:text-[36px]">
+          <div className="flex w-full max-w-[540px] flex-col gap-[24px]">
+            <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
               About Greece
             </h2>
             <div className="flex flex-col gap-[16px]">
@@ -205,11 +203,14 @@ function AboutSection() {
                 Athens, its capital, retains landmarks including the 5th-century B.C. Acropolis citadel with the Parthenon temple. Beaches, black sands, and party resorts like Mykonos make it a premier destination.
               </p>
             </div>
-            <div className="mt-[16px] flex flex-wrap gap-[12px]">
+            <div className="mt-[16px] flex flex-wrap gap-[16px]">
               {["Ancient History", "Island Hopping", "Mediterranean Cuisine"].map(feat => (
-                <div key={feat} className="flex items-center gap-[8px] rounded-full border border-[#E5E7EB] bg-[#F9FBF5] px-[16px] py-[8px]">
-                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
-                    ✓ {feat}
+                <div key={feat} className="flex items-center gap-[8px]">
+                  <div className="flex h-[24px] w-[24px] items-center justify-center rounded-full bg-[#F9FBFA] border border-[#E5E7EB]">
+                     <Check size={14} className="text-[#000000]" />
+                  </div>
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                    {feat}
                   </span>
                 </div>
               ))}
@@ -217,7 +218,7 @@ function AboutSection() {
           </div>
 
           {/* Right Col */}
-          <div className="relative h-[300px] w-full flex-1 overflow-hidden rounded-[24px] lg:h-[400px]">
+          <div className="relative h-[400px] w-full max-w-[500px] overflow-hidden rounded-[42px]">
             <Image 
               src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&w=800&q=80" 
               alt="Greece Coastline" 
@@ -238,8 +239,8 @@ function AboutSection() {
 
 function DestinationCard({ item }: { item: any }) {
   return (
-    <div className="flex h-[524px] w-full flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0,0,0,0.06),0_18px_40px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1">
-      {/* Image Container (282x220 scaled to flex width) */}
+    <div className="flex h-[524px] w-full flex-col overflow-hidden rounded-[24px] border border-[#333333] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1">
+      {/* Image Container */}
       <div className="relative h-[220px] w-full shrink-0 overflow-hidden bg-neutral-100">
         <Image src={item.image} alt={item.city || item.name} fill className="object-cover transition-transform duration-700 hover:scale-105" />
         
@@ -253,20 +254,20 @@ function DestinationCard({ item }: { item: any }) {
       {/* Content Area */}
       <div className="flex flex-1 flex-col gap-[16px] p-[24px]">
         <div className="flex flex-col gap-[4px]">
-          <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+          <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
             {item.city || item.name}
           </h3>
-          <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#000000] line-clamp-2">
+          <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000] line-clamp-2">
             {item.desc}
           </p>
         </div>
 
         {(item.flightsFrom || item.hotelsFrom) && (
-          <div className="flex flex-col gap-[8px] rounded-[12px] bg-[#F9FBF5] p-[12px]">
+          <div className="flex flex-col gap-[8px] rounded-[12px] bg-[#F9FBFA] p-[12px]">
             {item.flightsFrom && (
               <div className="flex items-center gap-[8px]">
                 <Plane size={14} className="text-[#000000]" />
-                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#000000]">
+                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
                   Flights from {item.flightsFrom}
                 </span>
               </div>
@@ -274,7 +275,7 @@ function DestinationCard({ item }: { item: any }) {
             {item.hotelsFrom && (
               <div className="flex items-center gap-[8px]">
                 <Building2 size={14} className="text-[#000000]" />
-                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#000000]">
+                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
                   Hotels from {item.hotelsFrom} / night
                 </span>
               </div>
@@ -284,7 +285,7 @@ function DestinationCard({ item }: { item: any }) {
 
         {/* CTA */}
         <div className="mt-auto">
-          <button className="flex h-[44px] w-full items-center justify-center rounded-[12px] bg-[#000000] font-sans text-[14px] font-medium leading-[20px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
+          <button className="flex h-[44px] w-full items-center justify-center rounded-[12px] bg-[#000000] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
             Book Now
           </button>
         </div>
@@ -295,19 +296,19 @@ function DestinationCard({ item }: { item: any }) {
 
 function DestinationsSection() {
   return (
-    <section className="w-full bg-[#000000] py-[80px] lg:py-[96px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+    <section className="w-full bg-[#000000] py-[96px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
         
         <div className="mb-[56px] flex flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[32px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Greece's Most Popular Destinations
           </h2>
-          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBFA]">
             Discover top-rated cities and islands for your Mediterranean adventure.
           </p>
         </div>
 
-        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {DESTINATIONS.map((dest, i) => (
             <DestinationCard key={i} item={dest} />
           ))}
@@ -324,63 +325,62 @@ function DestinationsSection() {
 
 function PopularFlightsSection() {
   return (
-    <section className="w-full bg-[#FFFFFF] py-[80px] lg:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+    <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
         
         <div className="mb-[48px] flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000] max-[768px]:text-[32px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Popular Flights to <span className="text-[#FDDB32]">Greece</span>
           </h2>
-          <button className="flex items-center gap-[6px] rounded-full bg-[#F9FBF5] px-[20px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000] transition-colors hover:bg-neutral-100">
+          <button className="flex h-[44px] items-center gap-[6px] rounded-[12px] bg-[#FDDB32] px-[20px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] transition-colors hover:bg-[#e5c52c]">
             Browse All Greece Routes <ArrowUpRight size={14} />
           </button>
         </div>
 
-        {/* Flight Cards Grid (Re-used structure) */}
-        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {POPULAR_FLIGHTS.map((flight, i) => (
             <div
               key={i}
-              className="flex h-[364px] flex-col overflow-hidden rounded-[24px] border border-[#E6E6E6] bg-[#FFFFFF] shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1"
+              className="flex h-[364px] flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FFFFFF] shadow-sm transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="relative h-[140px] w-full shrink-0 overflow-hidden bg-neutral-100">
                 <Image src={flight.image} alt={flight.city} fill className="object-cover" />
-                <div className="absolute left-[12px] top-[12px] flex items-center justify-center rounded-[20px] bg-[#FFFFFF] px-[10px] py-[6px]">
-                  <span className="text-[24px] leading-none">{flight.emoji}</span>
+                <div className="absolute left-[12px] top-[12px] flex items-center justify-center rounded-full bg-[#FFFFFF] px-[10px] py-[6px] shadow-sm">
+                  <span className="text-[20px] leading-none">{flight.emoji}</span>
                 </div>
               </div>
 
               <div className="flex w-full flex-col gap-[12px] p-[20px]">
                 <div className="flex w-full flex-col gap-[4px]">
-                  <h3 className="font-sans text-[24px] font-medium leading-[24px] text-[#000000]">
+                  <h3 className="font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
                     {flight.city}
                   </h3>
-                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
                     {flight.route}
                   </p>
                 </div>
-                <div className="flex h-[24px] w-full items-center justify-between">
-                  <p className="font-sans text-[24px] font-medium leading-[24px] text-[#212121]">
+                <div className="flex items-center justify-between">
+                  <p className="font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#212121]">
                     {flight.price}
                   </p>
-                  <div className="flex items-center gap-[4px] rounded-[6px] border border-[#E6E6E6] bg-[#F9FBF5] px-[8px] py-[4px]">
-                    <Plane size={16} className="text-[#00529C]" />
-                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#000000]">
+                  <div className="flex items-center gap-[6px] rounded-[6px] border border-[#E5E7EB] bg-[#F9FBFA] px-[8px] py-[4px]">
+                    <Plane size={14} className="text-[#00529C]" />
+                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
                       {flight.airline}
                     </span>
                   </div>
                 </div>
-                <div className="flex h-[20px] items-center gap-[6px]">
+                <div className="flex items-center gap-[6px]">
                   <Clock size={14} className="text-[#7D7D7D]" />
-                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
                     {flight.duration}
                   </span>
                 </div>
               </div>
 
               <div className="mt-auto px-[20px] pb-[20px] pt-0">
-                <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-[12px] bg-[#FDDB32] transition-colors hover:bg-[#e5c52c]">
-                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+                <button className="flex h-[44px] w-full items-center justify-center gap-[8px] rounded-[12px] bg-[#FDDB32] transition-colors hover:bg-[#e5c52c]">
+                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
                     View Flights
                   </span>
                   <ArrowUpRight size={14} className="text-[#000000]" />
@@ -400,28 +400,28 @@ function PopularFlightsSection() {
 
 function TopThingsToDoSection() {
   return (
-    <section className="w-full bg-[#000000] py-[80px] lg:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
+    <section className="w-full bg-[#000000] py-[120px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
         
-        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[32px]">
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
           Top Things To Do
         </h2>
 
-        <div className="grid w-full max-w-[1120px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {THINGS_TO_DO.map((item, i) => (
             <div key={i} className="flex h-[292px] flex-col rounded-[24px] bg-[#FFFFFF] p-[6px] transition-transform duration-300 hover:-translate-y-1">
               <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[20px]">
                 <Image src={item.image} alt={item.title} fill className="object-cover" />
               </div>
-              <div className="flex flex-col justify-between px-[12px] pb-[12px] pt-[12px]">
-                <h3 className="truncate font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+              <div className="flex flex-1 flex-col justify-between px-[12px] pb-[12px] pt-[12px]">
+                <h3 className="truncate font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                   {item.title}
                 </h3>
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
                     {item.duration}
                   </span>
-                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                     {item.price}
                   </span>
                 </div>
@@ -441,16 +441,16 @@ function TopThingsToDoSection() {
 
 function WhereToStaySection() {
   return (
-    <section className="w-full bg-[#F9FBF5] py-[80px] lg:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[160px]">
+    <section className="w-full bg-[#F9FBFA] py-[120px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
         
-        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000] max-[768px]:text-[32px]">
+        <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
           Where To Stay
         </h2>
 
-        <div className="grid w-full max-w-[1120px] grid-cols-1 gap-[24px] md:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-[24px] md:grid-cols-3">
           {HOTELS.map((hotel, i) => (
-            <div key={i} className="flex flex-col rounded-[32px] bg-[#FFFFFF] p-[6px] shadow-sm transition-transform duration-300 hover:-translate-y-1">
+            <div key={i} className="flex flex-col rounded-[32px] bg-[#FFFFFF] p-[6px] shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
               <div className="relative h-[300px] w-full shrink-0 overflow-hidden rounded-[26px]">
                 <Image src={hotel.image} alt={hotel.name} fill className="object-cover" />
               </div>
@@ -461,12 +461,14 @@ function WhereToStaySection() {
                   ))}
                   <span className="ml-[4px] font-sans text-[14px] font-medium text-[#F59E0B]">{hotel.rating}</span>
                 </div>
-                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                   {hotel.name}
                 </h3>
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-[16px] font-medium text-[#000000]">{hotel.price} <span className="text-[14px] font-normal text-[#7D7D7D]">/ night</span></span>
-                  <button className="rounded-full bg-[#000000] px-[16px] py-[8px] font-sans text-[12px] font-medium leading-[16px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                    {hotel.price} <span className="text-[14px] font-normal tracking-[0px] text-[#7D7D7D]">/ night</span>
+                  </span>
+                  <button className="rounded-full bg-[#000000] px-[16px] py-[8px] font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
                     View Details
                   </button>
                 </div>
@@ -486,19 +488,19 @@ function WhereToStaySection() {
 
 function NearbyCountriesSection() {
   return (
-    <section className="w-full bg-[#000000] py-[80px] lg:py-[96px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[20px] lg:px-[120px]">
+    <section className="w-full bg-[#000000] py-[96px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
         
         <div className="mb-[56px] flex flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[32px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Nearby Countries
           </h2>
-          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBF5]">
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBFA]">
             Add more destinations to your itinerary with these fantastic nearby escapes.
           </p>
         </div>
 
-        <div className="grid w-full max-w-[1200px] grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {NEARBY_COUNTRIES.map((dest, i) => (
             <DestinationCard key={i} item={dest} />
           ))}
@@ -517,12 +519,12 @@ function TravelHelpSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="w-full bg-[#F9F8F5] py-[80px] lg:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[64px] px-[20px] lg:flex-row lg:items-start lg:px-[160px]">
+    <section className="w-full bg-[#F9F8F5] py-[120px] max-[1024px]:py-[80px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[64px] px-[160px] lg:flex-row lg:items-start max-[1024px]:px-[20px]">
         
         {/* Left Col */}
-        <div className="flex flex-1 flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000] max-[768px]:text-[36px]">
+        <div className="flex w-full max-w-[400px] flex-col gap-[12px] shrink-0">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
             Travel Help
           </h2>
           <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
@@ -531,21 +533,21 @@ function TravelHelpSection() {
         </div>
 
         {/* Right Col */}
-        <div className="flex w-full max-w-[800px] flex-col gap-[24px]">
+        <div className="flex w-full flex-col gap-[24px]">
           {FAQS.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={i} className="flex flex-col gap-[12px] border-b border-[#E6E6E6] pb-[24px]">
+              <div key={i} className="flex flex-col gap-[12px] border-b border-[#E5E7EB] pb-[24px]">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="flex w-full items-center justify-between text-left"
                 >
-                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                     {faq.q}
                   </span>
                   <span className="flex shrink-0 text-[#000000]">
-                    {isOpen ? <ChevronDown size={20} className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`} /> : <ChevronDown size={20} />}
+                    <ChevronDown size={20} className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`} />
                   </span>
                 </button>
                 {isOpen && (
@@ -570,9 +572,9 @@ function TravelHelpSection() {
 function NewsletterSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[80px]">
-      <div className="mx-auto w-full max-w-[1440px] px-[20px] lg:px-[160px]">
-        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] p-[40px] text-center lg:h-[328px] lg:p-[64px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000] max-[768px]:text-[32px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[160px] max-[1024px]:px-[20px]">
+        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] p-[64px] text-center max-[768px]:p-[40px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Get Greece Travel Deals
           </h2>
           <p className="mt-[16px] max-w-[600px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
@@ -583,11 +585,11 @@ function NewsletterSection() {
             <input
               type="email"
               placeholder="Email Address"
-              className="h-[56px] flex-1 rounded-full px-[24px] font-sans text-[16px] text-[#000000] focus:outline-none"
+              className="h-[56px] flex-1 rounded-full px-[24px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000] focus:outline-none"
             />
             <button
               type="submit"
-              className="flex h-[56px] shrink-0 items-center justify-center rounded-full bg-[#000000] px-[32px] font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800"
+              className="flex h-[56px] shrink-0 items-center justify-center rounded-full bg-[#000000] px-[32px] font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#FFFFFF] transition-colors hover:bg-neutral-800"
             >
               Subscribe
             </button>
