@@ -85,7 +85,7 @@ const popularHotels = [
 ];
 
 const hotelDestinations = [
-  { city: "Paris", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=800&q=80" },
+  { city: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&w=800&q=80" },
   { city: "London", image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&w=800&q=80" },
   { city: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=800&q=80" },
   { city: "Rome", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80" },
