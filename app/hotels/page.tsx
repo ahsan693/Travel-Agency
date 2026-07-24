@@ -120,11 +120,40 @@ const hotelBrands = [
   { name: "Sheraton", logo: "/Hotels Page/Section 5/Images/sheraton-hotels-resorts-1-logo-png-transparent 1.png" },
 ];
 
+// UPDATED POPULAR SEARCHES DATA
 const popularSearches = [
-  { city: "Paris", desc: "Top-rated hotels in central Paris starting from $120/night", price: "$120", rating: 4.8, image: "https://images.unsplash.com/photo-1502602898657-3e9076006085?auto=format&w=800&q=80" },
-  { city: "London", desc: "Luxury and budget options near London Bridge", price: "$110", rating: 4.7, image: "https://images.unsplash.com/photo-1520939817895-060bdaf4ed1a?auto=format&w=800&q=80" },
-  { city: "Dubai", desc: "Premium resorts and city hotels in Dubai", price: "$145", rating: 4.9, image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&w=800&q=80" },
-  { city: "Barcelona", desc: "Boutique hotels near the beach in Barcelona", price: "$90", rating: 4.6, image: "https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&w=800&q=80" },
+  { 
+    city: "Paris", 
+    desc: "The City of Light, romance, and timeless art galleries.", 
+    price: "$120", 
+    rating: "4.9", 
+    hotelCount: "3,200+", 
+    image: "https://images.unsplash.com/photo-1502602898657-3e9076006085?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "London", 
+    desc: "A majestic blend of royal history and vibrant modern culture.", 
+    price: "$110", 
+    rating: "4.8", 
+    hotelCount: "2,850+", 
+    image: "https://images.unsplash.com/photo-1520939817895-060bdaf4ed1a?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Dubai", 
+    desc: "Ultra-modern luxury, breathtaking skyscrapers, and golden dunes.", 
+    price: "$145", 
+    rating: "4.9", 
+    hotelCount: "1,950+", 
+    image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Barcelona", 
+    desc: "Vibrant coastal energy, Gaudi architecture, and sunny beaches.", 
+    price: "$89", 
+    rating: "4.7", 
+    hotelCount: "1,600+", 
+    image: "https://images.unsplash.com/photo-1583422409516-2895a77ef244?auto=format&w=800&q=80" 
+  },
 ];
 
 const faqs = [
@@ -779,14 +808,14 @@ function HotelBrandsSection() {
 }
 
 /* ----------------------------------------------------------------
-   POPULAR SEARCHES
+   UPDATED POPULAR SEARCHES SECTION
 ---------------------------------------------------------------- */
 
 function PopularSearchesSection() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto w-full max-w-[1280px] px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="mb-12 text-center">
           {/* Display L */}
           <h2 className="font-sans text-[48px] font-medium leading-none text-black">
             Popular Hotel Searches
@@ -799,8 +828,11 @@ function PopularSearchesSection() {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {popularSearches.map((search, i) => (
-            <div key={i} className="group overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition-all hover:shadow-lg">
-              <div className="relative h-[180px] w-full">
+            <div
+              key={i}
+              className="group flex flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition-all hover:shadow-lg"
+            >
+              <div className="relative h-[200px] w-full shrink-0">
                 <Image
                   src={search.image}
                   alt={search.city}
@@ -808,28 +840,88 @@ function PopularSearchesSection() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-5">
-                {/* Title L */}
-                <h3 className="font-sans text-[24px] font-medium leading-none text-black">{search.city}</h3>
-                {/* Body M */}
-                <p className="mt-[8px] font-sans text-[14px] font-normal leading-[1.43] text-gray-600 line-clamp-2">{search.desc}</p>
-                <div className="mt-4 flex items-center gap-1">
-                  <Star className="h-4 w-4 fill-[#FDDB32] text-[#FDDB32]" />
-                  {/* Title S */}
-                  <span className="font-sans text-[14px] font-medium leading-[1.43] text-black">{search.rating}</span>
-                </div>
-                <div className="mt-6 flex items-center justify-between">
-                  <div>
-                    {/* Title L */}
-                    <span className="font-sans text-[24px] font-medium leading-none text-black">{search.price}</span>
-                    {/* Body M */}
-                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-[#555555]"> / night</span>
+              <div className="flex flex-1 flex-col p-5">
+                
+                {/* City & Description */}
+                <h3 className="font-sans text-[24px] font-semibold leading-none text-black">
+                  {search.city}
+                </h3>
+                <p className="mt-[8px] font-sans text-[14px] font-normal leading-[1.5] text-gray-500">
+                  {search.desc}
+                </p>
+
+                {/* Rating (5 Stars + Number) */}
+                <div className="mt-4 flex items-center gap-2">
+                  <div className="flex gap-[2px]">
+                    {[...Array(5)].map((_, index) => (
+                      <Image
+                        key={index}
+                        src="/Hotels Page/Section 6/Vector.png"
+                        alt="Star"
+                        width={16}
+                        height={16}
+                        className="object-contain"
+                      />
+                    ))}
                   </div>
-                  {/* Title XS */}
-                  <Link href="#" className="rounded-full bg-[#FDDB32] px-4 py-2 font-sans text-[12px] font-medium leading-[1.33] text-black hover:bg-[#e5c52c]">
+                  <span className="font-sans text-[14px] font-bold leading-[1.43] text-black">
+                    {search.rating}
+                  </span>
+                </div>
+
+                {/* Hotel Count */}
+                <div className="mt-[6px] flex items-center gap-2">
+                  <Image
+                    src="/Hotels Page/Section 6/Vector-1.png"
+                    alt="Hotels"
+                    width={16}
+                    height={16}
+                    className="object-contain opacity-60"
+                  />
+                  <span className="font-sans text-[14px] text-gray-500">
+                    {search.hotelCount} hotels
+                  </span>
+                </div>
+
+                {/* Divider Line */}
+                <hr className="my-5 border-gray-200" />
+
+                {/* Bottom Row: Price & Button */}
+                <div className="mt-auto flex items-end justify-between">
+                  <div className="flex flex-col">
+                    <span className="mb-[2px] font-sans text-[10px] font-semibold uppercase tracking-wide text-gray-400">
+                      Starting At
+                    </span>
+                    <div className="font-sans text-[20px] font-bold leading-none text-black">
+                      {search.price}
+                      <span className="text-[14px] font-normal text-black">
+                        /night
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <Link
+                    href="#"
+                    className="flex h-[36px] items-center gap-1.5 rounded-full bg-[#FDDB32] px-[16px] font-sans text-[13px] font-semibold text-black transition-colors hover:bg-[#e5c52c]"
+                  >
                     View Hotels
+                    {/* Inline SVG matching the arrow in the design */}
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17L17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
                   </Link>
                 </div>
+
               </div>
             </div>
           ))}
