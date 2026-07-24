@@ -27,6 +27,7 @@ import Footer from "../components/Home/footer";
 
 interface CountryChip {
   name: string;
+  region: string;
   img: string;
   swatch?: string;
 }
@@ -52,26 +53,44 @@ interface DestinationItem {
 
 const REGIONS = [
   "Europe",
-  "Central America",
-  "Africa",
-  "Caribbean",
+  "Asia",
   "North America",
-  "South America",
+  "Middle East",
+  "Africa",
+  "Oceania"
 ];
 
 const COUNTRY_CHIPS: CountryChip[] = [
-  { name: "Canada", img: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&w=100&q=80" },
-  { name: "Poland", img: "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&w=100&q=80" },
-  { name: "United States", img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&w=100&q=80" },
-  { name: "Paris", img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=100&q=80" },
-  { name: "UAE", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=100&q=80" },
-  { name: "Czech Republic", img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&w=100&q=80" },
-  { name: "Germany", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&w=100&q=80" },
-  { name: "New York City", img: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=100&q=80" },
-  { name: "Fukuoka", img: "https://images.unsplash.com/photo-1574343806283-e18e59ec2548?auto=format&w=100&q=80" },
-  { name: "Sapporo", img: "https://images.unsplash.com/photo-1596711585257-227bb30953a7?auto=format&w=100&q=80" },
-  { name: "Kyoto", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&w=100&q=80" },
-  { name: "Osaka", img: "https://images.unsplash.com/photo-1590559899731-a38283bce401?auto=format&w=100&q=80" },
+  // Europe
+  { name: "Greece", region: "Europe", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=100&q=80" },
+  { name: "Italy", region: "Europe", img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=100&q=80" },
+  { name: "Spain", region: "Europe", img: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&w=100&q=80" },
+  { name: "France", region: "Europe", img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=100&q=80" },
+  { name: "Portugal", region: "Europe", img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&w=100&q=80" },
+  { name: "Croatia", region: "Europe", img: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&w=100&q=80" },
+  
+  // Asia
+  { name: "Japan", region: "Asia", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&w=100&q=80" },
+  { name: "Thailand", region: "Asia", img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&w=100&q=80" },
+  { name: "Indonesia", region: "Asia", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&w=100&q=80" },
+  { name: "Vietnam", region: "Asia", img: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&w=100&q=80" },
+  
+  // North America
+  { name: "USA", region: "North America", img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&w=100&q=80" },
+  { name: "Canada", region: "North America", img: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&w=100&q=80" },
+  { name: "Mexico", region: "North America", img: "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&w=100&q=80" },
+  
+  // Middle East
+  { name: "UAE", region: "Middle East", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=100&q=80" },
+  { name: "Turkey", region: "Middle East", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&w=100&q=80" },
+  
+  // Africa
+  { name: "Morocco", region: "Africa", img: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&w=100&q=80" },
+  { name: "South Africa", region: "Africa", img: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&w=100&q=80" },
+  
+  // Oceania
+  { name: "Australia", region: "Oceania", img: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&w=100&q=80" },
+  { name: "New Zealand", region: "Oceania", img: "https://images.unsplash.com/photo-1556878516-61356c874f03?auto=format&w=100&q=80" },
 ];
 
 const FEATURED_COUNTRIES: DestinationItem[] = [
@@ -158,17 +177,20 @@ const FAQS = [
 function HeroSection() {
   const [activeRegion, setActiveRegion] = useState("Europe");
 
+  // Filter chips based on the selected active region
+  const activeChips = COUNTRY_CHIPS.filter((chip) => chip.region === activeRegion);
+
   return (
     <section className="relative flex h-auto min-h-[664px] md:h-[700px] w-full flex-col items-center overflow-hidden bg-[#000000]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&w=1920&q=80"
-          alt="Desert canyon arch at sunset"
-          fill
-          className="object-cover opacity-80"
-          priority
-        />
+       <Image
+  src="/Featured Countries/Section 1/Images/neom-wTmGtmGQCjQ-unsplash.jpg"
+  alt="Desert canyon arch at sunset"
+  fill
+  className="object-cover opacity-80"
+  priority
+/>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60" />
       </div>
 
@@ -214,9 +236,9 @@ function HeroSection() {
 
             <div className="hidden md:block h-[1px] w-[358px] bg-[#E6E6E6] opacity-30 my-[12px]" />
 
-            {/* Country chips */}
+            {/* Country chips (Filtered) */}
             <div className="mt-[4px] flex flex-wrap gap-[8px]">
-              {COUNTRY_CHIPS.map((chip) => (
+              {activeChips.map((chip) => (
                 <button
                   key={chip.name}
                   className="flex h-[40px] items-center gap-[8px] rounded-full border border-[#E6E6E6] md:border-white/20 bg-[#F9FBF5] md:bg-white/10 py-[6px] pl-[6px] pr-[14px] md:py-[4px] md:pl-[4px] md:pr-[16px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0px] md:tracking-[0px] font-normal md:font-medium text-[#000000] md:text-[#FFFFFF] md:backdrop-blur-sm transition-colors hover:bg-[#e8ece3] md:hover:bg-white/20"
@@ -235,6 +257,11 @@ function HeroSection() {
                   {chip.name}
                 </button>
               ))}
+              
+              {/* Show a placeholder if a region has no countries added yet */}
+              {activeChips.length === 0 && (
+                 <span className="text-white/60 text-sm mt-2">No destinations currently listed for this region.</span>
+              )}
             </div>
           </div>
 
@@ -295,7 +322,7 @@ function FeaturedCountriesSection() {
                 <div className="flex h-[18px] md:h-[20px] items-center gap-[6px]">
                   <div className="flex gap-[2px]">
                     {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} size={12} className="fill-[#000000] text-[#000000] md:fill-[#F59E0B] md:text-[#F59E0B]" strokeWidth={0} />
+                      <Star key={j} size={12} className="fill-[#000000] text-[#000000]" strokeWidth={0} />
                     ))}
                   </div>
                   <span className="font-sans text-[13px] leading-[18px] md:text-[14px] font-medium md:leading-[20px] tracking-[0px] md:tracking-[0px] text-[#F59E0B]">
