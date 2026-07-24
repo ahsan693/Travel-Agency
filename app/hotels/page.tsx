@@ -85,7 +85,7 @@ const popularHotels = [
 ];
 
 const hotelDestinations = [
-  { city: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&w=800&q=80" },
+  { city: "Paris", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=800&q=80" },
   { city: "London", image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&w=800&q=80" },
   { city: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=800&q=80" },
   { city: "Rome", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80" },
@@ -114,10 +114,10 @@ const hotelBrands = [
   { name: "Accor", logo: "/Hotels Page/Section 5/Images/Accor-Logo-2010 1.png" },
   { name: "Hilton", logo: "/Hotels Page/Section 5/Images/HiltonHotelsLogo.svg 1.png" },
   { name: "Hyatt", logo: "/Hotels Page/Section 5/Images/Hyatt-Hotels-Logo-Vector.svg- 1.png" },
-  { name: "Marriott", logo: "/Hotels Page/Section 5/Images/Marriott-Hotels-Resorts-Logo-Vector.svg 1.png" },
+  { name: "Marriott", logo: "/Hotels Page/Section 5/Images/Marriott-Hotels-Resorts-Logo-Vector.svg- 1.png" },
   { name: "Novotel", logo: "/Hotels Page/Section 5/Images/Novotel_logo_(2016).svg 1.png" },
-  { name: "Radisson", logo: "/Hotels Page/Section 5/Images/radisson-hotels-and-restorts-logo.svg 1.png" },
-  { name: "Sheraton", logo: "/Hotels Page/Section 5/Images/sheraton-hotels-resorts-1-logo-black-and-white.png" },
+  { name: "Radisson", logo: "/Hotels Page/Section 5/Images/radisson-hotels-and-restorts-logo-png-3 1.png" },
+  { name: "Sheraton", logo: "/Hotels Page/Section 5/Images/sheraton-hotels-resorts-1-logo-png-transparent 1.png" },
 ];
 
 const popularSearches = [
@@ -730,45 +730,48 @@ function WhyCompareHotelsSection() {
 
 function HotelBrandsSection() {
   return (
-    <section className="bg-[#0A0A0A] py-24">
-      <div className="mx-auto w-full max-w-[1280px] px-6 lg:px-8">
-        <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
-          {/* Display L */}
-          <h2 className="font-sans text-[48px] font-medium leading-none text-white">
-            Compare Popular Hotel Brands
-          </h2>
-          {/* Title S */}
-          <Link
-            href="/hotels/brands"
-            className="flex items-center gap-2 rounded-full bg-[#FDDB32] px-6 py-3 font-sans text-[14px] font-medium leading-[1.43] text-black hover:bg-[#e5c52c] transition-colors"
-          >
-            View All Brands
-            <Image 
-              src={CUSTOM_ARROW_ICON} 
-              alt="Arrow Right" 
-              width={16} 
-              height={16} 
-              className="object-contain" 
-            />
-          </Link>
-        </div>
-
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {hotelBrands.map((brand) => (
-            <div
-              key={brand.name}
-              className="flex h-[120px] items-center justify-center rounded-[16px] bg-white p-6 transition-transform hover:-translate-y-1"
-            >
-              <div className="relative h-full w-full">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} logo`}
-                  fill
-                  className="object-contain"
+    <section className="w-full bg-black py-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 lg:px-[32px]">
+        <div className="flex flex-col gap-[32px]">
+          <div className="flex flex-col gap-[16px]">
+            <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <h2 className="font-sans text-[36px] font-semibold leading-[1.1] tracking-[-0.01em] text-white lg:text-[48px] lg:leading-[52px]">
+                Compare Popular Hotel Brands
+              </h2>
+              <Link
+                href="/hotels/brands"
+                className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] text-black transition-colors hover:bg-[#e5c52c]"
+              >
+                View All Brands
+                <Image 
+                  src={CUSTOM_ARROW_ICON} 
+                  alt="Arrow Right" 
+                  width={16} 
+                  height={16} 
+                  className="object-contain" 
                 />
-              </div>
+              </Link>
             </div>
-          ))}
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-[6.39px] gap-y-[6.39px] sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+            {hotelBrands.map((brand) => (
+              <div
+                key={brand.name}
+                className="group flex aspect-[238/152] w-full items-center justify-center rounded-2xl border border-[#E6E6E6] bg-[#F9FBF5] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="relative h-full w-full max-w-[140px]">
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    fill
+                    className="object-contain opacity-90 transition-opacity group-hover:opacity-100"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
