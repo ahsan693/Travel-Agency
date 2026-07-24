@@ -85,7 +85,7 @@ const popularHotels = [
 ];
 
 const hotelDestinations = [
-  { city: "Paris", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=800&q=80" },
+  { city: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&w=800&q=80" },
   { city: "London", image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&w=800&q=80" },
   { city: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=800&q=80" },
   { city: "Rome", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80" },
@@ -110,14 +110,14 @@ const whyCompareFeatures = [
 ];
 
 const hotelBrands = [
-  { name: "Hilton", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Hilton_Hotels_and_Resorts_logo.svg" },
-  { name: "Marriott", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Marriott_Logo.svg" },
-  { name: "Hyatt", logo: "https://upload.wikimedia.org/wikipedia/commons/7/77/Hyatt_Logo.svg" },
-  { name: "Radisson", logo: "https://upload.wikimedia.org/wikipedia/en/2/23/Radisson_Hotels_logo.svg" },
-  { name: "Holiday Inn", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Holiday_Inn_Logo_2016.svg" },
-  { name: "Novotel", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Novotel_logo.svg" },
-  { name: "Sheraton", logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Sheraton_Hotels_and_Resorts_logo.svg" },
-  { name: "Accor", logo: "https://upload.wikimedia.org/wikipedia/commons/7/77/Accor_Logo.svg" },
+  { name: "Holiday Inn", logo: "/Hotels Page/Section 5/Images/20210629150411!Holiday_Inn_Logo 2.png" },
+  { name: "Accor", logo: "/Hotels Page/Section 5/Images/Accor-Logo-2010 1.png" },
+  { name: "Hilton", logo: "/Hotels Page/Section 5/Images/HiltonHotelsLogo.svg 1.png" },
+  { name: "Hyatt", logo: "/Hotels Page/Section 5/Images/Hyatt-Hotels-Logo-Vector.svg- 1.png" },
+  { name: "Marriott", logo: "/Hotels Page/Section 5/Images/Marriott-Hotels-Resorts-Logo-Vector.svg 1.png" },
+  { name: "Novotel", logo: "/Hotels Page/Section 5/Images/Novotel_logo_(2016).svg 1.png" },
+  { name: "Radisson", logo: "/Hotels Page/Section 5/Images/radisson-hotels-and-restorts-logo.svg 1.png" },
+  { name: "Sheraton", logo: "/Hotels Page/Section 5/Images/sheraton-hotels-resorts-1-logo-black-and-white.png" },
 ];
 
 const popularSearches = [
@@ -502,7 +502,7 @@ function PopularHotelsSection() {
                     </div>
                   </div>
                   
-                  {/* Compare Prices Link */}
+                  {/* Explicitly Black Compare Prices Link */}
                   <Link 
                     href="#" 
                     className="group/compare z-10 flex shrink-0 items-center gap-[4px] whitespace-nowrap hover:underline"
@@ -627,19 +627,17 @@ function PopularHotelDestinationsSection() {
                 key={i} 
                 className="group flex h-[314px] w-full flex-col overflow-hidden rounded-[20px] border border-[#000000] bg-[#FFFFFF] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
               >
-                {/* Image Area */}
-                <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-[#F9FBF5] p-[14px]">
-                  <div className="relative h-full w-full overflow-hidden">
-                    <Image
-                      src={dest.image}
-                      alt={dest.city}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
+                {/* Image Area - Removed padding to allow bleed */}
+                <div className="relative h-[200px] w-full shrink-0 overflow-hidden">
+                  <Image
+                    src={dest.image}
+                    alt={dest.city}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   
-                  {/* Badge Overlay */}
-                  <div className="absolute left-[14px] top-[14px]">
+                  {/* Badge Overlay - Adjusted to 12px from edge */}
+                  <div className="absolute left-[12px] top-[12px]">
                     <div className="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#FFED91] bg-[#FDDB32] backdrop-blur-[6px]">
                       <Image 
                         src={CUSTOM_ARROW_ICON} 
@@ -653,7 +651,7 @@ function PopularHotelDestinationsSection() {
                 </div>
 
                 {/* Text Area / Card Body */}
-                <div className="flex h-auto w-full flex-col gap-[12px] p-[14px] pb-[10px]">
+                <div className="flex h-[104px] w-full flex-col gap-[12px] p-[14px] pb-[10px]">
                   <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                     {dest.city}
                   </h3>
