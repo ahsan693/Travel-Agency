@@ -321,13 +321,13 @@ function HeroDesktop() {
   return (
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&w=1920&q=80"
-          alt="Sunset Palm Trees Hero Background"
-          fill
-          className="object-cover"
-          priority
-        />
+      <Image
+  src="/Hotels Page/Section 1/Images/image.png"
+  alt="Sunset Palm Trees Hero Background"
+  fill
+  className="object-cover"
+  priority
+/>
         {/* Exact 27% Black overlay to match flights.tsx structure */}
         <div className="absolute inset-0 bg-[#000000]/[0.27]" />
       </div>
