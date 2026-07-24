@@ -6,14 +6,14 @@ import Link from "next/link";
 import {
   Check,
   Star,
-  ArrowUpRight,
   MapPin,
   Calendar,
   Clock,
   Minus,
   Plus,
   Mail,
-  Search, // Keeping this for "Why Compare" section if it's used there
+  Search,
+  ArrowLeftRight,
 } from "lucide-react";
 
 // ============================================================================
@@ -23,12 +23,12 @@ import Header from "../components/Home/header";
 import Footer from "../components/Home/footer";
 
 const HOTELS_ICON_PATH = "/Hotels Page/Section 1/Icon";
+const CUSTOM_ARROW_ICON = "/Hotels Page/Section 2/Icons/KQY0VNx64.png";
 
 /* ----------------------------------------------------------------
    STATIC DATA
 ---------------------------------------------------------------- */
 
-// Updated to match the exact stars shown in the images
 const hotelFilters = [
   "All",
   "★★★★★ 5-Star",
@@ -85,7 +85,7 @@ const popularHotels = [
 ];
 
 const hotelDestinations = [
-  { city: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&w=800&q=80" },
+  { city: "Paris", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&w=800&q=80" },
   { city: "London", image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&w=800&q=80" },
   { city: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&w=800&q=80" },
   { city: "Rome", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&w=800&q=80" },
@@ -93,17 +93,17 @@ const hotelDestinations = [
 
 const whyCompareFeatures = [
   {
-    icon: Search,
+    iconSrc: "/Hotels Page/Section 4/Icons/search - 01.png",
     title: "Compare Prices",
     description: "Compare hotel prices from multiple booking sites all in one place.",
   },
   {
-    icon: Check,
+    iconSrc: "/Hotels Page/Section 4/Icons/calendar - 02.png",
     title: "Book Direct",
     description: "Complete your booking securely directly with the hotel or booking provider.",
   },
   {
-    icon: Star,
+    iconSrc: "/Hotels Page/Section 4/Icons/credit card declined - 02.png",
     title: "No Hidden Fees",
     description: "TravelMommy never adds extra booking fees to your final price.",
   },
@@ -253,6 +253,13 @@ function SearchWidgetDesktop() {
         <button className="flex h-[49px] w-[52px] shrink-0 items-center justify-center rounded-[12px] bg-[#fddb32] transition-transform hover:scale-105">
           <Image src={`${HOTELS_ICON_PATH}/search - 01.png`} alt="Search" width={22} height={22} className="object-contain" />
         </button>
+
+        <button
+          aria-label="Swap origin and destination"
+          className="absolute left-[275px] top-1/2 flex size-[30px] -translate-y-[46px] items-center justify-center rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.15)]"
+        >
+          <ArrowLeftRight size={14} className="text-black" />
+        </button>
       </div>
     </div>
   );
@@ -321,13 +328,13 @@ function HeroDesktop() {
   return (
     <section className="relative hidden min-h-[820px] flex-col items-center overflow-hidden pt-[100px] lg:flex">
       <div className="absolute inset-0 z-0">
-      <Image
-  src="/Hotels Page/Section 1/Images/image.png"
-  alt="Sunset Palm Trees Hero Background"
-  fill
-  className="object-cover"
-  priority
-/>
+        <Image
+          src="/Hotels Page/Section 1/Images/image.png"
+          alt="Sunset Palm Trees Hero Background"
+          fill
+          className="object-cover"
+          priority
+        />
         {/* Exact 27% Black overlay to match flights.tsx structure */}
         <div className="absolute inset-0 bg-[#000000]/[0.27]" />
       </div>
@@ -362,7 +369,7 @@ function HeroMobile() {
     <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[88px] lg:hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&w=900&q=80"
+          src="/Hotels Page/Section 1/Images/image.png"
           alt="Sunset Palm Trees Hero Background"
           fill
           className="object-cover"
@@ -468,7 +475,7 @@ function PopularHotelsSection() {
                 {/* Arrow Badge (Top Right) */}
                 <div className="absolute right-[12px] top-[12px] flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#FDDB32] shadow-sm">
                   <Image 
-                    src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                    src={CUSTOM_ARROW_ICON} 
                     alt="Arrow" 
                     width={14} 
                     height={14} 
@@ -495,7 +502,7 @@ function PopularHotelsSection() {
                     </div>
                   </div>
                   
-                  {/* Explicitly Black Compare Prices Link */}
+                  {/* Compare Prices Link */}
                   <Link 
                     href="#" 
                     className="group/compare z-10 flex shrink-0 items-center gap-[4px] whitespace-nowrap hover:underline"
@@ -504,7 +511,7 @@ function PopularHotelsSection() {
                       Compare Prices
                     </span>
                     <Image 
-                      src="/Homepage/Section 1/Header Icons/Icons/Component 1.png" 
+                      src={CUSTOM_ARROW_ICON} 
                       alt="Arrow" 
                       width={10} 
                       height={10} 
@@ -600,49 +607,68 @@ function PopularHotelDestinationsSection() {
   return (
     <section className="bg-[#0A0A0A] py-24">
       <div className="mx-auto w-full max-w-[1280px] px-6 lg:px-8">
-        {/* Display L */}
-        <h2 className="font-sans text-[48px] font-medium leading-none text-white">
-          Popular Hotel Destinations
-        </h2>
-        {/* Body L */}
-        <p className="mt-[10px] font-sans text-[16px] font-normal leading-[1.5] text-gray-400">
-          Explore top destinations and compare hotel prices from trusted booking partners.
-        </p>
+        <div className="flex w-full flex-col gap-[48px]">
+          {/* Header Block */}
+          <div className="flex flex-col gap-[10px]">
+            {/* Display L */}
+            <h2 className="font-sans text-[48px] font-medium leading-none text-white">
+              Popular Hotel Destinations
+            </h2>
+            {/* Body L */}
+            <p className="font-sans text-[16px] font-normal leading-[1.5] text-[#7D7D7D]">
+              Explore top destinations and compare hotel prices from trusted booking partners.
+            </p>
+          </div>
 
-        <div className="mt-12 grid w-full grid-cols-1 gap-[8px] sm:grid-cols-2 lg:grid-cols-4">
-          {hotelDestinations.map((dest, i) => (
-            <div 
-              key={i} 
-              className="group flex h-[314px] w-full flex-col overflow-hidden rounded-[20px] border border-[#000000] bg-[#FFFFFF] pb-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="relative h-[200px] w-full shrink-0 overflow-hidden">
-                <Image
-                  src={dest.image}
-                  alt={dest.city}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                <div className="absolute left-0 top-0 p-[14px]">
-                  <div className="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#FFED91] bg-[#FDDB32] backdrop-blur-[6px]">
-                    <ArrowUpRight className="h-[12px] w-[12px] text-[#000000]" strokeWidth={2} />
+          {/* Cards Grid */}
+          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-2 lg:grid-cols-4">
+            {hotelDestinations.map((dest, i) => (
+              <div 
+                key={i} 
+                className="group flex h-[314px] w-full flex-col overflow-hidden rounded-[20px] border border-[#000000] bg-[#FFFFFF] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
+              >
+                {/* Image Area */}
+                <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-[#F9FBF5] p-[14px]">
+                  <div className="relative h-full w-full overflow-hidden">
+                    <Image
+                      src={dest.image}
+                      alt={dest.city}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  
+                  {/* Badge Overlay */}
+                  <div className="absolute left-[14px] top-[14px]">
+                    <div className="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#FFED91] bg-[#FDDB32] backdrop-blur-[6px]">
+                      <Image 
+                        src={CUSTOM_ARROW_ICON} 
+                        alt="Arrow" 
+                        width={12} 
+                        height={12} 
+                        className="object-contain" 
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex h-[104px] w-full flex-col p-[14px]">
-                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
-                  {dest.city}
-                </h3>
-                <Link 
-                  href="#" 
-                  className="mt-[12px] inline-flex h-[40px] w-[82px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] hover:bg-[#e5c52c] transition-colors"
-                >
-                  Explore
-                </Link>
+                {/* Text Area / Card Body */}
+                <div className="flex h-auto w-full flex-col gap-[12px] p-[14px] pb-[10px]">
+                  <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                    {dest.city}
+                  </h3>
+                  
+                  {/* CTA Button */}
+                  <Link 
+                    href="#" 
+                    className="inline-flex h-[40px] w-[82px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] hover:bg-[#e5c52c] transition-colors"
+                  >
+                    Explore
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -655,36 +681,45 @@ function PopularHotelDestinationsSection() {
 
 function WhyCompareHotelsSection() {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto w-full max-w-[1280px] px-6 lg:px-8">
-        <div className="mx-auto max-w-[800px] text-center">
-          {/* Display L */}
-          <h2 className="font-sans text-[48px] font-medium leading-none text-black">
-            Why Compare Hotels with TravelMommy?
-          </h2>
-          {/* Body L */}
-          <p className="mt-[16px] font-sans text-[16px] font-normal leading-[1.5] text-[#555555]">
-            Search and compare cheap hotels from top booking sites to find the best room for your trip.
-          </p>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {whyCompareFeatures.map((feature) => (
-            <div
-              key={feature.title}
-              className="flex flex-col items-center rounded-[24px] border border-neutral-100 bg-[#F9FBF5] p-10 text-center"
-            >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#FDDB32] mb-6">
-                <feature.icon className="h-6 w-6 text-black" />
-              </span>
-              {/* Title L */}
-              <h3 className="mb-[12px] font-sans text-[24px] font-medium leading-none text-black">{feature.title}</h3>
-              {/* Body M */}
-              <p className="font-sans text-[14px] font-normal leading-[1.43] text-[#555555]">
-                {feature.description}
+    <section className="w-full bg-[#FFFFFF] pt-[80px] pb-[160px] lg:px-[80px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-6 lg:px-[32px]">
+        <div className="flex w-full flex-col gap-[48px]">
+          <div className="flex flex-col items-center gap-[24px]">
+            <span className="flex h-[28px] items-center justify-center rounded-full border border-[#E6E6E6] bg-[#F9FBF5] px-[12px] py-[4px] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">
+              Easy process
+            </span>
+            <div className="flex w-full max-w-[876px] flex-col items-center gap-[15px] text-center">
+              <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000]">
+                Why Compare Hotels with TravelMommy?
+              </h2>
+              <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+                Search and compare cheap hotels from top booking sites to find the best room for your trip.
               </p>
             </div>
-          ))}
+          </div>
+
+          <div className="grid w-full grid-cols-1 gap-[15px] lg:grid-cols-3">
+            {whyCompareFeatures.map((feature) => (
+              <div key={feature.title}>
+                <div className="flex h-[276px] w-full flex-col items-center rounded-[20px] border border-[#E6E6E6] bg-[#F9FBF5] p-[15px]">
+                  <div className="flex h-full w-full flex-col items-center gap-[20px] p-[10px] text-center">
+                    <span className="flex h-[61px] w-[61px] shrink-0 items-center justify-center rounded-full bg-[#FFED91]">
+                      <Image src={feature.iconSrc} alt={feature.title} width={24} height={24} className="object-contain" />
+                    </span>
+                    <div className="flex flex-col items-center gap-[10px]">
+                      <h3 className="w-full font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
+                        {feature.title}
+                      </h3>
+                      <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
@@ -710,7 +745,13 @@ function HotelBrandsSection() {
             className="flex items-center gap-2 rounded-full bg-[#FDDB32] px-6 py-3 font-sans text-[14px] font-medium leading-[1.43] text-black hover:bg-[#e5c52c] transition-colors"
           >
             View All Brands
-            <ArrowUpRight className="h-4 w-4" />
+            <Image 
+              src={CUSTOM_ARROW_ICON} 
+              alt="Arrow Right" 
+              width={16} 
+              height={16} 
+              className="object-contain" 
+            />
           </Link>
         </div>
 
