@@ -606,33 +606,40 @@ function PopularHotelDestinationsSection() {
         </h2>
         {/* Body L */}
         <p className="mt-[10px] font-sans text-[16px] font-normal leading-[1.5] text-gray-400">
-          Explore top destinations and find the best hotel deals worldwide.
+          Explore top destinations and compare hotel prices from trusted booking partners.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid w-full grid-cols-1 gap-[8px] sm:grid-cols-2 lg:grid-cols-4">
           {hotelDestinations.map((dest, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-[24px] bg-white">
-              <div className="relative h-[320px] w-full">
+            <div 
+              key={i} 
+              className="group flex h-[314px] w-full flex-col overflow-hidden rounded-[20px] border border-[#000000] bg-[#FFFFFF] pb-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="relative h-[200px] w-full shrink-0 overflow-hidden">
                 <Image
                   src={dest.image}
                   alt={dest.city}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 
-                <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#FDDB32]">
-                  <ArrowUpRight className="h-4 w-4 text-black" strokeWidth={2.5} />
+                <div className="absolute left-0 top-0 p-[14px]">
+                  <div className="flex h-[32px] w-[32px] items-center justify-center rounded-full border border-[#FFED91] bg-[#FDDB32] backdrop-blur-[6px]">
+                    <ArrowUpRight className="h-[12px] w-[12px] text-[#000000]" strokeWidth={2} />
+                  </div>
                 </div>
+              </div>
 
-                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                  {/* Title L */}
-                  <h3 className="font-sans text-[24px] font-medium leading-none text-white">{dest.city}</h3>
-                  {/* Title S */}
-                  <Link href="#" className="rounded-full bg-[#FDDB32] px-5 py-2 font-sans text-[14px] font-medium leading-[1.43] text-black hover:bg-[#e5c52c]">
-                    Explore
-                  </Link>
-                </div>
+              <div className="flex h-[104px] w-full flex-col p-[14px]">
+                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
+                  {dest.city}
+                </h3>
+                <Link 
+                  href="#" 
+                  className="mt-[12px] inline-flex h-[40px] w-[82px] items-center justify-center rounded-full bg-[#FDDB32] px-[18px] py-[10px] font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000] hover:bg-[#e5c52c] transition-colors"
+                >
+                  Explore
+                </Link>
               </div>
             </div>
           ))}
