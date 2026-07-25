@@ -3,23 +3,26 @@
 import Image from "next/image";
 
 const guides = [
-  { 
-    date: "June 12, 2026", 
-    title: "Best Time to Visit Bali", 
-    image: "https://images.unsplash.com/photo-1553902000-e036b7d05af5?q=80&w=1200&auto=format&fit=crop", 
-    large: true 
+  {
+    date: "June 12, 2026",
+    title: "Best Time to Visit Bali",
+    image:
+      "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
+    large: true,
   },
-  { 
-    date: "May 28, 2026", 
-    title: "How to Find Cheap Flights", 
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop", 
-    large: false 
+  {
+    date: "May 28, 2026",
+    title: "How to Find Cheap Flights",
+    image:
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+    large: false,
   },
-  { 
-    date: "May 15, 2026", 
-    title: "Paris Travel Guide", 
-    image: "https://images.unsplash.com/photo-1777541743077-de523b619fb3?q=80&w=800&auto=format&fit=crop", 
-    large: false 
+  {
+    date: "May 15, 2026",
+    title: "Paris Travel Guide",
+    image:
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
+    large: false,
   },
 ];
 
