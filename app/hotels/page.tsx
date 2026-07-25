@@ -395,7 +395,8 @@ function HeroDesktop() {
 
 function HeroMobile() {
   return (
-    <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[88px] lg:hidden">
+    // Added more top padding here: changed pt-[88px] to pt-[120px]
+    <section className="relative flex flex-col overflow-hidden pb-[32px] pt-[120px] lg:hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/Hotels Page/Section 1/Images/image.png"
