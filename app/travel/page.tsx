@@ -111,7 +111,7 @@ const FAQS = [
 
 function HeroSection() {
   return (
-    <section className="relative flex h-[581px] w-full flex-col items-center justify-center overflow-hidden bg-[#000000]">
+    <section className="relative flex h-[681px] w-full flex-col items-center justify-center overflow-hidden bg-[#000000]">
       
       {/* Absolute Header Overlay */}
       <Header />
