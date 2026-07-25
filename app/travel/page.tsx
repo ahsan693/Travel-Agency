@@ -14,7 +14,9 @@ import {
   ArrowRight,
   Star,
   ChevronDown,
-  Check
+  Check,
+  Plus,
+  Minus
 } from "lucide-react";
 
 import Header from "../components/Home/header";
@@ -40,7 +42,8 @@ const DESTINATIONS = [
     badgeStyles: "bg-[#EBF5FF] text-[#0066CC]",
     flightsFrom: "€120",
     hotelsFrom: "€180",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=800&q=80",
+    image: "/Country Details/Section 3/Images/image.png",
+    icon: "/Country Details/Section 3/Icons/Vector-1.png"
   },
   {
     city: "Athens",
@@ -49,7 +52,8 @@ const DESTINATIONS = [
     badgeStyles: "bg-[#F3E8FF] text-[#7E22CE]",
     flightsFrom: "€120",
     hotelsFrom: "€180",
-    image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80",
+    image: "/Country Details/Section 3/Images/image-1.png",
+    icon: "/Country Details/Section 3/Icons/Vector-1.png"
   },
   {
     city: "Mykonos",
@@ -58,7 +62,8 @@ const DESTINATIONS = [
     badgeStyles: "bg-[#FCE7F3] text-[#BE185D]",
     flightsFrom: "€120",
     hotelsFrom: "€180",
-    image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80",
+    image: "/Country Details/Section 3/Images/image-2.png",
+    icon: "/Country Details/Section 3/Icons/Vector-1.png"
   },
   {
     city: "Crete",
@@ -67,15 +72,48 @@ const DESTINATIONS = [
     badgeStyles: "bg-[#DCFCE7] text-[#15803D]",
     flightsFrom: "€120",
     hotelsFrom: "€180",
-    image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80",
+    image: "/Country Details/Section 3/Images/image-3.png",
+    icon: "/Country Details/Section 3/Icons/Vector-1.png"
   },
 ];
 
 const POPULAR_FLIGHTS = [
-  { city: "London", route: "LON → ATH", price: "€24", airline: "Ryanair", duration: "Direct • 3h 40m", emoji: "🇬🇧", image: "https://images.unsplash.com/photo-1513635269975-5969336cdac0?auto=format&w=800&q=80" },
-  { city: "Manchester", route: "MAN → ATH", price: "€32", airline: "easyJet", duration: "Direct • 3h 55m", emoji: "🇬🇧", image: "https://images.unsplash.com/photo-1515586835455-8d2a632c0255?auto=format&w=800&q=80" },
-  { city: "Dublin", route: "DUB → ATH", price: "€45", airline: "Ryanair", duration: "Direct • 4h 10m", emoji: "🇮🇪", image: "https://images.unsplash.com/photo-1549918864-48ac978761a4?auto=format&w=800&q=80" },
-  { city: "New York", route: "JFK → ATH", price: "€310", airline: "Delta", duration: "Direct • 9h 30m", emoji: "🇺🇸", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=800&q=80" },
+  { 
+    city: "London", 
+    route: "LON → ATH", 
+    price: "€24", 
+    airline: "Ryanair", 
+    duration: "Direct • 1h 20m", 
+    flag: "https://flagcdn.com/w40/gb.png", 
+    image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Manchester", 
+    route: "MAN → ATH", 
+    price: "€24", 
+    airline: "Ryanair", 
+    duration: "Direct • 1h 20m", 
+    flag: "https://flagcdn.com/w40/gb.png", 
+    image: "https://images.unsplash.com/photo-1602028688463-b1d6f3e120da?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Dublin", 
+    route: "DUB → ATH", 
+    price: "€24", 
+    airline: "Ryanair", 
+    duration: "Direct • 1h 20m", 
+    flag: "https://flagcdn.com/w40/ie.png", 
+    image: "https://images.unsplash.com/photo-1549918864-48ac978761a4?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "New York", 
+    route: "NYC → ATH", 
+    price: "€24", 
+    airline: "Ryanair", 
+    duration: "Direct • 1h 20m", 
+    flag: "https://flagcdn.com/w40/us.png", 
+    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=800&q=80" 
+  },
 ];
 
 const THINGS_TO_DO = [
@@ -92,18 +130,48 @@ const HOTELS = [
 ];
 
 const NEARBY_COUNTRIES = [
-  { city: "Italy", desc: "Just across the Ionian Sea, explore Rome, Venice, and incredible cuisine.", image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80" },
-  { city: "Turkey", desc: "Discover the vibrant culture of Istanbul and the ruins of Ephesus.", image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&w=800&q=80" },
-  { city: "Cyprus", desc: "An island nation mixing Greek and Turkish influences with stunning beaches.", image: "https://images.unsplash.com/photo-1588180891305-ec9b26e0e37e?auto=format&w=800&q=80" },
-  { city: "Croatia", desc: "Sail the Adriatic coast and walk the ancient walls of Dubrovnik.", image: "https://images.unsplash.com/photo-1555661608-8e6f1f31f9d4?auto=format&w=800&q=80" },
+  { 
+    city: "Italy", 
+    desc: "Immerse yourself in centuries of history, regional culinary masterpieces, and the dramatic coastlines.", 
+    flag: "https://flagcdn.com/w40/it.png",
+    image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Croatia", 
+    desc: "Discover the walled city of Dubrovnik, sparkling Adriatic waters, and pristine cascading lakes.", 
+    flag: "https://flagcdn.com/w40/hr.png",
+    image: "https://images.unsplash.com/photo-1555661608-8e6f1f31f9d4?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Turkey", 
+    desc: "Where East meets West. Experience vibrant spice bazaars, ancient ruins, and fairytale balloon rides.", 
+    flag: "https://flagcdn.com/w40/tr.png",
+    image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&w=800&q=80" 
+  },
+  { 
+    city: "Cyprus", 
+    desc: "Bask on sun-drenched beaches, explore legendary archaeological sites, and enjoy rich culinary traditions.", 
+    flag: "https://flagcdn.com/w40/cy.png",
+    image: "https://images.unsplash.com/photo-1588180891305-ec9b26e0e37e?auto=format&w=800&q=80" 
+  },
 ];
 
+/* =====================================================================
+   UPDATED FAQS DATA (Matched to "FAQ Section.pdf")
+===================================================================== */
 const FAQS = [
-  { q: "When is the best time to visit Greece?", a: "The best time to visit is during the shoulder seasons (May-June and September-October) when the weather is pleasant and the crowds are thinner. July and August are peak summer months, ideal for beach holidays but can be very hot and crowded." },
-  { q: "Do I need a visa to travel to Greece?", a: "Greece is part of the Schengen Area. If you are an EU citizen, or from a visa-exempt country (like the US, UK, Canada, Australia), you do not need a visa for stays up to 90 days. Always check the latest entry requirements before traveling." },
-  { q: "How do I get around the Greek islands?", a: "The most common way to hop between islands is by ferry. Domestic flights are also available connecting Athens to major islands like Santorini, Mykonos, and Crete." },
-  { q: "What should I pack for a trip to Greece?", a: "Pack light, breathable clothing for the summer, comfortable walking shoes for ancient ruins, swimwear, a hat, and plenty of sunscreen. A light jacket is recommended for breezy island evenings." },
-  { q: "Is Greece expensive?", a: "Greece caters to all budgets. While luxury hotspots like Santorini and Mykonos can be expensive, destinations like Crete, Naxos, and the mainland offer excellent value for money with affordable local food and accommodation." },
+  { q: "When is the best time to visit Santorini?", a: "The best time to visit is during the shoulder seasons (May-June and September-October) when the weather is pleasant and the crowds are thinner." },
+  { q: "How do I get around the island?", a: "The most common way to get around is by renting an ATV, scooter, or taking the local buses." },
+  { q: "Is Santorini expensive for tourists?", a: "Santorini caters to all budgets, but luxury hotspots like Oia can be on the pricier side compared to other destinations." },
+  { q: "What should I pack for my trip?", a: "Pack light, breathable clothing for the summer, comfortable walking shoes for ruins, swimwear, a hat, and plenty of sunscreen." },
+  { q: "Do I need a visa to visit Greece?", a: "Greece is part of the Schengen Area. If you are an EU citizen or from a visa-exempt country, you do not need a visa for up to 90 days." },
+  { q: "Is Greece expensive?", a: "Greece offers excellent value for money. While luxury islands can be expensive, the mainland and lesser-known islands are very affordable." },
+  { q: "Do I need a visa?", a: "Please check your local government's travel advisory for the most up-to-date visa requirements for traveling to Greece." },
+  { q: "Which Greek islands are the best?", a: "Santorini, Mykonos, Crete, and Rhodes are among the most popular and highly rated islands depending on your travel style." },
+  { q: "How many days should I spend in Greece?", a: "A minimum of 7-10 days is recommended to comfortably see Athens and explore one or two major islands." },
+  { q: "Which are the best beaches in Greece?", a: "Navagio in Zakynthos, Elafonissi in Crete, and Myrtos in Kefalonia are consistently ranked as stunning options." },
+  { q: "Which destinations are best for families?", a: "Crete, Naxos, and Rhodes are incredibly family-friendly, offering calm shallow beaches and large resorts." },
+  { q: "Can I island-hop in Greece?", a: "Absolutely. Greece has an extensive and reliable ferry network making it very easy to travel seamlessly between islands." },
 ];
 
 /* =====================================================================
@@ -113,11 +181,7 @@ const FAQS = [
 function HeroSection() {
   return (
     <section className="relative mx-auto flex h-[500px] max-h-screen w-full max-w-[1440px] flex-col items-center justify-center overflow-hidden bg-[#000000]">
-      
-      {/* Absolute Header Overlay */}
       <Header />
-
-      {/* Background Image + 30% Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/Country Details/Section 1/Images/Hero.png"
@@ -128,21 +192,15 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
       </div>
-
       <div className="relative z-10 mt-[104px] flex w-full flex-col items-center px-[32px] text-center">
-        {/* Breadcrumb: 12px, Medium, 16px, -0.12px */}
         <div className="mb-[12px] flex items-center justify-center rounded-full bg-[#FDDB32] px-[12px] py-[4px]">
           <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
             GREECE
           </span>
         </div>
-        
-        {/* Title: 72px, Medium, 100%, -3% */}
         <h1 className="mb-[12px] font-sans text-[72px] font-medium leading-[72px] tracking-[-0.03em] text-[#FFFFFF] max-[768px]:text-[48px]">
           Discover Greece
         </h1>
-        
-        {/* Subtitle: 16px, Regular, 24px, 0px */}
         <p className="max-w-[700px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#FFFFFF] max-[768px]:text-[14px]">
           Explore ancient ruins, pristine beaches, and world-class island hopping in one of Europe's most breathtaking destinations.
         </p>
@@ -187,9 +245,7 @@ function AboutSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
       <div className="mx-auto w-full max-w-[1440px] px-[160px] max-[1024px]:px-[20px]">
-        
         <div className="flex flex-col items-center gap-[80px] lg:flex-row">
-          {/* Left Col */}
           <div className="flex w-full max-w-[540px] flex-col gap-[24px]">
             <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
               About Greece
@@ -215,8 +271,6 @@ function AboutSection() {
               ))}
             </div>
           </div>
-
-          {/* Right Col */}
           <div className="relative h-[400px] w-full max-w-[500px] overflow-hidden rounded-[42px]">
             <Image 
               src="/Country Details/Section 2/Images/Rectangle.png" 
@@ -226,79 +280,59 @@ function AboutSection() {
             />
           </div>
         </div>
-
       </div>
     </section>
   );
 }
 
 /* =====================================================================
-   DESTINATIONS SECTION & NEARBY COUNTRIES
+   DESTINATIONS SECTION
 ===================================================================== */
 
 function DestinationCard({ item }: { item: any }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-[24px] border border-[#F3F4F6] bg-[#FFFFFF] shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
-      {/* Image Container */}
       <div className="relative h-[240px] w-full shrink-0 overflow-hidden bg-neutral-100">
-        <Image 
-          src={item.image} 
-          alt={item.city || item.name} 
-          fill 
-          className="object-cover transition-transform duration-700 hover:scale-105" 
-        />
+        <Image src={item.image} alt={item.city || item.name} fill className="object-cover transition-transform duration-700 hover:scale-105" />
       </div>
-
-      {/* Content Area */}
       <div className="flex flex-1 flex-col p-[24px]">
-        
-        {/* Header Row: Title + Flag & Badge */}
         <div className="mb-[16px] flex items-center justify-between">
           <div className="flex items-center gap-[8px]">
             <h3 className="font-sans text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-[#000000]">
               {item.city || item.name}
             </h3>
-            {/* Simple emoji flag to match the design style */}
-            <span className="text-[16px] leading-none">🇬🇷</span>
+            {item.icon && (
+              <div className="relative flex h-[16px] w-[24px] shrink-0 items-center justify-center">
+                 <Image src={item.icon} alt="flag" fill className="object-contain" />
+              </div>
+            )}
           </div>
-          
           {item.badge && (
             <div className={`rounded-full px-[12px] py-[4px] font-sans text-[12px] font-medium leading-[16px] ${item.badgeStyles}`}>
               {item.badge}
             </div>
           )}
         </div>
-
-        {/* Description */}
         <p className="mb-[24px] min-h-[60px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#4B5563]">
           {item.desc}
         </p>
-
-        {/* Pricing Pills */}
         <div className="mb-[24px] flex flex-col items-start gap-[12px]">
           {item.flightsFrom && (
             <div className="flex items-center gap-[8px] rounded-[8px] bg-[#FEF6D8] px-[12px] py-[8px]">
               <Plane size={16} className="text-[#000000]" />
-              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
-                Flights from {item.flightsFrom}
-              </span>
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">Flights from {item.flightsFrom}</span>
             </div>
           )}
           {item.hotelsFrom && (
             <div className="flex items-center gap-[8px] rounded-[8px] bg-[#FEF6D8] px-[12px] py-[8px]">
               <Building2 size={16} className="text-[#000000]" />
-              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
-                Hotels from {item.hotelsFrom}
-              </span>
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">Hotels from {item.hotelsFrom}</span>
             </div>
           )}
         </div>
-
-        {/* CTA Button */}
         <div className="mt-auto pt-[8px]">
           <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-full bg-[#000000] font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
-            Book Now
-            <ArrowRight size={18} className="text-[#FFFFFF]" />
+            Book Now <ArrowRight size={18} className="text-[#FFFFFF]" />
           </button>
         </div>
       </div>
@@ -310,7 +344,6 @@ function DestinationsSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[96px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
-        
         <div className="mb-[56px] flex flex-col gap-[12px]">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Explore Greece's Most Popular Destinations
@@ -319,13 +352,11 @@ function DestinationsSection() {
             Discover top-rated cities and islands for your Mediterranean adventure.
           </p>
         </div>
-
         <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {DESTINATIONS.map((dest, i) => (
             <DestinationCard key={i} item={dest} />
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -335,11 +366,47 @@ function DestinationsSection() {
    POPULAR FLIGHTS SECTION
 ===================================================================== */
 
+function FlightCard({ flight }: { flight: any }) {
+  return (
+    <div className="group flex h-[364px] flex-col overflow-hidden rounded-[24px] border border-[#E6E6E6] bg-[#FFFFFF] shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="relative h-[140px] w-full shrink-0 overflow-hidden bg-neutral-100">
+        <Image src={flight.image} alt={flight.city} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="absolute left-[16px] top-[16px] flex h-[32px] w-[32px] items-center justify-center overflow-hidden rounded-full bg-[#FFFFFF] p-[6px] shadow-sm z-10">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={flight.flag} alt={`${flight.city} flag`} className="h-full w-full object-contain" />
+        </div>
+      </div>
+      <div className="flex w-full flex-1 flex-col p-[20px]">
+        <div className="mb-[24px] flex w-full flex-col gap-[4px]">
+          <h3 className="font-sans text-[20px] font-medium leading-[24px] text-[#000000]">{flight.city}</h3>
+          <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">{flight.route}</p>
+        </div>
+        <div className="mb-[12px] flex w-full items-center justify-between">
+          <p className="font-sans text-[24px] font-semibold leading-[24px] text-[#212121]">{flight.price}</p>
+          <div className="flex items-center gap-[4px] rounded-[6px] border border-[#E6E6E6] bg-[#F9FBF5] px-[8px] py-[4px]">
+            <Image src="/Homepage/Section 3/Icon/Airline Logo.png" alt={`${flight.airline} logo`} width={14} height={14} className="object-contain" />
+            <span className="font-sans text-[12px] font-medium leading-[16px] text-[#000000]">{flight.airline}</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-[6px]">
+          <Clock size={14} className="text-[#7D7D7D]" />
+          <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#7D7D7D]">{flight.duration}</span>
+        </div>
+      </div>
+      <div className="mt-auto px-[20px] pb-[20px] pt-0">
+        <button className="flex h-[44px] w-full items-center justify-center gap-[8px] rounded-[12px] border border-[#E6E6E6] bg-[#FFFFFF] transition-colors duration-300 hover:border-[#FDDB32] hover:bg-[#FDDB32]">
+          <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#000000]">View Flights</span>
+          <ArrowUpRight size={16} className="text-[#000000]" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function PopularFlightsSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
-        
         <div className="mb-[48px] flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Popular Flights to <span className="text-[#FDDB32]">Greece</span>
@@ -348,57 +415,9 @@ function PopularFlightsSection() {
             Browse All Greece Routes <ArrowUpRight size={14} />
           </button>
         </div>
-
         <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {POPULAR_FLIGHTS.map((flight, i) => (
-            <div
-              key={i}
-              className="flex h-[364px] flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FFFFFF] shadow-sm transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="relative h-[140px] w-full shrink-0 overflow-hidden bg-neutral-100">
-                <Image src={flight.image} alt={flight.city} fill className="object-cover" />
-                <div className="absolute left-[12px] top-[12px] flex items-center justify-center rounded-full bg-[#FFFFFF] px-[10px] py-[6px] shadow-sm">
-                  <span className="text-[20px] leading-none">{flight.emoji}</span>
-                </div>
-              </div>
-
-              <div className="flex w-full flex-col gap-[12px] p-[20px]">
-                <div className="flex w-full flex-col gap-[4px]">
-                  <h3 className="font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#000000]">
-                    {flight.city}
-                  </h3>
-                  <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
-                    {flight.route}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between">
-                  <p className="font-sans text-[24px] font-medium leading-[24px] tracking-[0px] text-[#212121]">
-                    {flight.price}
-                  </p>
-                  <div className="flex items-center gap-[6px] rounded-[6px] border border-[#E5E7EB] bg-[#F9FBFA] px-[8px] py-[4px]">
-                    <Plane size={14} className="text-[#00529C]" />
-                    <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
-                      {flight.airline}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-[6px]">
-                  <Clock size={14} className="text-[#7D7D7D]" />
-                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#7D7D7D]">
-                    {flight.duration}
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-auto px-[20px] pb-[20px] pt-0">
-                <button className="flex h-[44px] w-full items-center justify-center gap-[8px] rounded-[12px] bg-[#FDDB32] transition-colors hover:bg-[#e5c52c]">
-                  <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
-                    View Flights
-                  </span>
-                  <ArrowUpRight size={14} className="text-[#000000]" />
-                </button>
-              </div>
-            </div>
+            <FlightCard key={i} flight={flight} />
           ))}
         </div>
       </div>
@@ -414,11 +433,9 @@ function TopThingsToDoSection() {
   return (
     <section className="w-full bg-[#000000] py-[120px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
-        
         <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
           Top Things To Do
         </h2>
-
         <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {THINGS_TO_DO.map((item, i) => (
             <div key={i} className="flex h-[292px] flex-col rounded-[24px] bg-[#FFFFFF] p-[6px] transition-transform duration-300 hover:-translate-y-1">
@@ -426,40 +443,31 @@ function TopThingsToDoSection() {
                 <Image src={item.image} alt={item.title} fill className="object-cover" />
               </div>
               <div className="flex flex-1 flex-col justify-between px-[12px] pb-[12px] pt-[12px]">
-                <h3 className="truncate font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
-                  {item.title}
-                </h3>
+                <h3 className="truncate font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">{item.title}</h3>
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
-                    {item.duration}
-                  </span>
-                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
-                    {item.price}
-                  </span>
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">{item.duration}</span>
+                  <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">{item.price}</span>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
 
 /* =====================================================================
-   WHERE TO STAY SECTION (HOTELS)
+   WHERE TO STAY SECTION
 ===================================================================== */
 
 function WhereToStaySection() {
   return (
     <section className="w-full bg-[#F9FBFA] py-[120px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
-        
         <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
           Where To Stay
         </h2>
-
         <div className="grid w-full grid-cols-1 gap-[24px] md:grid-cols-3">
           {HOTELS.map((hotel, i) => (
             <div key={i} className="flex flex-col rounded-[32px] bg-[#FFFFFF] p-[6px] shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
@@ -473,9 +481,7 @@ function WhereToStaySection() {
                   ))}
                   <span className="ml-[4px] font-sans text-[14px] font-medium text-[#F59E0B]">{hotel.rating}</span>
                 </div>
-                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
-                  {hotel.name}
-                </h3>
+                <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">{hotel.name}</h3>
                 <div className="flex items-center justify-between">
                   <span className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
                     {hotel.price} <span className="text-[14px] font-normal tracking-[0px] text-[#7D7D7D]">/ night</span>
@@ -488,7 +494,6 @@ function WhereToStaySection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -498,26 +503,65 @@ function WhereToStaySection() {
    NEARBY COUNTRIES SECTION
 ===================================================================== */
 
+function NearbyCountryCard({ item }: { item: any }) {
+  return (
+    <div className="group flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FFFFFF] shadow-sm transition-transform duration-300 hover:-translate-y-1">
+      <div className="relative h-[140px] w-full shrink-0 overflow-hidden bg-neutral-100">
+        <Image 
+          src={item.image} 
+          alt={item.city} 
+          fill 
+          className="object-cover transition-transform duration-700 group-hover:scale-105" 
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col p-[24px]">
+        <div className="mb-[16px] flex items-center gap-[8px]">
+          <h3 className="font-sans text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-[#000000]">
+            {item.city}
+          </h3>
+          <div className="flex h-[20px] w-[20px] items-center justify-center overflow-hidden rounded-full bg-[#FFFFFF] shadow-sm border border-[#E5E7EB] p-[2px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+               src={item.flag} 
+               alt={`${item.city} flag`} 
+               className="h-full w-full object-cover rounded-full" 
+            />
+          </div>
+        </div>
+
+        <p className="mb-[24px] min-h-[60px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#4B5563]">
+          {item.desc}
+        </p>
+
+        <div className="mt-auto pt-[8px]">
+          <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-full bg-[#000000] font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#FFFFFF] transition-colors duration-300 hover:bg-[#FDDB32] hover:text-[#000000]">
+            Book Now
+            <ArrowRight size={18} className="text-current" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function NearbyCountriesSection() {
   return (
     <section className="w-full bg-[#000000] py-[96px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
-        
         <div className="mb-[56px] flex flex-col gap-[12px]">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Nearby Countries
           </h2>
-          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBFA]">
-            Add more destinations to your itinerary with these fantastic nearby escapes.
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#D1D5DB] max-w-[700px]">
+            Extend your journey beyond Greece with these spectacular nearby Mediterranean jewels.
           </p>
         </div>
-
         <div className="grid w-full grid-cols-1 gap-[24px] sm:grid-cols-2 lg:grid-cols-4">
           {NEARBY_COUNTRIES.map((dest, i) => (
-            <DestinationCard key={i} item={dest} />
+            <NearbyCountryCard key={i} item={dest} />
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -540,7 +584,7 @@ function TravelHelpSection() {
             Travel Help
           </h2>
           <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
-            Everything you need to know about visiting Greece.
+            Everything you need to know before you jet off to the islands.
           </p>
         </div>
 
@@ -559,7 +603,7 @@ function TravelHelpSection() {
                     {faq.q}
                   </span>
                   <span className="flex shrink-0 text-[#000000]">
-                    <ChevronDown size={20} className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
                   </span>
                 </button>
                 {isOpen && (
@@ -592,7 +636,6 @@ function NewsletterSection() {
           <p className="mt-[16px] max-w-[600px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
             Sign up to our newsletter and be the first to know about cheap flights and hotel offers.
           </p>
-
           <form className="mt-[32px] flex w-full max-w-[500px] flex-col gap-[12px] sm:flex-row">
             <input
               type="email"
