@@ -78,81 +78,119 @@ const DESTINATIONS = [
 ];
 
 const POPULAR_FLIGHTS = [
-  { 
-    city: "London", 
-    route: "LON → ATH", 
-    price: "€24", 
-    airline: "Ryanair", 
-    duration: "Direct • 1h 20m", 
-    flag: "https://flagcdn.com/w40/gb.png", 
-    image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&w=800&q=80" 
+  {
+    city: "London",
+    route: "LON → ATH",
+    price: "€24",
+    airline: "Ryanair",
+    duration: "Direct • 3h 40m",
+    flag: "https://flagcdn.com/w40/gb.png",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "Manchester", 
-    route: "MAN → ATH", 
-    price: "€24", 
-    airline: "Ryanair", 
-    duration: "Direct • 1h 20m", 
-    flag: "https://flagcdn.com/w40/gb.png", 
-    image: "https://images.unsplash.com/photo-1602028688463-b1d6f3e120da?auto=format&w=800&q=80" 
+  {
+    city: "Manchester",
+    route: "MAN → ATH",
+    price: "€29",
+    airline: "easyJet",
+    duration: "Direct • 3h 55m",
+    flag: "https://flagcdn.com/w40/gb.png",
+    image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "Dublin", 
-    route: "DUB → ATH", 
-    price: "€24", 
-    airline: "Ryanair", 
-    duration: "Direct • 1h 20m", 
-    flag: "https://flagcdn.com/w40/ie.png", 
-    image: "https://images.unsplash.com/photo-1549918864-48ac978761a4?auto=format&w=800&q=80" 
+  {
+    city: "Dublin",
+    route: "DUB → ATH",
+    price: "€34",
+    airline: "Ryanair",
+    duration: "Direct • 4h 20m",
+    flag: "https://flagcdn.com/w40/ie.png",
+    image: "https://images.unsplash.com/photo-1518005068251-37900150dfca?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "New York", 
-    route: "NYC → ATH", 
-    price: "€24", 
-    airline: "Ryanair", 
-    duration: "Direct • 1h 20m", 
-    flag: "https://flagcdn.com/w40/us.png", 
-    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&w=800&q=80" 
-  },
+  {
+  city: "New York",
+  route: "NYC → ATH",
+  price: "€329",
+  airline: "Delta",
+  duration: "Direct • 9h 15m",
+  flag: "https://flagcdn.com/w40/us.png",
+  image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80"
+}
 ];
 
 const THINGS_TO_DO = [
-  { title: "Oia Sunset Catamaran Cruise", duration: "5 Hours", price: "From €95", image: "https://images.unsplash.com/photo-1598094625513-43fccf8e2170?auto=format&w=800&q=80" },
-  { title: "Acropolis Guided Tour", duration: "2 Hours", price: "From €35", image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80" },
-  { title: "Delos & Rhenia Boat Trip", duration: "6 Hours", price: "From €80", image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80" },
-  { title: "Knossos Palace Ticket", duration: "Flexible", price: "From €18", image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80" },
+  {
+    title: "Oia Sunset Catamaran Cruise",
+    duration: "5 Hours",
+    price: "From €95",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    title: "Acropolis Guided Tour",
+    duration: "2 Hours",
+    price: "From €35",
+    image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    title: "Delos & Rhenia Boat Trip",
+    duration: "6 Hours",
+    price: "From €80",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    title: "Knossos Palace Ticket",
+    duration: "Flexible",
+    price: "From €18",
+    image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80"
+  },
 ];
 
 const HOTELS = [
-  { name: "Grace Santorini", location: "Imerovigli", rating: "4.9/5", price: "€450", image: "https://images.unsplash.com/photo-1580946342895-716b2512a803?auto=format&w=800&q=80" },
-  { name: "Cavo Tagoo", location: "Mykonos Town", rating: "4.8/5", price: "€520", image: "https://images.unsplash.com/photo-1601582589907-f92af5ed9db8?auto=format&w=800&q=80" },
-  { name: "Katikies Hotel", location: "Oia", rating: "4.9/5", price: "€480", image: "https://images.unsplash.com/photo-1469796466635-455ede14929b?auto=format&w=800&q=80" },
+  {
+    name: "Grace Santorini",
+    location: "Imerovigli",
+    rating: "4.9/5",
+    price: "€450",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    name: "Cavo Tagoo",
+    location: "Mykonos Town",
+    rating: "4.8/5",
+    price: "€520",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    name: "Katikies Hotel",
+    location: "Oia",
+    rating: "4.9/5",
+    price: "€480",
+    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80"
+  },
 ];
 
 const NEARBY_COUNTRIES = [
-  { 
-    city: "Italy", 
-    desc: "Immerse yourself in centuries of history, regional culinary masterpieces, and the dramatic coastlines.", 
+  {
+    city: "Italy",
+    desc: "Immerse yourself in centuries of history, regional culinary masterpieces, and the dramatic coastlines.",
     flag: "https://flagcdn.com/w40/it.png",
-    image: "https://images.unsplash.com/photo-1516483638261-f40889eba30e?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "Croatia", 
-    desc: "Discover the walled city of Dubrovnik, sparkling Adriatic waters, and pristine cascading lakes.", 
+  {
+    city: "Croatia",
+    desc: "Discover the walled city of Dubrovnik, sparkling Adriatic waters, and pristine cascading lakes.",
     flag: "https://flagcdn.com/w40/hr.png",
-    image: "https://images.unsplash.com/photo-1555661608-8e6f1f31f9d4?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "Turkey", 
-    desc: "Where East meets West. Experience vibrant spice bazaars, ancient ruins, and fairytale balloon rides.", 
+  {
+    city: "Turkey",
+    desc: "Where East meets West. Experience vibrant spice bazaars, ancient ruins, and fairytale balloon rides.",
     flag: "https://flagcdn.com/w40/tr.png",
-    image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80"
   },
-  { 
-    city: "Cyprus", 
-    desc: "Bask on sun-drenched beaches, explore legendary archaeological sites, and enjoy rich culinary traditions.", 
+  {
+    city: "Cyprus",
+    desc: "Bask on sun-drenched beaches, explore legendary archaeological sites, and enjoy rich culinary traditions.",
     flag: "https://flagcdn.com/w40/cy.png",
-    image: "https://images.unsplash.com/photo-1588180891305-ec9b26e0e37e?auto=format&w=800&q=80" 
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
   },
 ];
 
