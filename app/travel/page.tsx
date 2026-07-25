@@ -11,6 +11,7 @@ import {
   Plane,
   Building2,
   ArrowUpRight,
+  ArrowRight,
   Star,
   ChevronDown,
   Check
@@ -34,38 +35,38 @@ const INFO_BAR_DATA = [
 const DESTINATIONS = [
   {
     city: "Santorini",
-    desc: "Iconic white-washed houses, blue domes, and breathtaking sunsets.",
+    desc: "Famous for its whitewashed houses, blue-domed churches, and breathtaking sunsets.",
     badge: "Popular",
-    badgeStyles: "bg-[#1E40AF] text-[#FFFFFF]",
-    flightsFrom: "€50",
-    hotelsFrom: "€85",
+    badgeStyles: "bg-[#EBF5FF] text-[#0066CC]",
+    flightsFrom: "€120",
+    hotelsFrom: "€180",
     image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&w=800&q=80",
   },
   {
     city: "Athens",
-    desc: "The historical heart of ancient Greece, home to the mighty Acropolis.",
+    desc: "The cradle of Western civilization, home to the Acropolis and vibrant city life.",
     badge: "Best Value",
-    badgeStyles: "bg-[#3730A3] text-[#FFFFFF]",
-    flightsFrom: "€35",
-    hotelsFrom: "€55",
+    badgeStyles: "bg-[#F3E8FF] text-[#7E22CE]",
+    flightsFrom: "€120",
+    hotelsFrom: "€180",
     image: "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&w=800&q=80",
   },
   {
     city: "Mykonos",
-    desc: "Vibrant nightlife, luxury resorts, and picturesque windmills.",
+    desc: "A vibrant party destination with beautiful beaches and a lively waterfront.",
     badge: "Trending",
-    badgeStyles: "bg-[#9D174D] text-[#FFFFFF]",
-    flightsFrom: "€60",
-    hotelsFrom: "€120",
+    badgeStyles: "bg-[#FCE7F3] text-[#BE185D]",
+    flightsFrom: "€120",
+    hotelsFrom: "€180",
     image: "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&w=800&q=80",
   },
   {
     city: "Crete",
-    desc: "A massive island offering diverse landscapes, deep history, and beaches.",
+    desc: "The largest island, offering ancient ruins, mountains, and long sandy beaches.",
     badge: "Hidden Gem",
-    badgeStyles: "bg-[#065F46] text-[#FFFFFF]",
-    flightsFrom: "€45",
-    hotelsFrom: "€60",
+    badgeStyles: "bg-[#DCFCE7] text-[#15803D]",
+    flightsFrom: "€120",
+    hotelsFrom: "€180",
     image: "https://images.unsplash.com/photo-1582650837562-b9e78299a910?auto=format&w=800&q=80",
   },
 ];
@@ -111,7 +112,7 @@ const FAQS = [
 
 function HeroSection() {
   return (
-    <section className="relative flex h-[681px] w-full flex-col items-center justify-center overflow-hidden bg-[#000000]">
+    <section className="relative mx-auto flex h-[500px] max-h-screen w-full max-w-[1440px] flex-col items-center justify-center overflow-hidden bg-[#000000]">
       
       {/* Absolute Header Overlay */}
       <Header />
@@ -120,7 +121,7 @@ function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/Country Details/Section 1/Images/Hero.png"
-          alt="Greece"
+          alt="Panoramic sunset view of Oia Santorini, featuring white caldera buildings and blue domes"
           fill
           className="object-cover"
           priority
@@ -128,7 +129,7 @@ function HeroSection() {
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
       </div>
 
-      <div className="relative z-10 mt-[104px] flex w-full max-w-[1440px] flex-col items-center px-[32px] text-center">
+      <div className="relative z-10 mt-[104px] flex w-full flex-col items-center px-[32px] text-center">
         {/* Breadcrumb: 12px, Medium, 16px, -0.12px */}
         <div className="mb-[12px] flex items-center justify-center rounded-full bg-[#FDDB32] px-[12px] py-[4px]">
           <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
@@ -164,11 +165,9 @@ function InfoBarSection() {
               <info.icon size={18} className="text-[#000000]" />
             </div>
             <div className="flex flex-col">
-              {/* Label: 12px, Medium, 16px, -0.12px */}
               <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
                 {info.label}
               </span>
-              {/* Value: 14px, Medium, 20px, -0.28px */}
               <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
                 {info.value}
               </span>
@@ -220,7 +219,7 @@ function AboutSection() {
           {/* Right Col */}
           <div className="relative h-[400px] w-full max-w-[500px] overflow-hidden rounded-[42px]">
             <Image 
-              src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&w=800&q=80" 
+              src="/Country Details/Section 2/Images/Rectangle.png" 
               alt="Greece Coastline" 
               fill 
               className="object-cover"
@@ -239,54 +238,67 @@ function AboutSection() {
 
 function DestinationCard({ item }: { item: any }) {
   return (
-    <div className="flex h-[524px] w-full flex-col overflow-hidden rounded-[24px] border border-[#333333] bg-[#FFFFFF] shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1">
+    <div className="flex flex-col overflow-hidden rounded-[24px] border border-[#F3F4F6] bg-[#FFFFFF] shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
       {/* Image Container */}
-      <div className="relative h-[220px] w-full shrink-0 overflow-hidden bg-neutral-100">
-        <Image src={item.image} alt={item.city || item.name} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-        
-        {item.badge && (
-          <div className={`absolute left-[16px] top-[16px] rounded-full px-[12px] py-[4px] font-sans text-[12px] font-medium leading-[16px] tracking-[0px] ${item.badgeStyles}`}>
-            {item.badge}
-          </div>
-        )}
+      <div className="relative h-[240px] w-full shrink-0 overflow-hidden bg-neutral-100">
+        <Image 
+          src={item.image} 
+          alt={item.city || item.name} 
+          fill 
+          className="object-cover transition-transform duration-700 hover:scale-105" 
+        />
       </div>
 
       {/* Content Area */}
-      <div className="flex flex-1 flex-col gap-[16px] p-[24px]">
-        <div className="flex flex-col gap-[4px]">
-          <h3 className="font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#000000]">
-            {item.city || item.name}
-          </h3>
-          <p className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000] line-clamp-2">
-            {item.desc}
-          </p>
+      <div className="flex flex-1 flex-col p-[24px]">
+        
+        {/* Header Row: Title + Flag & Badge */}
+        <div className="mb-[16px] flex items-center justify-between">
+          <div className="flex items-center gap-[8px]">
+            <h3 className="font-sans text-[20px] font-medium leading-[28px] tracking-[-0.4px] text-[#000000]">
+              {item.city || item.name}
+            </h3>
+            {/* Simple emoji flag to match the design style */}
+            <span className="text-[16px] leading-none">🇬🇷</span>
+          </div>
+          
+          {item.badge && (
+            <div className={`rounded-full px-[12px] py-[4px] font-sans text-[12px] font-medium leading-[16px] ${item.badgeStyles}`}>
+              {item.badge}
+            </div>
+          )}
         </div>
 
-        {(item.flightsFrom || item.hotelsFrom) && (
-          <div className="flex flex-col gap-[8px] rounded-[12px] bg-[#F9FBFA] p-[12px]">
-            {item.flightsFrom && (
-              <div className="flex items-center gap-[8px]">
-                <Plane size={14} className="text-[#000000]" />
-                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
-                  Flights from {item.flightsFrom}
-                </span>
-              </div>
-            )}
-            {item.hotelsFrom && (
-              <div className="flex items-center gap-[8px]">
-                <Building2 size={14} className="text-[#000000]" />
-                <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000]">
-                  Hotels from {item.hotelsFrom} / night
-                </span>
-              </div>
-            )}
-          </div>
-        )}
+        {/* Description */}
+        <p className="mb-[24px] min-h-[60px] font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#4B5563]">
+          {item.desc}
+        </p>
 
-        {/* CTA */}
-        <div className="mt-auto">
-          <button className="flex h-[44px] w-full items-center justify-center rounded-[12px] bg-[#000000] font-sans text-[14px] font-medium leading-[20px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
+        {/* Pricing Pills */}
+        <div className="mb-[24px] flex flex-col items-start gap-[12px]">
+          {item.flightsFrom && (
+            <div className="flex items-center gap-[8px] rounded-[8px] bg-[#FEF6D8] px-[12px] py-[8px]">
+              <Plane size={16} className="text-[#000000]" />
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                Flights from {item.flightsFrom}
+              </span>
+            </div>
+          )}
+          {item.hotelsFrom && (
+            <div className="flex items-center gap-[8px] rounded-[8px] bg-[#FEF6D8] px-[12px] py-[8px]">
+              <Building2 size={16} className="text-[#000000]" />
+              <span className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-[#000000]">
+                Hotels from {item.hotelsFrom}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-auto pt-[8px]">
+          <button className="flex h-[48px] w-full items-center justify-center gap-[8px] rounded-full bg-[#000000] font-sans text-[16px] font-medium leading-[24px] tracking-[0px] text-[#FFFFFF] transition-colors hover:bg-neutral-800">
             Book Now
+            <ArrowRight size={18} className="text-[#FFFFFF]" />
           </button>
         </div>
       </div>
@@ -296,14 +308,14 @@ function DestinationCard({ item }: { item: any }) {
 
 function DestinationsSection() {
   return (
-    <section className="w-full bg-[#000000] py-[96px] max-[1024px]:py-[80px]">
+    <section className="w-full bg-[#FFFFFF] py-[96px] max-[1024px]:py-[80px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
         
         <div className="mb-[56px] flex flex-col gap-[12px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
+          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Explore Greece's Most Popular Destinations
           </h2>
-          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#F9FBFA]">
+          <p className="font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#4B5563]">
             Discover top-rated cities and islands for your Mediterranean adventure.
           </p>
         </div>
