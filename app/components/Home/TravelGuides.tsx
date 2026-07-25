@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import Image from "next/image";
 
 const guides = [
@@ -7,91 +8,142 @@ const guides = [
     date: "June 12, 2026",
     title: "Best Time to Visit Bali",
     image:
-      "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
-    large: true,
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
   },
   {
     date: "May 28, 2026",
     title: "How to Find Cheap Flights",
     image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
-    large: false,
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
   },
   {
     date: "May 15, 2026",
     title: "Paris Travel Guide",
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
-    large: false,
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 export default function TravelGuides() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   return (
-    <section className="w-full bg-[#ffffff] py-[80px] text-[#000000]">
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col px-[32px] max-[430px]:px-4">
-        
-        {/* Section Heading */}
-        <h2 className="mb-[48px] text-center font-sans text-[48px] font-medium leading-none text-[#000000] max-[768px]:text-[24px]">
+    <section className="w-full bg-white py-20 text-black">
+      <div className="mx-auto max-w-[1280px] px-8 max-[430px]:px-4">
+
+        {/* Heading */}
+        <h2 className="mb-12 text-center text-5xl font-medium max-md:text-3xl">
           Featured Travel Guides
         </h2>
 
-        {/* Grid Layout */}
-        <div className="grid w-full grid-cols-1 gap-[24px] md:grid-cols-4">
-          {guides.map((guide, i) => (
-            <div 
-              key={i} 
-              className={`group flex cursor-pointer flex-col ${guide.large ? 'md:col-span-2' : 'md:col-span-1'}`}
-            >
-              {/* Image Container */}
-              <div className="relative mb-[16px] h-[400px] w-full overflow-hidden rounded-[24px] bg-neutral-100 max-[768px]:h-[300px]">
-                <Image 
-                  src={guide.image} 
-                  alt={guide.title} 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-                
-                {/* Top Right Hover Icon */}
-                <div className="absolute right-5 top-5 flex h-[36px] w-[36px] items-center justify-center rounded-full bg-white shadow-sm transition-transform duration-300 group-hover:scale-110">
-                  <Image 
-                    src="/Homepage/Section 6/Icon/KQY0VNx64.png" 
-                    alt="Arrow" 
-                    width={14} 
-                    height={14} 
-                    className="object-contain" 
+        {/* Cards */}
+        <div className="flex flex-col gap-6 md:flex-row">
+
+          {guides.map((guide, i) => {
+            const active = activeCard === i;
+
+            return (
+              <div
+                key={i}
+                onMouseEnter={() => setActiveCard(i)}
+                onMouseLeave={() => setActiveCard(null)}
+                onTouchStart={() => setActiveCard(i)}
+                className={`
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[28px]
+                  bg-white
+                  transition-all
+                  duration-700
+                  ease-in-out
+                  cursor-pointer
+
+                  flex-[1]
+
+                  ${active ? "md:flex-[2]" : "md:flex-1"}
+                `}
+              >
+                {/* Image */}
+                <div
+                  className={`
+                    relative
+                    overflow-hidden
+                    rounded-[28px]
+                    transition-all
+                    duration-700
+
+                    ${active ? "h-[430px]" : "h-[430px]"}
+                  `}
+                >
+                  <Image
+                    src={guide.image}
+                    alt={guide.title}
+                    fill
+                    className={`
+                      object-cover
+                      transition-transform
+                      duration-700
+                      ${active ? "scale-110" : "scale-100"}
+                    `}
                   />
+
+                  {/* Arrow */}
+                  <div className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg transition-transform duration-500 group-hover:scale-110">
+                    <Image
+                      src="/Homepage/Section 6/Icon/KQY0VNx64.png"
+                      alt="Arrow"
+                      width={15}
+                      height={15}
+                    />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="px-2 py-5">
+
+                  <p className="mb-2 text-xs font-medium text-neutral-500">
+                    {guide.date}
+                  </p>
+
+                  <h3
+                    className={`
+                      font-medium
+                      transition-all
+                      duration-500
+
+                      ${
+                        active
+                          ? "text-3xl leading-tight"
+                          : "text-xl leading-snug"
+                      }
+                    `}
+                  >
+                    {guide.title}
+                  </h3>
+
                 </div>
               </div>
-
-              {/* Text Content */}
-              <div className="flex flex-col px-1">
-                {/* Date */}
-                <span className="mb-[6px] font-sans text-[12px] font-medium leading-[1.33] text-[#777777]">
-                  {guide.date}
-                </span>
-                
-                {/* Guide Title */}
-                <h3 className={`font-sans font-medium text-[#000000] ${guide.large ? 'text-[24px] leading-none' : 'text-[16px] leading-[1.5]'}`}>
-                  {guide.title}
-                </h3>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Call to Action Button */}
-        <div className="mt-[48px] flex justify-center">
-          <button className="flex h-[44px] items-center gap-2 rounded-full bg-[#FDDB32] px-[28px] font-sans text-[14px] font-medium leading-[1.43] text-[#000000] transition-colors hover:bg-[#e5c52c]">
+        {/* Button */}
+        <div className="mt-12 flex justify-center">
+
+          <button className="flex items-center gap-2 rounded-full bg-[#FDDB32] px-8 py-3 text-sm font-medium transition hover:bg-yellow-400">
+
             View All Guides
-            <Image 
-              src="/Homepage/Section 6/Icon/KQY0VNx64.png" 
-              alt="Arrow" 
-              width={14} 
-              height={14} 
-              className="object-contain" 
+
+            <Image
+              src="/Homepage/Section 6/Icon/KQY0VNx64.png"
+              alt="Arrow"
+              width={14}
+              height={14}
             />
+
           </button>
+
         </div>
 
       </div>
