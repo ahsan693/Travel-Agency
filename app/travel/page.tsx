@@ -218,7 +218,7 @@ const FAQS = [
 
 function HeroSection() {
   return (
-    <section className="relative mx-auto flex h-[500px] max-h-screen w-full max-w-[1440px] flex-col items-center justify-center overflow-hidden bg-[#000000]">
+    <section className="relative mx-auto flex h-[681px] max-h-screen w-full max-w-[1440px] flex-col items-center justify-center overflow-hidden bg-[#000000]">
       <Header />
       <div className="absolute inset-0 z-0">
         <Image
