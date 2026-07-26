@@ -181,39 +181,56 @@ function HeroSection() {
   const activeChips = COUNTRY_CHIPS.filter((chip) => chip.region === activeRegion);
 
   return (
-    <section className="relative flex h-auto min-h-[664px] md:h-[700px] w-full flex-col items-center overflow-hidden bg-[#000000]">
+    <section className="relative flex h-auto min-h-[664px] w-full flex-col items-center overflow-hidden bg-[#000000] md:h-[700px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-       <Image
-         src="/Featured Countries/Section 1/Images/neom-wTmGtmGQCjQ-unsplash.jpg"
-         alt="Desert canyon arch at sunset"
-         fill
-         className="object-cover opacity-80"
-         priority
-       />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60" />
+        <Image
+          src="/Featured Countries/Section 1/Images/neom-wTmGtmGQCjQ-unsplash.jpg"
+          alt="Desert canyon arch at sunset"
+          fill
+          className="object-cover opacity-80"
+          priority
+        />
+        {/* Mobile: 55% black overlay, Desktop: Gradient */}
+        <div className="absolute inset-0 bg-black/55 md:bg-transparent md:bg-gradient-to-t md:from-black/80 md:via-black/20 md:to-black/60" />
       </div>
 
-      {/* Added more top padding here in mobile view: changed pt-[90px] to pt-[120px] */}
-      <div className="relative z-10 flex h-full w-full max-w-[1440px] flex-col px-[16px] pb-[32px] pt-[120px] md:px-[112px] md:pb-[80px] md:pt-[24px]">
+      <div className="relative z-10 flex h-full w-full max-w-[1440px] flex-col px-[16px] pb-[32px] pt-[12px] md:px-[112px] md:pb-[80px] md:pt-[24px]">
         <Header />
 
-        <div className="mt-auto flex w-full max-w-[1198px] flex-col gap-[10px] md:gap-[26px]">
+        {/* Added mt-[120px] for mobile to push content below header, kept md:mt-auto for desktop */}
+        <div className="mt-[120px] flex w-full max-w-[1198px] flex-col gap-[10px] md:mt-auto md:gap-[26px]">
           
           <div className="flex flex-col gap-[12px]">
             {/* Title */}
-            <h1 className="font-sans text-[42px] leading-[44px] tracking-[0px] font-medium text-[#FFFFFF] md:text-[72px] md:leading-none md:tracking-[0px]">
-              Discover Your Next Destination
+            <h1 className="font-sans text-[42px] font-medium leading-[44px] tracking-[-1.5px] text-[#FFFFFF] md:text-[72px] md:leading-none md:tracking-[0px]">
+              {/* Mobile View: 3 lines */}
+              <span className="block md:hidden">
+                Discover<br />
+                Your Next<br />
+                Destination
+              </span>
+              {/* Desktop View: Single line */}
+              <span className="hidden md:inline">
+                Discover Your Next Destination
+              </span>
             </h1>
             {/* Subtitle */}
-            <p className="max-w-[700px] font-sans text-[14px] leading-[20px] font-normal tracking-[0px] text-[rgba(255,255,255,0.8)] md:text-[16px] md:leading-[1.5]">
-              Explore countries across Europe, Asia, the Americas, Africa and Oceania. Compare flights and
-              hotels, explore travel guides, and plan your next adventure with TravelMommy.
+            <p className="max-w-[700px] font-sans text-[14px] font-normal leading-[20px] tracking-[0px] text-[#FFFFFF] md:text-[16px] md:leading-[1.5] md:text-[rgba(255,255,255,0.8)]">
+              {/* Mobile Text */}
+              <span className="md:hidden">
+                Explore countries across Europe, Asia, the Americas, Africa and Oceania. Compare flights and hotels, and plan your next adventure.
+              </span>
+              {/* Desktop Text */}
+              <span className="hidden md:inline">
+                Explore countries across Europe, Asia, the Americas, Africa and Oceania. Compare flights and
+                hotels, explore travel guides, and plan your next adventure with TravelMommy.
+              </span>
             </p>
           </div>
 
           <div className="flex flex-col gap-[12px] md:gap-[19px]">
-            <p className="font-sans text-[13px] leading-[18px] text-[#F9FBF5] md:text-[14px] md:leading-[1.43] md:tracking-[0px] md:text-[#FFFFFF] md:font-medium font-normal">
+            <p className="font-sans text-[13px] font-normal leading-[18px] tracking-[0px] text-[#F9FBF5] md:font-medium md:text-[14px] md:leading-[1.43] md:text-[#FFFFFF]">
               Browse by Region
             </p>
 
@@ -223,36 +240,41 @@ function HeroSection() {
                 <button
                   key={region}
                   onClick={() => setActiveRegion(region)}
-                  className={`flex h-[32px] md:h-[40px] items-center gap-[6px] rounded-full px-[14px] md:px-[20px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0px] md:tracking-[0px] font-normal md:font-medium transition-colors ${
+                  className={`flex h-[32px] items-center gap-[6px] rounded-full px-[14px] py-[8px] font-sans text-[12px] font-normal leading-[16px] tracking-[0.1px] transition-colors md:h-[40px] md:px-[20px] md:py-0 md:text-[14px] md:font-medium md:leading-[1.43] md:tracking-[0px] ${
                     activeRegion === region
-                      ? "bg-[#FDDB32] text-[#000000] border border-[#000000] md:border-none"
-                      : "bg-[#F9FBF5] md:bg-[#FFFFFF] text-[#000000] border border-[#E6E6E6] md:border-none hover:bg-[#F9FBF5]"
+                      ? "border border-[#000000] bg-[#FDDB32] text-[#000000] md:border-none"
+                      : "bg-[#F9FBF5] text-[#000000] hover:bg-[#F9FBF5] md:bg-[#FFFFFF] md:border-none"
                   }`}
                 >
                   {region}
-                  {activeRegion === region && <ChevronDown className="h-[14px] w-[14px] md:h-[16px] md:w-[16px]" />}
+                  {activeRegion === region && <ChevronDown className="h-[18px] w-[18px] stroke-[1.5px] md:h-[16px] md:w-[16px] md:stroke-2" />}
                 </button>
               ))}
             </div>
 
-            <div className="hidden md:block h-[1px] w-[358px] bg-[#E6E6E6] opacity-30 my-[12px]" />
+            <div className="my-[12px] block h-[1px] w-full bg-[#E6E6E6] opacity-30 md:w-[358px]" />
+
+            {/* Mobile Only: Popular Destinations Label */}
+            <p className="font-sans text-[13px] font-normal leading-[18px] tracking-[0px] text-[#F9FBF5] md:hidden">
+              Popular Destinations
+            </p>
 
             {/* Country chips (Filtered) */}
-            <div className="mt-[4px] flex flex-wrap gap-[8px]">
+            <div className="flex flex-wrap gap-[8px] md:mt-[4px]">
               {activeChips.map((chip) => (
                 <button
                   key={chip.name}
-                  className="flex h-[40px] items-center gap-[8px] rounded-full border border-[#E6E6E6] md:border-white/20 bg-[#F9FBF5] md:bg-white/10 py-[6px] pl-[6px] pr-[14px] md:py-[4px] md:pl-[4px] md:pr-[16px] font-sans text-[12px] leading-[16px] md:text-[14px] md:leading-[1.43] tracking-[0px] md:tracking-[0px] font-normal md:font-medium text-[#000000] md:text-[#FFFFFF] md:backdrop-blur-sm transition-colors hover:bg-[#e8ece3] md:hover:bg-white/20"
+                  className="flex h-[40px] items-center gap-[8px] rounded-full bg-[#F9FBF5] py-[6px] pl-[6px] pr-[14px] font-sans text-[12px] font-normal leading-[16px] tracking-[0.1px] text-[#000000] transition-colors hover:bg-[#e8ece3] md:border md:border-white/20 md:bg-white/10 md:py-[4px] md:pl-[4px] md:pr-[16px] md:text-[14px] md:font-medium md:leading-[1.43] md:tracking-[0px] md:text-[#FFFFFF] md:backdrop-blur-sm md:hover:bg-white/20"
                 >
                   {chip.swatch ? (
-                    <span className="h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full" style={{ backgroundColor: chip.swatch }} />
+                    <span className="h-[28px] w-[28px] rounded-full md:h-[32px] md:w-[32px]" style={{ backgroundColor: chip.swatch }} />
                   ) : (
                     <Image
                       src={chip.img}
                       alt={chip.name}
                       width={32}
                       height={32}
-                      className="h-[28px] w-[28px] md:h-[32px] md:w-[32px] rounded-full object-cover"
+                      className="h-[28px] w-[28px] rounded-full object-cover md:h-[32px] md:w-[32px]"
                     />
                   )}
                   {chip.name}
@@ -261,7 +283,7 @@ function HeroSection() {
               
               {/* Show a placeholder if a region has no countries added yet */}
               {activeChips.length === 0 && (
-                 <span className="text-white/60 text-sm mt-2">No destinations currently listed for this region.</span>
+                 <span className="mt-2 text-sm text-white/60">No destinations currently listed for this region.</span>
               )}
             </div>
           </div>
