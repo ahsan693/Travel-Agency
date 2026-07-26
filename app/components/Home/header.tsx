@@ -62,7 +62,8 @@ export default function Header() {
           <div className="w-[6px]" />
 
           {/* Search Button - Mapped to Title S: 14px, Medium, 143% */}
-          <button
+          <Link
+            href="/searchwidgetpage"
             className="relative flex h-[40px] min-w-[100px] items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black shadow-[0px_16px_8px_0px_rgba(31,31,31,0.01),0px_12px_6px_0px_rgba(31,31,31,0.04),0px_4px_4px_0px_rgba(31,31,31,0.07),0px_1.5px_3px_0px_rgba(31,31,31,0.08),0px_0px_0px_1px_#c29700] transition-all hover:brightness-105"
           >
             Search Deals
@@ -74,7 +75,7 @@ export default function Header() {
               className="object-contain" 
             />
             <span className="pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_1px_2px_0px_rgba(255,255,255,0.12)]" />
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button (Hidden on Desktop) */}
@@ -125,7 +126,8 @@ export default function Header() {
 
               <div className="my-[4px] h-[1px] w-full bg-black/5" />
 
-              <button
+              <Link
+                href="/searchwidgetpage"
                 onClick={closeMobileMenu}
                 className="relative mt-1 flex h-[48px] w-full items-center justify-center gap-[10px] rounded-[14px] bg-[#fddb32] px-[18px] font-sans text-[16px] font-medium text-black transition-all hover:brightness-105"
               >
@@ -137,7 +139,7 @@ export default function Header() {
                   height={18} 
                   className="object-contain" 
                 />
-              </button>
+              </Link>
             </nav>
           </div>
         )}
