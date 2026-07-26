@@ -567,9 +567,9 @@ function WhyCompareFlightsSection() {
               Easy process
             </span>
             <div className="flex w-full max-w-[876px] flex-col items-center gap-[15px] text-center">
-             <h2 className="w-full whitespace-nowrap font-sans text-[48px] font-medium leading-[48px] tracking-[0px] text-[#000000]">
-  Why Compare Flights with TravelMommy?
-</h2>
+              <h2 className="w-full font-sans font-medium text-[#000000] tracking-[0px] text-[32px] leading-[40px] lg:whitespace-nowrap lg:text-[48px] lg:leading-[48px]">
+                Why Compare Flights with TravelMommy?
+              </h2>
               <p className="w-full font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
                 Search and compare cheap flights from multiple airlines and trusted booking partners to find the best fare for your trip.
               </p>
@@ -603,7 +603,6 @@ function WhyCompareFlightsSection() {
     </section>
   );
 }
-
 /* ----------------------------------------------------------------
    POPULAR AIRLINES SECTION
 ---------------------------------------------------------------- */
@@ -670,28 +669,32 @@ function PopularAirlinesSection() {
 
 function PopularAirportsSection() {
   return (
-    <section className="w-full bg-white px-[80px] py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-[48px]">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <h2 className="font-sans text-[48px] font-semibold leading-[1.1] tracking-[-0.01em] text-black">
+    <section className="w-full bg-[#FFFFFF] px-[20px] py-[56px] lg:px-[80px] lg:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-[32px] lg:gap-[48px]">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center gap-[12px] text-center lg:gap-3">
+          <h2 className="font-sans text-[42px] font-medium leading-[44px] tracking-[-1.5px] text-[#000000] lg:text-[48px] lg:font-semibold lg:leading-[1.1] lg:tracking-[-0.01em]">
             Popular Airports
           </h2>
-          <p className="max-w-[640px] font-sans text-[16px] font-normal leading-[24px] text-black/60">
+          <p className="max-w-[640px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000] lg:text-black/60">
             Search and compare flights from major airports around the world.
             Discover convenient departure points, route options and travel
             times before you book.
           </p>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Airport Cards */}
+        <div className="grid w-full grid-cols-1 gap-[12px] sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {popularAirports.map((airport) => (
             <div
               key={airport.code}
-              className="flex w-full items-center justify-between rounded-2xl border border-[#E6E6E6] bg-white px-6 py-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+              className="flex w-full items-center justify-between rounded-[16px] border border-[#E6E6E6] bg-white p-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md lg:rounded-2xl lg:px-6 lg:py-5"
             >
-              <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FDDB32]">
-                  {/* REPLACED Lucide Plane with Custom Icon */}
+              <div className="flex items-center gap-[12px] lg:gap-4">
+                
+                {/* Icon Container */}
+                <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[12px] bg-[#FEED91] p-[10px] lg:h-11 lg:w-11 lg:rounded-xl lg:bg-[#FDDB32] lg:p-0">
                   <Image 
                     src="/Flights Page/Section 5/Icons/Vector.png" 
                     alt="Airport" 
@@ -700,25 +703,30 @@ function PopularAirportsSection() {
                     className="object-contain" 
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-sans text-[16px] font-semibold leading-[24px] text-black">
+                
+                {/* Text Stack */}
+                <div className="flex flex-col gap-[4px] lg:gap-0">
+                  <span className="font-sans text-[16px] font-medium leading-[22px] tracking-[-0.32px] text-[#000000] lg:font-semibold lg:leading-[24px]">
                     {airport.name}
                   </span>
-                  <span className="font-sans text-[14px] font-normal leading-[20px] text-black/50">
+                  <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#6E6E6E] lg:text-black/50">
                     {airport.location}
                   </span>
                 </div>
               </div>
-              <span className="font-sans text-[14px] font-medium leading-[20px] text-black/60">
+              
+              {/* Airport Code */}
+              <span className="font-sans text-[14px] font-normal leading-[20px] tracking-[-0.28px] text-[#000000] lg:font-medium lg:text-black/60">
                 {airport.code}
               </span>
             </div>
           ))}
         </div>
 
+        {/* CTA Button */}
         <Link
           href="/flights/airports"
-          className="flex shrink-0 items-center gap-2 rounded-full bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[14px] font-medium leading-[20px] text-black transition-colors hover:bg-[#e5c52c]"
+          className="flex w-full shrink-0 items-center justify-center gap-[10px] rounded-[12px] bg-[#FDDB32] px-[24px] py-[12px] font-sans text-[16px] font-medium leading-[20px] text-[#000000] transition-colors hover:bg-[#e5c52c] lg:w-auto lg:gap-2 lg:rounded-full lg:text-[14px]"
         >
           Explore All Airports
           <Image 
@@ -734,7 +742,6 @@ function PopularAirportsSection() {
     </section>
   );
 }
-
 /* ----------------------------------------------------------------
    FAQ SECTION
 ---------------------------------------------------------------- */

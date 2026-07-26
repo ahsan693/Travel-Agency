@@ -185,16 +185,17 @@ function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
        <Image
-  src="/Featured Countries/Section 1/Images/neom-wTmGtmGQCjQ-unsplash.jpg"
-  alt="Desert canyon arch at sunset"
-  fill
-  className="object-cover opacity-80"
-  priority
-/>
+         src="/Featured Countries/Section 1/Images/neom-wTmGtmGQCjQ-unsplash.jpg"
+         alt="Desert canyon arch at sunset"
+         fill
+         className="object-cover opacity-80"
+         priority
+       />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60" />
       </div>
 
-      <div className="relative z-10 flex h-full w-full max-w-[1440px] flex-col px-[16px] pb-[32px] pt-[90px] md:px-[112px] md:pb-[80px] md:pt-[24px]">
+      {/* Added more top padding here in mobile view: changed pt-[90px] to pt-[120px] */}
+      <div className="relative z-10 flex h-full w-full max-w-[1440px] flex-col px-[16px] pb-[32px] pt-[120px] md:px-[112px] md:pb-[80px] md:pt-[24px]">
         <Header />
 
         <div className="mt-auto flex w-full max-w-[1198px] flex-col gap-[10px] md:gap-[26px]">
