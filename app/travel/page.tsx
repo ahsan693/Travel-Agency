@@ -106,14 +106,14 @@ const POPULAR_FLIGHTS = [
     image: "https://images.unsplash.com/photo-1518005068251-37900150dfca?auto=format&fit=crop&w=1200&q=80"
   },
   {
-  city: "New York",
-  route: "NYC → ATH",
-  price: "€329",
-  airline: "Delta",
-  duration: "Direct • 9h 15m",
-  flag: "https://flagcdn.com/w40/us.png",
-  image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80"
-}
+    city: "New York",
+    route: "NYC → ATH",
+    price: "€329",
+    airline: "Delta",
+    duration: "Direct • 9h 15m",
+    flag: "https://flagcdn.com/w40/us.png",
+    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80"
+  }
 ];
 
 const THINGS_TO_DO = [
@@ -195,7 +195,7 @@ const NEARBY_COUNTRIES = [
 ];
 
 /* =====================================================================
-   UPDATED FAQS DATA (Matched to "FAQ Section.pdf")
+   UPDATED FAQS DATA
 ===================================================================== */
 const FAQS = [
   { q: "When is the best time to visit Santorini?", a: "The best time to visit is during the shoulder seasons (May-June and September-October) when the weather is pleasant and the crowds are thinner." },
@@ -230,7 +230,7 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
       </div>
-      <div className="relative z-10 mt-[104px] flex w-full flex-col items-center px-[32px] text-center">
+      <div className="relative z-10 mt-[104px] mx-auto flex w-full max-w-[1440px] flex-col items-center px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px] text-center">
         <div className="mb-[12px] flex items-center justify-center rounded-full bg-[#FDDB32] px-[12px] py-[4px]">
           <span className="font-sans text-[12px] font-medium leading-[16px] tracking-[-0.12px] text-[#000000]">
             GREECE
@@ -254,7 +254,7 @@ function HeroSection() {
 function InfoBarSection() {
   return (
     <section className="w-full bg-[#F9FBFA]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-[24px] px-[80px] py-[40px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-[24px] py-[40px] px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         {INFO_BAR_DATA.map((info, i) => (
           <div key={i} className="flex items-center gap-[12px]">
             <div className="flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#FDDB32]">
@@ -282,7 +282,7 @@ function InfoBarSection() {
 function AboutSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
-      <div className="mx-auto w-full max-w-[1440px] px-[160px] max-[1024px]:px-[20px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <div className="flex flex-col items-center gap-[80px] lg:flex-row">
           <div className="flex w-full max-w-[540px] flex-col gap-[24px]">
             <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[36px]">
@@ -381,7 +381,7 @@ function DestinationCard({ item }: { item: any }) {
 function DestinationsSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[96px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <div className="mb-[56px] flex flex-col gap-[12px]">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Explore Greece's Most Popular Destinations
@@ -444,7 +444,7 @@ function FlightCard({ flight }: { flight: any }) {
 function PopularFlightsSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[120px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <div className="mb-[48px] flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
             Popular Flights to <span className="text-[#FDDB32]">Greece</span>
@@ -470,7 +470,7 @@ function PopularFlightsSection() {
 function TopThingsToDoSection() {
   return (
     <section className="w-full bg-[#000000] py-[120px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
           Top Things To Do
         </h2>
@@ -502,7 +502,7 @@ function TopThingsToDoSection() {
 function WhereToStaySection() {
   return (
     <section className="w-full bg-[#F9FBFA] py-[120px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[160px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <h2 className="mb-[48px] font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
           Where To Stay
         </h2>
@@ -586,7 +586,7 @@ function NearbyCountryCard({ item }: { item: any }) {
 function NearbyCountriesSection() {
   return (
     <section className="w-full bg-[#000000] py-[96px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         <div className="mb-[56px] flex flex-col gap-[12px]">
           <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#FFFFFF] max-[768px]:text-[32px]">
             Explore Nearby Countries
@@ -614,7 +614,7 @@ function TravelHelpSection() {
 
   return (
     <section className="w-full bg-[#F9F8F5] py-[120px] max-[1024px]:py-[80px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[64px] px-[160px] lg:flex-row lg:items-start max-[1024px]:px-[20px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-[64px] lg:flex-row lg:items-start px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
         
         {/* Left Col */}
         <div className="flex w-full max-w-[400px] flex-col gap-[12px] shrink-0">
@@ -663,26 +663,26 @@ function TravelHelpSection() {
    NEWSLETTER SECTION
 ===================================================================== */
 
-function NewsletterSection() {
+ function NewsletterSection() {
   return (
     <section className="w-full bg-[#FFFFFF] py-[80px]">
-      <div className="mx-auto w-full max-w-[1440px] px-[160px] max-[1024px]:px-[20px]">
-        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] p-[64px] text-center max-[768px]:p-[40px]">
-          <h2 className="font-sans text-[48px] font-medium leading-[48px] tracking-[-1px] text-[#000000] max-[768px]:text-[32px]">
+      <div className="mx-auto w-full max-w-[1440px] px-[120px] max-[1024px]:px-[40px] max-[768px]:px-[20px]">
+        <div className="mx-auto flex w-full flex-col items-center justify-center rounded-[42px] bg-[#FDDB32] py-[64px] px-[64px] text-center max-[768px]:rounded-[32px] max-[768px]:py-[48px] max-[768px]:px-[24px]">
+          <h2 className="font-sans text-[48px] font-bold leading-[1.1] tracking-[-0.02em] text-[#000000] max-[768px]:text-[32px]">
             Get Greece Travel Deals
           </h2>
-          <p className="mt-[16px] max-w-[600px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000]">
-            Sign up to our newsletter and be the first to know about cheap flights and hotel offers.
+          <p className="mt-[16px] max-w-[680px] font-sans text-[16px] font-normal leading-[24px] text-[#000000]">
+            Sign up for our exclusive newsletter and be the first to know about cheap flights and hotel price drops for your next Greek getaway.
           </p>
-          <form className="mt-[32px] flex w-full max-w-[500px] flex-col gap-[12px] sm:flex-row">
+          <form className="mt-[36px] flex w-full max-w-[547px] flex-col gap-[12px] sm:flex-row">
             <input
               type="email"
               placeholder="Email Address"
-              className="h-[56px] flex-1 rounded-full px-[24px] font-sans text-[16px] font-normal leading-[24px] tracking-[0px] text-[#000000] focus:outline-none"
+              className="h-[56px] flex-1 rounded-[16px] px-[24px] font-sans text-[16px] font-normal text-[#000000] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-black/5"
             />
             <button
               type="submit"
-              className="flex h-[56px] shrink-0 items-center justify-center rounded-full bg-[#000000] px-[32px] font-sans text-[16px] font-medium leading-[24px] tracking-[-0.32px] text-[#FFFFFF] transition-colors hover:bg-neutral-800"
+              className="flex h-[56px] shrink-0 items-center justify-center rounded-[16px] bg-[#000000] px-[32px] font-sans text-[16px] font-medium text-[#FFFFFF] transition-all hover:bg-neutral-800 active:scale-95"
             >
               Subscribe
             </button>
