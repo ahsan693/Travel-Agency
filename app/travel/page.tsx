@@ -675,11 +675,11 @@ function TravelHelpSection() {
             Sign up for our exclusive newsletter and be the first to know about cheap flights and hotel price drops for your next Greek getaway.
           </p>
           <form className="mt-[36px] flex w-full max-w-[547px] flex-col gap-[12px] sm:flex-row">
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="h-[56px] flex-1 rounded-[16px] px-[24px] font-sans text-[16px] font-normal text-[#000000] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-black/5"
-            />
+           <input
+  type="email"
+  placeholder="Email Address"
+  className="bg-[#FFFFFF] h-[56px] flex-1 rounded-[16px] px-[24px] font-sans text-[16px] font-normal text-[#000000] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-black/5"
+/>
             <button
               type="submit"
               className="flex h-[56px] shrink-0 items-center justify-center rounded-[16px] bg-[#000000] px-[32px] font-sans text-[16px] font-medium text-[#FFFFFF] transition-all hover:bg-neutral-800 active:scale-95"
