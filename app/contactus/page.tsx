@@ -106,6 +106,8 @@ const socialLinks = [
 export default function ContactUs() {
   return (
     <main className="flex min-h-screen w-full flex-col bg-[#FFFFFF]">
+      {/* If Header is globally absolute, you can place it here. */}
+      <Header />
       <HeroSection />
       <ContactCardsSection />
       <FormSection />
@@ -118,34 +120,33 @@ export default function ContactUs() {
 
 /* ----------------------------------------------------------------
    HERO SECTION
+   // ALIGNMENT COMMENT: 
+   // Updated to match specific 1440px desktop specs:
+   // - Margins: Top 193px, Bottom 141px, L/R 140px
+   // - Heading: Center-aligned, 72px, -3% letter spacing
+   // - Paragraph: Center-aligned, 16px, 24px line height
+   // - Gap: 32px between heading and paragraph
 ---------------------------------------------------------------- */
 
 function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] pb-[64px] md:pb-[100px] md:px-[112px]">
-      
-      {/* 
-        The Header is absolutely positioned globally, but on this specific layout, 
-        we want it to flow normally (or at least leave space) so it doesn't overlap 
-        the hero text on mobile. By making the header relative here or adding top padding, 
-        we create the needed gap.
-      */}
-      <div className="w-full max-w-[1440px] pt-[20px] md:pt-[24px]">
-        {/* We use a wrapper with height to offset the absolute positioning of the Header component itself if needed, or rely on pt */}
-        <div className="relative h-[80px] w-full">
-          <Header />
+    <section className="relative flex w-full flex-col items-center bg-[#FDDB32] pb-[64px] pt-[120px] lg:pb-[141px] lg:pt-[193px]">
+      <div className="relative z-10 w-full max-w-[1440px] px-[20px] lg:px-[140px]">
+        {/* Added items-center here so both elements stack neatly in the center */}
+        <div className="flex w-full flex-col items-center">
+          
+          {/* Heading - Center Aligned (Removed md:text-left) */}
+          <h1 className="font-sans text-[38px] font-medium leading-none tracking-[0px] text-[#000000] text-center md:text-[72px] md:tracking-[-0.03em]">
+            Contact TravelMommy
+          </h1>
+          
+          {/* Paragraph - Center Aligned */}
+          <p className="mt-[20px] max-w-[800px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] text-center md:mt-[32px] md:text-[16px] md:leading-[24px]">
+            Have a question about TravelMommy? We're here to help. Whether you need
+            assistance using our platform, have feedback, or want to discuss a partnership,
+            we'd love to hear from you.
+          </p>
         </div>
-      </div>
-
-      <div className="mt-[24px] flex max-w-[320px] flex-col items-center text-center md:mt-[80px] md:max-w-[800px]">
-        <h1 className="font-sans text-[38px] font-medium leading-[1.05] tracking-[0px] text-[#000000] md:text-[64px] md:leading-none md:tracking-[0px]">
-          Contact TravelMommy
-        </h1>
-        <p className="mt-[20px] max-w-[300px] font-sans text-[14px] font-normal leading-[1.55] text-[#000000] opacity-80 md:mt-[24px] md:max-w-[650px] md:text-[16px]">
-          Have a question about TravelMommy? We're here to help. Whether you need
-          assistance using our platform, have feedback, or want to discuss a partnership,
-          we'd love to hear from you.
-        </p>
       </div>
     </section>
   );
@@ -157,8 +158,8 @@ function HeroSection() {
 
 function ContactCardsSection() {
   return (
-    <section className="flex w-full flex-col items-center bg-[#0F1420] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
-      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[16px] md:gap-[24px] md:grid-cols-3">
+    <section className="flex w-full flex-col items-center bg-[#0F1420] py-[56px] px-[20px] lg:px-[140px] lg:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1160px] grid-cols-1 gap-[16px] md:gap-[24px] md:grid-cols-3">
         {contactCards.map(({ icon: Icon, title, description, email }) => (
           <div
             key={title}
@@ -207,8 +208,8 @@ function FormSection() {
   };
 
   return (
-    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
-      <div className="mx-auto grid w-full max-w-[1216px] grid-cols-1 gap-[32px] lg:grid-cols-[1fr_1.2fr] lg:gap-[96px]">
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] py-[56px] px-[20px] lg:px-[140px] lg:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1160px] grid-cols-1 gap-[32px] lg:grid-cols-[1fr_1.2fr] lg:gap-[96px]">
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[40px]">
@@ -322,8 +323,8 @@ function FaqSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <section className="flex w-full flex-col items-center bg-[#000000] px-[16px] py-[56px] md:px-[112px] md:py-[100px]">
-      <div className="mx-auto grid w-full max-w-[1216px] gap-[32px] lg:grid-cols-[1fr_1.4fr] lg:gap-[64px]">
+    <section className="flex w-full flex-col items-center bg-[#000000] py-[56px] px-[20px] lg:px-[140px] lg:py-[100px]">
+      <div className="mx-auto grid w-full max-w-[1160px] gap-[32px] lg:grid-cols-[1fr_1.4fr] lg:gap-[64px]">
         
         {/* Left Column: Text Content */}
         <div className="flex flex-col lg:pt-[20px]">
@@ -374,7 +375,7 @@ function FaqSection() {
 
 function FollowUsSection() {
   return (
-    <section className="flex w-full flex-col items-center bg-[#FFFFFF] px-[16px] py-[56px] md:py-[80px]">
+    <section className="flex w-full flex-col items-center bg-[#FFFFFF] py-[56px] px-[20px] lg:px-[140px] md:py-[80px]">
       <h3 className="mb-[20px] font-sans text-[18px] font-medium leading-[24px] text-[#000000] md:mb-[28px] md:text-[20px]">
         Follow Us
       </h3>
