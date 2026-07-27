@@ -7,20 +7,17 @@ const guides = [
   {
     date: "June 12, 2026",
     title: "Best Time to Visit Bali",
-    image:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
+    image: "/Homepage/Section 6/Images/bali.png",
   },
   {
     date: "May 28, 2026",
     title: "How to Find Cheap Flights",
-    image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+    image: "/Homepage/Section 6/Images/plane travel.png",
   },
   {
     date: "May 15, 2026",
     title: "Paris Travel Guide",
-    image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+    image: "/Homepage/Section 6/Images/paris night.png",
   },
 ];
 
