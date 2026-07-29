@@ -37,7 +37,7 @@ function HeroDesktop() {
       <div className="relative z-10 flex w-full max-w-[1280px] flex-col px-8 pb-[48px] pt-[28px]">
 
         {/* Main Heading */}
-        <h1 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
+        <h1 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-white xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
           <span className="block">Compare Flights, Hotels</span>
           <span className="block">&amp; Travel Deals</span>
         </h1>
@@ -47,7 +47,7 @@ function HeroDesktop() {
 
         {/* Left Column (Paragraph & Button) */}
           <div className="flex max-w-[330px] transform -translate-y-[60px] flex-col items-start gap-[10px]">
-            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-black">
+            <p className="font-sans text-[14px] font-medium leading-[20px] tracking-[-0.28px] text-white">
               Compare flight prices, hotels, and holiday deals from trusted travel providers. Search hundreds of booking sites in seconds and find the best option for your next trip.
             </p>
             <button className="group flex h-[42px] items-center gap-[10px] rounded-[14px] border border-[#e6e6e6] bg-white px-[18px] font-sans text-[14px] font-medium leading-[1.43] text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]">
@@ -87,18 +87,18 @@ function HeroDesktop() {
                     ))}
                   </div>
                   <div className="flex items-baseline gap-[4px]">
-                    <span className="font-sans text-[16px] font-medium leading-[1.5] text-black">4.9</span>
-                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-black">/ 5</span>
+                    <span className="font-sans text-[16px] font-medium leading-[1.5] text-white">4.9</span>
+                    <span className="font-sans text-[14px] font-normal leading-[1.43] text-white/90">/ 5</span>
                   </div>
                 </div>
-                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-medium leading-[1.43] text-black">
+                <p className="mt-[2px] w-[215px] font-sans text-[14px] font-medium leading-[1.43] text-white">
                   Compare live prices from trusted airlines and travel websites.
                 </p>
               </div>
             </div>
 
             {/* "from 500+ Travel Sites" Heading */}
-            <h2 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-black lg:text-right xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
+            <h2 className="font-sans text-[72px] font-medium leading-none tracking-[-2px] text-white lg:text-right xl:text-[110px] xl:leading-[98px] xl:tracking-[-5px]">
               <span className="block">from 500+</span>
               <span className="block">Travel Sites</span>
             </h2>
