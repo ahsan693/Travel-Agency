@@ -24,7 +24,7 @@ function HeroDesktop() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80"
+          src="/Homepage/Section 1/Header Images/homeimg1.png"
           alt="Hero background"
           fill
           className="object-cover"
@@ -127,7 +127,7 @@ function HeroMobile() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80"
+          src="/Homepage/Section 1/Header Images/homeimg1.png"
           alt="Hero background"
           fill
           className="object-cover"
